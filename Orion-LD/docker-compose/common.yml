@@ -1,0 +1,233 @@
+# WARNING: Do not deploy this tutorial configuration directly to a production environment
+#
+# The tutorial docker-compose files have not been written for production deployment and will not 
+# scale. A proper architecture has been sacrificed to keep the narrative focused on the learning 
+# goals, they are just used to deploy everything onto a single Docker machine. All FIWARE components 
+# are running at full debug and extra ports have been exposed to allow for direct calls to services. 
+# They also contain various obvious security flaws - passwords in plain text, no load balancing,
+# no use of HTTPS and so on. 
+# 
+# This is all to avoid the need of multiple machines, generating certificates, encrypting secrets
+# and so on, purely so that a single docker-compose file can be read as an example to build on, 
+# not use directly. 
+# 
+# When deploying to a production environment, please refer to the Helm Repository
+# for FIWARE Components in order to scale up to a proper architecture:
+# 
+# see: https://github.com/FIWARE/helm-charts/
+#
+services:
+  # @context file is served from here
+  ld-context:
+    labels:
+      org.fiware: 'tutorial'
+    image: httpd:alpine
+    hostname: context
+    container_name: fiware-ld-context
+    ports:
+        - "3004:80"
+    volumes:
+        - data-models:/usr/local/apache2/htdocs/
+        - type: bind
+          source: ${PWD}/conf/mime.types
+          target: /usr/local/apache2/conf/mime.types
+          read_only: true
+    healthcheck:
+      test: (wget --server-response --spider --quiet  http://context/user-context.jsonld 2>&1 | awk 'NR==1{print $$2}'|  grep -q -e "200") || exit 1
+
+  # Cache for Sensor Data Readings
+  redis-sensors:
+    labels:
+      org.fiware: 'tutorial'
+    image: redis:8.2.0-alpine
+    container_name: redis
+    hostname: redis-for-sensors
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+      interval: 10s
+
+  # Databases
+  mongo-db:
+    labels:
+      org.fiware: 'tutorial'
+    image: mongo:${MONGO_DB_VERSION}
+    hostname: mongo-db
+    container_name: db-mongo
+    ports:
+      - "${MONGO_DB_PORT}:${MONGO_DB_PORT}" # localhost:27017
+    networks:
+      - default
+    command: --nojournal
+    volumes:
+      - mongo-db1:/data
+    healthcheck:
+      test: ["CMD","mongosh", "localhost:27017/test", "--quiet"]
+      interval: 5s
+
+  mongo-for-orion-v2:
+    labels:
+      org.fiware: 'tutorial'
+    image: mongo:${MONGO_DB_VERSION}
+    hostname: mongo-db2
+    container_name: db-mongo-2
+    volumes:
+      - mongo-db2:/data
+    ports:
+      - 27018:27017 # localhost:27017
+    networks:
+      - default
+  
+  # A series of dummy IoT Sensors over HTTP
+  iot-sensors:
+    labels:
+      org.fiware: 'tutorial'
+    image: quay.io/fiware/tutorials.iot-devices
+    hostname: iot-sensors
+    container_name: fiware-iot-devices
+    depends_on:
+      - redis-sensors
+    networks:
+      - default
+    expose:
+      - "${TUTORIAL_DUMMY_DEVICE_PORT}"
+    ports:
+      - "${TUTORIAL_DUMMY_DEVICE_PORT}:${TUTORIAL_DUMMY_DEVICE_PORT}" # localhost:3001
+    environment:
+      - DEBUG=devices:*
+      - WEB_APP_HOST=tutorial
+      - WEB_APP_PORT=${TUTORIAL_APP_PORT} # Port used by the content provider proxy and web-app for viewing data
+      - IOTA_HTTP_HOST=iot-agent
+      - IOTA_HTTP_PORT=${IOTA_SOUTH_PORT}
+      - PIG_COUNT=${PIG_COUNT}
+      - COW_COUNT=${COW_COUNT}
+      - REDIS_HOST=redis-for-sensors
+
+  # Tutorial acts as a Farm Management Information System
+  tutorial:
+    labels:
+      org.fiware: 'tutorial'
+    image: quay.io/fiware/tutorials.ngsi-ld
+    hostname: tutorial
+    container_name: fiware-tutorial
+    depends_on:
+      - mongo-db
+    networks:
+      - default
+    expose:
+      - "${TUTORIAL_APP_PORT}"
+    ports:
+      - "${TUTORIAL_APP_PORT}:${TUTORIAL_APP_PORT}" # localhost:3000
+    environment:
+      - DEBUG=tutorial:*
+      - WEB_APP_PORT=${TUTORIAL_APP_PORT} # Port used by the content provider proxy and web-app for viewing data
+      - IOTA_HTTP_HOST=iot-agent
+      - IOTA_HTTP_PORT=${IOTA_SOUTH_PORT}
+      - DUMMY_DEVICES=http://iot-sensors:3001
+      - MONGO_URL=mongodb://mongo-db:27017
+      - IOTA_JSON_LD_CONTEXT=http://context/user-context.jsonld
+      - NGSI_LD_TENANT=openiot
+
+
+  # IoT-Agent is configured for the UltraLight Protocol
+  iot-agent:
+    labels:
+      org.fiware: 'tutorial'
+    image: quay.io/fiware/iotagent-ul:${ULTRALIGHT_VERSION}
+    hostname: iot-agent
+    container_name: fiware-iot-agent
+    depends_on:
+      - mongo-db
+    networks:
+      - default
+    expose:
+      - "${IOTA_NORTH_PORT}"
+      - "${IOTA_SOUTH_PORT}"
+    ports:
+      - "${IOTA_NORTH_PORT}:${IOTA_NORTH_PORT}" # localhost:4041
+      - "${IOTA_SOUTH_PORT}:${IOTA_SOUTH_PORT}" # localhost:7896
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '1.0'
+        reservations:
+          memory: 256M
+          cpus: '0.5'
+    environment:
+      - IOTA_NORTH_PORT=${IOTA_NORTH_PORT}
+      - IOTA_REGISTRY_TYPE=mongodb #Whether to hold IoT device info in memory or in a database
+      - IOTA_LOG_LEVEL=DEBUG # The log level of the IoT Agent
+      - IOTA_TIMESTAMP=true # Supply timestamp information with each measurement
+      - IOTA_AUTOCAST=true # Ensure Ultralight number values are read as numbers not strings
+      - IOTA_MONGO_HOST=mongo-db # The host name of MongoDB
+      - IOTA_MONGO_PORT=${MONGO_DB_PORT} # The port mongoDB is listening on
+      - IOTA_MONGO_DB=iotagentul # The name of the database used in mongoDB
+      - IOTA_HTTP_PORT=${IOTA_SOUTH_PORT} # The port used for device traffic over HTTP
+      - IOTA_PROVIDER_URL=http://iot-agent:${IOTA_NORTH_PORT}
+      - IOTA_CB_NGSI_VERSION=ld # use NGSI-LD when sending updates for active attributes
+      - IOTA_JSON_LD_CONTEXT=http://context/user-context.jsonld
+      - IOTA_FALLBACK_TENANT=openiot
+      - IOTA_MULTI_CORE=true
+      - IOTA_AMQP_DISABLED=true
+      - IOTA_MQTT_DISABLED=true
+    healthcheck:
+      interval: 5s
+
+  adapter-for-ngsi-v2:
+    labels:
+      org.fiware: 'tutorial'
+    image: quay.io/fiware/lepus:${LEPUS_VERSION}
+    hostname: adapter
+    container_name: fiware-lepus
+    networks:
+      - default
+    expose:
+      - "${LEPUS_PORT}"
+    ports:
+      - "${LEPUS_PORT}:3000"
+    environment:
+      - DEBUG=adapter:*
+      - NGSI_V2_CONTEXT_BROKER=http://orion2:1026
+      - USER_CONTEXT_URL=http://context/fixed-context.jsonld
+      - CORE_CONTEXT_URL=https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.8.jsonld
+      - NOTIFICATION_RELAY_URL=http://adapter:3000/notify
+      
+  ngsi-v2:
+    labels:
+      org.fiware: 'tutorial'
+    image: quay.io/fiware/orion:${ORION_VERSION}
+    hostname: orion2
+    container_name: fiware-orion-v2
+    depends_on:
+      - mongo-for-orion-v2
+    networks:
+      - default
+    expose:
+      - "${ORION_PORT}"
+    ports:
+      - "${ORION_PORT}:1026" # localhost:1026
+    command: -dbURI mongodb://mongo-db2 -logLevel DEBUG
+    healthcheck:
+      test: curl --fail -s http://orion2:1026/version || exit 1
+      interval: 5s
+
+networks:
+  default:
+    labels:
+      org.fiware: 'tutorial'
+
+volumes:
+  mongo-db1: ~
+  mongo-db2: ~
+  mongo-config: ~
+  redis-data: ~
+  data-models:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/data-models
