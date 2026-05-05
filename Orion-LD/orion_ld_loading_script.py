@@ -10,6 +10,27 @@ CONTEXT_URL = "https://raw.githubusercontent.com/smart-data-models/dataModel.Ene
 BASE_DIR = Path(__file__).resolve().parent
 
 
+def _resolve_csv_path(file_path, house_id):
+    csv_path = Path(file_path)
+    if csv_path.is_absolute():
+        return csv_path
+
+    house_folder = f"House_{house_id:02d}"
+    candidates = [
+        Path.cwd() / csv_path,
+        BASE_DIR / csv_path,
+        BASE_DIR / "Clean_Dataset" / house_folder / "Electric_data" / csv_path,
+        BASE_DIR.parent / "Clean_Dataset" / house_folder / "Electric_data" / csv_path,
+    ]
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    # Keep error messages stable by returning the most likely expected location.
+    return BASE_DIR.parent / "Clean_Dataset" / house_folder / "Electric_data" / csv_path
+
+
 def _to_float_or_none(value):
     if pd.isna(value):
         return None
@@ -24,16 +45,8 @@ def _add_property_if_value(entity, key, value):
         entity[key] = {"type": "Property", "value": value}
 
 def ingest_data(file_path, house_id, limit=5):
-    # Αν δοθεί μόνο όνομα αρχείου, φτιάξε το μονοπάτι βάσει της δομής φακέλων.
-    csv_path = Path(file_path)
-    if not csv_path.is_absolute() and len(csv_path.parts) == 1:
-        csv_path = (
-            BASE_DIR
-            / "Clean_Dataset"
-            / f"House_{house_id:02d}"
-            / "Electric_data"
-            / csv_path
-        )
+    # Αν δοθεί σχετικό μονοπάτι, εντόπισέ το σε συνηθισμένες θέσεις του repo.
+    csv_path = _resolve_csv_path(file_path, house_id)
 
     if not csv_path.exists():
         raise FileNotFoundError(

@@ -26,9 +26,10 @@ services:
     hostname: keyrock
     networks:
       default:
-        ipv4_address: 172.18.1.5
+        ipv4_address: 172.18.30.5
     depends_on:
-      - mysql-db
+      mysql-db:
+        condition: service_healthy
     ports:
       - "${KEYROCK_PORT}:${KEYROCK_PORT}" # localhost:3005
       - "${KEYROCK_HTTPS_PORT}:${KEYROCK_HTTPS_PORT}" # localhost:3443
@@ -48,7 +49,11 @@ services:
     secrets:
       - my_secret_data
     healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${KEYROCK_PORT}/version"]
       interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   # Database
   mysql-db:
@@ -61,17 +66,23 @@ services:
     expose:
       - "${MYSQL_DB_PORT}"
     ports:
-      - "${MYSQL_DB_PORT}:${MYSQL_DB_PORT}"
+      - "${MYSQL_DB_PORT}:3306"
     networks:
       default:
-        ipv4_address: 172.18.1.6
+        ipv4_address: 172.18.30.6
     environment:
+      - MYSQL_ROOT_HOST=%  # <--- ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΚΛΕΙΔΙ: Επιτρέπει σύνδεση από παντού
       - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my_secret_data"
-      - "MYSQL_ROOT_HOST=172.18.1.5" # Allow Keyrock to access this database
+    secrets:
+      - my_secret_data # Επιτρέπει στη MySQL να δει το αρχείο του κωδικού
     volumes:
       - mysql-db:/var/lib/mysql
-    secrets:
-      - my_secret_data
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=$$(cat /run/secrets/my_secret_data)"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
 
 networks:
   default:
@@ -79,7 +90,7 @@ networks:
       org.fiware: 'tutorial'
     ipam:
       config:
-        - subnet: 172.18.1.0/24
+        - subnet: 172.18.30.0/24
 volumes:
   mysql-db: ~
 

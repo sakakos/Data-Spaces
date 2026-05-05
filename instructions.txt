@@ -1,0 +1,28 @@
+
+ORION-LD
+
+git checkout NGSI-LD
+
+cd Orion-LD
+
+docker compose --env-file .env -f docker-compose/common.yml -f docker-compose/orion-ld.yml up -d --remove-orphans --renew-anon-volumes
+
+ORION-LD instuctions set here: https://documenter.getpostman.com/view/513743/SVYjSMgh#09634a0a-7ee2-460e-9870-d2437818f615
+
+http://localhost:1026/version
+
+python orion_ld_loading_script.py
+
+http://localhost:1026/ngsi-ld/v1/entities?type=HouseholdMeasurement
+
+
+
+KEYROCK
+
+docker-compose --env-file .env up -d
+
+http://localhost:3007
+admin@test.com
+1234
+
+έκδοση token: curl -iX POST "http://localhost:3007/v1/auth/tokens" -H "Content-Type: application/json" -d "{\"name\": \"admin@test.com\", \"password\": \"1234\"}"
