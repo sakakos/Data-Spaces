@@ -26,3 +26,24 @@ admin@test.com
 1234
 
 έκδοση token: curl -iX POST "http://localhost:3007/v1/auth/tokens" -H "Content-Type: application/json" -d "{\"name\": \"admin@test.com\", \"password\": \"1234\"}"
+
+
+
+KONG
+
+http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement --> στέλνει στο orion
+http://localhost:8000/idm/v1/auth/tokens --> στέλνει στο keyrock
+
+δοκιμή έκδοσης token: curl -iX POST "http://localhost:8000/idm/v1/auth/tokens" -H "Content-Type: application/json" -d "{\"name\": \"admin@test.com\", \"password\": \"1234\"}"
+δοκιμή να πάρει οντότητες από το orion-ld: curl -iX GET "http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement" -H "Accept: application/ld+json"
+αφού προστέθηκε και το authentication: curl -iX GET "http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement" -H "X-Auth-Token: my-secret-token-123" -H "Accept: application/ld+json"
+
+για να δούμε αν επιτρέπεται μία πράξη από τις hardcoded πολιτικές κάνουμε για παράδειγμα:
+http://localhost:8080/health
+
+curl -iX POST "http://localhost:8080/policy/evaluate" -H "Content-Type: application/json" -d "{\"action\": \"read\", \"resource\": \"urn:ngsi-ld:HouseholdMeasurement:House1\", \"subject\": { \"role\": \"admin\" }}"
+
+curl -X POST http://localhost:3007/oauth2/token -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/json" -d "grant_type=password&username=admin@test.com&password=1234&client_id=ff59ca46-8155-45ac-9145-8729d47b13c3&client_secret=df2b8166-cbd9-474f-9ec6-c11a821a428d"
+curl http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement -H "Authorization: Bearer 2a88a01949c0bab224af5030aa52b48dc7c1b678"
+
+αυτό ακόμα δεν δουλέυει: curl http://localhost:8085/trusted_list

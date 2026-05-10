@@ -1,0 +1,19 @@
+[
+  {
+    "id": "policy:energy:001",
+    "type": "Set",
+    "permission": [
+      {
+        "target": "urn:ngsi-ld:HouseholdMeasurement:*",
+        "action": "read",
+        "constraint": [
+          {
+            "leftOperand": "role",
+            "operator": "eq",
+            "rightOperand": "admin"
+          }
+        ]
+      }
+    ]
+  }
+]

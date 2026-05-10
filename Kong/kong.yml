@@ -1,0 +1,34 @@
+_format_version: "2.1"
+_transform: true
+
+services:
+  - name: energy-data-service
+    url: http://fiware-orion-ld:1026
+    routes:
+      - name: energy-data-route
+        paths:
+          - /ngsi-ld
+        strip_path: false
+    plugins:
+      - name: ngsi-ishare-policies
+        config:
+          jws:
+            identifier: EU.EORI.NLPLEGMA
+            root_ca_file: /iShare/certificate.pem
+          satellite:
+            identifier: EU.EORI.NLPLEGMA
+            host: http://ishare-satellite:8080
+            token_endpoint: /token
+            trusted_list_endpoint: /trusted_list
+          ar:
+            identifier: EU.EORI.NLPLEGMA
+            host: http://fiware-keyrock:3007
+            token_endpoint: /oauth2/token
+            delegation_endpoint: /ar/delegation
+
+  - name: identity-service
+    url: http://fiware-keyrock:3007
+    routes:
+      - name: identity-route
+        paths:
+          - /idm
