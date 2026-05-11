@@ -46,4 +46,7 @@ curl -iX POST "http://localhost:8080/policy/evaluate" -H "Content-Type: applicat
 curl -X POST http://localhost:3007/oauth2/token -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/json" -d "grant_type=password&username=admin@test.com&password=1234&client_id=ff59ca46-8155-45ac-9145-8729d47b13c3&client_secret=df2b8166-cbd9-474f-9ec6-c11a821a428d"
 curl http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement -H "Authorization: Bearer 2a88a01949c0bab224af5030aa52b48dc7c1b678"
 
-αυτό ακόμα δεν δουλέυει: curl http://localhost:8085/trusted_list
+curl http://localhost:8085/trusted_list 
+
+docker cp "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Kong\get_token.py" ishare-satellite:/var/satellite/get_token.py
+docker exec ishare-satellite python3 /var/satellite/get_token.py

@@ -30,21 +30,17 @@ services:
       - ISHARE_CLIENT_ID=EU.EORI.NLPLEGMA
       - ISHARE_CERTIFICATE_PATH=/iShare/certificate.pem
       - ISHARE_KEY_PATH=/iShare/key.pem
+      - ISHARE_TRUSTED_FINGERPRINTS_LIST=F2CDD6D6BB356D684F9D42DC5502DFA75F7511261850B46A4984C532AE2370CA
       - ISHARE_AR_ID=EU.EORI.NLPLEGMA
       - ISHARE_AUTHORIZATION_REGISTRY_URL=http://fiware-keyrock:3007
       - ISHARE_SATELLITE_ID=EU.EORI.NLPLEGMA
       - ISHARE_SATELLITE_URL=http://ishare-satellite:8080
       - ISHARE_SATELLITE_TOKEN_PATH=/token
       - ISHARE_SATELLITE_TRUSTED_LIST_PATH=/trusted_list
-      - ISHARE_TRUSTED_FINGERPRINTS_LIST=99F26A25D2C72E15B3A3F39555CA738747C393746A85571005A4336AB5A2506A
     volumes:
-      - ./iShare/key.pem:/iShare/key.pem
-      - ./iShare/cert.pem:/iShare/certificate.pem
-    ports:
-      - "8080:8080"
-    networks:
-      - orion_net
-      - keyrock_net
+      - ./iShare/client.key:/iShare/key.pem
+      - ./iShare/client.pem:/iShare/certificate.pem
+      - ./iShare/ca.pem:/iShare/ca.pem
   ishare-satellite:
     image: fiware/ishare-satellite:2.0.2
     container_name: ishare-satellite
