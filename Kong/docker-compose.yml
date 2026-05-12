@@ -51,8 +51,11 @@ services:
     container_name: ishare-satellite
     environment:
       - SATELLITE_LOG_LEVEL=debug
+      - GUNICORN_CMD_ARGS=--access-logfile=-
+      - SATELLITE_MAX_HEADER_SIZE=65536
     volumes:
       - ./satellite.yml:/var/satellite/config/satellite.yml
+      - ./wsgi.py:/var/satellite/wsgi.py
     expose:
       - "8080"
     ports:
