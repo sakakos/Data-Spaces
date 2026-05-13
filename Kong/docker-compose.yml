@@ -3,7 +3,8 @@ services:
     image: quay.io/fiware/kong:0.5.4
     volumes:
       - ./kong.yml:/usr/local/kong/declarative/kong.yml
-      - ./iShare/cert.pem:/iShare/certificate.pem
+      - ./iShare/fullchain.pem:/iShare/certificate.pem
+      - ./iShare/client.key:/iShare/key.pem
     container_name: kong-standalone
     environment:
       KONG_DATABASE: "off"

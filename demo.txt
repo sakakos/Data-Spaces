@@ -1,0 +1,11 @@
+# Παράγε JWT
+$TOKEN = docker run --rm -v "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Kong\iShare:/iShare" python:3.9-slim sh -c "pip install PyJWT cryptography -q 2>/dev/null && python3 /iShare/gen_token.py"
+
+# GET entities χωρίς token - πρέπει 401
+curl.exe -s http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement
+
+# GET entities με token - πρέπει 200
+curl.exe -s -H "Authorization: Bearer $TOKEN" "http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement&limit=3"
+
+# GET ένα συγκεκριμένο entity
+curl.exe -s -H "Authorization: Bearer $TOKEN" "http://localhost:8000/ngsi-ld/v1/entities/urn:ngsi-ld:HouseholdMeasurement:House1:2022-07-15T00:00:00"
