@@ -1,0 +1,22 @@
+﻿import jwt, time, uuid
+from cryptography.hazmat.primitives.serialization import load_pem_private_key
+import re
+
+key = open('/iShare/consumer.key', 'rb').read()
+private_key = load_pem_private_key(key, password=None)
+
+cert_data = open('/iShare/consumer_fullchain.pem', 'rb').read().decode()
+certs = re.findall(r'-----BEGIN CERTIFICATE-----\n(.*?)\n-----END CERTIFICATE-----', cert_data, re.DOTALL)
+x5c = [''.join(c.split()) for c in certs]
+
+now = int(time.time())
+payload = {
+    'iss': 'EU.EORI.NLPLEGMACONSUMER',
+    'sub': 'EU.EORI.NLPLEGMACONSUMER',
+    'aud': 'EU.EORI.NLPLEGMA',
+    'jti': str(uuid.uuid4()),
+    'iat': now,
+    'exp': now + 30
+}
+token = jwt.encode(payload, private_key, algorithm='RS256', headers={'x5c': x5c})
+print(token)

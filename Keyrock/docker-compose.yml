@@ -46,8 +46,23 @@ services:
       - "IDM_ADMIN_EMAIL=admin@test.com"
       - "IDM_ADMIN_PASS=1234"
       - IDM_CSP_FORM_ACTION=*
+      - "IDM_PR_CLIENT_ID=EU.EORI.NLPLEGMA"
+      - "IDM_PR_URL=http://ishare-satellite:8080"
+      - "IDM_PR_TOKEN_ENDPOINT=http://ishare-satellite:8080/token"
+      - "IDM_PR_PARTIES_ENDPOINT=http://ishare-satellite:8080/parties"
+      - "IDM_AR_ID=EU.EORI.NLPLEGMA"
+      - "IDM_AR_URL=internal"
+      - "IDM_AR_TOKEN_ENDPOINT=http://fiware-keyrock:3007/oauth2/token"
+      - "IDM_AR_DELEGATION_ENDPOINT=http://fiware-keyrock:3007/ar/delegation"
+      - "IDM_PDP_LEVEL=advanced"
+      - "IDM_PR_CLIENT_CRT=/iShare/certificate.pem"
+      - "IDM_PR_CLIENT_KEY=/iShare/key.pem"
+      - "IDM_PR_ID=EU.EORI.NLPLEGMA"
     secrets:
       - my_secret_data
+    volumes:
+      - ./iShare/client.key:/iShare/key.pem
+      - ./iShare/fullchain.pem:/iShare/certificate.pem
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:${KEYROCK_PORT}/version"]
       interval: 5s

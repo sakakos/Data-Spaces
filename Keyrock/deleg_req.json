@@ -1,0 +1,1 @@
+{"delegationRequest":{"policyIssuer":"EU.EORI.NLPLEGMA","target":{"accessSubject":"EU.EORI.NLPLEGMACONSUMER"},"policySets":[{"policies":[{"target":{"resource":{"type":"HouseholdMeasurement","identifiers":["*"],"attributes":["*"]},"actions":["GET"]},"rules":[{"effect":"Permit"}]}]}]}}

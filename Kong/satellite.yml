@@ -31,9 +31,9 @@ satellite:
     -----END PRIVATE KEY-----
   crt: |
     -----BEGIN CERTIFICATE-----
-    MIIDMzCCAhugAwIBAgIUWAMI51Csk3sHiB+HcPU11r4/VzcwDQYJKoZIhvcNAQEL
+    MIIDAzCCAeugAwIBAgIUWqanORLMVAUVavLNXIzDu5MM1GcwDQYJKoZIhvcNAQEL
     BQAwLjERMA8GA1UEAwwIUGxlZ21hQ0ExGTAXBgNVBAUTEEVVLkVPUkkuTkxQTEVH
-    TUEwHhcNMjYwNTExMDYzNTU2WhcNMjcwNTExMDYzNTU2WjA1MRgwFgYDVQQDDA9k
+    TUEwHhcNMjYwNTE0MTEwMTE3WhcNMjcwNTE0MTEwMTE3WjA1MRgwFgYDVQQDDA9k
     YXRhLXNwYWNlcy1wZHAxGTAXBgNVBAUTEEVVLkVPUkkuTkxQTEVHTUEwggEiMA0G
     CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCqmfrxjwvpvLDN5EAKKmu+99dCfwac
     gwR9odaSJq6mzJC3w/8nZOQzTi3BHsGckW9gJpntCLq7d58oidq+seDWbTPVkJLH
@@ -41,14 +41,13 @@ satellite:
     8b3BHpDSXukrZRgm5IpEbS+mvoLwFHPi1T/kloOOroL8BciucbXcifZt330CrSr9
     QmS0aqmO3eM0BYIzLrUUrZCtEohqD1kVBobl3b+wz5x0dWIIptnHx8fbzz24mRQi
     TjZrBR3FJEPMxwBN9K5wTq47KQbNXfIgML4OC5OKQoC1h2c0kHgReaJxAgMBAAGj
-    QjBAMB0GA1UdDgQWBBQ/36Q3nqWFEFCrgrYhmQVaRpPxUzAfBgNVHSMEGDAWgBSK
-    39DN6gr5vLeZGRaZdn1UUg2T4jANBgkqhkiG9w0BAQsFAAOCAQEAr0C+ok4Fg+GX
-    RMt9vvozOmm0YmfD0dDdQD344jUDFtWMHWQjEHaMciGKacPVmOF1BzgYzHIuLZ+x
-    SdZY0zFyDAQmIJqLH82WxVwBOeVzh3yGmvk8XV+xh3ecGk9iq66OnIk6ZUfdCAPA
-    MYGozefOL36JbMd6m7dj1XGqQBH4HVbjGweVWmQKGDNYbsSxwoQ9ZqCxXRvGaxx8
-    gb0xo7xpOYn/sQvT2FqoWkPuWZttdoFQtTL3v1U1tnadSWBrKj+WLIXP3QNAbji/
-    KT8gyH2ZK8Hmvvk7C/fAF6LnBTEFOSh8toNIzB81XJgbGG0ZDV5SRHaK5d837HFY
-    S/rNvBYbHA==
+    EjAQMA4GA1UdDwEB/wQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEApP5PCsVdbXdI
+    7cXkjv00Lsxv5Jw0Vjj3GZ5bVvrbkJXZNy3L1M1egdtTlqeluFI5pRy9JoLF2WjD
+    0brJVcm1d3NW9qciz9qY6Zy56gvEy9v4b1V0SkLJaWZPTNa1nDLtvmlxQPscwwbu
+    ygd6Jsf5iP56tpaHolsf/6+0XhhlmLUqIcKmmFGpmcgOoPgdQVBo8E5odlLVfE1B
+    XIktMUrtX1epmokGBzqI2U4tZr/GsqVZBYoL0nhadA7UEDyN9v0EfJQW1ggRM1dO
+    szwJLjQ18ECgIlpf6LIy+5IYeGh/sSrtuYIBWt/hhwCXwsWNLr0uUIBO2A0PPkIQ
+    orAfFJHY6Q==
     -----END CERTIFICATE-----
     -----BEGIN CERTIFICATE-----
     MIIDPTCCAiWgAwIBAgIUTK8RtCYg/yVOZICO9YeCmQSTgjwwDQYJKoZIhvcNAQEL
@@ -99,11 +98,63 @@ satellite:
     - id: EU.EORI.NLPLEGMA
       name: Plegma Data Provider
       status: Active
+      start_date: "2026-01-01T00:00:00Z"
+      end_date: "2027-12-31T23:59:59Z"
+      crt: |
+        -----BEGIN CERTIFICATE-----
+        MIIDAzCCAeugAwIBAgIUWqanORLMVAUVavLNXIzDu5MM1GcwDQYJKoZIhvcNAQEL
+        BQAwLjERMA8GA1UEAwwIUGxlZ21hQ0ExGTAXBgNVBAUTEEVVLkVPUkkuTkxQTEVH
+        TUEwHhcNMjYwNTE0MTEwMTE3WhcNMjcwNTE0MTEwMTE3WjA1MRgwFgYDVQQDDA9k
+        YXRhLXNwYWNlcy1wZHAxGTAXBgNVBAUTEEVVLkVPUkkuTkxQTEVHTUEwggEiMA0G
+        CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCqmfrxjwvpvLDN5EAKKmu+99dCfwac
+        gwR9odaSJq6mzJC3w/8nZOQzTi3BHsGckW9gJpntCLq7d58oidq+seDWbTPVkJLH
+        98ixJuT1PH3KbjQV9QFHMrRNX+ByNqGjW3OqBONY+x3TSAH9xTE4FZboCowQkvpX
+        8b3BHpDSXukrZRgm5IpEbS+mvoLwFHPi1T/kloOOroL8BciucbXcifZt330CrSr9
+        QmS0aqmO3eM0BYIzLrUUrZCtEohqD1kVBobl3b+wz5x0dWIIptnHx8fbzz24mRQi
+        TjZrBR3FJEPMxwBN9K5wTq47KQbNXfIgML4OC5OKQoC1h2c0kHgReaJxAgMBAAGj
+        EjAQMA4GA1UdDwEB/wQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEApP5PCsVdbXdI
+        7cXkjv00Lsxv5Jw0Vjj3GZ5bVvrbkJXZNy3L1M1egdtTlqeluFI5pRy9JoLF2WjD
+        0brJVcm1d3NW9qciz9qY6Zy56gvEy9v4b1V0SkLJaWZPTNa1nDLtvmlxQPscwwbu
+        ygd6Jsf5iP56tpaHolsf/6+0XhhlmLUqIcKmmFGpmcgOoPgdQVBo8E5odlLVfE1B
+        XIktMUrtX1epmokGBzqI2U4tZr/GsqVZBYoL0nhadA7UEDyN9v0EfJQW1ggRM1dO
+        szwJLjQ18ECgIlpf6LIy+5IYeGh/sSrtuYIBWt/hhwCXwsWNLr0uUIBO2A0PPkIQ
+        orAfFJHY6Q==
+        -----END CERTIFICATE-----
       certifications:
         - role: IdentityProvider
         - role: AuthorisationRegistry
       certificates:
-        - certificate_fingerprint: "99F26A25D2C72E15B3A3F39555CA738747C393746A85571005A4336AB5A2506A"
+        - certificate_fingerprint: "19A0DD7A2074F4B02E5CB34E63BD88C13944E72A30E42709F4BA8FDF4B699C2F"
+          enabled_from: "2026-01-01T00:00:00Z"
+    - id: EU.EORI.NLPLEGMACONSUMER
+      name: Plegma Data Consumer
+      status: Active
+      start_date: "2026-01-01T00:00:00Z"
+      end_date: "2027-12-31T23:59:59Z"
+      crt: |
+        -----BEGIN CERTIFICATE-----
+        MIIDEDCCAfigAwIBAgIUJyI8yErqbIokJgBUmWDhG4RyAoowDQYJKoZIhvcNAQEL
+        BQAwLjERMA8GA1UEAwwIUGxlZ21hQ0ExGTAXBgNVBAUTEEVVLkVPUkkuTkxQTEVH
+        TUEwHhcNMjYwNTE0MTAxODU4WhcNMjcwNTE0MTAxODU4WjBCMR0wGwYDVQQDDBRk
+        YXRhLXNwYWNlcy1jb25zdW1lcjEhMB8GA1UEBRMYRVUuRU9SSS5OTFBMRUdNQUNP
+        TlNVTUVSMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv62Rf6hTRLVj
+        6EN4+R4QU/4YaPm40hvAkBa55Qg3rqlo1ofl/h+Ogx27J1mvNATWOEhHrT0mS8re
+        8i21SmsT7nn64WiI6nQuT+jz3Drfgcd+leV2HhThqJQR4t/lrUuRwzT4ggOGeqU1
+        LJ6O06yF30j0qmLandACFRSMZ3L3Blg7XK7Vi4VDbcYSfM9BpJKJ0K/hOQaf0Pk9
+        wc7sQJKH2ziDMHgwD5cAzC7O9ShsOHQaGZCIv76/Kk/vCC4V47QA5FvAq4pLFgX1
+        zkRcv30I+ZLw38G+3efI5T7EVvn+C+gJ8LjLLipNvF9HBmQkQP6i31PQ6Yjvfd6G
+        nJTZfUvvBwIDAQABoxIwEDAOBgNVHQ8BAf8EBAMCB4AwDQYJKoZIhvcNAQELBQAD
+        ggEBAKA08SjCoPui8Hanvykah/47VtvaG54+YKO4opPbknx/Wbpx/ksSLRQ8xG1E
+        Ii0FOWdVp9Bpdp7AJpOqinmJJQtVvQYxCQjz+HEIYtbs95xEHCvd4AhEuf6El0By
+        r3s6dkKdlOydviYGxdGTywynXC4LGZDR4eiTWWxmuYpQnI7E+jn3DPdInXzU3eDc
+        1XQeGGg/6n4DUYNR4ipa2xospmtBbhu9PT1yIMrFD+kQdAwdPN6B05MYs2QZhPA8
+        TgY0x+rl3axy4BuCZu/Kin2viRH134vRsn17KnFYS+bNLCyERDOcyIarrz6UzJqE
+        LAkI82i1VUetH+/sCeIYo+cBlQU=
+        -----END CERTIFICATE-----
+      certifications:
+        - role: ServiceConsumer
+      certificates:
+        - certificate_fingerprint: "B26DB03FC20A09C89070FDCE99E5E18F8220127B9AFD6ECF150C5BC802C57FA3"
           enabled_from: "2026-01-01T00:00:00Z"
   root_cas: []
   fingerprints:
