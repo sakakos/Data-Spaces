@@ -4,7 +4,7 @@ services:
     volumes:
       - ./kong.yml:/usr/local/kong/declarative/kong.yml
       - ./iShare/fullchain.pem:/iShare/certificate.pem
-      - ./iShare/client.key:/iShare/key.pem
+      - ./iShare/client_rsa.key:/iShare/key.pem
     container_name: kong-standalone
     environment:
       KONG_DATABASE: "off"
