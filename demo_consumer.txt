@@ -1,0 +1,12 @@
+# 1. Χωρίς token
+Write-Host "=== Χωρίς token ===" 
+curl.exe -s "http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement&limit=1"
+
+# 2. Provider token
+Write-Host "`n=== Provider token ==="
+$PROVIDER_TOKEN = docker run --rm -v "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Kong\iShare:/iShare" python:3.9-slim sh -c "pip install PyJWT cryptography -q 2>/dev/null && python3 /iShare/gen_token.py"
+curl.exe -s -H "Authorization: Bearer $PROVIDER_TOKEN" "http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement&limit=1"
+
+# 3. Consumer token
+Write-Host "`n=== Consumer token ==="
+curl.exe -s -H "Authorization: Bearer $ACCESS_TOKEN" "http://localhost:8000/ngsi-ld/v1/entities?type=HouseholdMeasurement&limit=1"

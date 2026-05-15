@@ -1,6 +1,12 @@
-﻿import jwt, time, uuid
+"""
+gen_consumer_token.py - Consumer iSHARE JWT (για Keyrock authentication)
+Τρέξε: python3 gen_consumer_token.py
+"""
+import jwt, time, uuid, re
 from cryptography.hazmat.primitives.serialization import load_pem_private_key
-import re
+
+CONSUMER_EORI = 'EU.EORI.NLPLEGMACONSUMER'
+PROVIDER_EORI  = 'EU.EORI.NLPLEGMA'
 
 key = open('/iShare/consumer.key', 'rb').read()
 private_key = load_pem_private_key(key, password=None)
@@ -11,18 +17,12 @@ x5c = [''.join(c.split()) for c in certs]
 
 now = int(time.time())
 payload = {
-    'iss': 'EU.EORI.NLPLEGMACONSUMER',
-    'sub': 'EU.EORI.NLPLEGMACONSUMER',
-    'aud': 'EU.EORI.NLPLEGMA',
+    'iss': CONSUMER_EORI,
+    'sub': CONSUMER_EORI,
+    'aud': PROVIDER_EORI,
     'jti': str(uuid.uuid4()),
     'iat': now,
-    'exp': now + 30,
-    'authorisationRegistry': {
-        'url': 'http://fiware-keyrock:3007',
-        'identifier': 'EU.EORI.NLPLEGMA',
-        'delegation_endpoint': 'http://fiware-keyrock:3007/ar/delegation',
-        'token_endpoint': 'http://fiware-keyrock:3007/oauth2/token'
-    }
+    'exp': now + 30
 }
 token = jwt.encode(payload, private_key, algorithm='RS256', headers={'x5c': x5c})
 print(token)
