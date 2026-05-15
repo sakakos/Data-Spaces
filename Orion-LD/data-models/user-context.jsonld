@@ -59,6 +59,7 @@
     "dateLastValueReported": "device:dateLastValueReported",
     "dateManufactured": "device:dateManufactured",
     "dateModified": "device:dateModified",
+    "dateObserved": "https://smartdatamodels.org/dateObserved",
     "depth": "https://w3id.org/saref#depth",
     "description": "ngsi-ld:description",
     "deviceCategory": "device:deviceCategory",
@@ -154,6 +155,41 @@
     "field": "user:refTarget",
     "on": "https://w3id.org/saref#on",
     "off": "https://w3id.org/saref#off",
-    "verified": "fiware:verified"
+    "verified": "fiware:verified",
+
+    "plegma": "https://plegma.example.org/vocab#",
+
+    "HouseholdElectricMeasurement": "plegma:HouseholdElectricMeasurement",
+    "EnvironmentalMeasurement":     "plegma:EnvironmentalMeasurement",
+
+    "activePower":         "plegma:activePower",
+    "phaseVoltage":        "plegma:phaseVoltage",
+    "current":             "plegma:current",
+    "appliancePower":      "plegma:appliancePower",
+    "dataQualityIssue":    "plegma:dataQualityIssue",
+    "indoorTemperature":   "plegma:indoorTemperature",
+    "indoorHumidity":      "plegma:indoorHumidity",
+    "outdoorTemperature":  "plegma:outdoorTemperature",
+    "outdoorHumidity":     "plegma:outdoorHumidity",
+    "ratedWattage":        "plegma:ratedWattage",
+    "detectionThreshold":  "plegma:detectionThreshold",
+    "minOnDuration":       "plegma:minOnDuration",
+    "minOffDuration":      "plegma:minOffDuration",
+    "applianceType":       "plegma:applianceType",
+    "occupancyStatus":     "plegma:occupancyStatus",
+    "heatingSystem":       "plegma:heatingSystem",
+    "waterHeaterType":     "plegma:waterHeaterType",
+    "hasSolarPanels":      "plegma:hasSolarPanels",
+    "lastRenovationYear":  "plegma:lastRenovationYear",
+    "ageBand":             "plegma:ageBand",
+    "householdSize":       "plegma:householdSize",
+    "familyMonthlyIncomeBand": "plegma:familyMonthlyIncomeBand",
+    "individualIncomeBand":    "plegma:individualIncomeBand",
+
+    "refBuilding":  { "@id": "plegma:refBuilding",  "@type": "@id" },
+    "hasOccupant":  { "@id": "plegma:hasOccupant",  "@type": "@id" },
+    "hasAppliance": { "@id": "plegma:hasAppliance", "@type": "@id" },
+    "livesIn":      { "@id": "plegma:livesIn",       "@type": "@id" },
+    "installedIn":  { "@id": "plegma:installedIn",   "@type": "@id" }
   }
 }

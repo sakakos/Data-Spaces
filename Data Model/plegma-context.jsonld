@@ -1,0 +1,50 @@
+{
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/dataModel.Energy/master/context.jsonld",
+    "https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/context.jsonld",
+    "https://raw.githubusercontent.com/smart-data-models/dataModel.Device/master/context.jsonld",
+    "https://raw.githubusercontent.com/smart-data-models/dataModel.Weather/master/context.jsonld",
+    "https://raw.githubusercontent.com/smart-data-models/dataModel.User/master/context.jsonld",
+    {
+      "plegma": "https://example.org/plegma/vocab#",
+
+      "HouseholdElectricMeasurement": "plegma:HouseholdElectricMeasurement",
+      "EnvironmentalMeasurement":     "plegma:EnvironmentalMeasurement",
+
+      "activePower":         "plegma:activePower",
+      "voltage":             "plegma:voltage",
+      "current":             "plegma:current",
+      "appliancePower":      "plegma:appliancePower",
+      "indoorTemperature":   "plegma:indoorTemperature",
+      "indoorHumidity":      "plegma:indoorHumidity",
+      "outdoorTemperature":  "plegma:outdoorTemperature",
+      "outdoorHumidity":     "plegma:outdoorHumidity",
+      "dataQualityIssue":    "plegma:dataQualityIssue",
+
+      "refBuilding":         { "@id": "plegma:refBuilding", "@type": "@id" },
+      "hasOccupant":         { "@id": "plegma:hasOccupant", "@type": "@id" },
+      "hasAppliance":        { "@id": "plegma:hasAppliance", "@type": "@id" },
+      "livesIn":             { "@id": "plegma:livesIn", "@type": "@id" },
+      "installedIn":         { "@id": "plegma:installedIn", "@type": "@id" },
+
+      "ratedWattage":        "plegma:ratedWattage",
+      "detectionThreshold":  "plegma:detectionThreshold",
+      "minOnDuration":       "plegma:minOnDuration",
+      "minOffDuration":      "plegma:minOffDuration",
+      "applianceType":       "plegma:applianceType",
+
+      "ageBand":                  "plegma:ageBand",
+      "educationLevel":           "plegma:educationLevel",
+      "householdSize":            "plegma:householdSize",
+      "familyMonthlyIncomeBand":  "plegma:familyMonthlyIncomeBand",
+      "individualIncomeBand":     "plegma:individualIncomeBand",
+      "pets":                     "plegma:pets",
+
+      "occupancyStatus":     "plegma:occupancyStatus",
+      "heatingSystem":       "plegma:heatingSystem",
+      "waterHeaterType":     "plegma:waterHeaterType",
+      "hasSolarPanels":      "plegma:hasSolarPanels",
+      "lastRenovationYear":  "plegma:lastRenovationYear"
+    }
+  ]
+}
