@@ -1,0 +1,109 @@
+@startuml component_diagram
+title Plegma Data Space - Component Architecture
+
+' ──────────────────────────────────────────────────────────
+' Styling
+' ──────────────────────────────────────────────────────────
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam roundCorner 8
+
+skinparam component {
+    BackgroundColor<<external>> #FFE5CC
+    BackgroundColor<<pep>>      #B3D9FF
+    BackgroundColor<<pdp>>      #B3D9FF
+    BackgroundColor<<trust>>    #D4EDDA
+    BackgroundColor<<identity>> #D4EDDA
+    BackgroundColor<<data>>     #F8D7DA
+    BackgroundColor<<storage>>  #E2D5F0
+    BorderColor                 #555555
+    FontColor                   #000000
+}
+
+' ──────────────────────────────────────────────────────────
+' External actors
+' ──────────────────────────────────────────────────────────
+package "External Actors" {
+    [Provider Application\n(EU.EORI.NLPLEGMA)] as Provider <<external>>
+    [Consumer Application\n(EU.EORI.NLPLEGMACONSUMER)] as Consumer <<external>>
+}
+
+' ──────────────────────────────────────────────────────────
+' Data Space Components
+' ──────────────────────────────────────────────────────────
+package "Data Space Components" {
+
+    package "Policy Enforcement Layer" {
+        [Kong API Gateway\n<<kong-standalone>>\n:8000] as Kong <<pep>>
+        note right of Kong
+          PEP (Policy Enforcement Point)
+          Plugin: ngsi-ishare-policies
+          Endpoint: /ngsi-ld/v1/*
+        end note
+
+        [DSBA-PDP\n<<dsba-pdp>>\n:8080] as PDP <<pdp>>
+        note right of PDP
+          PDP (Policy Decision Point)
+          Evaluates iSHARE policies
+        end note
+    }
+
+    package "Trust & Identity Layer" {
+        [iSHARE Satellite\n<<ishare-satellite>>\n:8085] as Satellite <<trust>>
+        note right of Satellite
+          Trust Anchor
+          Endpoints:
+          - /token
+          - /trusted_list
+          - /parties
+          Holds: parties registry,
+          trusted certificates
+        end note
+
+        [Keyrock IdM + AR\n<<fiware-keyrock>>\n:3007] as Keyrock <<identity>>
+        note right of Keyrock
+          Identity Manager + 
+          Authorization Registry
+          Endpoints:
+          - /oauth2/token
+          - /ar/delegation
+          - /ar/policy
+        end note
+
+        database "MySQL\n<<db-mysql>>\n:3307" as MySQL <<storage>>
+    }
+
+    package "Data Layer" {
+        [Orion-LD\n<<fiware-orion-ld>>\n:1026] as Orion <<data>>
+        note right of Orion
+          NGSI-LD Context Broker
+          Stores: HouseholdMeasurement
+          entities (Plegma dataset)
+        end note
+
+        database "MongoDB\n<<db-mongo>>" as Mongo <<storage>>
+    }
+}
+
+' ──────────────────────────────────────────────────────────
+' Relationships
+' ──────────────────────────────────────────────────────────
+Provider --> Kong : "iSHARE JWT\n(direct)"
+Consumer --> Keyrock : "1. Get access token\n(iSHARE JWT)"
+Consumer --> Kong : "2. Use access token"
+
+Kong --> PDP : "Authorize?"
+Kong --> Satellite : "Validate JWT\n(trusted_list)"
+Kong --> Keyrock : "Get delegation evidence\n(/ar/delegation)"
+Kong --> Orion : "Proxy request\n(if authorized)"
+
+PDP --> Satellite : "Verify trust chain"
+PDP --> Keyrock : "Get policies"
+
+Keyrock --> Satellite : "Validate participants\n(/parties)"
+Keyrock --> MySQL : "Store users,\npolicies"
+
+Orion --> Mongo : "Persist entities"
+
+@enduml

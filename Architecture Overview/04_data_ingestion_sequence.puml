@@ -1,0 +1,85 @@
+@startuml data_ingestion_sequence
+title Provider Data Ingestion Flow - Loading HouseholdMeasurement data via Kong
+hide footbox
+
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequence {
+    ArrowColor          #555555
+    ActorBorderColor    #555555
+    LifeLineBorderColor #999999
+    LifeLineBackgroundColor #EEEEEE
+    ParticipantBorderColor #555555
+    ParticipantBackgroundColor #B3D9FF
+    NoteBackgroundColor #FFF9C4
+    NoteBorderColor     #999999
+}
+
+actor "Provider Application\n(EU.EORI.NLPLEGMA)\norion_ld_loading_script_kong.py" as Provider
+participant "Kong API Gateway\n(kong-standalone:8000)" as Kong
+participant "iSHARE Satellite\n(ishare-satellite:8080)" as Satellite
+participant "Orion-LD\n(fiware-orion-ld:1026)" as Orion
+
+== Step 1: Provider reads CSV data ==
+
+Provider -> Provider : pd.read_csv('2022-07.csv')\nRead HouseholdMeasurement rows\nfrom Plegma dataset
+
+== Step 2: For each row, create iSHARE JWT ==
+
+loop For each row in CSV
+
+    Provider -> Provider : get_ishare_token():\nbuild JWT with\n• iss=EU.EORI.NLPLEGMA\n• sub=EU.EORI.NLPLEGMA\n• aud=EU.EORI.NLPLEGMA\n• x5c=[client.pem, ca.pem]\n• exp=now+30s\nsign with client.key (RS256)
+
+    note right of Provider
+    New token per row because
+    iSHARE JWTs expire in 30 seconds
+    end note
+
+    == Step 3: Build NGSI-LD entity ==
+
+    Provider -> Provider : Build NGSI-LD entity:\n{\n  id: urn:ngsi-ld:HouseholdMeasurement:House1:<timestamp>,\n  type: HouseholdMeasurement,\n  aggregateActivePower: {type: Property, value: ...},\n  aggregateVoltage: {type: Property, value: ...},\n  appliancePower: {type: Property, value: {...}},\n  @context: smart-data-models/Energy/context.jsonld\n}
+
+    == Step 4: POST entity to Kong ==
+
+    Provider -> Kong : POST /ngsi-ld/v1/entities\nContent-Type: application/ld+json\nAuthorization: Bearer <iSHARE JWT>\nBody: <NGSI-LD entity JSON>
+
+    activate Kong
+
+    == Step 5: Kong validates the JWT ==
+
+    Kong -> Kong : ngsi-ishare-policies plugin:\nparse JWT, extract x5c chain
+
+    Kong -> Satellite : GET /token\n(Kong authenticates as EU.EORI.NLPLEGMA)
+    activate Satellite
+    Satellite --> Kong : access_token
+    deactivate Satellite
+
+    Kong -> Satellite : GET /trusted_list\nAuthorization: Bearer <access_token>
+    activate Satellite
+    Satellite --> Kong : List of trusted CA fingerprints
+    deactivate Satellite
+
+    Kong -> Kong : Verify JWT signature\nagainst trusted CA list: VALID ✓\niss=EU.EORI.NLPLEGMA == local authority\n→ no delegation needed
+
+    == Step 6: Kong forwards POST to Orion-LD ==
+
+    Kong -> Orion : POST /ngsi-ld/v1/entities\nContent-Type: application/ld+json\nBody: <NGSI-LD entity JSON>
+    activate Orion
+    Orion -> Orion : Validate NGSI-LD entity\nStore in MongoDB
+    Orion --> Kong : 201 Created
+    deactivate Orion
+
+    Kong --> Provider : 201 Created
+    deactivate Kong
+
+    Provider -> Provider : print("Row ingested successfully via Kong")
+
+end
+
+note over Provider, Orion
+After ingestion, all HouseholdMeasurement entities
+are stored in Orion-LD and accessible via Kong
+to authorized participants (Provider and Consumer).
+end note
+
+@enduml

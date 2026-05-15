@@ -1,11 +1,58 @@
 import pandas as pd
 import requests
 import json
+import time
+import uuid
+import re
+import subprocess
 from pathlib import Path
 
-# Ρυθμίσεις
-ORION_URL = "http://localhost:1026/ngsi-ld/v1/entities"
+# ── Ρυθμίσεις ────────────────────────────────────────────────────────────────
+# Όλη η κίνηση περνά μέσω Kong (PEP) για έλεγχο πρόσβασης
+KONG_URL  = "http://localhost:8000/ngsi-ld/v1/entities"
+ORION_URL = KONG_URL   # alias για συμβατότητα με τον υπόλοιπο κώδικα
+
 CONTEXT_URL = "https://raw.githubusercontent.com/smart-data-models/dataModel.Energy/master/context.jsonld"
+
+# iSHARE certificates (provider)
+ISHARE_DIR   = "./iShare"
+KEY_FILE     = f"{ISHARE_DIR}/client.key"
+CERT_FILE    = f"{ISHARE_DIR}/fullchain.pem"
+PROVIDER_EORI = "EU.EORI.NLPLEGMA"
+
+
+def get_ishare_token():
+    """
+    Δημιουργεί iSHARE JWT για τον provider και το επιστρέφει.
+    Το JWT χρησιμοποιείται ως Bearer token για πρόσβαση μέσω Kong.
+    """
+    try:
+        from cryptography.hazmat.primitives.serialization import load_pem_private_key
+        import jwt as pyjwt
+    except ImportError:
+        raise ImportError("pip install PyJWT cryptography")
+
+    key = open(KEY_FILE, 'rb').read()
+    private_key = load_pem_private_key(key, password=None)
+
+    cert_data = open(CERT_FILE, 'rb').read().decode()
+    certs = re.findall(
+        r'-----BEGIN CERTIFICATE-----\n(.*?)\n-----END CERTIFICATE-----',
+        cert_data, re.DOTALL)
+    x5c = [''.join(c.split()) for c in certs]
+
+    now = int(time.time())
+    payload = {
+        'iss': PROVIDER_EORI,
+        'sub': PROVIDER_EORI,
+        'aud': PROVIDER_EORI,
+        'jti': str(uuid.uuid4()),
+        'iat': now,
+        'exp': now + 30,
+    }
+    token = pyjwt.encode(payload, private_key, algorithm='RS256',
+                         headers={'x5c': x5c})
+    return token
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -137,12 +184,19 @@ def ingest_data(file_path, house_id, limit=5):
         if appliance_power:
             entity["appliancePower"] = {"type": "Property", "value": appliance_power}
 
-        # Αποστολή στον Orion
-        headers = {"Content-Type": "application/ld+json"}
-        response = requests.post(ORION_URL, data=json.dumps(entity), headers=headers)
-        
+        # Αποστολή μέσω Kong (PEP) με iSHARE JWT
+        # Κάθε request χρειάζεται φρέσκο token (διάρκεια 30s)
+        token = get_ishare_token()
+        headers = {
+            "Content-Type": "application/ld+json",
+            "Authorization": f"Bearer {token}"
+        }
+        response = requests.post(KONG_URL, data=json.dumps(entity), headers=headers)
+
         if response.status_code == 201:
-            print(f"Row {index} ingested successfully.")
+            print(f"Row {index} ingested successfully via Kong.")
+        elif response.status_code == 409:
+            print(f"Row {index} already exists (409 Conflict) - skipping.")
         else:
             print(f"Failed row {index}: {response.status_code} - {response.text}")
 

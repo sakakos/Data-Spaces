@@ -1,0 +1,76 @@
+@startuml provider_sequence
+title Provider M2M Flow - Plegma Data Provider accesses own data
+hide footbox
+
+skinparam shadowing false
+skinparam defaultFontName "Helvetica"
+skinparam sequence {
+    ArrowColor          #555555
+    ActorBorderColor    #555555
+    LifeLineBorderColor #999999
+    LifeLineBackgroundColor #EEEEEE
+    ParticipantBorderColor #555555
+    ParticipantBackgroundColor #B3D9FF
+    NoteBackgroundColor #FFF9C4
+    NoteBorderColor     #999999
+}
+
+actor "Provider Application\n(EU.EORI.NLPLEGMA)" as Provider
+participant "Kong API Gateway\n(kong-standalone:8000)" as Kong
+participant "iSHARE Satellite\n(ishare-satellite:8080)" as Satellite
+participant "Orion-LD\n(fiware-orion-ld:1026)" as Orion
+
+== Step 1: Provider creates self-signed iSHARE JWT ==
+
+Provider -> Provider : gen_token.py:\nbuild JWT with\n• iss=EU.EORI.NLPLEGMA\n• sub=EU.EORI.NLPLEGMA\n• aud=EU.EORI.NLPLEGMA\n• x5c=[client.pem, ca.pem]\nsign with client.key (RS256)
+
+note right of Provider
+The Provider is the local authority.
+It signs its own JWT with the provider
+certificate. No login required.
+end note
+
+== Step 2: Provider sends request to Kong ==
+
+Provider -> Kong : GET /ngsi-ld/v1/entities?type=HouseholdMeasurement\nAuthorization: Bearer <iSHARE JWT>
+
+activate Kong
+
+== Step 3: Kong validates the JWT ==
+
+Kong -> Kong : ngsi-ishare-policies plugin:\nparse JWT, extract x5c chain
+
+Kong -> Satellite : GET /token\n(Kong authenticates as EU.EORI.NLPLEGMA)
+activate Satellite
+Satellite --> Kong : access_token
+deactivate Satellite
+
+Kong -> Satellite : GET /trusted_list\nAuthorization: Bearer <access_token>
+activate Satellite
+Satellite --> Kong : List of trusted CA fingerprints\n(includes Plegma CA)
+deactivate Satellite
+
+Kong -> Kong : Verify JWT signature against\nx5c chain & trusted CA list:\nVALID ✓
+
+== Step 4: Kong checks issuer ==
+
+Kong -> Kong : iss (EU.EORI.NLPLEGMA) ==\nlocal authority (EU.EORI.NLPLEGMA)?\nYES → no delegation needed\n(Provider has full access)
+
+== Step 5: Kong forwards request to Orion-LD ==
+
+Kong -> Orion : GET /ngsi-ld/v1/entities?type=HouseholdMeasurement
+activate Orion
+Orion --> Kong : 200 OK\n[HouseholdMeasurement entities]
+deactivate Orion
+
+Kong --> Provider : 200 OK\n[HouseholdMeasurement entities]
+deactivate Kong
+
+note over Provider, Orion
+The Provider obtained access to its own data
+by signing an iSHARE JWT with its certificate.
+This proves ownership of the EORI identity
+through the iSHARE trust framework.
+end note
+
+@enduml
