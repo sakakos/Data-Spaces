@@ -1,0 +1,143 @@
+# HouseholdElectricMeasurement.yaml
+# NGSI-LD entity representing one electrical measurement snapshot from
+# the household smart meter. ONE entity per timestamp per house.
+#
+# Inspired by:
+#   https://github.com/smart-data-models/dataModel.Energy
+#     (ThreePhaseAcMeasurement uses naming like activePower / voltage)
+# Combined with appliance-level submetering inline (appliancePower object)
+# since all readings come from the same physical clamp at the same instant.
+
+type: object
+required:
+  - id
+  - type
+  - dateObserved
+  - refBuilding
+allOf:
+  - $ref: 'https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons'
+  - type: object
+    properties:
+      id:
+        type: string
+        pattern: '^urn:ngsi-ld:HouseholdElectricMeasurement:House\d{2}:.+$'
+        description: |
+          'urn:ngsi-ld:HouseholdElectricMeasurement:House01:2022-07-01T00:00:00Z'
+
+      type:
+        type: string
+        enum: [HouseholdElectricMeasurement]
+
+      # ---- Temporal ----
+      dateObserved:
+        type: object
+        description: ISO-8601 timestamp when the measurement was taken.
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: object
+            properties:
+              '@type':
+                type: string
+                const: 'DateTime'
+              '@value':
+                type: string
+                format: date-time
+
+      # ---- Aggregate electrical readings (whole house) ----
+      activePower:
+        type: object
+        description: 'Total active power at the main clamp (W). CSV column: P_agg.'
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+            minimum: 0
+          unitCode:
+            type: string
+            const: 'WTT'   # Watt
+          observedAt:
+            type: string
+            format: date-time
+
+      voltage:
+        type: object
+        description: 'Mains voltage (V). CSV column: V.'
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+            minimum: 0
+          unitCode:
+            type: string
+            const: 'VLT'   # Volt
+          observedAt:
+            type: string
+            format: date-time
+
+      current:
+        type: object
+        description: 'Mains current (A). CSV column: A.'
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+            minimum: 0
+          unitCode:
+            type: string
+            const: 'AMP'   # Ampere
+          observedAt:
+            type: string
+            format: date-time
+
+      # ---- Appliance-level submetering (inline) ----
+      appliancePower:
+        type: object
+        description: |
+          Dictionary of per-appliance active power readings (W) at the
+          same instant. Keys correspond to the suffix of the matching
+          Device entity (ac_1 -> urn:ngsi-ld:Device:HouseXX:ac_1).
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: object
+            additionalProperties:
+              type: number
+              minimum: 0
+            description: 'e.g. { "ac_1": 1234.5, "fridge": 150.2, ... }'
+          unitCode:
+            type: string
+            const: 'WTT'
+
+      # ---- Quality ----
+      dataQualityIssue:
+        type: object
+        description: 'True if the source CSV flagged this row as problematic.'
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: boolean
+
+      # ---- Relationships ----
+      refBuilding:
+        type: object
+        description: Building this measurement belongs to.
+        properties:
+          type:
+            type: string
+            enum: [Relationship]
+          object:
+            type: string
+            pattern: '^urn:ngsi-ld:Building:House\d{2}$'

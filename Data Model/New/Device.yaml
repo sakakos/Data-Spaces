@@ -1,0 +1,135 @@
+# Device.yaml
+# NGSI-LD entity for a monitored appliance (ac_1, ac_2, boiler, fridge,
+# washing_machine).
+#
+# Inspired by: https://github.com/smart-data-models/dataModel.Device (Device)
+# We follow the Device model's pattern of `category`, `controlledProperty`,
+# and `serialNumber` but specialize for residential appliances.
+
+type: object
+required:
+  - id
+  - type
+  - category
+  - controlledProperty
+allOf:
+  - $ref: 'https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons'
+  - type: object
+    properties:
+      id:
+        type: string
+        pattern: '^urn:ngsi-ld:Device:House\d{2}:[a-z_0-9]+$'
+        description: 'e.g. urn:ngsi-ld:Device:House01:ac_1'
+
+      type:
+        type: string
+        enum: [Device]
+
+      # ---- Inherited from smart-data-models/Device ----
+      category:
+        type: array
+        items:
+          type: string
+          enum: [meter, appliance, hvac, sensor]
+        description: |
+          'appliance' for fridge/washing_machine/boiler; 'hvac' for ac_*.
+
+      controlledProperty:
+        type: array
+        items:
+          type: string
+          enum: [power, energyConsumption, temperature, humidity]
+        description: 'Always at least ["power"] for Plegma appliances.'
+
+      function:
+        type: array
+        items:
+          type: string
+          enum: [sensing, actuation, hvac, cooking, refrigeration, cleaning, heating]
+
+      # ---- Appliance-specific (from appliances_metadata.csv) ----
+      applianceType:
+        type: string
+        enum:
+          - airConditioner
+          - waterBoiler
+          - fridge
+          - washingMachine
+          - dryer
+          - dishwasher
+          - electricHob
+          - electricOven
+          - microwave
+          - kettle
+          - coffeeMachine
+          - other
+
+      ratedWattage:
+        type: object
+        description: Nominal wattage (W) from appliances_metadata.csv.
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+            minimum: 0
+          unitCode:
+            type: string
+            const: 'WTT'   # UN/CEFACT code for Watt
+
+      detectionThreshold:
+        type: object
+        description: |
+          Wattage threshold (W) above which the appliance is considered ON.
+          Used by NILM / disaggregation algorithms.
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+          unitCode:
+            type: string
+            const: 'WTT'
+
+      minOnDuration:
+        type: object
+        description: 'Minimum ON-cycle duration in seconds.'
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+          unitCode:
+            type: string
+            const: 'SEC'
+
+      minOffDuration:
+        type: object
+        description: 'Minimum OFF-cycle duration in seconds.'
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+          unitCode:
+            type: string
+            const: 'SEC'
+
+      location:
+        type: string
+        description: 'Free-text location inside house (e.g. "Living room").'
+
+      # ---- Relationship ----
+      installedIn:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Relationship]
+          object:
+            type: string
+            pattern: '^urn:ngsi-ld:Building:House\d{2}$'

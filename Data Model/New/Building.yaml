@@ -1,0 +1,121 @@
+# Building.yaml
+# NGSI-LD entity describing a household participating in the Plegma dataset.
+# Inspired by: https://github.com/smart-data-models/dataModel.Building (Building)
+#
+# One entity per house (House_01 .. House_13). Static metadata that does NOT
+# change per timestamp. Time-series measurements link back via the building
+# relationship in HouseholdElectricMeasurement / EnvironmentalMeasurement.
+
+type: object
+required:
+  - id
+  - type
+  - category
+allOf:
+  - $ref: 'https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons'
+  - type: object
+    properties:
+      id:
+        type: string
+        pattern: '^urn:ngsi-ld:Building:House\d{2}$'
+        description: 'URN pattern: urn:ngsi-ld:Building:House01'
+
+      type:
+        type: string
+        enum: [Building]
+
+      # ---- Inherited semantics from smart-data-models/Building ----
+      category:
+        type: array
+        items:
+          type: string
+          enum: [residential, apartment, detached, semiDetached, terraced]
+        description: Building typology (apartment, detached house, etc.)
+
+      address:
+        type: object
+        description: 'Optional structured address (schema.org PostalAddress)'
+
+      dateOfConstruction:
+        type: string
+        description: |
+          Decade of construction as ISO-8601 interval, e.g. "1950/1970".
+          Source: "Year of construction" radio button in the metadata xlsx.
+
+      lastRenovationYear:
+        type: string
+        description: Year of last renovation, or "unknown".
+
+      numberOfRooms:
+        type: integer
+        minimum: 1
+
+      floorsAboveGround:
+        type: integer
+
+      # ---- Plegma-specific extensions ----
+      occupancyStatus:
+        type: string
+        enum: [owner, renter, freeUsage, other, undisclosed]
+        description: Houseowner situation (Renter/Owner/...).
+
+      heatingSystem:
+        type: array
+        items:
+          type: string
+          enum:
+            - radiatorGas
+            - radiatorOil
+            - electricStorageHeater
+            - electricPortableHeater
+            - airToAirHeatPump
+            - underfloorHeating
+            - airConditioner
+            - districtHeating
+            - other
+            - unknown
+        description: One or more heating/cooling systems present.
+
+      waterHeaterType:
+        type: string
+        enum:
+          - gasBoiler
+          - electricBoiler
+          - solarBoiler
+          - centralHeatingBoiler
+          - bufferTank
+          - immersionHeater
+          - electricShowerHead
+          - other
+          - unknown
+
+      hasSolarPanels:
+        type: boolean
+
+      # ---- Relationships ----
+      hasOccupant:
+        type: object
+        description: Relationship to the Person entity living in this building.
+        properties:
+          type:
+            type: string
+            enum: [Relationship]
+          object:
+            type: string
+            pattern: '^urn:ngsi-ld:Person:House\d{2}:Occupant$'
+
+      hasAppliance:
+        type: object
+        description: |
+          Relationship to one or more Device entities (the monitored
+          appliances). NGSI-LD supports an array of URIs in `object`.
+        properties:
+          type:
+            type: string
+            enum: [Relationship]
+          object:
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string

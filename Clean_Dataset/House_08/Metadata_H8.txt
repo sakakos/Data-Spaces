@@ -1,0 +1,34 @@
+House 8 includes the following measurements.
+
+ELECTRIC DATASET
+
+Monitored Appliances:
+---------------------
+A/C Living room: ac_1
+Dishwasher     : dishwasher
+Fridge         : fridge
+Washing machine: washing_machine
+
+
+Whole house consumption:
+-----------------------
+Active Power (Watt)          : P_agg
+
+
+ENVIRONMENTAL DATASET
+
+Environmental Data:
+---------------------
+Internal temperature(°C): internal_temperature
+Internal humidity (%)   : internal_humidity
+External temperature(°C): external_temperature
+External humidity (%)   : external_humidity
+
+
+SOCIODEMOGRAPHIC - BUILDING CHARACTERISTIC &
+USAGE OF APPLIANCES
+
+The data can be found in the corresponding folder in a 
+csv format
+
+

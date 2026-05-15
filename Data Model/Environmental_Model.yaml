@@ -1,0 +1,90 @@
+ResidentialEnvironmentMeasurement:
+  description: 'Environmental data (15min granularity) for House 1 from Plegma/GECKO.'
+  properties:
+    id:
+      anyOf:
+        - description: Identifier format of any NGSI entity
+          maxLength: 256
+          minLength: 1
+          pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+          type: string
+          x-ngsi:
+            type: Property
+        - description: Identifier format of any NGSI entity
+          format: uri
+          type: string
+          x-ngsi:
+            type: Property
+      description: Unique identifier of the entity
+      x-ngsi:
+        type: Property
+    type:
+      description: NGSI Entity type
+      enum:
+        - ResidentialEnvironmentMeasurement
+      type: string
+      x-ngsi:
+        type: Property
+    dateObserved:
+      description: 'Timestamp of the measurement (from column: timestamp).'
+      format: date-time
+      type: string
+      x-ngsi:
+        model: https://schema.org/DateTime
+        type: Property
+    refHousehold:
+      anyOf:
+        - description: Identifier format of any NGSI entity
+          maxLength: 256
+          minLength: 1
+          pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+          type: string
+          x-ngsi:
+            type: Property
+        - description: Identifier format of any NGSI entity
+          format: uri
+          type: string
+          x-ngsi:
+            type: Property
+      description: Reference to the HouseholdContext entity.
+      x-ngsi:
+        type: Relationship
+    indoorTemperature:
+      description: 'Internal temperature in °C (from column: internal_temperature).'
+      type: number
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+        unitCode: CEL
+    indoorRelativeHumidity:
+      description: 'Internal humidity in % (from column: internal_humidity).'
+      maximum: 100
+      minimum: 0
+      type: number
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+        unitCode: P1
+    outdoorTemperature:
+      description: 'External temperature in °C (from column: external_temperature).'
+      type: number
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+        unitCode: CEL
+    outdoorRelativeHumidity:
+      description: 'External humidity in % (from column: external_humidity).'
+      maximum: 100
+      minimum: 0
+      type: number
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+        unitCode: P1
+  required:
+    - id
+    - type
+    - dateObserved
+  type: object
+  x-derived-from: "Plegma/GECKO Dataset House 1"
+  x-version: 0.0.1

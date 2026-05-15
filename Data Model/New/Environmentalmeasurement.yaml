@@ -1,0 +1,130 @@
+# EnvironmentalMeasurement.yaml
+# NGSI-LD entity for one environmental measurement (indoor + outdoor)
+# from the Plegma Environmental_data CSVs. ONE entity per timestamp per house.
+#
+# Inspired by:
+#   https://github.com/smart-data-models/dataModel.Weather (WeatherObserved)
+# We keep the temperature/relativeHumidity naming from WeatherObserved
+# but split indoor vs. outdoor since the dataset provides both.
+
+type: object
+required:
+  - id
+  - type
+  - dateObserved
+  - refBuilding
+allOf:
+  - $ref: 'https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons'
+  - type: object
+    properties:
+      id:
+        type: string
+        pattern: '^urn:ngsi-ld:EnvironmentalMeasurement:House\d{2}:.+$'
+
+      type:
+        type: string
+        enum: [EnvironmentalMeasurement]
+
+      dateObserved:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: object
+            properties:
+              '@type':
+                type: string
+                const: 'DateTime'
+              '@value':
+                type: string
+                format: date-time
+
+      # ---- Indoor (CSV: internal_temperature, internal_humidity) ----
+      indoorTemperature:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+          unitCode:
+            type: string
+            const: 'CEL'   # Celsius
+          observedAt:
+            type: string
+            format: date-time
+
+      indoorHumidity:
+        type: object
+        description: Relative humidity inside the house (%).
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+            minimum: 0
+            maximum: 100
+          unitCode:
+            type: string
+            const: 'P1'    # Percent
+          observedAt:
+            type: string
+            format: date-time
+
+      # ---- Outdoor (CSV: external_temperature, external_humidity) ----
+      outdoorTemperature:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+          unitCode:
+            type: string
+            const: 'CEL'
+          observedAt:
+            type: string
+            format: date-time
+
+      outdoorHumidity:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: number
+            minimum: 0
+            maximum: 100
+          unitCode:
+            type: string
+            const: 'P1'
+          observedAt:
+            type: string
+            format: date-time
+
+      # ---- Quality ----
+      dataQualityIssue:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Property]
+          value:
+            type: boolean
+
+      # ---- Relationship ----
+      refBuilding:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Relationship]
+          object:
+            type: string
+            pattern: '^urn:ngsi-ld:Building:House\d{2}$'

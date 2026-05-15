@@ -1,0 +1,110 @@
+# Person.yaml
+# NGSI-LD entity for the household occupant (anonymized).
+# Inspired by: https://github.com/smart-data-models/dataModel.User (Person)
+#
+# One entity per house (the surveyed respondent). Sociodemographic data
+# from the xlsx metadata file. NO personally identifiable information
+# (no name, no exact address) — only the demographic bands used in the
+# Plegma survey, which is what GDPR-compatible data spaces expect for
+# research data sharing.
+
+type: object
+required:
+  - id
+  - type
+allOf:
+  - $ref: 'https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons'
+  - type: object
+    properties:
+      id:
+        type: string
+        pattern: '^urn:ngsi-ld:Person:House\d{2}:Occupant$'
+
+      type:
+        type: string
+        enum: [Person]
+
+      gender:
+        type: string
+        enum: [male, female, nonBinary, undisclosed]
+
+      ageBand:
+        type: string
+        description: 'Age band, e.g. "25-30". Avoid exact age for anonymization.'
+
+      occupation:
+        type: string
+
+      educationLevel:
+        type: string
+        enum:
+          - noSchoolingCompleted
+          - elementarySchool
+          - highSchool
+          - technicalSchool
+          - bachelorsDegree
+          - mastersDegree
+          - doctorateDegree
+          - undisclosed
+
+      householdSize:
+        type: object
+        description: Number of occupants by age category.
+        properties:
+          children:
+            type: integer
+            minimum: 0
+          teenagers:
+            type: integer
+            minimum: 0
+          adults:
+            type: integer
+            minimum: 0
+          seniors:
+            type: integer
+            minimum: 0
+            description: '> 65 years old'
+
+      familyMonthlyIncomeBand:
+        type: string
+        description: |
+          Monthly household income band, expressed as multiples of the
+          Greek minimum wage (€713/month at survey time).
+        enum:
+          - upToOneWage
+          - upToTwoWages
+          - twoToFourWages
+          - fourToSixWages
+          - sixToEightWages
+          - eightToTenWages
+          - moreThanTenWages
+          - undisclosed
+
+      individualIncomeBand:
+        type: string
+        enum:
+          - upToOneWage
+          - upToTwoWages
+          - twoToFourWages
+          - fourToSixWages
+          - sixToEightWages
+          - eightToTenWages
+          - moreThanTenWages
+          - undisclosed
+
+      pets:
+        type: array
+        items:
+          type: string
+          enum: [none, dog, cat, other]
+
+      # ---- Relationship back to building ----
+      livesIn:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Relationship]
+          object:
+            type: string
+            pattern: '^urn:ngsi-ld:Building:House\d{2}$'

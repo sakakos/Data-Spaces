@@ -1,0 +1,56 @@
+# HouseholdMeasurement.yaml
+# Entity definition for Plegma/GECKO dataset measurements
+type: object
+required:
+  - id
+  - type
+  - dateObserved
+allOf:
+  - $ref: 'https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons'
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - HouseholdMeasurement
+        description: NGSI-LD Entity type
+      dateObserved:
+        type: string
+        format: date-time
+        description: The time of the measurement in ISO 8601 format.
+      aggregateActivePower:
+        type: object
+        properties:
+          value:
+            type: number
+            minimum: 0
+          type:
+            type: string
+            enum: [Property]
+        description: Total active power measured at the main clamp (W).
+      internalTemperature:
+        type: object
+        properties:
+          value:
+            type: number
+          type:
+            type: string
+            enum: [Property]
+        description: Internal temperature measured in Celsius degrees.
+      appliancePower:
+        type: object
+        properties:
+          value:
+            type: object
+            description: Dictionary of individual appliance power readings.
+          type:
+            type: string
+            enum: [Property]
+      dataQualityIssue:
+        type: object
+        properties:
+          value:
+            type: boolean
+          type:
+            type: string
+            enum: [Property]

@@ -1,0 +1,7 @@
+appliance,wattage [W],threshold [W],min_on (sec),min_off (sec)
+ac_1,2000,50,180,2100
+ac_2,1300,50,180,2100
+boiler,4000,50,30,600
+washing_machine,2500,50,30,1120
+dishwasher,2500,10,30,1300
+fridge,350,20,,
