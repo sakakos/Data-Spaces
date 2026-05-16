@@ -1,99 +1,75 @@
+﻿% !TEX root = main.tex
 \documentclass[12pt,a4paper]{report}
 
-% Template settings (fonts, margins, macros)
 \usepackage{template}
 \usepackage{tabularx}
-\RequirePackage{float} % enables [H]
+\RequirePackage{float}
 \RequirePackage{svg}
 
-% ---------- IGNORE STRANGE WARNINGS ----------
-% this is just to ignore a superfluous warning about a package which has evidently "changed". No need to worry about it.
 \usepackage{silence}
 \WarningFilter{latex}{Command \showhyphens has changed}
-
-% This is just added coz the colofon has a lot of empty space before text came and I got sick of that warning. Just ignore these two commands.
 \hbadness=10000
 \vbadness=10000
 
-% ===== THESIS INFO (you should fill this in or use soft references)  =====
-\newcommand{\thesistype}{Doctoral Thesis}
-\newcommand{\thesistitle}{If You Build It, They Will Copy: A Maastricht University PhD Thesis Template in Overleaf.}
-\newcommand{\thesisauthor}{Anon E. Muzz}
+\newcommand{\thesistype}{Diploma Thesis}
+\newcommand{\thesistitle}{Experimentation Environment for Data Spaces using FIWARE and i4Trust}
+\newcommand{\thesisauthor}{Soterios Kakos}
 \newcommand{\thesisyear}{2026}
 \renewcommand{\contentsname}{Table of Contents}
 
-% ============== MAIN DOCUMENT START ==============
 \begin{document}
 
-% ---------- TITLE ----------
 \input{frontmatter/title}
-
-% ---------- COPYRIGHT / COLOPHON ----------
 \input{frontmatter/colophon}
-
-% ---------- OFFICIAL DISSERTATION PAGE ----------
 \input{frontmatter/dissertation}
-
-% ---------- SUPERVISORY & ASSESSMENT COMMITTEE ----------
 \input{frontmatter/committee}
-
-% ---------- CONTENTS ----------
 \input{frontmatter/contents}
 
-% ---------- MAIN THESIS CHAPTERS ----------
 \clearpage
 \pagenumbering{arabic}
 
-% ---------- Chapter 1 ----------
-\begin{thesischapter}{General Introduction}
+\begin{thesischapter}{Introduction}
 \input{chapters/01-introduction}
 \end{thesischapter}
 
-% ---------- Chapter 2 ----------
-% note: if you cite a paper here (e.g. using cite or fullcite), it will be added below to your title page of the chapter. If you want you can change its layout in template.sty (up-to-you).
-\begin{thesischapter}[%
-\fullcite{muzzsubmitted}
-]{The Cognitive Load of Margin Adjustment in Novice Researchers}
-\input{chapters/02-Paper1}
+\begin{thesischapter}{Theoretical Background: Data Spaces}
+\input{chapters/02-data-spaces}
 \end{thesischapter}
 
-% ---------- Chapter 3 ----------
-% note: if you cite a paper here (e.g. using cite or fullcite), it will be added below to your title page of the chapter. If you want you can change the layout in template.sty (up-to-you).
-\begin{thesischapter}[%
-\fullcite{muzz2025templateexposure}
-]{Longitudinal Effects of Template Exposure on Supervisory Patience}
-\input{chapters/03-paper2}
+\begin{thesischapter}{Technologies and Standards}
+\input{chapters/03-technologies}
 \end{thesischapter}
 
-% ---------- Chapter 4 ----------
-\begin{thesischapter}{Thesis Margin Drift as a Predictor of Academic Burnout}
-\input{chapters/04-paper3}
+\begin{thesischapter}{Building Blocks of the Implementation}
+\input{chapters/04-building-blocks}
 \end{thesischapter}
 
-% ---------- Chapter 5 ----------
-\begin{thesischapter}{Existential Outcomes of Prolonged Template Interaction in Early-Stage Doctoral Life}
-\input{chapters/05-paper4}
+\begin{thesischapter}{Architecture of the Plegma Data Space}
+\input{chapters/05-architecture}
 \end{thesischapter}
 
-% ---------- Chapter 5 ----------
-\begin{thesischapter}{General Discussion}
-\input{chapters/06-general_discussion}
+\begin{thesischapter}{Implementation and Setup}
+\input{chapters/06-implementation}
 \end{thesischapter}
 
-% ---------- SUMMARIES ----------
-\input{chapters/summaries}
+\begin{thesischapter}{End-to-End Flows}
+\input{chapters/07-end-to-end-flows}
+\end{thesischapter}
 
-% ---------- IMPACT STATEMENT ----------
-\input{chapters/impact}
+\begin{thesischapter}{Access Control Demonstration}
+\input{chapters/08-demonstration}
+\end{thesischapter}
 
-% ---------- ACKNOWLEDGEMENTS ----------
-\input{chapters/acknowledgements}
+\begin{thesischapter}{Conclusions and Future Work}
+\input{chapters/09-conclusions}
+\end{thesischapter}
 
-% ---------- CV ----------
-\input{chapters/curriculum_vitae}
+\appendix
+\input{appendices/A-docker-compose}
+\input{appendices/B-config-files}
+\input{appendices/C-scripts}
+\input{appendices/D-logs}
 
-% ---------- Bibliography ----------
 \printbibliography
 
 \end{document}
-% ============== MAIN DOCUMENT END ==============
