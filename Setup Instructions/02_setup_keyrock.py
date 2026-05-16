@@ -128,7 +128,7 @@ policy = {
             "policies": [{
                 "target": {
                     "resource": {
-                        "type": "HouseholdMeasurement",
+                        "type": "https://plegma.example.org/vocab#HouseholdElectricMeasurement",
                         "identifiers": ["*"],
                         "attributes": ["*"]
                     },

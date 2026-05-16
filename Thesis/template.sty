@@ -1,0 +1,275 @@
+% ======================================================================
+% UM Thesis Template — Core Package - 31 October 2025
+% Made by Rinus Verdonschot - Maastricht University Library
+% No animals were harmed in the creation of this template.
+% ======================================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{template}[2025/10/30 v1.1 UM thesis template core]
+
+% ======================================================================
+% COMPILER & CORE PACKAGES
+% Requires LuaLaTeX or XeLaTeX (for fontspec/OpenType)
+% ======================================================================
+
+\RequirePackage{iftex}
+\ifPDFTeX
+  \PackageError{template}{Please compile with LuaLaTeX or XeLaTeX}{Switch the compiler to LuaLaTeX in Overleaf (Menu → Compiler).}
+\fi
+
+\RequirePackage{fontspec}   % OpenType/TrueType fonts
+\RequirePackage{microtype}  % Character protrusion & font expansion
+\RequirePackage{geometry}   % Page layout
+\RequirePackage{graphicx}   % Figures
+\RequirePackage{booktabs}   % Professional tables
+\RequirePackage{siunitx}    % SI units (numbers/units)
+\RequirePackage[hidelinks]{hyperref} % PDF metadata & links
+\RequirePackage{csquotes}   % Quotation handling (for biblatex)
+
+% ======================================================================
+% PAGE GEOMETRY (A4 + margins)
+% Easy to tweak centrally; basically used everywhere.
+% ======================================================================
+
+\geometry{
+  a4paper,
+  margin=30mm,
+  headsep=10mm,
+  footskip=12mm
+}
+
+% ======================================================================
+% TABLE OF CONTENTS (ToC) TWEAKS
+% - Uses tocloft for fine control of ToC entries.
+% - Chapter entries: number only (no “Chapter” label), then a space.
+% - Sections aligned nicely under chapter numbers.
+% ======================================================================
+
+\RequirePackage{tocloft}
+
+% Chapter line: show just the number, then a quad (space)
+\renewcommand{\cftchappresnum}{}       % remove "Chapter "
+\renewcommand{\cftchapaftersnum}{\quad}
+\setlength{\cftchapnumwidth}{2.5em}    % width to accommodate "10"
+
+% Section lines: indentation and number column width
+\setlength{\cftsecindent}{2.5em}
+\setlength{\cftsecnumwidth}{3.2em}
+
+% Dots & spacing before chapter entries
+% \renewcommand{\cftdotsep}{4}         % (optional) smaller = more dots
+\setlength{\cftbeforechapskip}{0.6\baselineskip}
+
+% Depth of ToC: 1=sections, 2=subsections, ...
+\setcounter{tocdepth}{1}
+
+% Helper: add a PART header + subtitle to the ToC (no page number)
+\newcommand{\tocpart}[2]{%
+  \addtocontents{toc}{\protect\vspace{0.8\baselineskip}}%
+  \addtocontents{toc}{\protect\noindent\textbf{#1}\par}%
+  \addtocontents{toc}{\protect\noindent\textit{#2}\par}%
+  \addtocontents{toc}{\protect\vspace{0.4\baselineskip}}%
+}
+
+% Helper: add an indented italic note under the most recent chapter in the ToC
+\newcommand{\tocnote}[1]{%
+  \addtocontents{toc}{%
+    \protect\noindent\hspace{7.2em}\textit{#1}\par}%
+}
+
+% ======================================================================
+% FONTS
+% - Priority: Thesis Sans → Verdana → TeX Gyre Heros (fallback)
+% - Upload commercial fonts into ./fonts/ and uncomment the relevant block.
+% - Auto-detect tries common names for Thesis/TheSans before fallback.
+% ======================================================================
+
+% --- A) Use uploaded Thesis Sans (uncomment and ensure filenames match) ---
+% \setmainfont[
+%   Path=fonts/,
+%   UprightFont    = *-Regular,
+%   BoldFont       = *-Bold,
+%   ItalicFont     = *-Italic,
+%   BoldItalicFont = *-BoldItalic
+% ]{ThesisSans}
+
+% --- B) Use uploaded Verdana (uncomment if you uploaded the .ttf files) ---
+% \setmainfont[
+%   Path=fonts/,
+%   UprightFont    = Verdana.ttf,
+%   BoldFont       = Verdana-Bold.ttf,
+%   ItalicFont     = Verdana-Italic.ttf,
+%   BoldItalicFont = Verdana-BoldItalic.ttf
+% ]{Verdana}
+
+% --- C) Auto-detect available fonts; fallback to TeX Gyre Heros ---
+\IfFontExistsTF{TheSans}            % some systems ship it as "TheSans"
+  {\setmainfont{TheSans}}
+  {\IfFontExistsTF{Thesis Sans}
+     {\setmainfont{Thesis Sans}}
+     {\IfFontExistsTF{Verdana}
+        {\setmainfont{Verdana}}
+        {\setmainfont{TeX Gyre Heros}} % Helvetica-like fallback
+     }
+  }
+
+% Sans & mono families (kept neutral to avoid layout shifts)
+\setsansfont{ \rmdefault }    % keep main as sans-like; neutral mapping
+\setmonofont{Latin Modern Mono}
+
+% ======================================================================
+% CHAPTER OPENING PAGES
+% - Custom opener creates a clean chapter title page and optionally
+%   prints a “based on …” note near the bottom.
+% - Also writes ToC entry and running header marks.
+% ======================================================================
+
+\makeatletter
+
+\newcommand{\chapteropener}[2][]{%
+  \refstepcounter{chapter}%
+  \cleardoublepage
+  \thispagestyle{empty}%
+  \begin{center}
+    % Title block
+    \vspace*{2cm}
+    {\large\bfseries Chapter \thechapter\par}
+    \vspace{1cm}
+    {\Huge\bfseries #2\par}
+  \end{center}
+
+  % Optional publication info (if optional arg provided)
+  \vfill
+  \if\relax\detokenize{#1}\relax
+    % no publication info
+  \else
+    \begin{flushleft}
+      \vspace{1cm}
+      {\small\itshape
+      \textbf{This chapter is based on:}\\
+      #1\par}
+    \end{flushleft}
+  \fi
+
+  % ToC entry (number + title) and running head mark (“Chapter N.” only)
+  \addcontentsline{toc}{chapter}{\numberline{\thechapter}#2}%
+  \markboth{Chapter \thechapter.}{}%
+  \clearpage
+}
+
+% Wrapper environment for chapters using the opener
+\newenvironment{thesischapter}[2][]{%
+  \chapteropener[#1]{#2}%
+}{%
+  % Insert a blank page at end of chapter (keeps recto/verso symmetry)
+  \clearpage
+  \thispagestyle{empty}\null\clearpage
+}
+
+\makeatother
+
+% ======================================================================
+% HEADERS & FOOTERS (fancyhdr)
+% - Head height raised slightly to avoid warnings.
+% - Footer: centered page number.
+% - Header: left shows “Chapter N.” (no title).
+% ======================================================================
+
+\RequirePackage{fancyhdr}
+\setlength{\headheight}{15pt}   % avoid "headheight too small" warning
+\pagestyle{fancy}
+\fancyhf{}                      % clear all
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\thepage}         % page number in footer center
+
+% Running head mark produced by \chapteropener → \markboth{Chapter N.}{}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{Chapter \thechapter.}{}%
+}
+\fancyhead[L]{\nouppercase{\textit{\leftmark}}}
+
+% (Optional two-sided layout mappings — keep commented until needed)
+% \fancyhead[LE]{\nouppercase{\textit{\leftmark}}}
+% \fancyhead[RO]{\thepage}
+% \fancyfoot{}  % if you move page number to the header
+
+% ======================================================================
+% BIBLIOGRAPHY (biblatex with APA style)
+% - Keep biber as backend; add your .bib file in the project.
+% - URLs/DOIs/ISBNs disabled (as configured).
+% ======================================================================
+
+\RequirePackage[
+  backend=biber,
+  style=apa,
+  sortcites=true,
+  giveninits=true,
+  maxbibnames=99,
+  doi=false,
+  isbn=false,
+  url=false,   % removes URLs
+  eprint=false
+]{biblatex}
+\DeclareLanguageMapping{english}{english-apa}
+\addbibresource{references.bib}
+
+% ======================================================================
+% HYPERREF METADATA
+% - Values taken from macros (\thesistitle, \thesisauthor, \thesistype).
+% - Ensure they are defined in your main.tex preamble.
+% ======================================================================
+
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle={\thesistitle},
+    pdfauthor={\thesisauthor},
+    pdfsubject={\thesistype}
+  }%
+}
+
+% ======================================================================
+% PER-CHAPTER ABSTRACTS & KEYWORDS (TWO VARIANTS)
+% - 1) Inline at top of a chapter: chapterabstract + chapterkeywords
+% - 2) Standalone abstract page between title and intro: chapterabstractpage
+% ======================================================================
+
+% 1) Inline abstract (no page break)
+\newenvironment{chapterabstract}{%
+  \par\bigskip
+  \noindent\textbf{Abstract}\par\smallskip
+  \small
+  \noindent
+}{%
+  \par\normalsize\medskip
+}
+
+% Keywords line for inline abstracts
+\newcommand{\chapterkeywords}[1]{%
+  \noindent\textbf{Keywords:} #1\par\medskip
+}
+
+% 2) Standalone abstract page (separate page)
+\newenvironment{chapterabstractpage}{%
+  \clearpage
+  \thispagestyle{plain} % use {empty} if you prefer a blank header/footer
+  \begin{center}
+    \vspace*{1cm}
+    {\Large\bfseries Abstract}\par
+  \end{center}
+  \small
+  \noindent
+}{%
+  \par\normalsize\bigskip
+  \clearpage
+}
+
+% ======================================================================
+% NOTES FOR MAINTAINERS / COMMON WARNINGS (informational only)
+% - To suppress “Command \showhyphens has changed.”:
+%     \usepackage{silence}
+%     \WarningFilter{latex}{Command \showhyphens has changed}
+%   (Add in main.tex or here; leaving it commented keeps behavior unchanged.)
+% - For strict float placement, consider \usepackage{float} and [H] *sparingly*.
+% - If headheight warning returns, 16pt is a safe bump without visible change.
+% ======================================================================
