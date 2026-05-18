@@ -1,0 +1,100 @@
+\documentclass[version=last
+        %,paper=b5
+        %,pagesize=pdftex
+        ,DIV=12
+        ,BCOR=12mm
+        ,twoside=true
+        ,twocolumn=false
+        ,open=right
+        ,headinclude=false
+        ,footinclude=false
+        ,chapterprefix=true
+        ,draft=false
+        ,fontsize=11pt
+        ,headings=big
+        ,headsepline=true
+        ,footsepline=true
+        ,titlepage=true
+        ,parskip=full+
+        ,toc=graduated
+        ,cleardoublepage=current
+        ,appendixprefix=true
+        ,listof=totoc
+        ,index=totoc
+        ,bibliography=totoc
+        ,captions=tableheading
+        ,bibliography=openstyle
+]{scrbook}
+
+\input{Preamble}%ΕΔΩ ΕΙΣΑΓΟΝΤΑΙ ΟΛΑ ΤΑ ΠΑΚΕΤΑ ΓΙΑ ΤΗ ΣΥΓΓΡΑΦΗ ΤΗΣ ΕΡΓΑΣΙΑΣ ΑΠΟ ΤΟ ΑΡΧΕΙΟ Preamble.tex
+
+\AtBeginEnvironment{subappendices}{%
+\chapter*{Chapter's Appendix}
+\addcontentsline{toc}{section}{Chapter's Appendix}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+}
+
+\begin{document}
+\mainmatter
+%ΤΙΤΛΟΣ ΕΞΩΦΥΛΛΟΥ
+\begin{titlepage}
+    \begin{minipage}{0.22\textwidth}
+                \flushleft
+                \includegraphics[width=3.3 cm]{NTUA-logo.png}
+        \end{minipage}
+        \begin{minipage}{0.7\textwidth}
+                \flushleft
+                {\Large Εθνικό Μετσόβιο Πολυτεχνείο\\
+                Σχολή Ηλεκτρολόγων Μηχανικών \&\\ 
+                Μηχανικών Υπολογιστών\\
+                \vspace{0.1cm}
+                \myLab}
+        \end{minipage}%
+        \vspace*{3cm}
+
+    \centering
+    \huge \underline{\textbf{\TitleGR}}\\
+    \vspace{3cm}
+    \LARGE ΔΙΠΛΩΜΑΤΙΚΗ ΕΡΓΑΣΙΑ\\
+    \vspace{3cm}
+    \Large \underline{\myAuthor}\\
+    \vspace{4.5cm}
+    \flushleft{\large
+        \vspace{0.6cm}
+        \begin{tabular}{c c}
+        \textbf{Επιβλέπων}: & \mySupervisor\\
+        &\mySupervisorTitle \\
+        \end{tabular}
+    }
+    \vfill
+    \centering
+    \myDate
+\end{titlepage}
+
+\input{Title-Greek.tex}
+\input{dedications.tex}
+\input{abstract.tex}
+\input{abstract_eng.tex}
+\input{acknowledgements.tex}
+\tableofcontents
+\thispagestyle{empty}
+\blankpage
+\input{diploma_body.tex}
+\input{bibliography.tex}
+
+%\begin{appendix}
+%Σε πεπρίπτωση που θέλετε να προσθέσετε appendix εισάγετε το αρχείο εδώ
+%\end{appendix}
+
+ΒΙΒΛΙΟΓΡΑΦΙΑ
+\bibliographystyle{ieeetr} ΓΙΑ ΒΙΒΛΙΟΓΡΑΦΙΑ IEEE Standard
+\bibliography{ref} !!! ΧΩΡΙΣ ΚΑΤΑΛΗΞΗ .tex
+
+%ΓΙΑ APA Standard ΘΑ ΠΡΕΠΕΙ ΝΑ ΕΙΣΑΓΕΤΕ ΤΟ ΠΑΚΕΤΟ ΣΤΟ Preamble:
+%\usepackage[style=apa, backend=biber]{biblatex}
+%\addbibresource{references.bib}
+
+ΚΑΙ ΕΔΩ ΣΤΟ ΤΕΛΟΣ ΤΟΥ ΑΡΧΕΙΟΥ:
+%\printbibliography
+\end{document}

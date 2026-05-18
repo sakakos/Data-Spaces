@@ -1,9 +1,0 @@
-\contentsline {chapter}{\hbox to\@tempdima {1\hfil }\leftprotrusion Introduction}{1}{chapter.1}%
-\contentsline {chapter}{\hbox to\@tempdima {2\hfil }\leftprotrusion Theoretical Background: Data Spaces}{3}{chapter.2}%
-\contentsline {chapter}{\hbox to\@tempdima {3\hfil }\leftprotrusion Technologies and Standards}{5}{chapter.3}%
-\contentsline {chapter}{\hbox to\@tempdima {4\hfil }\leftprotrusion Building Blocks of the Implementation}{7}{chapter.4}%
-\contentsline {chapter}{\hbox to\@tempdima {5\hfil }\leftprotrusion Architecture of the Plegma Data Space}{9}{chapter.5}%
-\contentsline {chapter}{\hbox to\@tempdima {6\hfil }\leftprotrusion Implementation and Setup}{11}{chapter.6}%
-\contentsline {chapter}{\hbox to\@tempdima {7\hfil }\leftprotrusion End-to-End Flows}{13}{chapter.7}%
-\contentsline {chapter}{\hbox to\@tempdima {8\hfil }\leftprotrusion Access Control Demonstration}{15}{chapter.8}%
-\contentsline {chapter}{\hbox to\@tempdima {9\hfil }\leftprotrusion Conclusions and Future Work}{17}{chapter.9}%

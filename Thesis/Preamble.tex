@@ -1,0 +1,172 @@
+%ΠΡΟΣΩΠΙΚΑ ΣΤΟΙΧΕΙΑ
+\newcommand{\myAuthor}{Ονοματεπώνυμο}
+\newcommand{\TitleGR}{Τίτλος Διπλωματικής Εργασίας}
+
+%ΣΥΜΠΛΗΡΩΣΤΕ ΓΙΑ ΤΟΥΣ ΥΠΟΛΟΙΠΟΥΣ ΕΠΙΒΛΕΠΟΝΤΕΣ/ΕΞΕΤΑΣΤΙΚΗ ΕΠΙΤΡΟΠΗ
+\newcommand{\mySupervisor}{Ονοματεπώνυμο ΔΕΠ}
+\newcommand{\mySupervisorTitle}{Βαθμίδα, ΑΕΙ}
+
+\newcommand{\myDate}{Τόπος, Μήνας Έτος}
+\newcommand{\myLab}{Τομέας}
+
+
+\usepackage[cmex10]{amsmath}
+\usepackage[left=2.5cm, right=2.5cm, top=3cm, bottom=3cm, bindingoffset=0.5cm]{geometry}
+\usepackage[font=small,labelfont=bf]{caption}
+\pagestyle{plain}
+\captionsetup[table]{singlelinecheck=false, format=plain, justification=centering}
+
+\usepackage{graphicx}
+
+\pdfoptionpdfminorversion 7
+\usepackage[]{algorithm}
+\usepackage[]{algorithmicx}
+\usepackage[]{algpseudocode}
+
+\usepackage[toc,page]{appendix}
+
+%\usepackage{lmodern}
+%\usepackage{newtxtext}
+%\usepackage{newtxmath}
+\usepackage{tempora}
+
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{xspace}
+
+\usepackage{amsfonts}
+\usepackage{rotating}
+\usepackage{enumitem}
+\usepackage[super]{nth}
+\usepackage{listings}
+
+\newcommand{\cmark}{\color{OliveGreen} \ding{51}}%
+\newcommand{\xmark}{\color{BrickRed} \ding{55}}%
+\newcommand{\bata}{\color{Orange} \faBattery[1] }%
+\newcommand{\batb}{\color{Goldenrod} \faBattery[2]  }%
+\newcommand{\batd}{\color{OliveGreen} \faBattery[4]  }%
+
+
+
+\lstset{
+    language=C++,                 
+    basicstyle=\ttfamily\footnotesize,  % Use \scriptsize or \tiny for smaller text
+    keywordstyle=\color{blue},     
+    commentstyle=\color{gray},     
+    stringstyle=\color{red},       
+    numbers=none,% Remove line numbers
+    frame=shadowbox,% Remove bounding box
+    tabsize=4,   
+    showstringspaces=false,
+    breaklines=true,                
+    captionpos=b,
+}
+
+\usepackage[bottom]{footmisc}
+\usepackage{multirow}
+
+\usepackage{afterpage}
+\usepackage{tablefootnote}
+\usepackage{threeparttable}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{booktabs} % (optional, for nicer rules)
+\usepackage{wrapfig}
+\usepackage{makecell}
+
+
+
+\DeclareMathOperator*{\argmin}{argmin}
+
+\def\blankpage{%
+      \clearpage%
+      \thispagestyle{empty}%
+      \null%
+      \clearpage}
+
+\newenvironment{ChapterAbstract}{\rightskip1in\itshape}{}
+\newcommand{\axname}{\mathrm{ml_{cax}}}
+\newcolumntype{?}{!{\vrule width 1pt}}
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1.5pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+\newcommand{\specialcellcenter}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\usepackage{fontawesome}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\blue}[1]{{\color{black}#1}}
+\newcommand{\yellow}[1]{{\color{black}#1}}
+\newcommand{\orange}[1]{{\color{black}#1}}
+
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{ \node[shape=circle,fill=gray,inner sep=0.4pt] (char) {\textcolor{white}{#1}};}}
+
+
+\colorlet{mc}{LimeGreen!50!White!50!}
+\newcommand{\hlc}{\cellcolor{mc}}
+
+\newcommand{\mytilde}{\raisebox{0.5ex}{\texttildelow}}
+  
+\usepackage{url}
+\urlstyle{same}
+\usepackage[export]{adjustbox}
+
+% Define your custom colors
+\definecolor{figcolor}{HTML}{5F5185}
+\definecolor{sectioncolor}{HTML}{49C0A7}
+\definecolor{tablecolor}{HTML}{C3D0D5}
+
+\usepackage[unicode]{hyperref}
+\hypersetup{final=true,
+    colorlinks=true,
+    linkcolor=figcolor,
+    filecolor=sectioncolor,
+    urlcolor=blue,
+    citecolor=blue,
+}
+\addtocontents{toc}{\protect\hypersetup{linkcolor=.}}
+
+\hyphenation{Pek-mes-tzi Bo-chum ME-THA-DO-NE Qu-es-ta-sim \detokenize{^^6d^^65^^d0-^^6f^^6e}}
+\hyphenation{\detokenize{^^6d^^65^^d0-^^6f^^6e} \detokenize{^^65^^d0-^^6e^^61^^69}}
+
+\usepackage{tikz}
+\usetikzlibrary{shadings,shadows,shapes.arrows}
+
+\usepackage{pifont}\newcommand*{\tikzarrow}[2]{%
+  \tikz[
+    baseline=-1.5cm,             % Set baseline to the baseline of node content
+    font=\footnotesize\sffamily    % Set fontsize of the node content
+  ]
+  \node[
+    single arrow,                  % Shape of the node
+    single arrow head extend=2pt,  % Actual width of arrow head
+    draw,                          % Draw the node shape
+    inner sep=2pt,                 % Separation between node content and node shape
+    top color=white,               % Shading color on top of node
+    bottom color=#1,               % Shading color on bottom of node
+    drop shadow                    % Draw a shadow
+  ] (A) {#2};%
+}
+
+\usepackage{ltablex}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\usepackage[T1,LGR]{fontenc}
+
+% Greek-specific commands
+\usepackage[english,greek]{babel}
+\usepackage{verbatim}
+
+\raggedbottom
