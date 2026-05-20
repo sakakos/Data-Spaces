@@ -1,13 +1,204 @@
-%Εδώ θα πρέπει να εισάγετε τις πηγές σας σε μορφή BibTex. Αυτό θα είναι το αρχείο το οποίο θα εισάγετε στο main αρχείο 
-%PhD_thesis.tex ώστε να εμφανιστεί η βιβλιογραφία
-%ΠΡΟΣΟΧΗ ΣΤΑ citations ΜΕΣΑ ΣΤΟ ΚΕΙΜΕΝΟ-ΔΙΑΦΟΡΕΤΙΚΑ ΔΕΝ ΘΑ ΕΜΦΑΝΙΣΤΟΥΝ ΟΙ ΒΙΒΛΙΟΓΡΑΦΙΚΕΣ ΑΝΑΦΟΡΕΣ
-@article{einstein1905,
-  title={Does the inertia of a body depend upon its energy-content?},
-  author={Einstein, Albert},
-  journal={Annalen der physik},
-  volume={18},
-  number={13},
-  pages={639--641},
-  year={1905},
-  publisher={Wiley Online Library}
+% =====================================================================
+% Βιβλιογραφία - Διπλωματική Εργασία
+% Σωτήριος Κάκος, ΕΜΠ 2026
+% =====================================================================
+
+% ── Κεφάλαιο 2: Data Spaces ──────────────────────────────────────────
+
+@article{otto2022,
+  author    = {Otto, Boris and Steinbuß, Sebastian and Teuscher, Andreas and Lohmann, Steffen},
+  title     = {Reference Architecture Model Gaia-X: Technical Specification},
+  journal   = {Gaia-X AISBL},
+  year      = {2022},
+  url       = {https://docs.gaia-x.eu/},
+  note      = {Accessed: 2026}
+}
+
+@techreport{idsa2023,
+  author      = {{International Data Spaces Association}},
+  title       = {{IDS} Reference Architecture Model 4.2},
+  institution = {International Data Spaces Association (IDSA)},
+  year        = {2023},
+  url         = {https://docs.internationaldataspaces.org/ids-knowledgebase/v/ids-ram-4},
+  note        = {Accessed: 2026}
+}
+
+@techreport{gaiax2023,
+  author      = {{Gaia-X AISBL}},
+  title       = {Gaia-X Architecture Document},
+  institution = {Gaia-X European Association for Data and Cloud AISBL},
+  year        = {2023},
+  url         = {https://docs.gaia-x.eu/},
+  note        = {Accessed: 2026}
+}
+
+@misc{fiware2023,
+  author       = {{FIWARE Foundation}},
+  title        = {{FIWARE} Catalogue: Open Source Components for Smart Solutions},
+  year         = {2023},
+  url          = {https://www.fiware.org/catalogue/},
+  note         = {Accessed: 2026}
+}
+
+@techreport{dsba2023,
+  author      = {{Data Spaces Business Alliance}},
+  title       = {Technical Convergence: Recommendations for Interoperable Data Spaces},
+  institution = {Data Spaces Business Alliance (DSBA)},
+  year        = {2023},
+  url         = {https://data-spaces-business-alliance.eu/wp-content/uploads/dlm_uploads/Data-Spaces-Business-Alliance-Technical-Convergence-V2.pdf},
+  note        = {Accessed: 2026}
+}
+
+@misc{i4trust2023,
+  author       = {{FIWARE Foundation}},
+  title        = {i4Trust Building Blocks},
+  year         = {2023},
+  url          = {https://github.com/i4Trust},
+  note         = {Accessed: 2026}
+}
+
+% ── Κεφάλαιο 3: Τεχνολογίες και Πρότυπα ─────────────────────────────
+
+@techreport{rfc7519,
+  author      = {Jones, Michael B. and Bradley, John and Sakimura, Nat},
+  title       = {{JSON} Web Token ({JWT})},
+  institution = {Internet Engineering Task Force (IETF)},
+  number      = {RFC 7519},
+  year        = {2015},
+  url         = {https://www.rfc-editor.org/rfc/rfc7519},
+  note        = {Accessed: 2026}
+}
+
+@techreport{rfc7517,
+  author      = {Jones, Michael B.},
+  title       = {{JSON} Web Key ({JWK})},
+  institution = {Internet Engineering Task Force (IETF)},
+  number      = {RFC 7517},
+  year        = {2015},
+  url         = {https://www.rfc-editor.org/rfc/rfc7517},
+  note        = {Accessed: 2026}
+}
+
+@techreport{rfc6749,
+  author      = {Hardt, Dick},
+  title       = {The {OAuth} 2.0 Authorization Framework},
+  institution = {Internet Engineering Task Force (IETF)},
+  number      = {RFC 6749},
+  year        = {2012},
+  url         = {https://www.rfc-editor.org/rfc/rfc6749},
+  note        = {Accessed: 2026}
+}
+
+@misc{ngsi-ld2023,
+  author       = {{ETSI}},
+  title        = {{ETSI GS CIM 009 V1.6.1}: Context Information Management ({CIM}); {NGSI-LD} {API}},
+  year         = {2023},
+  url          = {https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/},
+  note         = {Accessed: 2026}
+}
+
+@misc{jsonld2020,
+  author       = {Kellogg, Gregg and Champin, Pierre-Antoine and Longley, Dave},
+  title        = {{JSON-LD} 1.1: A {JSON}-based Serialization for Linked Data},
+  year         = {2020},
+  url          = {https://www.w3.org/TR/json-ld11/},
+  organization = {W3C},
+  note         = {Accessed: 2026}
+}
+
+@misc{x509rfc,
+  author       = {Cooper, David and Santesson, Stefan and Farrell, Stephen and Boeyen, Sharon and Housley, Russ and Polk, Tim},
+  title        = {Internet {X.509} Public Key Infrastructure Certificate and Certificate Revocation List ({CRL}) Profile},
+  institution  = {Internet Engineering Task Force (IETF)},
+  number       = {RFC 5280},
+  year         = {2008},
+  url          = {https://www.rfc-editor.org/rfc/rfc5280},
+  note         = {Accessed: 2026}
+}
+
+@techreport{xacml3,
+  author      = {{OASIS}},
+  title       = {e{X}tensible Access Control Markup Language ({XACML}) Version 3.0},
+  institution = {OASIS Standard},
+  year        = {2013},
+  url         = {https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html},
+  note        = {Accessed: 2026}
+}
+
+@techreport{ishare2023,
+  author      = {{iSHARE Foundation}},
+  title       = {iSHARE Scheme: Trust Framework for Data Sharing},
+  institution = {iSHARE Foundation},
+  year        = {2023},
+  url         = {https://framework.ishare.eu/},
+  note        = {Accessed: 2026}
+}
+
+% ── Κεφάλαιο 4: Building Blocks ──────────────────────────────────────
+
+@misc{orion-ld2023,
+  author       = {{FIWARE Foundation}},
+  title        = {Orion-{LD} Context Broker},
+  year         = {2023},
+  url          = {https://github.com/FIWARE/context.Orion-LD},
+  note         = {Accessed: 2026}
+}
+
+@misc{keyrock2023,
+  author       = {{FIWARE Foundation}},
+  title        = {Keyrock Identity Manager},
+  year         = {2023},
+  url          = {https://github.com/ging/fiware-idm},
+  note         = {Accessed: 2026}
+}
+
+@misc{kong2023,
+  author       = {{Kong Inc.}},
+  title        = {Kong Gateway},
+  year         = {2023},
+  url          = {https://konghq.com/},
+  note         = {Accessed: 2026}
+}
+
+@misc{dsba-pdp2023,
+  author       = {{FIWARE Foundation}},
+  title        = {{DSBA} Policy Decision Point},
+  year         = {2023},
+  url          = {https://github.com/FIWARE/dsba-pdp},
+  note         = {Accessed: 2026}
+}
+
+@misc{ishare-satellite2023,
+  author       = {{iSHARE Foundation}},
+  title        = {iSHARE Satellite Reference Implementation},
+  year         = {2023},
+  url          = {https://github.com/iSHAREScheme/iSHARE-Satellite},
+  note         = {Accessed: 2026}
+}
+
+@misc{kong-ngsi-plugin2023,
+  author       = {{FIWARE Foundation}},
+  title        = {Kong Plugin: ngsi-ishare-policies},
+  year         = {2023},
+  url          = {https://github.com/FIWARE/kong-plugins-fiware},
+  note         = {Accessed: 2026}
+}
+
+% ── Κεφάλαιο 5+: Dataset ─────────────────────────────────────────────
+
+@misc{plegma2024,
+  author       = {Doukas, Charalampos and Chatzigiannakis, Ioannis},
+  title        = {Plegma Dataset: A Smart Home Energy and Environmental Dataset},
+  year         = {2024},
+  url          = {https://pureportal.strath.ac.uk/en/datasets/plegma-dataset/},
+  institution  = {University of Strathclyde},
+  note         = {Accessed: 2026}
+}
+
+@misc{smart-data-models2023,
+  author       = {{FIWARE Foundation} and {IUDX} and {TM Forum} and {OASC}},
+  title        = {Smart Data Models},
+  year         = {2023},
+  url          = {https://smartdatamodels.org/},
+  note         = {Accessed: 2026}
 }

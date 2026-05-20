@@ -5,44 +5,46 @@ Reallocating 'name_of_file' (item size: 1) to 7 items.
 The style file: ieeetr.bst
 Reallocating 'name_of_file' (item size: 1) to 4 items.
 Database file #1: ref.bib
-You've used 1 entry,
+Warning--I didn't find a database entry for "einstein1905"
+You've used 5 entries,
             1876 wiz_defined-function locations,
-            486 strings with 3621 characters,
-and the built_in function-call counts, 336 in all, are:
-= -- 37
-> -- 4
+            500 strings with 4140 characters,
+and the built_in function-call counts, 724 in all, are:
+= -- 73
+> -- 30
 < -- 0
-+ -- 2
-- -- 1
-* -- 23
-:= -- 51
-add.period$ -- 1
-call.type$ -- 1
-change.case$ -- 1
++ -- 13
+- -- 8
+* -- 38
+:= -- 138
+add.period$ -- 10
+call.type$ -- 5
+change.case$ -- 8
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 17
-empty$ -- 31
-format.name$ -- 1
-if$ -- 80
+cite$ -- 5
+duplicate$ -- 31
+empty$ -- 72
+format.name$ -- 8
+if$ -- 164
 int.to.chr$ -- 0
-int.to.str$ -- 1
+int.to.str$ -- 5
 missing$ -- 1
-newline$ -- 6
-num.names$ -- 1
-pop$ -- 1
+newline$ -- 23
+num.names$ -- 5
+pop$ -- 13
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 14
+skip$ -- 7
 stack$ -- 0
-substring$ -- 32
-swap$ -- 9
+substring$ -- 0
+swap$ -- 1
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 4
-width$ -- 2
-write$ -- 13
+while$ -- 5
+width$ -- 6
+write$ -- 54
+(There was 1 warning)

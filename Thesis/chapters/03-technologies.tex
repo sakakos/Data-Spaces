@@ -1,0 +1,335 @@
+\chapter{Τεχνολογίες και Πρότυπα}
+\label{ch:technologies}
+
+Το παρόν κεφάλαιο παρουσιάζει τις τεχνολογίες και τα πρότυπα που αποτελούν τη
+θεμελίωση της υλοποιούμενης αρχιτεκτονικής. Η κατανόησή τους είναι απαραίτητη
+προϋπόθεση για την ανάλυση των \textlatin{end-to-end} ροών που περιγράφονται στα
+επόμενα κεφάλαια.
+
+% ------------------------------------------------------------------
+\section{\textlatin{JSON Web Tokens (JWT)}}
+\label{sec:jwt}
+% ------------------------------------------------------------------
+
+Το \textlatin{JSON Web Token (JWT)} είναι ένα ανοιχτό πρότυπο (\textlatin{RFC 7519})
+που ορίζει έναν συμπαγή και αυτόνομο τρόπο ασφαλούς μεταφοράς πληροφοριών μεταξύ
+δύο μερών ως αντικείμενο \textlatin{JSON}~\cite{rfc7519}. Η πληροφορία αυτή μπορεί
+να επαληθευτεί και να θεωρηθεί αξιόπιστη διότι φέρει ψηφιακή υπογραφή.
+
+\subsection{Δομή ενός \textlatin{JWT}}
+\label{subsec:jwt-structure}
+
+Ένα \textlatin{JWT} αποτελείται από τρία τμήματα, διαχωρισμένα με τελεία
+(\texttt{.}), τα οποία είναι κωδικοποιημένα σε \textlatin{Base64URL}:
+
+\begin{enumerate}
+    \item \textbf{Επικεφαλίδα (\textlatin{Header}):} Περιέχει τον τύπο του
+    \textlatin{token} (συνήθως \texttt{JWT}) και τον αλγόριθμο υπογραφής που
+    χρησιμοποιείται. Ο αλγόριθμος \textlatin{RS256} (υπογραφή \textlatin{RSA}
+    με κατακερματισμό \textlatin{SHA-256}) χρησιμοποιείται στο πλαίσιο
+    \textlatin{iSHARE}:
+\begin{lstlisting}[language={}]
+{
+  "alg": "RS256",
+  "typ": "JWT",
+  "x5c": ["<πιστοποιητικό_σε_Base64>", "<CA_σε_Base64>"]
+}
+\end{lstlisting}
+
+    \item \textbf{Ωφέλιμο φορτίο (\textlatin{Payload}):} Περιέχει τους
+    ισχυρισμούς (\textlatin{claims}), δηλαδή τις πληροφορίες σχετικά με την
+    οντότητα (συνήθως τον χρήστη ή τον οργανισμό) και επιπλέον δεδομένα. Στο
+    πλαίσιο \textlatin{iSHARE}, τα κύρια \textlatin{claims} είναι:
+\begin{lstlisting}[language={}]
+{
+  "iss": "EU.EORI.NLPLEGMA",
+  "sub": "EU.EORI.NLPLEGMA",
+  "aud": "EU.EORI.NLPLEGMA",
+  "jti": "a1b2c3d4-...",
+  "iat": 1716000000,
+  "exp": 1716000030
+}
+\end{lstlisting}
+
+    \item \textbf{Υπογραφή (\textlatin{Signature}):} Παράγεται εφαρμόζοντας τον
+    αλγόριθμο υπογραφής στα δύο πρώτα τμήματα, κωδικοποιημένα σε
+    \textlatin{Base64URL}, χρησιμοποιώντας το ιδιωτικό κλειδί του εκδότη.
+    Ο παραλήπτης μπορεί να επαληθεύσει την υπογραφή χρησιμοποιώντας το
+    αντίστοιχο δημόσιο κλειδί.
+\end{enumerate}
+
+\subsection{\textlatin{iSHARE JWT}: Επέκταση για \textlatin{Data Spaces}}
+\label{subsec:ishare-jwt}
+
+Το πλαίσιο \textlatin{iSHARE} επεκτείνει την προδιαγραφή \textlatin{JWT} με
+δύο σημαντικές προσθήκες:
+
+\begin{itemize}
+    \item \textbf{Πεδίο \texttt{x5c} στην επικεφαλίδα:} Περιέχει την αλυσίδα
+    πιστοποιητικών \textlatin{X.509} του εκδότη (\textlatin{leaf certificate} +
+    \textlatin{CA certificate}), επιτρέποντας στον παραλήπτη να επαληθεύσει
+    την ταυτότητα του εκδότη χωρίς να χρειαστεί να αναζητήσει το πιστοποιητικό
+    αλλού.
+
+    \item \textbf{Σύντομη διάρκεια ισχύος:} Τα \textlatin{iSHARE JWT} έχουν
+    διάρκεια ισχύος 30 δευτερολέπτων (\texttt{exp = iat + 30}), ελαχιστοποιώντας
+    τον κίνδυνο κατάχρησης σε περίπτωση υποκλοπής.
+\end{itemize}
+
+% ------------------------------------------------------------------
+\section{Ψηφιακά Πιστοποιητικά \textlatin{X.509} και \textlatin{PKI}}
+\label{sec:x509}
+% ------------------------------------------------------------------
+
+Τα ψηφιακά πιστοποιητικά \textlatin{X.509} αποτελούν τη θεμελίωση της
+κρυπτογραφίας δημόσιου κλειδιού (\textlatin{Public Key Infrastructure, PKI})
+που χρησιμοποιείται στο πλαίσιο \textlatin{iSHARE}~\cite{x509rfc}.
+
+\subsection{Δομή Πιστοποιητικού}
+\label{subsec:x509-structure}
+
+Ένα πιστοποιητικό \textlatin{X.509} περιέχει:
+\begin{itemize}
+    \item Το δημόσιο κλειδί του κατόχου.
+    \item Πληροφορίες ταυτοποίησης (π.χ. \textlatin{Common Name}, αριθμό
+    \textlatin{EORI} στο πεδίο \textlatin{Serial Number}).
+    \item Την ψηφιακή υπογραφή μιας \textlatin{Αρχής Πιστοποίησης
+    (Certificate Authority, CA)}, που βεβαιώνει την αυθεντικότητα του
+    πιστοποιητικού.
+    \item Πληροφορίες διάρκειας ισχύος (\texttt{notBefore}, \texttt{notAfter}).
+    \item Επεκτάσεις \textlatin{X.509v3}, όπως η \texttt{keyUsage} που ορίζει
+    τις επιτρεπόμενες χρήσεις του κλειδιού.
+\end{itemize}
+
+\subsection{Αλυσίδα Εμπιστοσύνης}
+\label{subsec:trust-chain}
+
+Στην παρούσα υλοποίηση χρησιμοποιείται μια ιεραρχία δύο επιπέδων:
+\begin{itemize}
+    \item \textbf{Πιστοποιητικό \textlatin{CA (PlegmaCA)}:} Η ρίζα εμπιστοσύνης.
+    Υπογράφει τα πιστοποιητικά των συμμετεχόντων. Το αποτύπωμά του
+    (\textlatin{fingerprint}) καταχωρείται στον \textlatin{iSHARE Satellite}.
+    \item \textbf{Πιστοποιητικά οντοτήτων:} Εκδίδονται για τον πάροχο
+    (\texttt{EU.EORI.NLPLEGMA}) και τον καταναλωτή
+    (\texttt{EU.EORI.NLPLEGMACONSUMER}).
+\end{itemize}
+
+Κρίσιμη παράμετρος στην υλοποίηση είναι η επέκταση \texttt{keyUsage} με τιμή
+\texttt{digitalSignature}, η οποία απαιτείται για την επαλήθευση του
+πιστοποιητικού από τον \textlatin{Keyrock}. Επίσης, το ιδιωτικό κλειδί
+αποθηκεύεται σε μορφή \textlatin{PKCS\#1} (\textlatin{BEGIN RSA PRIVATE KEY})
+για συμβατότητα με το \textlatin{Kong API Gateway}.
+
+% ------------------------------------------------------------------
+\section{Το Πλαίσιο \textlatin{iSHARE}}
+\label{sec:ishare}
+% ------------------------------------------------------------------
+
+Το \textlatin{iSHARE} είναι ένα πλαίσιο εμπιστοσύνης (\textlatin{trust framework})
+για τον διαμοιρασμό δεδομένων, αρχικά αναπτυχθέν για τον κλάδο της εφοδιαστικής
+αλυσίδας στις Κάτω Χώρες και στη συνέχεια υιοθετηθέν από τη \textlatin{FIWARE
+Foundation} ως βάση για τους \textlatin{Data Spaces}~\cite{ishare2023}.
+
+\subsection{Αναγνωριστικό \textlatin{EORI}}
+\label{subsec:eori}
+
+Κάθε συμμετέχων σε ένα \textlatin{iSHARE Data Space} αναγνωρίζεται μέσω του
+αναγνωριστικού \textlatin{Economic Operators Registration and Identification (EORI)},
+ένα πρότυπο αναγνωριστικό που χρησιμοποιείται στην ευρωπαϊκή τελωνειακή
+νομοθεσία. Στο πλαίσιο \textlatin{iSHARE}, το \textlatin{EORI} αποτελεί τον
+μοναδικό αναγνωριστικό κάθε νομικής οντότητας εντός του \textlatin{Data Space}.
+Στην παρούσα υλοποίηση χρησιμοποιούνται τα αναγνωριστικά
+\texttt{EU.EORI.NLPLEGMA} (πάροχος) και \texttt{EU.EORI.NLPLEGMACONSUMER}
+(καταναλωτής).
+
+\subsection{Ροή Επαλήθευσης \textlatin{iSHARE}}
+\label{subsec:ishare-flow}
+
+Η βασική ροή επαλήθευσης στο \textlatin{iSHARE} ακολουθεί τα εξής βήματα:
+
+\begin{enumerate}
+    \item Ο αιτών δημιουργεί ένα \textlatin{iSHARE JWT}, υπογεγραμμένο με το
+    ιδιωτικό κλειδί του, και το υποβάλλει στον αποδέκτη.
+    \item Ο αποδέκτης εξάγει την αλυσίδα πιστοποιητικών από το πεδίο
+    \texttt{x5c} της επικεφαλίδας.
+    \item Ο αποδέκτης επικοινωνεί με τον \textlatin{iSHARE Satellite} για να
+    επαληθεύσει ότι ο εκδότης είναι εγγεγραμμένος και αξιόπιστος συμμετέχων.
+    \item Αφού επαληθευτεί η ταυτότητα, ο αποδέκτης ελέγχει αν ο αιτών
+    διαθέτει την κατάλληλη εξουσιοδότηση για την εκτέλεση της αιτούμενης
+    ενέργειας.
+\end{enumerate}
+
+\subsection{Πολιτικές Εκχώρησης Εξουσιοδότησης (\textlatin{Delegation Policies})}
+\label{subsec:delegation}
+
+Ένας από τους κεντρικούς μηχανισμούς του \textlatin{iSHARE} είναι η δυνατότητα
+εκχώρησης εξουσιοδότησης (\textlatin{delegation}). Ο πάροχος δεδομένων μπορεί να
+εκδίδει πολιτικές που επιτρέπουν σε συγκεκριμένους καταναλωτές να έχουν πρόσβαση
+σε συγκεκριμένους πόρους, υπό συγκεκριμένες συνθήκες.
+
+Μια πολιτική εκχώρησης εξουσιοδότησης (\textlatin{delegation evidence}) έχει τη
+μορφή:
+
+\begin{lstlisting}[language={}]
+{
+  "delegationEvidence": {
+    "notBefore": 1735689600,
+    "notOnOrAfter": 1798761600,
+    "policyIssuer": "EU.EORI.NLPLEGMA",
+    "target": {
+      "accessSubject": "<UUID καταναλωτή>"
+    },
+    "policySets": [{
+      "policies": [{
+        "target": {
+          "resource": {
+            "type": "https://plegma.example.org/vocab#HouseholdElectricMeasurement",
+            "identifiers": ["*"],
+            "attributes": ["*"]
+          },
+          "actions": ["GET"]
+        },
+        "rules": [{ "effect": "Permit" }]
+      }]
+    }]
+  }
+}
+\end{lstlisting}
+
+Η παραπάνω πολιτική ορίζει ότι ο πάροχος (\texttt{EU.EORI.NLPLEGMA}) επιτρέπει
+στον καταναλωτή να εκτελεί λειτουργίες \textlatin{GET} σε οποιοδήποτε
+\textlatin{entity} τύπου \texttt{HouseholdElectricMeasurement}.
+
+% ------------------------------------------------------------------
+\section{\textlatin{OAuth 2.0} και Ροή \textlatin{Client Credentials}}
+\label{sec:oauth2}
+% ------------------------------------------------------------------
+
+Το \textlatin{OAuth 2.0} είναι ένα πρωτόκολλο εξουσιοδότησης (\textlatin{RFC 6749})
+που επιτρέπει σε εφαρμογές να αποκτούν πρόσβαση σε πόρους εκ μέρους ενός
+χρήστη ή οργανισμού~\cite{rfc6749}. Στο πλαίσιο \textlatin{iSHARE}, χρησιμοποιείται
+η ροή \textlatin{Client Credentials} για \textlatin{Machine-to-Machine (M2M)}
+επικοινωνία, κατά την οποία ο καταναλωτής υποβάλλει το \textlatin{iSHARE JWT} του
+στον \textlatin{Keyrock} και λαμβάνει ένα \textlatin{access token}:
+
+\begin{lstlisting}[language={}]
+POST /oauth2/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&scope=iSHARE
+&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+&client_assertion=<iSHARE JWT>
+&client_id=EU.EORI.NLPLEGMACONSUMER
+\end{lstlisting}
+
+Το \textlatin{access token} που επιστρέφεται είναι ένα \textlatin{JWT} υπογεγραμμένο
+από τον \textlatin{Keyrock}, το οποίο ενσωματώνει τα στοιχεία εκχώρησης
+εξουσιοδότησης (\textlatin{delegationEvidence}) και χρησιμοποιείται στη συνέχεια
+για πρόσβαση στους πόρους μέσω του \textlatin{Kong API Gateway}.
+
+% ------------------------------------------------------------------
+\section{\textlatin{NGSI-LD} και \textlatin{JSON-LD}}
+\label{sec:ngsi-ld}
+% ------------------------------------------------------------------
+
+Το \textlatin{NGSI-LD} (\textlatin{Next Generation Service Interfaces - Linked Data})
+είναι ένα πρότυπο \textlatin{API} που αναπτύχθηκε από τον οργανισμό
+\textlatin{ETSI}~\cite{ngsi-ld2023} και αποτελεί εξέλιξη του \textlatin{NGSI-v2}.
+Αξιοποιεί τις αρχές των \textlatin{Linked Data} και του \textlatin{JSON-LD}~\cite{jsonld2020}
+για την περιγραφή οντοτήτων με πλούσιο σημασιολογικό περιεχόμενο.
+
+\subsection{Οντότητες \textlatin{NGSI-LD}}
+\label{subsec:ngsi-entities}
+
+Η βασική μονάδα πληροφορίας στο \textlatin{NGSI-LD} είναι η \textbf{οντότητα}
+(\textlatin{entity}). Κάθε οντότητα χαρακτηρίζεται από:
+\begin{itemize}
+    \item Ένα μοναδικό αναγνωριστικό (\texttt{id}) σε μορφή \textlatin{URI}.
+    \item Έναν τύπο (\texttt{type}) που περιγράφει την κατηγορία της οντότητας.
+    \item Ιδιότητες (\textlatin{Properties}) και Σχέσεις (\textlatin{Relationships})
+    που περιγράφουν τα χαρακτηριστικά και τις συνδέσεις της με άλλες οντότητες.
+    \item Ένα \textlatin{context} (\texttt{@context}) που αντιστοιχίζει τα ονόματα
+    ιδιοτήτων σε \textlatin{URI} (\textlatin{JSON-LD}).
+\end{itemize}
+
+Παράδειγμα οντότητας τύπου \texttt{HouseholdElectricMeasurement} από το
+\textlatin{Plegma Dataset}:
+
+\begin{lstlisting}[language={}]
+{
+  "id": "urn:ngsi-ld:HouseholdElectricMeasurement:House01:2022-07-15T00:00:00Z",
+  "type": "https://plegma.example.org/vocab#HouseholdElectricMeasurement",
+  "https://plegma.example.org/vocab#activePower": {
+    "type": "Property",
+    "value": 121.542,
+    "unitCode": "WTT"
+  },
+  "https://plegma.example.org/vocab#phaseVoltage": {
+    "type": "Property",
+    "value": 236.83,
+    "unitCode": "VLT"
+  },
+  "@context": "https://raw.githubusercontent.com/smart-data-models/dataModel.Energy/master/context.jsonld"
+}
+\end{lstlisting}
+
+\subsection{\textlatin{Smart Data Models}}
+\label{subsec:smart-data-models}
+
+Τα \textlatin{Smart Data Models}~\cite{smart-data-models2023} αποτελούν μια κοινή
+πρωτοβουλία της \textlatin{FIWARE Foundation}, του \textlatin{IUDX}, του
+\textlatin{TM Forum} και του \textlatin{OASC}, που παρέχει ανοιχτά, επαναχρησιμοποιήσιμα
+σχήματα δεδομένων (\textlatin{data models}) για διάφορους τομείς εφαρμογής. Στην
+παρούσα εργασία χρησιμοποιείται το \textlatin{context} από τον κατάλογο
+\textlatin{Smart Data Models Energy} ως βάση για τη σύνδεση με την παγκόσμια
+σημασιολογία \textlatin{Linked Data}.
+
+% ------------------------------------------------------------------
+\section{Έλεγχος Πρόσβασης βάσει \textlatin{XACML}}
+\label{sec:xacml}
+% ------------------------------------------------------------------
+
+Η \textlatin{eXtensible Access Control Markup Language (XACML)} είναι ένα πρότυπο
+\textlatin{OASIS} για την έκφραση και αξιολόγηση πολιτικών ελέγχου πρόσβασης~\cite{xacml3}.
+Στο πλαίσιο \textlatin{i4Trust}, ο \textlatin{DSBA Policy Decision Point (DSBA-PDP)}
+χρησιμοποιεί \textlatin{XACML}-συμβατή λογική για να αποφασίσει αν μια αίτηση
+πρόσβασης θα εγκριθεί ή θα απορριφθεί.
+
+Η αρχιτεκτονική ελέγχου πρόσβασης βασίζεται στη διάκριση μεταξύ:
+\begin{itemize}
+    \item \textbf{\textlatin{Policy Enforcement Point (PEP)}:} Το σημείο επιβολής
+    της πολιτικής. Στην παρούσα υλοποίηση, τον ρόλο αυτό επιτελεί το
+    \textlatin{Kong API Gateway}.
+    \item \textbf{\textlatin{Policy Decision Point (PDP)}:} Το σημείο λήψης
+    απόφασης. Αξιολογεί την αίτηση σε σχέση με τις ισχύουσες πολιτικές και
+    επιστρέφει απόφαση \textlatin{Permit} ή \textlatin{Deny}. Τον ρόλο αυτό
+    επιτελεί ο \textlatin{DSBA-PDP}.
+\end{itemize}
+
+% ------------------------------------------------------------------
+\section{Σύνοψη}
+\label{sec:ch3-summary}
+% ------------------------------------------------------------------
+
+Στο παρόν κεφάλαιο παρουσιάστηκαν οι βασικές τεχνολογίες και τα πρότυπα που
+διέπουν την υλοποιούμενη αρχιτεκτονική:
+
+\begin{itemize}
+    \item Τα \textlatin{JSON Web Tokens (JWT)} και η επέκτασή τους στο πλαίσιο
+    \textlatin{iSHARE} για ασφαλή ταυτοποίηση των συμμετεχόντων.
+    \item Τα ψηφιακά πιστοποιητικά \textlatin{X.509} και ο ρόλος τους στην
+    αλυσίδα εμπιστοσύνης.
+    \item Το πλαίσιο \textlatin{iSHARE} και ο μηχανισμός εκχώρησης
+    εξουσιοδότησης μέσω \textlatin{delegation policies}.
+    \item Το πρωτόκολλο \textlatin{OAuth 2.0} και η ροή \textlatin{Client
+    Credentials} για \textlatin{M2M} επικοινωνία.
+    \item Το πρότυπο \textlatin{NGSI-LD} και η χρήση \textlatin{JSON-LD} για
+    σημασιολογικά πλούσια δεδομένα.
+    \item Η αρχιτεκτονική \textlatin{PEP/PDP} για έλεγχο πρόσβασης βάσει
+    \textlatin{XACML}.
+\end{itemize}
+
+Τα τεχνολογικά αυτά δομικά στοιχεία αξιοποιούνται στο επόμενο κεφάλαιο για την
+παρουσίαση των εργαλείων που επιλέχθηκαν για την υλοποίηση του
+\textlatin{Plegma Data Space}.

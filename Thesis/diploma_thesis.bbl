@@ -1,7 +1,29 @@
 \begin{thebibliography}{1}
 
-\bibitem{einstein1905}
-A.~Einstein, ``Does the inertia of a body depend upon its energy-content?,''
-  {\em Annalen der physik}, vol.~18, no.~13, pp.~639--641, 1905.
+\bibitem{otto2022}
+B.~Otto, S.~Steinbuß, A.~Teuscher, and S.~Lohmann, ``Reference architecture
+  model gaia-x: Technical specification,'' {\em Gaia-X AISBL}, 2022.
+\newblock Accessed: 2026.
+
+\bibitem{dsba2023}
+{Data Spaces Business Alliance}, ``Technical convergence: Recommendations for
+  interoperable data spaces,'' tech. rep., Data Spaces Business Alliance
+  (DSBA), 2023.
+\newblock Accessed: 2026.
+
+\bibitem{idsa2023}
+{International Data Spaces Association}, ``{IDS} reference architecture model
+  4.2,'' tech. rep., International Data Spaces Association (IDSA), 2023.
+\newblock Accessed: 2026.
+
+\bibitem{gaiax2023}
+{Gaia-X AISBL}, ``Gaia-x architecture document,'' tech. rep., Gaia-X European
+  Association for Data and Cloud AISBL, 2023.
+\newblock Accessed: 2026.
+
+\bibitem{fiware2023}
+{FIWARE Foundation}, ``{FIWARE} catalogue: Open source components for smart
+  solutions,'' 2023.
+\newblock Accessed: 2026.
 
 \end{thebibliography}

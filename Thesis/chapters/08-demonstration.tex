@@ -1,0 +1,342 @@
+\chapter{Επίδειξη Ελέγχου Πρόσβασης}
+\label{ch:demonstration}
+
+Το παρόν κεφάλαιο παρουσιάζει πειραματικά τον κύκλο εκχώρησης πρόσβασης
+του \textlatin{Plegma Data Space} μέσω σεναρίων επίδειξης. Κάθε σενάριο
+εκτελείται σε πραγματικές συνθήκες λειτουργίας και επαληθεύει μια διαφορετική
+πτυχή της αρχιτεκτονικής ελέγχου πρόσβασης. Τα σενάρια οργανώνονται σε δύο
+επίπεδα: η πρώτη ομάδα αφορά τον έλεγχο πρόσβασης του παρόχου, ενώ η δεύτερη
+τον κύκλο εκχώρησης εξουσιοδότησης στον καταναλωτή.
+
+% ------------------------------------------------------------------
+\section{Περιβάλλον Επίδειξης}
+\label{sec:demo-environment}
+% ------------------------------------------------------------------
+
+Η επίδειξη εκτελείται σε τοπικό περιβάλλον \textlatin{Windows} με τα
+\textlatin{containers} να εκτελούνται μέσω \textlatin{Docker Desktop}. Το
+\textlatin{Kong API Gateway} εκτίθεται στη θύρα \texttt{8000} του τοπικού
+μηχανήματος και αποτελεί το μοναδικό σημείο εισόδου για όλα τα αιτήματα
+δεδομένων. Ο \textlatin{Keyrock} εκτίθεται στη θύρα \texttt{3007} για τη
+διαδικασία ανταλλαγής \textlatin{token}.
+
+Τα εργαλεία που χρησιμοποιούνται για την επίδειξη είναι:
+\begin{itemize}
+    \item \textbf{\textlatin{PowerShell}}: Για την εκτέλεση των εντολών
+    επίδειξης.
+    \item \textbf{\textlatin{curl}}: Για την αποστολή \textlatin{HTTP}
+    αιτημάτων.
+    \item \textbf{\textlatin{Docker}}: Για την εκτέλεση των \textlatin{scripts}
+    δημιουργίας \textlatin{JWT}.
+    \item \textbf{\textlatin{Python}}: Για την παρουσίαση των αποτελεσμάτων
+    σε \textlatin{JSON} μορφή (\texttt{python -m json.tool}).
+\end{itemize}
+
+% ------------------------------------------------------------------
+\section{Σενάριο 1: Πρόσβαση Χωρίς Ταυτοποίηση}
+\label{sec:scenario1}
+% ------------------------------------------------------------------
+
+Το πρώτο σενάριο επαληθεύει ότι το \textlatin{Kong API Gateway} απορρίπτει
+αιτήματα που δεν φέρουν διαπιστευτήρια ταυτοποίησης. Αυτό αποτελεί το
+θεμελιώδες χαρακτηριστικό ελέγχου πρόσβασης: κανένα αίτημα δεν μπορεί να
+φτάσει στα δεδομένα χωρίς έγκυρο \textlatin{token}.
+
+\begin{lstlisting}[language=bash, caption={Αίτημα χωρίς \textlatin{token} ταυτοποίησης.}]
+curl http://localhost:8000/ngsi-ld/v1/entities \
+     ?type=https://plegma.example.org/vocab%23HouseholdElectricMeasurement \
+     &limit=1
+\end{lstlisting}
+
+\noindent \textbf{Αναμενόμενο αποτέλεσμα:}
+\begin{lstlisting}[language=bash, caption={Απόκριση \textlatin{Kong} για μη ταυτοποιημένο αίτημα.}]
+HTTP/1.1 401 Unauthorized
+{"message": "Unauthorized"}
+\end{lstlisting}
+
+Το \textlatin{Kong} επιστρέφει \textlatin{HTTP 401 Unauthorized} καθώς
+δεν υπάρχει κεφαλίδα \texttt{Authorization} στο αίτημα. Το αίτημα
+δεν προωθείται ποτέ στον \textlatin{Orion-LD}.
+
+% ------------------------------------------------------------------
+\section{Σενάριο 2: Πρόσβαση με \textlatin{Token} Παρόχου}
+\label{sec:scenario2}
+% ------------------------------------------------------------------
+
+Το δεύτερο σενάριο επαληθεύει τη ροή ανάγνωσης δεδομένων από τον πάροχο.
+Δημιουργείται ένα \textlatin{iSHARE JWT} με το ιδιωτικό κλειδί του παρόχου
+και χρησιμοποιείται για πρόσβαση στα δεδομένα του \textlatin{Plegma Dataset}.
+
+\subsection{Δημιουργία \textlatin{iSHARE JWT} Παρόχου}
+\label{subsec:scenario2-token}
+
+\begin{lstlisting}[language=bash, caption={Δημιουργία \textlatin{iSHARE JWT} μέσω \textlatin{Docker}.}]
+# Το script gen_token.py εκτελείται μέσα σε container Python
+# ώστε να έχει πρόσβαση στα certificates χωρίς τοπική εγκατάσταση
+PROVIDER_TOKEN=$(docker run --rm \
+  -v "./iShare:/iShare" \
+  python:3.9-slim sh -c \
+  "pip install PyJWT cryptography -q 2>/dev/null && \
+   python3 /iShare/gen_token.py")
+\end{lstlisting}
+
+\noindent Τα ορίσματα ερμηνεύονται ως εξής:
+\begin{itemize}
+    \item \texttt{-{}-rm}: Αφαιρεί το \textlatin{container} μετά την εκτέλεση.
+    \item \texttt{-v "./iShare:/iShare"}: Προσαρτά τον φάκελο με τα
+    πιστοποιητικά στο \textlatin{container}.
+    \item \texttt{pip install PyJWT cryptography -q 2>/dev/null}: Εγκαθιστά
+    τις απαραίτητες βιβλιοθήκες αθόρυβα.
+    \item \texttt{python3 /iShare/gen\_token.py}: Εκτελεί το \textlatin{script}
+    δημιουργίας \textlatin{JWT}.
+\end{itemize}
+
+\subsection{Ανάγνωση Δεδομένων \textlatin{HouseholdElectricMeasurement}}
+\label{subsec:scenario2-electric}
+
+\begin{lstlisting}[language=bash, caption={Αίτημα ανάγνωσης μετρήσεων ηλεκτρισμού με \textlatin{token} παρόχου.}]
+curl http://localhost:8000/ngsi-ld/v1/entities \
+     ?type=https://plegma.example.org/vocab%23HouseholdElectricMeasurement \
+     &limit=1 \
+     -H "Authorization: Bearer $PROVIDER_TOKEN"
+\end{lstlisting}
+
+\noindent \textbf{Αποτέλεσμα (\textlatin{HTTP 200 OK}):}
+\begin{lstlisting}[language=bash, caption={Απόκριση με δεδομένα μέτρησης ηλεκτρισμού.}]
+[
+  {
+    "id": "urn:ngsi-ld:HouseholdElectricMeasurement:House01:2022-07-15T00:00:00Z",
+    "type": "https://plegma.example.org/vocab#HouseholdElectricMeasurement",
+    "https://smartdatamodels.org/dateObserved": {
+      "type": "Property",
+      "value": { "@type": "DateTime", "@value": "2022-07-15T00:00:00Z" }
+    },
+    "https://plegma.example.org/vocab#activePower": {
+      "type": "Property",
+      "value": 121.542,
+      "unitCode": "WTT"
+    },
+    "https://plegma.example.org/vocab#phaseVoltage": {
+      "type": "Property",
+      "value": 236.83,
+      "unitCode": "VLT"
+    },
+    "https://plegma.example.org/vocab#appliancePower": {
+      "type": "Property",
+      "value": { "ac_1": 0, "ac_2": 2.033, "boiler": 0 },
+      "unitCode": "WTT"
+    }
+  }
+]
+\end{lstlisting}
+
+\subsection{Ανάγνωση Περιβαλλοντικών Μετρήσεων}
+\label{subsec:scenario2-env}
+
+Ο ίδιος \textlatin{token} παρόχου επιτρέπει πρόσβαση και στους υπόλοιπους
+τύπους οντοτήτων που διαθέτει το \textlatin{Plegma Dataset}:
+
+\begin{lstlisting}[language=bash, caption={Αίτημα ανάγνωσης περιβαλλοντικών μετρήσεων.}]
+curl http://localhost:8000/ngsi-ld/v1/entities \
+     ?type=https://plegma.example.org/vocab%23EnvironmentalMeasurement \
+     &limit=1 \
+     -H "Authorization: Bearer $PROVIDER_TOKEN"
+\end{lstlisting}
+
+\noindent \textbf{Αποτέλεσμα (\textlatin{HTTP 200 OK}):}
+\begin{lstlisting}[language=bash, caption={Απόκριση με δεδομένα περιβαλλοντικών μετρήσεων.}]
+[
+  {
+    "id": "urn:ngsi-ld:EnvironmentalMeasurement:House01:2022-07-15T00:00:00Z",
+    "type": "https://plegma.example.org/vocab#EnvironmentalMeasurement",
+    "https://plegma.example.org/vocab#indoorTemperature": {
+      "type": "Property",
+      "value": 27.4,
+      "unitCode": "CEL"
+    },
+    "https://plegma.example.org/vocab#indoorHumidity": {
+      "type": "Property",
+      "value": 32,
+      "unitCode": "P1"
+    }
+  }
+]
+\end{lstlisting}
+
+\subsection{Ανάγνωση Δεδομένων Κτιρίου}
+\label{subsec:scenario2-building}
+
+\begin{lstlisting}[language=bash, caption={Αίτημα ανάγνωσης δεδομένων κτιρίου.}]
+curl http://localhost:8000/ngsi-ld/v1/entities \
+     ?type=https://smartdatamodels.org/dataModel.Building/Building \
+     &limit=1 \
+     -H "Authorization: Bearer $PROVIDER_TOKEN"
+\end{lstlisting}
+
+\noindent \textbf{Αποτέλεσμα (\textlatin{HTTP 200 OK}):}
+\begin{lstlisting}[language=bash, caption={Απόκριση με μεταδεδομένα κτιρίου.}]
+[
+  {
+    "id": "urn:ngsi-ld:Building:House01",
+    "type": "https://smartdatamodels.org/dataModel.Building/Building",
+    "https://plegma.example.org/vocab#heatingSystem": {
+      "type": "Property",
+      "value": ["radiatorOil", "airConditioner"]
+    },
+    "https://plegma.example.org/vocab#hasAppliance": {
+      "type": "Relationship",
+      "object": [
+        "urn:ngsi-ld:Device:House01:ac_1",
+        "urn:ngsi-ld:Device:House01:ac_2",
+        "urn:ngsi-ld:Device:House01:boiler"
+      ]
+    },
+    "numberOfRooms": { "type": "Property", "value": 3 }
+  }
+]
+\end{lstlisting}
+
+Και στις τρεις περιπτώσεις, το \textlatin{Kong} επαλήθευσε επιτυχώς το
+\textlatin{iSHARE JWT} και προώθησε τα αιτήματα στον \textlatin{Orion-LD},
+ο οποίος επέστρεψε τα αντίστοιχα δεδομένα με \textlatin{HTTP 200 OK}.
+
+% ------------------------------------------------------------------
+\section{Σενάριο 3: Κύκλος Εκχώρησης Πρόσβασης στον Καταναλωτή}
+\label{sec:scenario3}
+% ------------------------------------------------------------------
+
+Το τρίτο σενάριο αποτελεί την πλήρη επίδειξη του κύκλου εκχώρησης
+εξουσιοδότησης (\textlatin{delegation cycle}): ο πάροχος έχει εκχωρήσει άδεια
+στον καταναλωτή να διαβάζει δεδομένα τύπου \texttt{HouseholdElectricMeasurement},
+και η επίδειξη αυτή αποδεικνύει ότι ο καταναλωτής μπορεί να αποκτήσει
+πρόσβαση αποκλειστικά και μόνο μέσω αυτής της εκχώρησης.
+
+\subsection{Βήμα 1: Δημιουργία \textlatin{iSHARE JWT} Καταναλωτή}
+\label{subsec:scenario3-consumer-jwt}
+
+\begin{lstlisting}[language=bash, caption={Δημιουργία \textlatin{iSHARE JWT} καταναλωτή.}]
+CONSUMER_JWT=$(docker run --rm \
+  -v "./iShare:/iShare" \
+  python:3.9-slim sh -c \
+  "pip install PyJWT cryptography -q 2>/dev/null && \
+   python3 /iShare/gen_consumer_token.py")
+\end{lstlisting}
+
+\subsection{Βήμα 2: Λήψη \textlatin{Access Token} από τον \textlatin{Keyrock}}
+\label{subsec:scenario3-access-token}
+
+\begin{lstlisting}[language=bash, caption={Ανταλλαγή \textlatin{iSHARE JWT} με \textlatin{access token}.}]
+TOKEN_RESPONSE=$(curl -s -X POST \
+  "http://localhost:3007/oauth2/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials \
+      &scope=iSHARE \
+      &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer \
+      &client_assertion=${CONSUMER_JWT} \
+      &client_id=EU.EORI.NLPLEGMACONSUMER")
+
+ACCESS_TOKEN=$(echo $TOKEN_RESPONSE | python -c \
+  "import sys, json; print(json.load(sys.stdin)['access_token'])")
+\end{lstlisting}
+
+Η επιτυχής λήψη \textlatin{access token} από τον \textlatin{Keyrock}
+υποδηλώνει ότι:
+\begin{enumerate}
+    \item Το \textlatin{iSHARE JWT} του καταναλωτή είναι έγκυρο.
+    \item Ο καταναλωτής είναι εγγεγραμμένος ενεργός συμμετέχων στον
+    \textlatin{Satellite}.
+    \item Υπάρχει ενεργή πολιτική εκχώρησης εξουσιοδότησης από τον πάροχο
+    προς τον καταναλωτή.
+\end{enumerate}
+
+\subsection{Βήμα 3: Πρόσβαση στα Δεδομένα Μέσω \textlatin{Kong}}
+\label{subsec:scenario3-data-access}
+
+\begin{lstlisting}[language=bash, caption={Αίτημα ανάγνωσης δεδομένων από τον καταναλωτή.}]
+curl http://localhost:8000/ngsi-ld/v1/entities \
+     ?type=https://plegma.example.org/vocab%23HouseholdElectricMeasurement \
+     &limit=1 \
+     -H "Authorization: Bearer $ACCESS_TOKEN"
+\end{lstlisting}
+
+\noindent \textbf{Αποτέλεσμα (\textlatin{HTTP 200 OK}):}
+\begin{lstlisting}[language=bash, caption={Επιτυχής ανάγνωση δεδομένων από τον καταναλωτή.}]
+[
+  {
+    "id": "urn:ngsi-ld:HouseholdElectricMeasurement:House01:2022-07-15T00:00:00Z",
+    "type": "https://plegma.example.org/vocab#HouseholdElectricMeasurement",
+    "https://plegma.example.org/vocab#activePower": {
+      "type": "Property",
+      "value": 121.542,
+      "unitCode": "WTT"
+    },
+    "https://plegma.example.org/vocab#phaseVoltage": {
+      "type": "Property",
+      "value": 236.83,
+      "unitCode": "VLT"
+    }
+  }
+]
+\end{lstlisting}
+
+Το \textlatin{Kong} επαλήθευσε το \textlatin{access token}, εξέτασε το
+\textlatin{delegationEvidence} που ενσωματώνει, διαπίστωσε ότι ο τύπος
+πόρου και η ενέργεια \textlatin{GET} καλύπτονται από την πολιτική του
+παρόχου, και προώθησε το αίτημα στον \textlatin{Orion-LD}.
+
+% ------------------------------------------------------------------
+\section{Σύνοψη Αποτελεσμάτων Επίδειξης}
+\label{sec:demo-results}
+% ------------------------------------------------------------------
+
+Τα αποτελέσματα των τριών σεναρίων επίδειξης συνοψίζονται στον
+Πίνακα~\ref{tab:demo-results}.
+
+\begin{table}[H]
+\centering
+\caption{Αποτελέσματα σεναρίων επίδειξης ελέγχου πρόσβασης.}
+\label{tab:demo-results}
+\begin{tabular}{|p{0.5cm}|p{5cm}|p{2.5cm}|p{5cm}|}
+\hline
+\textbf{\#} & \textbf{Σενάριο} & \textbf{Αποτέλεσμα} & \textbf{Αιτιολογία} \\
+\hline
+1 & Χωρίς \textlatin{token} & \textlatin{401 Unauthorized} & Απουσία κεφαλίδας \texttt{Authorization} \\
+\hline
+2α & Πάροχος, \textlatin{HouseholdElectricMeasurement} & \textlatin{200 OK} & Έγκυρο \textlatin{iSHARE JWT}, τοπική αρχή \\
+\hline
+2β & Πάροχος, \textlatin{EnvironmentalMeasurement} & \textlatin{200 OK} & Έγκυρο \textlatin{iSHARE JWT}, τοπική αρχή \\
+\hline
+2γ & Πάροχος, \textlatin{Building} & \textlatin{200 OK} & Έγκυρο \textlatin{iSHARE JWT}, τοπική αρχή \\
+\hline
+3 & Καταναλωτής, \textlatin{HouseholdElectricMeasurement} & \textlatin{200 OK} & Έγκυρο \textlatin{delegation evidence} \\
+\hline
+\end{tabular}
+\end{table}
+
+Η επίδειξη αποδεικνύει ότι το σύστημα λειτουργεί σύμφωνα με τις αρχές
+ενός \textlatin{Data Space} βάσει \textlatin{iSHARE}:
+
+\begin{itemize}
+    \item \textbf{Μηδενική πρόσβαση χωρίς ταυτοποίηση}: Κανένα αίτημα
+    χωρίς έγκυρο \textlatin{token} δεν φτάνει στα δεδομένα.
+    \item \textbf{Πλήρης πρόσβαση παρόχου}: Ο πάροχος έχει πρόσβαση σε
+    όλα τα δεδομένα που κατέχει, αποδεικνύοντας ταυτότητα μέσω
+    ψηφιακής υπογραφής.
+    \item \textbf{Ελεγχόμενη πρόσβαση καταναλωτή}: Ο καταναλωτής αποκτά
+    πρόσβαση μόνο στα δεδομένα για τα οποία ο πάροχος έχει εκδώσει
+    πολιτική εκχώρησης — διατηρώντας έτσι ο πάροχος την ψηφιακή του
+    κυριαρχία.
+\end{itemize}
+
+% ------------------------------------------------------------------
+\section{Σύνοψη}
+\label{sec:ch8-summary}
+% ------------------------------------------------------------------
+
+Στο παρόν κεφάλαιο παρουσιάστηκε πειραματικά ο κύκλος εκχώρησης πρόσβασης
+του \textlatin{Plegma Data Space} μέσω πέντε σεναρίων επίδειξης. Επαληθεύτηκε
+η ορθή λειτουργία του ελέγχου πρόσβασης τόσο για τον πάροχο όσο και για τον
+καταναλωτή, καθώς και η αποτελεσματική απόρριψη μη εξουσιοδοτημένων αιτημάτων.
+
+Στο τελευταίο κεφάλαιο παρουσιάζονται τα συμπεράσματα της εργασίας και οι
+προτάσεις για μελλοντικές επεκτάσεις του συστήματος.
