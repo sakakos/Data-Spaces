@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.16)  20 MAY 2026 16:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.16)  20 MAY 2026 20:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -316,7 +316,390 @@ Package: appendix 2020/02/08 v1.2c extra appendix facilities
 \c@@pps=\count311
 \c@@ppsavesec=\count312
 \c@@ppsaveapp=\count313
-) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tempora\tempora.sty
+) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks27
+\inpenc@posthook=\toks28
+)
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\lgrenc.de
+f
+File: lgrenc.def 2023-09-12 2.5 LGR Greek font encoding definitions
+Now handling font encoding LGR ...
+... processing UTF-8 mapping file for font encoding LGR
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/greek-inputenc\lgrenc.d
+fu
+File: lgrenc.dfu 2023-03-21 1.9 UTF-8 support for Greek
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+0259 (decimal 601)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+0374 (decimal 884)
+   defining Unicode char U+0375 (decimal 885)
+   defining Unicode char U+037A (decimal 890)
+   defining Unicode char U+037E (decimal 894)
+   defining Unicode char U+0384 (decimal 900)
+   defining Unicode char U+0385 (decimal 901)
+   defining Unicode char U+0386 (decimal 902)
+   defining Unicode char U+0387 (decimal 903)
+   defining Unicode char U+0388 (decimal 904)
+   defining Unicode char U+0389 (decimal 905)
+   defining Unicode char U+038A (decimal 906)
+   defining Unicode char U+038C (decimal 908)
+   defining Unicode char U+038E (decimal 910)
+   defining Unicode char U+038F (decimal 911)
+   defining Unicode char U+0390 (decimal 912)
+   defining Unicode char U+0391 (decimal 913)
+   defining Unicode char U+0392 (decimal 914)
+   defining Unicode char U+0393 (decimal 915)
+   defining Unicode char U+0394 (decimal 916)
+   defining Unicode char U+0395 (decimal 917)
+   defining Unicode char U+0396 (decimal 918)
+   defining Unicode char U+0397 (decimal 919)
+   defining Unicode char U+0398 (decimal 920)
+   defining Unicode char U+0399 (decimal 921)
+   defining Unicode char U+039A (decimal 922)
+   defining Unicode char U+039B (decimal 923)
+   defining Unicode char U+039C (decimal 924)
+   defining Unicode char U+039D (decimal 925)
+   defining Unicode char U+039E (decimal 926)
+   defining Unicode char U+039F (decimal 927)
+   defining Unicode char U+03A0 (decimal 928)
+   defining Unicode char U+03A1 (decimal 929)
+   defining Unicode char U+03A3 (decimal 931)
+   defining Unicode char U+03A4 (decimal 932)
+   defining Unicode char U+03A5 (decimal 933)
+   defining Unicode char U+03A6 (decimal 934)
+   defining Unicode char U+03A7 (decimal 935)
+   defining Unicode char U+03A8 (decimal 936)
+   defining Unicode char U+03A9 (decimal 937)
+   defining Unicode char U+03AA (decimal 938)
+   defining Unicode char U+03AB (decimal 939)
+   defining Unicode char U+03AC (decimal 940)
+   defining Unicode char U+03AD (decimal 941)
+   defining Unicode char U+03AE (decimal 942)
+   defining Unicode char U+03AF (decimal 943)
+   defining Unicode char U+03B0 (decimal 944)
+   defining Unicode char U+03B1 (decimal 945)
+   defining Unicode char U+03B2 (decimal 946)
+   defining Unicode char U+03B3 (decimal 947)
+   defining Unicode char U+03B4 (decimal 948)
+   defining Unicode char U+03B5 (decimal 949)
+   defining Unicode char U+03B6 (decimal 950)
+   defining Unicode char U+03B7 (decimal 951)
+   defining Unicode char U+03B8 (decimal 952)
+   defining Unicode char U+03B9 (decimal 953)
+   defining Unicode char U+03BA (decimal 954)
+   defining Unicode char U+03BB (decimal 955)
+   defining Unicode char U+03BC (decimal 956)
+   defining Unicode char U+03BD (decimal 957)
+   defining Unicode char U+03BE (decimal 958)
+   defining Unicode char U+03BF (decimal 959)
+   defining Unicode char U+03C0 (decimal 960)
+   defining Unicode char U+03C1 (decimal 961)
+   defining Unicode char U+03C2 (decimal 962)
+   defining Unicode char U+03C3 (decimal 963)
+   defining Unicode char U+03C4 (decimal 964)
+   defining Unicode char U+03C5 (decimal 965)
+   defining Unicode char U+03C6 (decimal 966)
+   defining Unicode char U+03C7 (decimal 967)
+   defining Unicode char U+03C8 (decimal 968)
+   defining Unicode char U+03C9 (decimal 969)
+   defining Unicode char U+03CA (decimal 970)
+   defining Unicode char U+03CB (decimal 971)
+   defining Unicode char U+03CC (decimal 972)
+   defining Unicode char U+03CD (decimal 973)
+   defining Unicode char U+03CE (decimal 974)
+   defining Unicode char U+03D0 (decimal 976)
+   defining Unicode char U+03D1 (decimal 977)
+   defining Unicode char U+03D5 (decimal 981)
+   defining Unicode char U+03D6 (decimal 982)
+   defining Unicode char U+03D8 (decimal 984)
+   defining Unicode char U+03D9 (decimal 985)
+   defining Unicode char U+03DA (decimal 986)
+   defining Unicode char U+03DB (decimal 987)
+   defining Unicode char U+03DC (decimal 988)
+   defining Unicode char U+03DD (decimal 989)
+   defining Unicode char U+03DE (decimal 990)
+   defining Unicode char U+03DF (decimal 991)
+   defining Unicode char U+03E0 (decimal 992)
+   defining Unicode char U+03E1 (decimal 993)
+   defining Unicode char U+03F0 (decimal 1008)
+   defining Unicode char U+03F1 (decimal 1009)
+   defining Unicode char U+03F4 (decimal 1012)
+   defining Unicode char U+03F5 (decimal 1013)
+   defining Unicode char U+1F00 (decimal 7936)
+   defining Unicode char U+1F01 (decimal 7937)
+   defining Unicode char U+1F02 (decimal 7938)
+   defining Unicode char U+1F03 (decimal 7939)
+   defining Unicode char U+1F04 (decimal 7940)
+   defining Unicode char U+1F05 (decimal 7941)
+   defining Unicode char U+1F06 (decimal 7942)
+   defining Unicode char U+1F07 (decimal 7943)
+   defining Unicode char U+1F08 (decimal 7944)
+   defining Unicode char U+1F09 (decimal 7945)
+   defining Unicode char U+1F0A (decimal 7946)
+   defining Unicode char U+1F0B (decimal 7947)
+   defining Unicode char U+1F0C (decimal 7948)
+   defining Unicode char U+1F0D (decimal 7949)
+   defining Unicode char U+1F0E (decimal 7950)
+   defining Unicode char U+1F0F (decimal 7951)
+   defining Unicode char U+1F10 (decimal 7952)
+   defining Unicode char U+1F11 (decimal 7953)
+   defining Unicode char U+1F12 (decimal 7954)
+   defining Unicode char U+1F13 (decimal 7955)
+   defining Unicode char U+1F14 (decimal 7956)
+   defining Unicode char U+1F15 (decimal 7957)
+   defining Unicode char U+1F18 (decimal 7960)
+   defining Unicode char U+1F19 (decimal 7961)
+   defining Unicode char U+1F1A (decimal 7962)
+   defining Unicode char U+1F1B (decimal 7963)
+   defining Unicode char U+1F1C (decimal 7964)
+   defining Unicode char U+1F1D (decimal 7965)
+   defining Unicode char U+1F20 (decimal 7968)
+   defining Unicode char U+1F21 (decimal 7969)
+   defining Unicode char U+1F22 (decimal 7970)
+   defining Unicode char U+1F23 (decimal 7971)
+   defining Unicode char U+1F24 (decimal 7972)
+   defining Unicode char U+1F25 (decimal 7973)
+   defining Unicode char U+1F26 (decimal 7974)
+   defining Unicode char U+1F27 (decimal 7975)
+   defining Unicode char U+1F28 (decimal 7976)
+   defining Unicode char U+1F29 (decimal 7977)
+   defining Unicode char U+1F2A (decimal 7978)
+   defining Unicode char U+1F2B (decimal 7979)
+   defining Unicode char U+1F2C (decimal 7980)
+   defining Unicode char U+1F2D (decimal 7981)
+   defining Unicode char U+1F2E (decimal 7982)
+   defining Unicode char U+1F2F (decimal 7983)
+   defining Unicode char U+1F30 (decimal 7984)
+   defining Unicode char U+1F31 (decimal 7985)
+   defining Unicode char U+1F32 (decimal 7986)
+   defining Unicode char U+1F33 (decimal 7987)
+   defining Unicode char U+1F34 (decimal 7988)
+   defining Unicode char U+1F35 (decimal 7989)
+   defining Unicode char U+1F36 (decimal 7990)
+   defining Unicode char U+1F37 (decimal 7991)
+   defining Unicode char U+1F38 (decimal 7992)
+   defining Unicode char U+1F39 (decimal 7993)
+   defining Unicode char U+1F3A (decimal 7994)
+   defining Unicode char U+1F3B (decimal 7995)
+   defining Unicode char U+1F3C (decimal 7996)
+   defining Unicode char U+1F3D (decimal 7997)
+   defining Unicode char U+1F3E (decimal 7998)
+   defining Unicode char U+1F3F (decimal 7999)
+   defining Unicode char U+1F40 (decimal 8000)
+   defining Unicode char U+1F41 (decimal 8001)
+   defining Unicode char U+1F42 (decimal 8002)
+   defining Unicode char U+1F43 (decimal 8003)
+   defining Unicode char U+1F44 (decimal 8004)
+   defining Unicode char U+1F45 (decimal 8005)
+   defining Unicode char U+1F48 (decimal 8008)
+   defining Unicode char U+1F49 (decimal 8009)
+   defining Unicode char U+1F4A (decimal 8010)
+   defining Unicode char U+1F4B (decimal 8011)
+   defining Unicode char U+1F4C (decimal 8012)
+   defining Unicode char U+1F4D (decimal 8013)
+   defining Unicode char U+1F50 (decimal 8016)
+   defining Unicode char U+1F51 (decimal 8017)
+   defining Unicode char U+1F52 (decimal 8018)
+   defining Unicode char U+1F53 (decimal 8019)
+   defining Unicode char U+1F54 (decimal 8020)
+   defining Unicode char U+1F55 (decimal 8021)
+   defining Unicode char U+1F56 (decimal 8022)
+   defining Unicode char U+1F57 (decimal 8023)
+   defining Unicode char U+1F59 (decimal 8025)
+   defining Unicode char U+1F5B (decimal 8027)
+   defining Unicode char U+1F5D (decimal 8029)
+   defining Unicode char U+1F5F (decimal 8031)
+   defining Unicode char U+1F60 (decimal 8032)
+   defining Unicode char U+1F61 (decimal 8033)
+   defining Unicode char U+1F62 (decimal 8034)
+   defining Unicode char U+1F63 (decimal 8035)
+   defining Unicode char U+1F64 (decimal 8036)
+   defining Unicode char U+1F65 (decimal 8037)
+   defining Unicode char U+1F66 (decimal 8038)
+   defining Unicode char U+1F67 (decimal 8039)
+   defining Unicode char U+1F68 (decimal 8040)
+   defining Unicode char U+1F69 (decimal 8041)
+   defining Unicode char U+1F6A (decimal 8042)
+   defining Unicode char U+1F6B (decimal 8043)
+   defining Unicode char U+1F6C (decimal 8044)
+   defining Unicode char U+1F6D (decimal 8045)
+   defining Unicode char U+1F6E (decimal 8046)
+   defining Unicode char U+1F6F (decimal 8047)
+   defining Unicode char U+1F70 (decimal 8048)
+   defining Unicode char U+1F71 (decimal 8049)
+   defining Unicode char U+1F72 (decimal 8050)
+   defining Unicode char U+1F73 (decimal 8051)
+   defining Unicode char U+1F74 (decimal 8052)
+   defining Unicode char U+1F75 (decimal 8053)
+   defining Unicode char U+1F76 (decimal 8054)
+   defining Unicode char U+1F77 (decimal 8055)
+   defining Unicode char U+1F78 (decimal 8056)
+   defining Unicode char U+1F79 (decimal 8057)
+   defining Unicode char U+1F7A (decimal 8058)
+   defining Unicode char U+1F7B (decimal 8059)
+   defining Unicode char U+1F7C (decimal 8060)
+   defining Unicode char U+1F7D (decimal 8061)
+   defining Unicode char U+1F80 (decimal 8064)
+   defining Unicode char U+1F81 (decimal 8065)
+   defining Unicode char U+1F82 (decimal 8066)
+   defining Unicode char U+1F83 (decimal 8067)
+   defining Unicode char U+1F84 (decimal 8068)
+   defining Unicode char U+1F85 (decimal 8069)
+   defining Unicode char U+1F86 (decimal 8070)
+   defining Unicode char U+1F87 (decimal 8071)
+   defining Unicode char U+1F88 (decimal 8072)
+   defining Unicode char U+1F89 (decimal 8073)
+   defining Unicode char U+1F8A (decimal 8074)
+   defining Unicode char U+1F8B (decimal 8075)
+   defining Unicode char U+1F8C (decimal 8076)
+   defining Unicode char U+1F8D (decimal 8077)
+   defining Unicode char U+1F8E (decimal 8078)
+   defining Unicode char U+1F8F (decimal 8079)
+   defining Unicode char U+1F90 (decimal 8080)
+   defining Unicode char U+1F91 (decimal 8081)
+   defining Unicode char U+1F92 (decimal 8082)
+   defining Unicode char U+1F93 (decimal 8083)
+   defining Unicode char U+1F94 (decimal 8084)
+   defining Unicode char U+1F95 (decimal 8085)
+   defining Unicode char U+1F96 (decimal 8086)
+   defining Unicode char U+1F97 (decimal 8087)
+   defining Unicode char U+1F98 (decimal 8088)
+   defining Unicode char U+1F99 (decimal 8089)
+   defining Unicode char U+1F9A (decimal 8090)
+   defining Unicode char U+1F9B (decimal 8091)
+   defining Unicode char U+1F9C (decimal 8092)
+   defining Unicode char U+1F9D (decimal 8093)
+   defining Unicode char U+1F9E (decimal 8094)
+   defining Unicode char U+1F9F (decimal 8095)
+   defining Unicode char U+1FA0 (decimal 8096)
+   defining Unicode char U+1FA1 (decimal 8097)
+   defining Unicode char U+1FA2 (decimal 8098)
+   defining Unicode char U+1FA3 (decimal 8099)
+   defining Unicode char U+1FA4 (decimal 8100)
+   defining Unicode char U+1FA5 (decimal 8101)
+   defining Unicode char U+1FA6 (decimal 8102)
+   defining Unicode char U+1FA7 (decimal 8103)
+   defining Unicode char U+1FA8 (decimal 8104)
+   defining Unicode char U+1FA9 (decimal 8105)
+   defining Unicode char U+1FAA (decimal 8106)
+   defining Unicode char U+1FAB (decimal 8107)
+   defining Unicode char U+1FAC (decimal 8108)
+   defining Unicode char U+1FAD (decimal 8109)
+   defining Unicode char U+1FAE (decimal 8110)
+   defining Unicode char U+1FAF (decimal 8111)
+   defining Unicode char U+1FB0 (decimal 8112)
+   defining Unicode char U+1FB1 (decimal 8113)
+   defining Unicode char U+1FB2 (decimal 8114)
+   defining Unicode char U+1FB3 (decimal 8115)
+   defining Unicode char U+1FB4 (decimal 8116)
+   defining Unicode char U+1FB6 (decimal 8118)
+   defining Unicode char U+1FB7 (decimal 8119)
+   defining Unicode char U+1FB8 (decimal 8120)
+   defining Unicode char U+1FB9 (decimal 8121)
+   defining Unicode char U+1FBA (decimal 8122)
+   defining Unicode char U+1FBB (decimal 8123)
+   defining Unicode char U+1FBC (decimal 8124)
+   defining Unicode char U+1FBD (decimal 8125)
+   defining Unicode char U+1FBE (decimal 8126)
+   defining Unicode char U+1FBF (decimal 8127)
+   defining Unicode char U+1FC0 (decimal 8128)
+   defining Unicode char U+1FC1 (decimal 8129)
+   defining Unicode char U+1FC2 (decimal 8130)
+   defining Unicode char U+1FC3 (decimal 8131)
+   defining Unicode char U+1FC4 (decimal 8132)
+   defining Unicode char U+1FC6 (decimal 8134)
+   defining Unicode char U+1FC7 (decimal 8135)
+   defining Unicode char U+1FC8 (decimal 8136)
+   defining Unicode char U+1FC9 (decimal 8137)
+   defining Unicode char U+1FCA (decimal 8138)
+   defining Unicode char U+1FCB (decimal 8139)
+   defining Unicode char U+1FCC (decimal 8140)
+   defining Unicode char U+1FCD (decimal 8141)
+   defining Unicode char U+1FCE (decimal 8142)
+   defining Unicode char U+1FCF (decimal 8143)
+   defining Unicode char U+1FD0 (decimal 8144)
+   defining Unicode char U+1FD1 (decimal 8145)
+   defining Unicode char U+1FD2 (decimal 8146)
+   defining Unicode char U+1FD3 (decimal 8147)
+   defining Unicode char U+1FD6 (decimal 8150)
+   defining Unicode char U+1FD7 (decimal 8151)
+   defining Unicode char U+1FD8 (decimal 8152)
+   defining Unicode char U+1FD9 (decimal 8153)
+   defining Unicode char U+1FDA (decimal 8154)
+   defining Unicode char U+1FDB (decimal 8155)
+   defining Unicode char U+1FDD (decimal 8157)
+   defining Unicode char U+1FDE (decimal 8158)
+   defining Unicode char U+1FDF (decimal 8159)
+   defining Unicode char U+1FE0 (decimal 8160)
+   defining Unicode char U+1FE1 (decimal 8161)
+   defining Unicode char U+1FE2 (decimal 8162)
+   defining Unicode char U+1FE3 (decimal 8163)
+   defining Unicode char U+1FE4 (decimal 8164)
+   defining Unicode char U+1FE5 (decimal 8165)
+   defining Unicode char U+1FE6 (decimal 8166)
+   defining Unicode char U+1FE7 (decimal 8167)
+   defining Unicode char U+1FE8 (decimal 8168)
+   defining Unicode char U+1FE9 (decimal 8169)
+   defining Unicode char U+1FEA (decimal 8170)
+   defining Unicode char U+1FEB (decimal 8171)
+   defining Unicode char U+1FEC (decimal 8172)
+   defining Unicode char U+1FED (decimal 8173)
+   defining Unicode char U+1FEE (decimal 8174)
+   defining Unicode char U+1FEF (decimal 8175)
+   defining Unicode char U+1FF2 (decimal 8178)
+   defining Unicode char U+1FF3 (decimal 8179)
+   defining Unicode char U+1FF4 (decimal 8180)
+   defining Unicode char U+1FF6 (decimal 8182)
+   defining Unicode char U+1FF7 (decimal 8183)
+   defining Unicode char U+1FF8 (decimal 8184)
+   defining Unicode char U+1FF9 (decimal 8185)
+   defining Unicode char U+1FFA (decimal 8186)
+   defining Unicode char U+1FFB (decimal 8187)
+   defining Unicode char U+1FFC (decimal 8188)
+   defining Unicode char U+1FFD (decimal 8189)
+   defining Unicode char U+1FFE (decimal 8190)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+10144 (decimal 65860)
+   defining Unicode char U+10145 (decimal 65861)
+   defining Unicode char U+10146 (decimal 65862)
+   defining Unicode char U+10147 (decimal 65863)
+)
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\greek-fon
+tenc.def
+File: greek-fontenc.def 2023-09-12 2.5 Common Greek font encoding definitions
+LaTeX Encoding Info:    Ignoring declaration for text command \accACUTE (encodi
+ng LGR) on input line 251.
+LaTeX Encoding Info:    Ignoring declaration for text command \accGRAVE (encodi
+ng LGR) on input line 259.
+LaTeX Encoding Info:    Ignoring declaration for text command \accTILDE (encodi
+ng LGR) on input line 267.
+))
+LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 1
+16.
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cbfonts-fd\lgrcmr.fd
+File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
+))
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tempora\tempora.sty
 Package: tempora 2016/02/02 (msharpe) Style file for Tempora.
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
@@ -1070,375 +1453,6 @@ File: t2aenc.dfu 2022/06/07 v1.3c UTF-8 support
    defining Unicode char U+FB04 (decimal 64260)
    defining Unicode char U+FB05 (decimal 64261)
    defining Unicode char U+FB06 (decimal 64262)
-))
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\lgrenc.de
-f
-File: lgrenc.def 2023-09-12 2.5 LGR Greek font encoding definitions
-Now handling font encoding LGR ...
-... processing UTF-8 mapping file for font encoding LGR
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/greek-inputenc\lgrenc.d
-fu
-File: lgrenc.dfu 2023-03-21 1.9 UTF-8 support for Greek
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00AB (decimal 171)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00BB (decimal 187)
-   defining Unicode char U+0259 (decimal 601)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+0374 (decimal 884)
-   defining Unicode char U+0375 (decimal 885)
-   defining Unicode char U+037A (decimal 890)
-   defining Unicode char U+037E (decimal 894)
-   defining Unicode char U+0384 (decimal 900)
-   defining Unicode char U+0385 (decimal 901)
-   defining Unicode char U+0386 (decimal 902)
-   defining Unicode char U+0387 (decimal 903)
-   defining Unicode char U+0388 (decimal 904)
-   defining Unicode char U+0389 (decimal 905)
-   defining Unicode char U+038A (decimal 906)
-   defining Unicode char U+038C (decimal 908)
-   defining Unicode char U+038E (decimal 910)
-   defining Unicode char U+038F (decimal 911)
-   defining Unicode char U+0390 (decimal 912)
-   defining Unicode char U+0391 (decimal 913)
-   defining Unicode char U+0392 (decimal 914)
-   defining Unicode char U+0393 (decimal 915)
-   defining Unicode char U+0394 (decimal 916)
-   defining Unicode char U+0395 (decimal 917)
-   defining Unicode char U+0396 (decimal 918)
-   defining Unicode char U+0397 (decimal 919)
-   defining Unicode char U+0398 (decimal 920)
-   defining Unicode char U+0399 (decimal 921)
-   defining Unicode char U+039A (decimal 922)
-   defining Unicode char U+039B (decimal 923)
-   defining Unicode char U+039C (decimal 924)
-   defining Unicode char U+039D (decimal 925)
-   defining Unicode char U+039E (decimal 926)
-   defining Unicode char U+039F (decimal 927)
-   defining Unicode char U+03A0 (decimal 928)
-   defining Unicode char U+03A1 (decimal 929)
-   defining Unicode char U+03A3 (decimal 931)
-   defining Unicode char U+03A4 (decimal 932)
-   defining Unicode char U+03A5 (decimal 933)
-   defining Unicode char U+03A6 (decimal 934)
-   defining Unicode char U+03A7 (decimal 935)
-   defining Unicode char U+03A8 (decimal 936)
-   defining Unicode char U+03A9 (decimal 937)
-   defining Unicode char U+03AA (decimal 938)
-   defining Unicode char U+03AB (decimal 939)
-   defining Unicode char U+03AC (decimal 940)
-   defining Unicode char U+03AD (decimal 941)
-   defining Unicode char U+03AE (decimal 942)
-   defining Unicode char U+03AF (decimal 943)
-   defining Unicode char U+03B0 (decimal 944)
-   defining Unicode char U+03B1 (decimal 945)
-   defining Unicode char U+03B2 (decimal 946)
-   defining Unicode char U+03B3 (decimal 947)
-   defining Unicode char U+03B4 (decimal 948)
-   defining Unicode char U+03B5 (decimal 949)
-   defining Unicode char U+03B6 (decimal 950)
-   defining Unicode char U+03B7 (decimal 951)
-   defining Unicode char U+03B8 (decimal 952)
-   defining Unicode char U+03B9 (decimal 953)
-   defining Unicode char U+03BA (decimal 954)
-   defining Unicode char U+03BB (decimal 955)
-   defining Unicode char U+03BC (decimal 956)
-   defining Unicode char U+03BD (decimal 957)
-   defining Unicode char U+03BE (decimal 958)
-   defining Unicode char U+03BF (decimal 959)
-   defining Unicode char U+03C0 (decimal 960)
-   defining Unicode char U+03C1 (decimal 961)
-   defining Unicode char U+03C2 (decimal 962)
-   defining Unicode char U+03C3 (decimal 963)
-   defining Unicode char U+03C4 (decimal 964)
-   defining Unicode char U+03C5 (decimal 965)
-   defining Unicode char U+03C6 (decimal 966)
-   defining Unicode char U+03C7 (decimal 967)
-   defining Unicode char U+03C8 (decimal 968)
-   defining Unicode char U+03C9 (decimal 969)
-   defining Unicode char U+03CA (decimal 970)
-   defining Unicode char U+03CB (decimal 971)
-   defining Unicode char U+03CC (decimal 972)
-   defining Unicode char U+03CD (decimal 973)
-   defining Unicode char U+03CE (decimal 974)
-   defining Unicode char U+03D0 (decimal 976)
-   defining Unicode char U+03D1 (decimal 977)
-   defining Unicode char U+03D5 (decimal 981)
-   defining Unicode char U+03D6 (decimal 982)
-   defining Unicode char U+03D8 (decimal 984)
-   defining Unicode char U+03D9 (decimal 985)
-   defining Unicode char U+03DA (decimal 986)
-   defining Unicode char U+03DB (decimal 987)
-   defining Unicode char U+03DC (decimal 988)
-   defining Unicode char U+03DD (decimal 989)
-   defining Unicode char U+03DE (decimal 990)
-   defining Unicode char U+03DF (decimal 991)
-   defining Unicode char U+03E0 (decimal 992)
-   defining Unicode char U+03E1 (decimal 993)
-   defining Unicode char U+03F0 (decimal 1008)
-   defining Unicode char U+03F1 (decimal 1009)
-   defining Unicode char U+03F4 (decimal 1012)
-   defining Unicode char U+03F5 (decimal 1013)
-   defining Unicode char U+1F00 (decimal 7936)
-   defining Unicode char U+1F01 (decimal 7937)
-   defining Unicode char U+1F02 (decimal 7938)
-   defining Unicode char U+1F03 (decimal 7939)
-   defining Unicode char U+1F04 (decimal 7940)
-   defining Unicode char U+1F05 (decimal 7941)
-   defining Unicode char U+1F06 (decimal 7942)
-   defining Unicode char U+1F07 (decimal 7943)
-   defining Unicode char U+1F08 (decimal 7944)
-   defining Unicode char U+1F09 (decimal 7945)
-   defining Unicode char U+1F0A (decimal 7946)
-   defining Unicode char U+1F0B (decimal 7947)
-   defining Unicode char U+1F0C (decimal 7948)
-   defining Unicode char U+1F0D (decimal 7949)
-   defining Unicode char U+1F0E (decimal 7950)
-   defining Unicode char U+1F0F (decimal 7951)
-   defining Unicode char U+1F10 (decimal 7952)
-   defining Unicode char U+1F11 (decimal 7953)
-   defining Unicode char U+1F12 (decimal 7954)
-   defining Unicode char U+1F13 (decimal 7955)
-   defining Unicode char U+1F14 (decimal 7956)
-   defining Unicode char U+1F15 (decimal 7957)
-   defining Unicode char U+1F18 (decimal 7960)
-   defining Unicode char U+1F19 (decimal 7961)
-   defining Unicode char U+1F1A (decimal 7962)
-   defining Unicode char U+1F1B (decimal 7963)
-   defining Unicode char U+1F1C (decimal 7964)
-   defining Unicode char U+1F1D (decimal 7965)
-   defining Unicode char U+1F20 (decimal 7968)
-   defining Unicode char U+1F21 (decimal 7969)
-   defining Unicode char U+1F22 (decimal 7970)
-   defining Unicode char U+1F23 (decimal 7971)
-   defining Unicode char U+1F24 (decimal 7972)
-   defining Unicode char U+1F25 (decimal 7973)
-   defining Unicode char U+1F26 (decimal 7974)
-   defining Unicode char U+1F27 (decimal 7975)
-   defining Unicode char U+1F28 (decimal 7976)
-   defining Unicode char U+1F29 (decimal 7977)
-   defining Unicode char U+1F2A (decimal 7978)
-   defining Unicode char U+1F2B (decimal 7979)
-   defining Unicode char U+1F2C (decimal 7980)
-   defining Unicode char U+1F2D (decimal 7981)
-   defining Unicode char U+1F2E (decimal 7982)
-   defining Unicode char U+1F2F (decimal 7983)
-   defining Unicode char U+1F30 (decimal 7984)
-   defining Unicode char U+1F31 (decimal 7985)
-   defining Unicode char U+1F32 (decimal 7986)
-   defining Unicode char U+1F33 (decimal 7987)
-   defining Unicode char U+1F34 (decimal 7988)
-   defining Unicode char U+1F35 (decimal 7989)
-   defining Unicode char U+1F36 (decimal 7990)
-   defining Unicode char U+1F37 (decimal 7991)
-   defining Unicode char U+1F38 (decimal 7992)
-   defining Unicode char U+1F39 (decimal 7993)
-   defining Unicode char U+1F3A (decimal 7994)
-   defining Unicode char U+1F3B (decimal 7995)
-   defining Unicode char U+1F3C (decimal 7996)
-   defining Unicode char U+1F3D (decimal 7997)
-   defining Unicode char U+1F3E (decimal 7998)
-   defining Unicode char U+1F3F (decimal 7999)
-   defining Unicode char U+1F40 (decimal 8000)
-   defining Unicode char U+1F41 (decimal 8001)
-   defining Unicode char U+1F42 (decimal 8002)
-   defining Unicode char U+1F43 (decimal 8003)
-   defining Unicode char U+1F44 (decimal 8004)
-   defining Unicode char U+1F45 (decimal 8005)
-   defining Unicode char U+1F48 (decimal 8008)
-   defining Unicode char U+1F49 (decimal 8009)
-   defining Unicode char U+1F4A (decimal 8010)
-   defining Unicode char U+1F4B (decimal 8011)
-   defining Unicode char U+1F4C (decimal 8012)
-   defining Unicode char U+1F4D (decimal 8013)
-   defining Unicode char U+1F50 (decimal 8016)
-   defining Unicode char U+1F51 (decimal 8017)
-   defining Unicode char U+1F52 (decimal 8018)
-   defining Unicode char U+1F53 (decimal 8019)
-   defining Unicode char U+1F54 (decimal 8020)
-   defining Unicode char U+1F55 (decimal 8021)
-   defining Unicode char U+1F56 (decimal 8022)
-   defining Unicode char U+1F57 (decimal 8023)
-   defining Unicode char U+1F59 (decimal 8025)
-   defining Unicode char U+1F5B (decimal 8027)
-   defining Unicode char U+1F5D (decimal 8029)
-   defining Unicode char U+1F5F (decimal 8031)
-   defining Unicode char U+1F60 (decimal 8032)
-   defining Unicode char U+1F61 (decimal 8033)
-   defining Unicode char U+1F62 (decimal 8034)
-   defining Unicode char U+1F63 (decimal 8035)
-   defining Unicode char U+1F64 (decimal 8036)
-   defining Unicode char U+1F65 (decimal 8037)
-   defining Unicode char U+1F66 (decimal 8038)
-   defining Unicode char U+1F67 (decimal 8039)
-   defining Unicode char U+1F68 (decimal 8040)
-   defining Unicode char U+1F69 (decimal 8041)
-   defining Unicode char U+1F6A (decimal 8042)
-   defining Unicode char U+1F6B (decimal 8043)
-   defining Unicode char U+1F6C (decimal 8044)
-   defining Unicode char U+1F6D (decimal 8045)
-   defining Unicode char U+1F6E (decimal 8046)
-   defining Unicode char U+1F6F (decimal 8047)
-   defining Unicode char U+1F70 (decimal 8048)
-   defining Unicode char U+1F71 (decimal 8049)
-   defining Unicode char U+1F72 (decimal 8050)
-   defining Unicode char U+1F73 (decimal 8051)
-   defining Unicode char U+1F74 (decimal 8052)
-   defining Unicode char U+1F75 (decimal 8053)
-   defining Unicode char U+1F76 (decimal 8054)
-   defining Unicode char U+1F77 (decimal 8055)
-   defining Unicode char U+1F78 (decimal 8056)
-   defining Unicode char U+1F79 (decimal 8057)
-   defining Unicode char U+1F7A (decimal 8058)
-   defining Unicode char U+1F7B (decimal 8059)
-   defining Unicode char U+1F7C (decimal 8060)
-   defining Unicode char U+1F7D (decimal 8061)
-   defining Unicode char U+1F80 (decimal 8064)
-   defining Unicode char U+1F81 (decimal 8065)
-   defining Unicode char U+1F82 (decimal 8066)
-   defining Unicode char U+1F83 (decimal 8067)
-   defining Unicode char U+1F84 (decimal 8068)
-   defining Unicode char U+1F85 (decimal 8069)
-   defining Unicode char U+1F86 (decimal 8070)
-   defining Unicode char U+1F87 (decimal 8071)
-   defining Unicode char U+1F88 (decimal 8072)
-   defining Unicode char U+1F89 (decimal 8073)
-   defining Unicode char U+1F8A (decimal 8074)
-   defining Unicode char U+1F8B (decimal 8075)
-   defining Unicode char U+1F8C (decimal 8076)
-   defining Unicode char U+1F8D (decimal 8077)
-   defining Unicode char U+1F8E (decimal 8078)
-   defining Unicode char U+1F8F (decimal 8079)
-   defining Unicode char U+1F90 (decimal 8080)
-   defining Unicode char U+1F91 (decimal 8081)
-   defining Unicode char U+1F92 (decimal 8082)
-   defining Unicode char U+1F93 (decimal 8083)
-   defining Unicode char U+1F94 (decimal 8084)
-   defining Unicode char U+1F95 (decimal 8085)
-   defining Unicode char U+1F96 (decimal 8086)
-   defining Unicode char U+1F97 (decimal 8087)
-   defining Unicode char U+1F98 (decimal 8088)
-   defining Unicode char U+1F99 (decimal 8089)
-   defining Unicode char U+1F9A (decimal 8090)
-   defining Unicode char U+1F9B (decimal 8091)
-   defining Unicode char U+1F9C (decimal 8092)
-   defining Unicode char U+1F9D (decimal 8093)
-   defining Unicode char U+1F9E (decimal 8094)
-   defining Unicode char U+1F9F (decimal 8095)
-   defining Unicode char U+1FA0 (decimal 8096)
-   defining Unicode char U+1FA1 (decimal 8097)
-   defining Unicode char U+1FA2 (decimal 8098)
-   defining Unicode char U+1FA3 (decimal 8099)
-   defining Unicode char U+1FA4 (decimal 8100)
-   defining Unicode char U+1FA5 (decimal 8101)
-   defining Unicode char U+1FA6 (decimal 8102)
-   defining Unicode char U+1FA7 (decimal 8103)
-   defining Unicode char U+1FA8 (decimal 8104)
-   defining Unicode char U+1FA9 (decimal 8105)
-   defining Unicode char U+1FAA (decimal 8106)
-   defining Unicode char U+1FAB (decimal 8107)
-   defining Unicode char U+1FAC (decimal 8108)
-   defining Unicode char U+1FAD (decimal 8109)
-   defining Unicode char U+1FAE (decimal 8110)
-   defining Unicode char U+1FAF (decimal 8111)
-   defining Unicode char U+1FB0 (decimal 8112)
-   defining Unicode char U+1FB1 (decimal 8113)
-   defining Unicode char U+1FB2 (decimal 8114)
-   defining Unicode char U+1FB3 (decimal 8115)
-   defining Unicode char U+1FB4 (decimal 8116)
-   defining Unicode char U+1FB6 (decimal 8118)
-   defining Unicode char U+1FB7 (decimal 8119)
-   defining Unicode char U+1FB8 (decimal 8120)
-   defining Unicode char U+1FB9 (decimal 8121)
-   defining Unicode char U+1FBA (decimal 8122)
-   defining Unicode char U+1FBB (decimal 8123)
-   defining Unicode char U+1FBC (decimal 8124)
-   defining Unicode char U+1FBD (decimal 8125)
-   defining Unicode char U+1FBE (decimal 8126)
-   defining Unicode char U+1FBF (decimal 8127)
-   defining Unicode char U+1FC0 (decimal 8128)
-   defining Unicode char U+1FC1 (decimal 8129)
-   defining Unicode char U+1FC2 (decimal 8130)
-   defining Unicode char U+1FC3 (decimal 8131)
-   defining Unicode char U+1FC4 (decimal 8132)
-   defining Unicode char U+1FC6 (decimal 8134)
-   defining Unicode char U+1FC7 (decimal 8135)
-   defining Unicode char U+1FC8 (decimal 8136)
-   defining Unicode char U+1FC9 (decimal 8137)
-   defining Unicode char U+1FCA (decimal 8138)
-   defining Unicode char U+1FCB (decimal 8139)
-   defining Unicode char U+1FCC (decimal 8140)
-   defining Unicode char U+1FCD (decimal 8141)
-   defining Unicode char U+1FCE (decimal 8142)
-   defining Unicode char U+1FCF (decimal 8143)
-   defining Unicode char U+1FD0 (decimal 8144)
-   defining Unicode char U+1FD1 (decimal 8145)
-   defining Unicode char U+1FD2 (decimal 8146)
-   defining Unicode char U+1FD3 (decimal 8147)
-   defining Unicode char U+1FD6 (decimal 8150)
-   defining Unicode char U+1FD7 (decimal 8151)
-   defining Unicode char U+1FD8 (decimal 8152)
-   defining Unicode char U+1FD9 (decimal 8153)
-   defining Unicode char U+1FDA (decimal 8154)
-   defining Unicode char U+1FDB (decimal 8155)
-   defining Unicode char U+1FDD (decimal 8157)
-   defining Unicode char U+1FDE (decimal 8158)
-   defining Unicode char U+1FDF (decimal 8159)
-   defining Unicode char U+1FE0 (decimal 8160)
-   defining Unicode char U+1FE1 (decimal 8161)
-   defining Unicode char U+1FE2 (decimal 8162)
-   defining Unicode char U+1FE3 (decimal 8163)
-   defining Unicode char U+1FE4 (decimal 8164)
-   defining Unicode char U+1FE5 (decimal 8165)
-   defining Unicode char U+1FE6 (decimal 8166)
-   defining Unicode char U+1FE7 (decimal 8167)
-   defining Unicode char U+1FE8 (decimal 8168)
-   defining Unicode char U+1FE9 (decimal 8169)
-   defining Unicode char U+1FEA (decimal 8170)
-   defining Unicode char U+1FEB (decimal 8171)
-   defining Unicode char U+1FEC (decimal 8172)
-   defining Unicode char U+1FED (decimal 8173)
-   defining Unicode char U+1FEE (decimal 8174)
-   defining Unicode char U+1FEF (decimal 8175)
-   defining Unicode char U+1FF2 (decimal 8178)
-   defining Unicode char U+1FF3 (decimal 8179)
-   defining Unicode char U+1FF4 (decimal 8180)
-   defining Unicode char U+1FF6 (decimal 8182)
-   defining Unicode char U+1FF7 (decimal 8183)
-   defining Unicode char U+1FF8 (decimal 8184)
-   defining Unicode char U+1FF9 (decimal 8185)
-   defining Unicode char U+1FFA (decimal 8186)
-   defining Unicode char U+1FFB (decimal 8187)
-   defining Unicode char U+1FFC (decimal 8188)
-   defining Unicode char U+1FFD (decimal 8189)
-   defining Unicode char U+1FFE (decimal 8190)
-   defining Unicode char U+2013 (decimal 8211)
-   defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2018 (decimal 8216)
-   defining Unicode char U+2019 (decimal 8217)
-   defining Unicode char U+201A (decimal 8218)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2039 (decimal 8249)
-   defining Unicode char U+203A (decimal 8250)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+10144 (decimal 65860)
-   defining Unicode char U+10145 (decimal 65861)
-   defining Unicode char U+10146 (decimal 65862)
-   defining Unicode char U+10147 (decimal 65863)
-)
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\greek-fon
-tenc.def
-File: greek-fontenc.def 2023-09-12 2.5 Common Greek font encoding definitions
-LaTeX Encoding Info:    Ignoring declaration for text command \accACUTE (encodi
-ng LGR) on input line 251.
-LaTeX Encoding Info:    Ignoring declaration for text command \accGRAVE (encodi
-ng LGR) on input line 259.
-LaTeX Encoding Info:    Ignoring declaration for text command \accTILDE (encodi
-ng LGR) on input line 267.
 )))
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
@@ -1458,12 +1472,90 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
-\XKV@toks=\toks27
-\XKV@tempa@toks=\toks28
+\XKV@toks=\toks29
+\XKV@tempa@toks=\toks30
 )
 \XKV@depth=\count314
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+))) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2026/04/15 v26.6 The multilingual framework for LuaLaTeX, pdfLaT
+eX and XeLaTeX
+\babel@savecnt=\count315
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
+ne 2078.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
+ne 2080.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
+e 2082.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
+e 2083.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
+on input line 2084.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
+on input line 2086.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
+on input line 2111.
+\U@D=\dimen178
+\l@unhyphenated=\language79
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count316
+Package babel Info: Configuration files are deprecated, as
+(babel)             they can break document portability.
+(babel)             Reported on input line 4206.
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/en\babel
+-english.tex)
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/el\babel
+-greek.tex)
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 4330.
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\english.l
+df
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 108.
+)
+Package babel Info: Importing font and identification data for greek
+(babel)             from babel-el.ini. Reported on input line 4330.
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/babel-greek\greek.ldf
+Language: greek 2023/10/13 1.15 Greek support for the babel system
+\bbl@monogreek=\count317
+\bbl@polygreek=\count318
+\bbl@ancientgreek=\count319
+LaTeX Encoding Info:    Ignoring declaration for text command \textmugreek (enc
+oding LGR) on input line 638.
+))
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\alphabeta
+.sty
+Package: alphabeta 2023-11-16 2.6 macros for Greek letters in text and math
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/greek-fontenc\textalpha
+.sty
+Package: textalpha 2023-09-12 2.5 macros for Greek letters in text
+   defining Unicode char U+00B5 (decimal 181)
+LaTeX Encoding Info:    Ignoring declaration for text command \greekscript (enc
+oding ?) on input line 320.
+LaTeX Encoding Info:    Ignoring declaration for text command \ensuregreek (enc
+oding ?) on input line 327.
+LaTeX Encoding Info:    Redeclaring text command \textmu (encoding ?) on input 
+line 388.
+))
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
@@ -1484,17 +1576,17 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen178
+\col@sep=\dimen179
 \ar@mcellbox=\box59
-\extrarowheight=\dimen179
-\NC@list=\toks29
+\extrarowheight=\dimen180
+\NC@list=\toks31
 \extratabsurround=\skip72
 \backup@length=\skip73
 \ar@cellbox=\box60
 )
-\everycr=\toks30
+\everycr=\toks32
 \minrowclearance=\skip74
-\rownum=\count315
+\rownum=\count320
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/graphics\dvipsnam.def
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
@@ -1512,45 +1604,45 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/graphics\rotating.sty
 Package: rotating 2025/01/14 v2.16e rotated objects in LaTeX
-\c@r@tfl@t=\count316
+\c@r@tfl@t=\count321
 \rotFPtop=\skip75
 \rotFPbot=\skip76
 \rot@float@box=\box61
-\rot@mess@toks=\toks31
+\rot@mess@toks=\toks33
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip77
-\enit@outerparindent=\dimen180
-\enit@toks=\toks32
+\enit@outerparindent=\dimen181
+\enit@toks=\toks34
 \enit@inbox=\box62
-\enit@count@id=\count317
-\enitdp@description=\count318
+\enit@count@id=\count322
+\enitdp@description=\count323
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/genmisc\nth.sty
 Package: nth 2002/02/27
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count319
+\lst@mode=\count324
 \lst@gtempboxa=\box63
-\lst@token=\toks33
-\lst@length=\count320
-\lst@currlwidth=\dimen181
-\lst@column=\count321
-\lst@pos=\count322
-\lst@lostspace=\dimen182
-\lst@width=\dimen183
-\lst@newlines=\count323
-\lst@lineno=\count324
-\lst@maxwidth=\dimen184
+\lst@token=\toks35
+\lst@length=\count325
+\lst@currlwidth=\dimen182
+\lst@column=\count326
+\lst@pos=\count327
+\lst@lostspace=\dimen183
+\lst@width=\dimen184
+\lst@newlines=\count328
+\lst@lineno=\count329
+\lst@maxwidth=\dimen185
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
-\c@lstnumber=\count325
-\lst@skipnumbers=\count326
+\c@lstnumber=\count330
+\lst@skipnumbers=\count331
 \lst@framebox=\box64
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
@@ -1574,8 +1666,8 @@ File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/footmisc\footmisc.sty
 Package: footmisc 2025/05/09 v7.0b a miscellany of footnote facilities
-\FN@temptoken=\toks34
-\footnotemargin=\dimen185
+\FN@temptoken=\toks36
+\footnotemargin=\dimen186
 Package footmisc Info: Declaring symbol style bringhurst on input line 549.
 Package footmisc Info: Declaring symbol style chicago on input line 557.
 Package footmisc Info: Declaring symbol style wiley on input line 566.
@@ -1588,13 +1680,13 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 618
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip78
-\multirow@cntb=\count327
+\multirow@cntb=\count332
 \multirow@dima=\skip79
-\bigstrutjot=\dimen186
+\bigstrutjot=\dimen187
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
 Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
-\AP@output=\toks35
+\AP@output=\toks37
 \AP@partial=\box65
 \AP@footins=\box66
 )
@@ -1614,15 +1706,15 @@ Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
-\calc@Acount=\count328
-\calc@Bcount=\count329
-\calc@Adimen=\dimen187
-\calc@Bdimen=\dimen188
+\calc@Acount=\count333
+\calc@Bcount=\count334
+\calc@Adimen=\dimen188
+\calc@Bdimen=\dimen189
 \calc@Askip=\skip80
 \calc@Bskip=\skip81
 LaTeX Info: Redefining \setlength on input line 86.
 LaTeX Info: Redefining \addtolength on input line 87.
-\calc@Ccount=\count330
+\calc@Ccount=\count335
 \calc@Cskip=\skip82
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/ifmtarg\ifmtarg.sty
@@ -1630,7 +1722,7 @@ Package: ifmtarg 2018/04/16 v1.2b check for an empty argument
 ))
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count331
+\etb@tempcnta=\count336
 ))
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/threeparttable\threepar
 ttable.sty
@@ -1640,80 +1732,80 @@ Package: threeparttable 2003/06/13  v 3.0
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count332
+\c@subfigure=\count337
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count333
+\c@subtable=\count338
 ) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTleft=\skip83
 \LTright=\skip84
 \LTpre=\skip85
 \LTpost=\skip86
-\LTchunksize=\count334
-\LTcapwidth=\dimen189
+\LTchunksize=\count339
+\LTcapwidth=\dimen190
 \LT@head=\box68
 \LT@firsthead=\box69
 \LT@foot=\box70
 \LT@lastfoot=\box71
 \LT@gbox=\box72
-\LT@cols=\count335
-\LT@rows=\count336
-\c@LT@tables=\count337
-\c@LT@chunks=\count338
-\LT@p@ftn=\toks36
+\LT@cols=\count340
+\LT@rows=\count341
+\c@LT@tables=\count342
+\c@LT@chunks=\count343
+\LT@p@ftn=\toks38
 )
-Class scrbook Info: longtable captions redefined on input line 72.
+Class scrbook Info: longtable captions redefined on input line 73.
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen190
-\lightrulewidth=\dimen191
-\cmidrulewidth=\dimen192
-\belowrulesep=\dimen193
-\belowbottomsep=\dimen194
-\aboverulesep=\dimen195
-\abovetopsep=\dimen196
-\cmidrulesep=\dimen197
-\cmidrulekern=\dimen198
-\defaultaddspace=\dimen199
-\@cmidla=\count339
-\@cmidlb=\count340
-\@aboverulesep=\dimen256
-\@belowrulesep=\dimen257
-\@thisruleclass=\count341
-\@lastruleclass=\count342
-\@thisrulewidth=\dimen258
+\heavyrulewidth=\dimen191
+\lightrulewidth=\dimen192
+\cmidrulewidth=\dimen193
+\belowrulesep=\dimen194
+\belowbottomsep=\dimen195
+\aboverulesep=\dimen196
+\abovetopsep=\dimen197
+\cmidrulesep=\dimen198
+\cmidrulekern=\dimen199
+\defaultaddspace=\dimen256
+\@cmidla=\count344
+\@cmidlb=\count345
+\@aboverulesep=\dimen257
+\@belowrulesep=\dimen258
+\@thisruleclass=\count346
+\@lastruleclass=\count347
+\@thisrulewidth=\dimen259
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
-\wrapoverhang=\dimen259
-\WF@size=\dimen260
-\c@WF@wrappedlines=\count343
+\wrapoverhang=\dimen260
+\WF@size=\dimen261
+\c@WF@wrappedlines=\count348
 \WF@box=\box73
-\WF@everypar=\toks37
+\WF@everypar=\toks39
 Package: wrapfig 2003/01/31  v 3.6
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen261
-\c@nlinenum=\count344
-\TeXr@lab=\toks38
+\rotheadsize=\dimen262
+\c@nlinenum=\count349
+\TeXr@lab=\toks40
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.sty
 Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count345
-\l_MT_multwidth_dim=\dimen262
+\g_MT_multlinerow_int=\count350
+\l_MT_multwidth_dim=\dimen263
 \origjot=\skip87
-\l_MT_shortvdotswithinadjustabove_dim=\dimen263
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen264
-\l_MT_above_intertext_sep=\dimen265
-\l_MT_below_intertext_sep=\dimen266
-\l_MT_above_shortintertext_sep=\dimen267
-\l_MT_below_shortintertext_sep=\dimen268
+\l_MT_shortvdotswithinadjustabove_dim=\dimen264
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen265
+\l_MT_above_intertext_sep=\dimen266
+\l_MT_below_intertext_sep=\dimen267
+\l_MT_above_shortintertext_sep=\dimen268
+\l_MT_below_shortintertext_sep=\dimen269
 \xmathstrut@box=\box74
-\xmathstrut@dim=\dimen269
+\xmathstrut@dim=\dimen270
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/fontawesome\fontawesome
 .sty
@@ -1761,33 +1853,33 @@ ty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \collectedbox=\box75
 )
-\tc@llx=\dimen270
-\tc@lly=\dimen271
-\tc@urx=\dimen272
-\tc@ury=\dimen273
+\tc@llx=\dimen271
+\tc@lly=\dimen272
+\tc@urx=\dimen273
+\tc@ury=\dimen274
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.def
 File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen274
-\adjbox@Height=\dimen275
-\adjbox@Depth=\dimen276
-\adjbox@Totalheight=\dimen277
-\adjbox@pwidth=\dimen278
-\adjbox@pheight=\dimen279
-\adjbox@pdepth=\dimen280
-\adjbox@ptotalheight=\dimen281
+\adjbox@Width=\dimen275
+\adjbox@Height=\dimen276
+\adjbox@Depth=\dimen277
+\adjbox@Totalheight=\dimen278
+\adjbox@pwidth=\dimen279
+\adjbox@pheight=\dimen280
+\adjbox@pdepth=\dimen281
+\adjbox@ptotalheight=\dimen282
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count346
+\c@checkoddpage=\count351
 ) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box76
-\sift@deathcycles=\count347
-\@vwid@loff=\dimen282
-\@vwid@roff=\dimen283
+\sift@deathcycles=\count352
+\@vwid@loff=\dimen283
+\@vwid@roff=\dimen284
 )
 ==> First Aid for varwidth.sty applied!
 ) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
@@ -1833,16 +1925,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count348
+\c@section@level=\count353
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen284
-\Hy@linkcounter=\count349
-\Hy@pagecounter=\count350
+\@linkdim=\dimen285
+\Hy@linkcounter=\count354
+\Hy@pagecounter=\count355
  (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2026-04-24 v7.01q Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -1850,7 +1942,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count351
+\Hy@SavedSpaceFactor=\count356
  (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2026-04-24 v7.01q Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -1879,9 +1971,9 @@ Package hyperref Info: Plain pages OFF on input line 4214.
 Package hyperref Info: Backreferencing OFF on input line 4219.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4466.
-\c@Hy@tempcnt=\count352
+\c@Hy@tempcnt=\count357
 LaTeX Info: Redefining \url on input line 4805.
-\XeTeXLinkMargin=\dimen285
+\XeTeXLinkMargin=\dimen286
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -1891,9 +1983,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count353
-\Field@Width=\dimen286
-\Fld@charsize=\dimen287
+\Fld@menulength=\count358
+\Field@Width=\dimen287
+\Fld@charsize=\dimen288
 Package hyperref Info: Hyper figures OFF on input line 6091.
 Package hyperref Info: Link nesting OFF on input line 6096.
 Package hyperref Info: Hyper index ON on input line 6099.
@@ -1901,16 +1993,16 @@ Package hyperref Info: backreferencing OFF on input line 6106.
 Package hyperref Info: Link coloring OFF on input line 6111.
 Package hyperref Info: Link coloring with OCG OFF on input line 6116.
 Package hyperref Info: PDF/A mode OFF on input line 6121.
-\Hy@abspage=\count354
-\c@Item=\count355
-\c@Hfootnote=\count356
+\Hy@abspage=\count359
+\c@Item=\count360
+\c@Hfootnote=\count361
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2026-04-24 v7.01q Hyperref driver for pdfTeX
-\Fld@listcount=\count357
-\c@bookmark@seq@number=\count358
+\Fld@listcount=\count362
+\c@bookmark@seq@number=\count363
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -1925,8 +2017,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip88
 )
-Package hyperref Info: Option `final' set `true' on input line 138.
-Package hyperref Info: Option `colorlinks' set `true' on input line 138.
+Package hyperref Info: Option `final' set `true' on input line 139.
+Package hyperref Info: Option `colorlinks' set `true' on input line 139.
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
 sty
@@ -1935,9 +2027,9 @@ sty
 y
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
 -common.tex
-\pgfutil@everybye=\toks39
-\pgfutil@tempdima=\dimen288
-\pgfutil@tempdimb=\dimen289
+\pgfutil@everybye=\toks41
+\pgfutil@tempdima=\dimen289
+\pgfutil@tempdimb=\dimen290
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
 -latex.def
@@ -1960,33 +2052,33 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
 .code.tex
-\pgfkeys@pathtoks=\toks40
-\pgfkeys@temptoks=\toks41
+\pgfkeys@pathtoks=\toks42
+\pgfkeys@temptoks=\toks43
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
 libraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks42
+\pgfkeys@tmptoks=\toks44
 ))
-\pgf@x=\dimen290
-\pgf@y=\dimen291
-\pgf@xa=\dimen292
-\pgf@ya=\dimen293
-\pgf@xb=\dimen294
-\pgf@yb=\dimen295
-\pgf@xc=\dimen296
-\pgf@yc=\dimen297
-\pgf@xd=\dimen298
-\pgf@yd=\dimen299
+\pgf@x=\dimen291
+\pgf@y=\dimen292
+\pgf@xa=\dimen293
+\pgf@ya=\dimen294
+\pgf@xb=\dimen295
+\pgf@yb=\dimen296
+\pgf@xc=\dimen297
+\pgf@yc=\dimen298
+\pgf@xd=\dimen299
+\pgf@yd=\dimen300
 \w@pgf@writea=\write3
-\r@pgf@reada=\read2
-\c@pgf@counta=\count359
-\c@pgf@countb=\count360
-\c@pgf@countc=\count361
-\c@pgf@countd=\count362
-\t@pgf@toka=\toks43
-\t@pgf@tokb=\toks44
-\t@pgf@tokc=\toks45
-\pgf@sys@id@count=\count363
+\r@pgf@reada=\read3
+\c@pgf@counta=\count364
+\c@pgf@countb=\count365
+\c@pgf@countc=\count366
+\c@pgf@countd=\count367
+\t@pgf@toka=\toks45
+\t@pgf@tokb=\toks46
+\t@pgf@tokc=\toks47
+\pgf@sys@id@count=\count368
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
 fg
@@ -2005,8 +2097,8 @@ File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 ssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count364
-\pgfsyssoftpath@bigbuffer@items=\count365
+\pgfsyssoftpath@smallbuffer@items=\count369
+\pgfsyssoftpath@bigbuffer@items=\count370
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 sprotocol.code.tex
@@ -2022,12 +2114,12 @@ Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
 code.tex)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
 r.code.tex
-\pgfmath@dimen=\dimen300
-\pgfmath@count=\count366
+\pgfmath@dimen=\dimen301
+\pgfmath@count=\count371
 \pgfmath@box=\box78
-\pgfmath@toks=\toks46
-\pgfmath@stack@operand=\toks47
-\pgfmath@stack@operation=\toks48
+\pgfmath@toks=\toks48
+\pgfmath@stack@operand=\toks49
+\pgfmath@stack@operation=\toks50
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
 ions.code.tex)
@@ -2051,39 +2143,39 @@ ions.integerarithmetics.code.tex)
 code.tex)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
 .code.tex
-\c@pgfmathroundto@lastzeros=\count367
+\c@pgfmathroundto@lastzeros=\count372
 ))
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
 tex)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 epoints.code.tex
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@picminx=\dimen301
-\pgf@picmaxx=\dimen302
-\pgf@picminy=\dimen303
-\pgf@picmaxy=\dimen304
-\pgf@pathminx=\dimen305
-\pgf@pathmaxx=\dimen306
-\pgf@pathminy=\dimen307
-\pgf@pathmaxy=\dimen308
-\pgf@xx=\dimen309
-\pgf@xy=\dimen310
-\pgf@yx=\dimen311
-\pgf@yy=\dimen312
-\pgf@zx=\dimen313
-\pgf@zy=\dimen314
+\pgf@picminx=\dimen302
+\pgf@picmaxx=\dimen303
+\pgf@picminy=\dimen304
+\pgf@picmaxy=\dimen305
+\pgf@pathminx=\dimen306
+\pgf@pathmaxx=\dimen307
+\pgf@pathminy=\dimen308
+\pgf@pathmaxy=\dimen309
+\pgf@xx=\dimen310
+\pgf@xy=\dimen311
+\pgf@yx=\dimen312
+\pgf@yy=\dimen313
+\pgf@zx=\dimen314
+\pgf@zy=\dimen315
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 epathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@path@lastx=\dimen315
-\pgf@path@lasty=\dimen316
+\pgf@path@lastx=\dimen316
+\pgf@path@lasty=\dimen317
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 epathusage.code.tex
 File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@shorten@end@additional=\dimen317
-\pgf@shorten@start@additional=\dimen318
+\pgf@shorten@end@additional=\dimen318
+\pgf@shorten@start@additional=\dimen319
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 escopes.code.tex
@@ -2091,19 +2183,19 @@ File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfpic=\box79
 \pgf@hbox=\box80
 \pgf@layerbox@main=\box81
-\pgf@picture@serial@count=\count368
+\pgf@picture@serial@count=\count373
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 egraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgflinewidth=\dimen319
+\pgflinewidth=\dimen320
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 etransformations.code.tex
 File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@pt@x=\dimen320
-\pgf@pt@y=\dimen321
-\pgf@pt@temp=\dimen322
+\pgf@pt@x=\dimen321
+\pgf@pt@y=\dimen322
+\pgf@pt@temp=\dimen323
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 equick.code.tex
@@ -2120,14 +2212,14 @@ File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 earrows.code.tex
 File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfarrowsep=\dimen323
+\pgfarrowsep=\dimen324
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 eshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@max=\dimen324
-\pgf@sys@shading@range@num=\count369
-\pgf@shadingcount=\count370
+\pgf@max=\dimen325
+\pgf@sys@shading@range@num=\count374
+\pgf@shadingcount=\count375
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 eimage.code.tex
@@ -2166,8 +2258,8 @@ File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
 mp-version-0-65.sty
 Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@nodesepstart=\dimen325
-\pgf@nodesepend=\dimen326
+\pgf@nodesepstart=\dimen326
+\pgf@nodesepend=\dimen327
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
 mp-version-1-18.sty
@@ -2185,10 +2277,10 @@ ty
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
 code.tex
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
-\pgffor@iter=\dimen327
-\pgffor@skip=\dimen328
-\pgffor@stack=\toks49
-\pgffor@toks=\toks50
+\pgffor@iter=\dimen328
+\pgffor@skip=\dimen329
+\pgffor@stack=\toks51
+\pgffor@toks=\toks52
 ))
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z\tikz.code.tex
@@ -2197,34 +2289,34 @@ Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
 aryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count371
-\pgfplotmarksize=\dimen329
+\pgf@plot@mark@count=\count376
+\pgfplotmarksize=\dimen330
 )
-\tikz@lastx=\dimen330
-\tikz@lasty=\dimen331
-\tikz@lastxsaved=\dimen332
-\tikz@lastysaved=\dimen333
-\tikz@lastmovetox=\dimen334
-\tikz@lastmovetoy=\dimen335
-\tikzleveldistance=\dimen336
-\tikzsiblingdistance=\dimen337
+\tikz@lastx=\dimen331
+\tikz@lasty=\dimen332
+\tikz@lastxsaved=\dimen333
+\tikz@lastysaved=\dimen334
+\tikz@lastmovetox=\dimen335
+\tikz@lastmovetoy=\dimen336
+\tikzleveldistance=\dimen337
+\tikzsiblingdistance=\dimen338
 \tikz@figbox=\box84
 \tikz@figbox@bg=\box85
 \tikz@tempbox=\box86
 \tikz@tempbox@bg=\box87
-\tikztreelevel=\count372
-\tikznumberofchildren=\count373
-\tikznumberofcurrentchild=\count374
-\tikz@fig@count=\count375
+\tikztreelevel=\count377
+\tikznumberofchildren=\count378
+\tikznumberofcurrentchild=\count379
+\tikz@fig@count=\count380
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 matrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count376
-\pgfmatrixcurrentcolumn=\count377
-\pgf@matrix@numberofcolumns=\count378
+\pgfmatrixcurrentrow=\count381
+\pgfmatrixcurrentcolumn=\count382
+\pgf@matrix@numberofcolumns=\count383
 )
-\tikz@expandcount=\count379
+\tikz@expandcount=\count384
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarytopaths.code.tex
@@ -2263,91 +2355,18 @@ Package: ltablex 2014/08/13 v1.1 Modified tabularx
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
-\TX@col@width=\dimen338
-\TX@old@table=\dimen339
-\TX@old@col=\dimen340
-\TX@target=\dimen341
-\TX@delta=\dimen342
-\TX@cols=\count380
-\TX@ftn=\toks51
+\TX@col@width=\dimen339
+\TX@old@table=\dimen340
+\TX@old@col=\dimen341
+\TX@target=\dimen342
+\TX@delta=\dimen343
+\TX@cols=\count385
+\TX@ftn=\toks53
 ))
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
-Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for LGR+Tempora-TLF on inpu
-t line 116.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tempora\lgrtempora-tlf.
-fd
-File: lgrtempora-tlf.fd 2015/09/13 Font definitions for LGR/Tempora.
-)
-LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 116.
-) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2026/04/15 v26.6 The multilingual framework for LuaLaTeX, pdfLaT
-eX and XeLaTeX
-\babel@savecnt=\count381
-LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
-ne 2078.
-LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
-ne 2080.
-LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
-e 2082.
-LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
-e 2083.
-LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
-on input line 2084.
-LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
-on input line 2086.
-LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
-on input line 2111.
-\U@D=\dimen343
-\l@unhyphenated=\language79
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
-\bbl@readstream=\read3
-\bbl@dirlevel=\count382
-Package babel Info: Configuration files are deprecated, as
-(babel)             they can break document portability.
-(babel)             Reported on input line 4206.
-
-*************************************
-* Local config file bblopts.cfg used
-*
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
- babel
-)
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/en\babel
--english.tex)
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/el\babel
--greek.tex)
-Package babel Info: Importing font and identification data for english
-(babel)             from babel-en.ini. Reported on input line 4330.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\english.l
-df
-Language: english 2017/06/06 v3.3r English support from the babel system
-Package babel Info: Hyphen rules for 'canadian' set to \l@english
-(babel)             (\language0). Reported on input line 102.
-Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language73). Reported on input line 105.
-Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language73). Reported on input line 108.
-)
-Package babel Info: Importing font and identification data for greek
-(babel)             from babel-el.ini. Reported on input line 4330.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/babel-greek\greek.ldf
-Language: greek 2023/10/13 1.15 Greek support for the babel system
-\bbl@monogreek=\count383
-\bbl@polygreek=\count384
-\bbl@ancientgreek=\count385
-LaTeX Encoding Info:    Ignoring declaration for text command \textmugreek (enc
-oding LGR) on input line 638.
-)) (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks52
-\verbatim@line=\toks53
+\every@verbatim=\toks54
+\verbatim@line=\toks55
 \verbatim@in@stream=\read4
 ))
 Class scrbook Info: loading recommended package `bookmark'.
@@ -2367,6 +2386,17 @@ File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 )
 \BKM@id=\count386
 ))
+LaTeX Font Info:    Trying to load font information for T1+Tempora-TLF on input
+ line 38.
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tempora\t1tempora-tlf.f
+d
+File: T1Tempora-TLF.fd 2016/02/02 (autoinst) Font definitions for T1/Tempora-TL
+F.
+)
+LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 38.
+
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
@@ -2374,6 +2404,15 @@ File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 ) (diploma_thesis.aux
 Package babel Info: 'greek' activates 'greek' shorthands.
 (babel)             Reported on input line 11.
+LaTeX Font Info:    Trying to load font information for LGR+Tempora-TLF on inpu
+t line 11.
+
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tempora\lgrtempora-tlf.
+fd
+File: lgrtempora-tlf.fd 2015/09/13 Font definitions for LGR/Tempora.
+)
+LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 11.
 )
 \openout1 = `diploma_thesis.aux'.
 
@@ -2391,19 +2430,19 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for OT2/cmr/m/n on input line 38.
 LaTeX Font Info:    Trying to load font information for OT2+cmr on input line 3
 8.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\ot2cmr.fd
+ (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\ot2cmr.fd
 File: ot2cmr.fd 2001/08/11 v3.2c Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for T2C/cmr/m/n on input line 38.
 LaTeX Font Info:    Trying to load font information for T2C+cmr on input line 3
 8.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\t2ccmr.fd
+ (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\t2ccmr.fd
 File: t2ccmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    ... okay on input line 38.
@@ -2421,14 +2460,6 @@ LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 3
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-)
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 38.
-LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 3
-8.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cbfonts-fd\lgrcmr.fd
-File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
 LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
@@ -2492,12 +2523,12 @@ ii
 \scratchbox=\box88
 \nofMPsegments=\count389
 \nofMParguments=\count390
-\everyMPshowfont=\toks54
+\everyMPshowfont=\toks56
 \MPscratchCnt=\count391
 \MPscratchDim=\dimen345
 \MPnumerator=\count392
 \makeMPintoPDFobject=\count393
-\everyMPtoPDFconversion=\toks55
+\everyMPtoPDFconversion=\toks57
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -2511,6 +2542,56 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \c@mv@tabular=\count394
 \c@mv@boldtabular=\count395
+LaTeX Info: Redefining \Upsilon on input line 38.
+LaTeX Info: Redefining \Omega on input line 38.
+LaTeX Info: Redefining \alpha on input line 38.
+LaTeX Info: Redefining \epsilon on input line 38.
+LaTeX Info: Redefining \eta on input line 38.
+LaTeX Info: Redefining \iota on input line 38.
+LaTeX Info: Redefining \rho on input line 38.
+LaTeX Info: Redefining \upsilon on input line 38.
+LaTeX Info: Redefining \omega on input line 38.
+   defining Unicode char U+0393 (decimal 915)
+   defining Unicode char U+0394 (decimal 916)
+   defining Unicode char U+0398 (decimal 920)
+   defining Unicode char U+039B (decimal 923)
+   defining Unicode char U+039E (decimal 926)
+   defining Unicode char U+03A0 (decimal 928)
+   defining Unicode char U+03A3 (decimal 931)
+   defining Unicode char U+03A5 (decimal 933)
+   defining Unicode char U+03A6 (decimal 934)
+   defining Unicode char U+03A8 (decimal 936)
+   defining Unicode char U+03A9 (decimal 937)
+   defining Unicode char U+03B1 (decimal 945)
+   defining Unicode char U+03B2 (decimal 946)
+   defining Unicode char U+03B3 (decimal 947)
+   defining Unicode char U+03B4 (decimal 948)
+   defining Unicode char U+03B5 (decimal 949)
+   defining Unicode char U+03B6 (decimal 950)
+   defining Unicode char U+03B7 (decimal 951)
+   defining Unicode char U+03B8 (decimal 952)
+   defining Unicode char U+03B9 (decimal 953)
+   defining Unicode char U+03BA (decimal 954)
+   defining Unicode char U+03BB (decimal 955)
+   defining Unicode char U+03BC (decimal 956)
+   defining Unicode char U+03BD (decimal 957)
+   defining Unicode char U+03BE (decimal 958)
+   defining Unicode char U+03C0 (decimal 960)
+   defining Unicode char U+03C1 (decimal 961)
+   defining Unicode char U+03C2 (decimal 962)
+   defining Unicode char U+03C3 (decimal 963)
+   defining Unicode char U+03C4 (decimal 964)
+   defining Unicode char U+03C5 (decimal 965)
+   defining Unicode char U+03C6 (decimal 966)
+   defining Unicode char U+03C7 (decimal 967)
+   defining Unicode char U+03C8 (decimal 968)
+   defining Unicode char U+03C9 (decimal 969)
+   defining Unicode char U+03D1 (decimal 977)
+   defining Unicode char U+03D5 (decimal 981)
+   defining Unicode char U+03D6 (decimal 982)
+   defining Unicode char U+03DD (decimal 989)
+   defining Unicode char U+03F1 (decimal 1009)
+   defining Unicode char U+03F5 (decimal 1013)
 \c@lstlisting=\count396
 Package tocbasic Info: setting babel extension for `lol' on input line 38.
 \scr@dte@lstlisting@maxnumwidth=\skip89
@@ -2533,14 +2614,6 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
 (Font)              scaled to size 14.4pt on input line 48.
-LaTeX Font Info:    Trying to load font information for T1+Tempora-TLF on input
- line 49.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tempora\t1tempora-tlf.f
-d
-File: T1Tempora-TLF.fd 2016/02/02 (autoinst) Font definitions for T1/Tempora-TL
-F.
-)
 LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
 (Font)              scaled to size 14.4pt on input line 49.
 
@@ -2631,7 +2704,7 @@ LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
 
 ]
 LaTeX Font Info:    Trying to load font information for LGR+cmtt on input line 
-56.
+60.
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cbfonts-fd\lgrcmtt.fd
 File: lgrcmtt.fd 2017/07/29 v1.2 Greek European Computer Typewriter
@@ -2660,573 +2733,31 @@ chapter 3.
 
 LaTeX Warning: Citation `rfc7519' on page 29 undefined on input line 16.
 
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte "80.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ls
-t@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...["<πιστοποιητικό_σε_Base64>
-                                                  ", "<CA_σε_Base64>"]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ex
-pandafter).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...�τικό_σε_Base64>", "<CA_σε_Base64>
-                                                  "]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte "83.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...�τικό_σε_Base64>", "<CA_σε_Base64>
-                                                  "]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte sequence (�\ex
-pandafter).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...�τικό_σε_Base64>", "<CA_σε_Base64>
-                                                  "]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:35: LaTeX Error: Invalid UTF-8 byte "B5.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...�τικό_σε_Base64>", "<CA_σε_Base64>
-                                                  "]
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 47.
+(Font)              scaled to size 9.0pt on input line 49.
 [29
 
 ]
 LaTeX Font Info:    Font shape `LGR/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `LGR/cmtt/m/n' tried instead on input line 68.
+(Font)              Font shape `LGR/cmtt/m/n' tried instead on input line 69.
 
 
-LaTeX Warning: Citation `x509rfc' on page 30 undefined on input line 86.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textAlpha unavailable in
- encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textrho unavailable in e
-ncoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textchi unavailable in e
-ncoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textvarsigma unavailable
- in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textPi unavailable in en
-coding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textiota unavailable in 
-encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textsigma unavailable in
- encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \texttau unavailable in e
-ncoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textomicron unavailable 
-in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textpi unavailable in en
-coding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textomicron unavailable 
-in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \texteta unavailable in e
-ncoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textsigma unavailable in
- encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \texteta unavailable in e
-ncoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/03-technologies.tex:97: LaTeX Error: Command \textvarsigma unavailable
- in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97     (Certificate Authority, CA)}
-                                     , που βεβαιώνει την αυ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+LaTeX Warning: Citation `x509rfc' on page 30 undefined on input line 87.
 
 [30]
 
-LaTeX Warning: Citation `ishare2023' on page 31 undefined on input line 131.
+LaTeX Warning: Citation `ishare2023' on page 31 undefined on input line 132.
 
 [31]
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@FillFixed@).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3235,13 +2766,13 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte "BA.
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte "BA.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3250,14 +2781,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3266,14 +2797,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3282,14 +2813,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3298,14 +2829,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3314,14 +2845,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3330,14 +2861,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3346,14 +2877,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3362,14 +2893,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3378,14 +2909,14 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-chapters/03-technologies.tex:180: LaTeX Error: Invalid UTF-8 byte sequence (�\l
+chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
 st@EC�).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 ...essSubject": "<UUID καταναλωτή>
+l.181 ...essSubject": "<UUID καταναλωτή>
                                                   "
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -3393,23 +2924,23 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
+
+LaTeX Warning: Citation `rfc6749' on page 32 undefined on input line 211.
+
 [32]
 
-LaTeX Warning: Citation `rfc6749' on page 33 undefined on input line 210.
+LaTeX Warning: Citation `ngsi-ld2023' on page 33 undefined on input line 239.
 
 
-LaTeX Warning: Citation `ngsi-ld2023' on page 33 undefined on input line 238.
-
-
-LaTeX Warning: Citation `jsonld2020' on page 33 undefined on input line 239.
+LaTeX Warning: Citation `jsonld2020' on page 33 undefined on input line 240.
 
 [33]
 
 LaTeX Warning: Citation `smart-data-models2023' on page 34 undefined on input l
-ine 280.
+ine 281.
 
 
-LaTeX Warning: Citation `xacml3' on page 34 undefined on input line 294.
+LaTeX Warning: Citation `xacml3' on page 34 undefined on input line 295.
 
 [34]) (chapters/04-building-blocks.tex [35] [36
 
@@ -3422,258 +2953,6 @@ LaTeX Warning: Citation `orion-ld2023' on page 37 undefined on input line 14.
 LaTeX Warning: Citation `keyrock2023' on page 37 undefined on input line 46.
 
 [37]
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textMu unavailable in
- encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \texteta unavailable i
-n encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \texttau unavailable i
-n encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textrho unavailable i
-n encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textomicron unavailab
-le in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textEpsilon unavailab
-le in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textxi unavailable in
- encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textomicron unavailab
-le in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textupsilon unavailab
-le in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textsigma unavailable
- in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textiota unavailable 
-in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textomicron unavailab
-le in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textdelta unavailable
- in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \texttau unavailable i
-n encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \texteta unavailable i
-n encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textsigma unavailable
- in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \texteta unavailable i
-n encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04-building-blocks.tex:55: LaTeX Error: Command \textvarsigma unavaila
-ble in encoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 ...Μητρώο Εξουσιοδότησης}
-                                                   είναι ο
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 
 LaTeX Warning: Citation `ishare-satellite2023' on page 38 undefined on input li
 ne 94.
@@ -3699,96 +2978,6 @@ chapter 5.
 LaTeX Warning: Citation `plegma2024' on page 45 undefined on input line 17.
 
 [45]
-
-chapters/04b-dataset.tex:66: LaTeX Error: Command \textSigma unavailable in enc
-oding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.66 ...νων μέσω \textlatin{Σχέσεων}
-                                                   (\textlatin{Relationships...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04b-dataset.tex:66: LaTeX Error: Command \textchi unavailable in encod
-ing T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.66 ...νων μέσω \textlatin{Σχέσεων}
-                                                   (\textlatin{Relationships...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04b-dataset.tex:66: LaTeX Error: Command \textsigma unavailable in enc
-oding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.66 ...νων μέσω \textlatin{Σχέσεων}
-                                                   (\textlatin{Relationships...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04b-dataset.tex:66: LaTeX Error: Command \textepsilon unavailable in e
-ncoding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.66 ...νων μέσω \textlatin{Σχέσεων}
-                                                   (\textlatin{Relationships...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04b-dataset.tex:66: LaTeX Error: Command \textomega unavailable in enc
-oding T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.66 ...νων μέσω \textlatin{Σχέσεων}
-                                                   (\textlatin{Relationships...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-chapters/04b-dataset.tex:66: LaTeX Error: Command \textnu unavailable in encodi
-ng T1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.66 ...νων μέσω \textlatin{Σχέσεων}
-                                                   (\textlatin{Relationships...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
@@ -4155,8 +3344,6 @@ LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 444.
 LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 444.
-LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 446.
 
 Overfull \hbox (3.54501pt too wide) in paragraph at lines 454--454
 []|\LGR/cmtt/m/n/10.95 plegma:appliancePower.ac[]1| 
@@ -4215,71 +3402,7 @@ If that doesn't work, type  X <return>  to quit.
 
 ]
 chapter 7.
-[61] [62] [63]
-
-chapters/06-implementation.tex:172: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.172 ...5c: "<cert_base64>,<CA_base64>" # Από 
-                                                  01_generate_certs.py
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:172: LaTeX Error: Invalid UTF-8 byte "91.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.172 ...5c: "<cert_base64>,<CA_base64>" # Από 
-                                                  01_generate_certs.py
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:172: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.172 ...5c: "<cert_base64>,<CA_base64>" # Από 
-                                                  01_generate_certs.py
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:172: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.172 ...5c: "<cert_base64>,<CA_base64>" # Από 
-                                                  01_generate_certs.py
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[64] [65] [66]
+[61] [62] [63] [64] [65] [66]
 
 chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
 \lst@FillFixed@).
@@ -7782,7 +6905,7 @@ tal-Me-a-
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 311--311
+Underfull \hbox (badness 1184) in paragraph at lines 311--311
 []|\LGR/Tempora-TLF/m/n/10.95 Katanalwt�c, \T1/Tempora-TLF/m/n/10.95 H-ou-se-ho
 l-dE-le-
  []
@@ -7825,13 +6948,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 40357 strings out of 467690
- 755803 string characters out of 5414966
- 1660748 words of memory out of 5000000
- 67704 multiletter control sequences out of 15000+600000
- 694598 words of font info for 136 fonts, out of 8000000 for 9000
+ 40970 strings out of 467690
+ 768182 string characters out of 5414966
+ 1664874 words of memory out of 5000000
+ 68308 multiletter control sequences out of 15000+600000
+ 695294 words of font info for 137 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 108i,12n,107p,11268b,2300s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,12n,107p,11268b,2587s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
 1200.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tctt0900.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -7853,9 +6976,9 @@ type1/public/cbgreek/gsxn2074.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX
 rograms/MiKTeX/fonts/type1/public/cbgreek/gttn1095.pfb><C:/Users/SAKak/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/cbgreek/gttn1200.pfb><C:/Users/SAKak/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/cbgreek/gttn1440.pfb>
-Output written on diploma_thesis.pdf (99 pages, 925960 bytes).
+Output written on diploma_thesis.pdf (99 pages, 936560 bytes).
 PDF statistics:
- 2372 PDF objects out of 2487 (max. 8388607)
+ 2408 PDF objects out of 2487 (max. 8388607)
  927 named destinations out of 1000 (max. 500000)
  1426 words of extra memory for PDF output out of 10000 (max. 10000000)
 

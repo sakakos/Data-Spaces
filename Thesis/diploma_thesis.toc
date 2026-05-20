@@ -25,13 +25,17 @@
 \contentsline {chapter}{\numberline {3}Τεχνολογίες και Πρότυπα}{29}{chapter.3}%
 \contentsline {section}{\numberline {3.1}\textlatin {JSON Web Tokens (JWT)}}{29}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Δομή ενός \textlatin {JWT}}{29}{subsection.3.1.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
 \contentsline {subsection}{\numberline {3.1.2}\textlatin {iSHARE JWT}: Επέκταση για \textlatin {Data Spaces}}{30}{subsection.3.1.2}%
 \contentsline {section}{\numberline {3.2}Ψηφιακά Πιστοποιητικά \textlatin {X.509} και \textlatin {PKI}}{30}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Δομή Πιστοποιητικού}{30}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Αλυσίδα Εμπιστοσύνης}{31}{subsection.3.2.2}%
 \contentsline {section}{\numberline {3.3}Το Πλαίσιο \textlatin {iSHARE}}{31}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Αναγνωριστικό \textlatin {EORI}}{31}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Ροή Επαλήθευσης \textlatin {iSHARE}}{32}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Ροή Επαλήθευσης \textlatin {iSHARE}}{31}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Πολιτικές Εκχώρησης Εξουσιοδότησης (\textlatin {Delegation Policies})}{32}{subsection.3.3.3}%
 \contentsline {section}{\numberline {3.4}\textlatin {OAuth 2.0} και Ροή \textlatin {Client Credentials}}{33}{section.3.4}%
 \contentsline {section}{\numberline {3.5}\textlatin {NGSI-LD} και \textlatin {JSON-LD}}{33}{section.3.5}%

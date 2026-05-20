@@ -28,14 +28,15 @@
     χρησιμοποιείται. Ο αλγόριθμος \textlatin{RS256} (υπογραφή \textlatin{RSA}
     με κατακερματισμό \textlatin{SHA-256}) χρησιμοποιείται στο πλαίσιο
     \textlatin{iSHARE}:
+\selectlanguage{english}
 \begin{lstlisting}[language={}]
 {
   "alg": "RS256",
   "typ": "JWT",
-  "x5c": ["<πιστοποιητικό_σε_Base64>", "<CA_σε_Base64>"]
+  "x5c": ["<certificate_in_Base64>", "<CA_in_Base64>"]
 }
 \end{lstlisting}
-
+\selectlanguage{greek}
     \item \textbf{Ωφέλιμο φορτίο (\textlatin{Payload}):} Περιέχει τους
     ισχυρισμούς (\textlatin{claims}), δηλαδή τις πληροφορίες σχετικά με την
     οντότητα (συνήθως τον χρήστη ή τον οργανισμό) και επιπλέον δεδομένα. Στο
