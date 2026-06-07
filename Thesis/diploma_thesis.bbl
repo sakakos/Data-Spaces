@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{otto2022}
 B.~Otto, S.~Steinbuß, A.~Teuscher, and S.~Lohmann, ``Reference architecture
@@ -24,6 +24,75 @@ B.~Otto, S.~Steinbuß, A.~Teuscher, and S.~Lohmann, ``Reference architecture
 \bibitem{fiware2023}
 {FIWARE Foundation}, ``{FIWARE} catalogue: Open source components for smart
   solutions,'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{x509rfc}
+D.~Cooper, S.~Santesson, S.~Farrell, S.~Boeyen, R.~Housley, and T.~Polk,
+  ``Internet {X.509} public key infrastructure certificate and certificate
+  revocation list ({CRL}) profile,'' 2008.
+\newblock Accessed: 2026.
+
+\bibitem{rfc7519}
+M.~B. Jones, J.~Bradley, and N.~Sakimura, ``{JSON} web token ({JWT}),'' Tech.
+  Rep. RFC 7519, Internet Engineering Task Force (IETF), 2015.
+\newblock Accessed: 2026.
+
+\bibitem{ishare2023}
+{iSHARE Foundation}, ``ishare scheme: Trust framework for data sharing,'' tech.
+  rep., iSHARE Foundation, 2023.
+\newblock Accessed: 2026.
+
+\bibitem{i4trust2023}
+{FIWARE Foundation}, ``i4trust building blocks,'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{ngsi-ld2023}
+{ETSI}, ``{ETSI GS CIM 009 V1.6.1}: Context information management ({CIM});
+  {NGSI-LD} {API},'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{jsonld2020}
+G.~Kellogg, P.-A. Champin, and D.~Longley, ``{JSON-LD} 1.1: A {JSON}-based
+  serialization for linked data,'' 2020.
+\newblock Accessed: 2026.
+
+\bibitem{smart-data-models2023}
+{FIWARE Foundation}, {IUDX}, {TM Forum}, and {OASC}, ``Smart data models,''
+  2023.
+\newblock Accessed: 2026.
+
+\bibitem{xacml3}
+{OASIS}, ``e{X}tensible access control markup language ({XACML}) version 3.0,''
+  tech. rep., OASIS Standard, 2013.
+\newblock Accessed: 2026.
+
+\bibitem{orion-ld2023}
+{FIWARE Foundation}, ``Orion-{LD} context broker,'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{keyrock2023}
+{FIWARE Foundation}, ``Keyrock identity manager,'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{ishare-satellite2023}
+{iSHARE Foundation}, ``ishare satellite reference implementation,'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{kong2023}
+{Kong Inc.}, ``Kong gateway,'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{kong-ngsi-plugin2023}
+{FIWARE Foundation}, ``Kong plugin: ngsi-ishare-policies,'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{dsba-pdp2023}
+{FIWARE Foundation}, ``{DSBA} policy decision point,'' 2023.
+\newblock Accessed: 2026.
+
+\bibitem{plegma2024}
+C.~Doukas and I.~Chatzigiannakis, ``Plegma dataset: A smart home energy and
+  environmental dataset,'' 2024.
 \newblock Accessed: 2026.
 
 \end{thebibliography}

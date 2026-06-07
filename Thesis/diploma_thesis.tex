@@ -54,47 +54,45 @@
         \vspace*{3cm}
 
     \centering
-    \huge \underline{\textbf{\TitleGR}}\\
-    \vspace{3cm}
+    {\huge \textbf{\TitleGR}\par}
+    \vspace{2cm}
     \LARGE ΔΙΠΛΩΜΑΤΙΚΗ ΕΡΓΑΣΙΑ\\
     \vspace{3cm}
     \Large \underline{\myAuthor}\\
     \vspace{4.5cm}
-    \flushleft{\large
+    \begin{flushleft}
+        \large
         \vspace{0.6cm}
         \begin{tabular}{c c}
         \textbf{Επιβλέπων}: & \mySupervisor\\
         &\mySupervisorTitle \\
         \end{tabular}
-    }
+    \end{flushleft}
     \vfill
     \centering
     \myDate
 \end{titlepage}
 
 \input{Title-Greek.tex}
-\input{dedications.tex}
+\justifying
 \input{abstract.tex}
+\justifying
 \input{abstract_eng.tex}
+\justifying
 \input{acknowledgements.tex}
 \tableofcontents
 \thispagestyle{empty}
 \blankpage
 \input{diploma_body.tex}
-\input{bibliography.tex}
 
 %\begin{appendix}
 %Σε πεπρίπτωση που θέλετε να προσθέσετε appendix εισάγετε το αρχείο εδώ
 %\end{appendix}
 
-ΒΙΒΛΙΟΓΡΑΦΙΑ
-\bibliographystyle{ieeetr} ΓΙΑ ΒΙΒΛΙΟΓΡΑΦΙΑ IEEE Standard
-\bibliography{ref} !!! ΧΩΡΙΣ ΚΑΤΑΛΗΞΗ .tex
+\renewcommand{\bibname}{Βιβλιογραφία}
+\selectlanguage{english}
+\bibliographystyle{ieeetr} 
+\bibliography{ref} 
+\selectlanguage{greek} % Επαναφορά της γλώσσας
 
-%ΓΙΑ APA Standard ΘΑ ΠΡΕΠΕΙ ΝΑ ΕΙΣΑΓΕΤΕ ΤΟ ΠΑΚΕΤΟ ΣΤΟ Preamble:
-%\usepackage[style=apa, backend=biber]{biblatex}
-%\addbibresource{references.bib}
-
-ΚΑΙ ΕΔΩ ΣΤΟ ΤΕΛΟΣ ΤΟΥ ΑΡΧΕΙΟΥ:
-%\printbibliography
 \end{document}

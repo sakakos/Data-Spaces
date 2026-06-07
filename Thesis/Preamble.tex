@@ -1,6 +1,6 @@
 %ΠΡΟΣΩΠΙΚΑ ΣΤΟΙΧΕΙΑ
-\newcommand{\myAuthor}{Ονοματεπώνυμο}
-\newcommand{\TitleGR}{Τίτλος Διπλωματικής Εργασίας}
+\newcommand{\myAuthor}{Κάκος Σωτήριος}
+\newcommand{\TitleGR}{Περιβάλλον πειραματισμού με \textlatin{Data-Spaces} με χρήση \textlatin{FIWARE} και \textlatin{i4Trust}}
 
 %ΣΥΜΠΛΗΡΩΣΤΕ ΓΙΑ ΤΟΥΣ ΥΠΟΛΟΙΠΟΥΣ ΕΠΙΒΛΕΠΟΝΤΕΣ/ΕΞΕΤΑΣΤΙΚΗ ΕΠΙΤΡΟΠΗ
 \newcommand{\mySupervisor}{Ονοματεπώνυμο ΔΕΠ}
@@ -74,7 +74,7 @@
 \usepackage{wrapfig}
 \usepackage{makecell}
 
-
+\usepackage{ragged2e}
 
 \DeclareMathOperator*{\argmin}{argmin}
 
@@ -167,4 +167,11 @@
 \usepackage{verbatim}
 
 \raggedbottom
+
+% Απαγόρευση συλλαβισμού και αποκοπής λέξεων
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% Επιτρέπει στο LaTeX να μεγαλώσει τα κενά μεταξύ των λέξεων
+\sloppy
 

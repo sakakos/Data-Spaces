@@ -3,33 +3,43 @@
 
 \foreignlanguage{english}{%
 This thesis presents the design and implementation of an experimentation environment
-for Data Spaces using FIWARE technologies and the i4Trust/iSHARE trust framework.
+for Data Spaces using open FIWARE technologies and the i4Trust/iSHARE trust framework. 
+The primary objective of this work is the practical application of technological building blocks 
+that ensure digital sovereignty during the sharing and exchange of data between independent organizations.
+}
 
-The result of this work is the \textbf{Plegma Data Space}, a fully functional
+\foreignlanguage{english}{%
+The result of this work is the Data Space, a fully functional
 Data Space prototype that demonstrates the complete access delegation cycle between
-two independent organizations. The architecture is organized into three logical
+two independent entities. The architecture is organized into three logical
 layers: a Policy Enforcement Layer (Kong API Gateway and DSBA-PDP), a Trust and
 Identity Layer (iSHARE Satellite and Keyrock Identity Manager), and a Data Layer
 (Orion-LD Context Broker).
+}
 
+\foreignlanguage{english}{%
 Access control is based on the iSHARE protocol, which leverages X.509 digital
 certificates and JSON Web Tokens (JWT) for participant authentication, along with
-a delegation mechanism for defining and enforcing fine-grained access policies.
-Data is stored and exchanged in NGSI-LD format, compliant with the ETSI GS CIM 009
+a delegation evidence mechanism for defining and enforcing fine-grained access policies.
+Data is stored and exchanged in NGSI-LD format, compliant with the Smart Data Models and the ETSI GS CIM 009
 standard.
+}
 
-The system was loaded with real data from the Plegma Dataset — a collection of
-household electricity consumption measurements, environmental parameters, and
+\foreignlanguage{english}{%
+The system was loaded with real data from the Plegma Dataset, a collection of
+household electricity demand measurements, environmental parameters, and
 building metadata. The access delegation demonstration successfully verifies:
-the rejection of unauthorized requests, full access by the data provider to its
-own data, and controlled access by the data consumer exclusively to the resources
+full access by the data provider to its own data, the rejection of unauthorized requests, 
+and controlled access by the data consumer exclusively to the resources
 for which the provider has explicitly granted permission.
+}
 
+\foreignlanguage{english}{%
 The implementation uncovered several practical challenges not immediately evident
 from the specifications, including cryptographic key format compatibility,
 certificate extension requirements, and the initialization order of system
 components. These findings are documented in detail to facilitate reproducibility
-and future work.
+and future research.
 }
 
 \vspace{1cm}

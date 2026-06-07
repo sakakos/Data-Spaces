@@ -15,21 +15,21 @@
 
 Η επίδειξη εκτελείται σε τοπικό περιβάλλον \textlatin{Windows} με τα
 \textlatin{containers} να εκτελούνται μέσω \textlatin{Docker Desktop}. Το
-\textlatin{Kong API Gateway} εκτίθεται στη θύρα \texttt{8000} του τοπικού
+\textlatin{Kong API Gateway} εκτίθεται στη θύρα \textlatin{8000} του τοπικού
 μηχανήματος και αποτελεί το μοναδικό σημείο εισόδου για όλα τα αιτήματα
-δεδομένων. Ο \textlatin{Keyrock} εκτίθεται στη θύρα \texttt{3007} για τη
+δεδομένων. Ο \textlatin{Keyrock} εκτίθεται στη θύρα \textlatin{3007} για τη
 διαδικασία ανταλλαγής \textlatin{token}.
 
 Τα εργαλεία που χρησιμοποιούνται για την επίδειξη είναι:
 \begin{itemize}
-    \item \textbf{\textlatin{PowerShell}}: Για την εκτέλεση των εντολών
+    \item \textlatin{PowerShell}: Για την εκτέλεση των εντολών
     επίδειξης.
-    \item \textbf{\textlatin{curl}}: Για την αποστολή \textlatin{HTTP}
+    \item \textlatin{curl}: Για την αποστολή \textlatin{HTTP}
     αιτημάτων.
-    \item \textbf{\textlatin{Docker}}: Για την εκτέλεση των \textlatin{scripts}
+    \item \textlatin{Docker}: Για την εκτέλεση των \textlatin{scripts}
     δημιουργίας \textlatin{JWT}.
-    \item \textbf{\textlatin{Python}}: Για την παρουσίαση των αποτελεσμάτων
-    σε \textlatin{JSON} μορφή (\texttt{python -m json.tool}).
+    \item \textlatin{Python}: Για την παρουσίαση των αποτελεσμάτων
+    σε \textlatin{JSON} μορφή (\textlatin{python -m json.tool}).
 \end{itemize}
 
 % ------------------------------------------------------------------
@@ -42,20 +42,23 @@
 θεμελιώδες χαρακτηριστικό ελέγχου πρόσβασης: κανένα αίτημα δεν μπορεί να
 φτάσει στα δεδομένα χωρίς έγκυρο \textlatin{token}.
 
-\begin{lstlisting}[language=bash, caption={Αίτημα χωρίς \textlatin{token} ταυτοποίησης.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Request without authentication token.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 curl http://localhost:8000/ngsi-ld/v1/entities \
      ?type=https://plegma.example.org/vocab%23HouseholdElectricMeasurement \
      &limit=1
 \end{lstlisting}
+\selectlanguage{greek}
 
-\noindent \textbf{Αναμενόμενο αποτέλεσμα:}
-\begin{lstlisting}[language=bash, caption={Απόκριση \textlatin{Kong} για μη ταυτοποιημένο αίτημα.}]
+\noindent Αναμενόμενο αποτέλεσμα:
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Kong response for unauthenticated request.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 HTTP/1.1 401 Unauthorized
 {"message": "Unauthorized"}
 \end{lstlisting}
-
+\selectlanguage{greek}
 Το \textlatin{Kong} επιστρέφει \textlatin{HTTP 401 Unauthorized} καθώς
-δεν υπάρχει κεφαλίδα \texttt{Authorization} στο αίτημα. Το αίτημα
+δεν υπάρχει κεφαλίδα \textlatin{Authorization} στο αίτημα. Το αίτημα
 δεν προωθείται ποτέ στον \textlatin{Orion-LD}.
 
 % ------------------------------------------------------------------
@@ -70,39 +73,40 @@ HTTP/1.1 401 Unauthorized
 \subsection{Δημιουργία \textlatin{iSHARE JWT} Παρόχου}
 \label{subsec:scenario2-token}
 
-\begin{lstlisting}[language=bash, caption={Δημιουργία \textlatin{iSHARE JWT} μέσω \textlatin{Docker}.}]
-# Το script gen_token.py εκτελείται μέσα σε container Python
-# ώστε να έχει πρόσβαση στα certificates χωρίς τοπική εγκατάσταση
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={iSHARE JWT generation via Docker.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 PROVIDER_TOKEN=$(docker run --rm \
   -v "./iShare:/iShare" \
   python:3.9-slim sh -c \
   "pip install PyJWT cryptography -q 2>/dev/null && \
    python3 /iShare/gen_token.py")
 \end{lstlisting}
-
+\selectlanguage{greek}
 \noindent Τα ορίσματα ερμηνεύονται ως εξής:
 \begin{itemize}
-    \item \texttt{-{}-rm}: Αφαιρεί το \textlatin{container} μετά την εκτέλεση.
-    \item \texttt{-v "./iShare:/iShare"}: Προσαρτά τον φάκελο με τα
+    \item \textlatin{-{}-rm}: Αφαιρεί το \textlatin{container} μετά την εκτέλεση.
+    \item \textlatin{-v "./iShare:/iShare"}: Προσαρτά τον φάκελο με τα
     πιστοποιητικά στο \textlatin{container}.
-    \item \texttt{pip install PyJWT cryptography -q 2>/dev/null}: Εγκαθιστά
+    \item \textlatin{pip install PyJWT cryptography -q 2>/dev/null}: Εγκαθιστά
     τις απαραίτητες βιβλιοθήκες αθόρυβα.
-    \item \texttt{python3 /iShare/gen\_token.py}: Εκτελεί το \textlatin{script}
+    \item \textlatin{python3 /iShare/gen\_token.py}: Εκτελεί το \textlatin{script}
     δημιουργίας \textlatin{JWT}.
 \end{itemize}
 
 \subsection{Ανάγνωση Δεδομένων \textlatin{HouseholdElectricMeasurement}}
 \label{subsec:scenario2-electric}
 
-\begin{lstlisting}[language=bash, caption={Αίτημα ανάγνωσης μετρήσεων ηλεκτρισμού με \textlatin{token} παρόχου.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Electric measurement read request with provider token.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 curl http://localhost:8000/ngsi-ld/v1/entities \
      ?type=https://plegma.example.org/vocab%23HouseholdElectricMeasurement \
      &limit=1 \
      -H "Authorization: Bearer $PROVIDER_TOKEN"
 \end{lstlisting}
-
+\selectlanguage{greek}
 \noindent \textbf{Αποτέλεσμα (\textlatin{HTTP 200 OK}):}
-\begin{lstlisting}[language=bash, caption={Απόκριση με δεδομένα μέτρησης ηλεκτρισμού.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Response with electric measurement data.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 [
   {
     "id": "urn:ngsi-ld:HouseholdElectricMeasurement:House01:2022-07-15T00:00:00Z",
@@ -129,22 +133,24 @@ curl http://localhost:8000/ngsi-ld/v1/entities \
   }
 ]
 \end{lstlisting}
-
+\selectlanguage{greek}
 \subsection{Ανάγνωση Περιβαλλοντικών Μετρήσεων}
 \label{subsec:scenario2-env}
 
 Ο ίδιος \textlatin{token} παρόχου επιτρέπει πρόσβαση και στους υπόλοιπους
 τύπους οντοτήτων που διαθέτει το \textlatin{Plegma Dataset}:
 
-\begin{lstlisting}[language=bash, caption={Αίτημα ανάγνωσης περιβαλλοντικών μετρήσεων.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Environmental measurement read request.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 curl http://localhost:8000/ngsi-ld/v1/entities \
      ?type=https://plegma.example.org/vocab%23EnvironmentalMeasurement \
      &limit=1 \
      -H "Authorization: Bearer $PROVIDER_TOKEN"
 \end{lstlisting}
-
+\selectlanguage{greek}
 \noindent \textbf{Αποτέλεσμα (\textlatin{HTTP 200 OK}):}
-\begin{lstlisting}[language=bash, caption={Απόκριση με δεδομένα περιβαλλοντικών μετρήσεων.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Response with environmental measurement data.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 [
   {
     "id": "urn:ngsi-ld:EnvironmentalMeasurement:House01:2022-07-15T00:00:00Z",
@@ -162,19 +168,21 @@ curl http://localhost:8000/ngsi-ld/v1/entities \
   }
 ]
 \end{lstlisting}
-
+\selectlanguage{greek}
 \subsection{Ανάγνωση Δεδομένων Κτιρίου}
 \label{subsec:scenario2-building}
 
-\begin{lstlisting}[language=bash, caption={Αίτημα ανάγνωσης δεδομένων κτιρίου.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Building data read request.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 curl http://localhost:8000/ngsi-ld/v1/entities \
      ?type=https://smartdatamodels.org/dataModel.Building/Building \
      &limit=1 \
      -H "Authorization: Bearer $PROVIDER_TOKEN"
 \end{lstlisting}
-
+\selectlanguage{greek}
 \noindent \textbf{Αποτέλεσμα (\textlatin{HTTP 200 OK}):}
-\begin{lstlisting}[language=bash, caption={Απόκριση με μεταδεδομένα κτιρίου.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Response with building metadata.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 [
   {
     "id": "urn:ngsi-ld:Building:House01",
@@ -195,7 +203,7 @@ curl http://localhost:8000/ngsi-ld/v1/entities \
   }
 ]
 \end{lstlisting}
-
+\selectlanguage{greek}
 Και στις τρεις περιπτώσεις, το \textlatin{Kong} επαλήθευσε επιτυχώς το
 \textlatin{iSHARE JWT} και προώθησε τα αιτήματα στον \textlatin{Orion-LD},
 ο οποίος επέστρεψε τα αντίστοιχα δεδομένα με \textlatin{HTTP 200 OK}.
@@ -207,25 +215,27 @@ curl http://localhost:8000/ngsi-ld/v1/entities \
 
 Το τρίτο σενάριο αποτελεί την πλήρη επίδειξη του κύκλου εκχώρησης
 εξουσιοδότησης (\textlatin{delegation cycle}): ο πάροχος έχει εκχωρήσει άδεια
-στον καταναλωτή να διαβάζει δεδομένα τύπου \texttt{HouseholdElectricMeasurement},
+στον καταναλωτή να διαβάζει δεδομένα τύπου \textlatin{HouseholdElectricMeasurement},
 και η επίδειξη αυτή αποδεικνύει ότι ο καταναλωτής μπορεί να αποκτήσει
 πρόσβαση αποκλειστικά και μόνο μέσω αυτής της εκχώρησης.
 
 \subsection{Βήμα 1: Δημιουργία \textlatin{iSHARE JWT} Καταναλωτή}
 \label{subsec:scenario3-consumer-jwt}
 
-\begin{lstlisting}[language=bash, caption={Δημιουργία \textlatin{iSHARE JWT} καταναλωτή.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Consumer iSHARE JWT generation.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 CONSUMER_JWT=$(docker run --rm \
   -v "./iShare:/iShare" \
   python:3.9-slim sh -c \
   "pip install PyJWT cryptography -q 2>/dev/null && \
    python3 /iShare/gen_consumer_token.py")
 \end{lstlisting}
-
+\selectlanguage{greek}
 \subsection{Βήμα 2: Λήψη \textlatin{Access Token} από τον \textlatin{Keyrock}}
 \label{subsec:scenario3-access-token}
 
-\begin{lstlisting}[language=bash, caption={Ανταλλαγή \textlatin{iSHARE JWT} με \textlatin{access token}.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={iSHARE JWT exchange for access token.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 TOKEN_RESPONSE=$(curl -s -X POST \
   "http://localhost:3007/oauth2/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
@@ -238,7 +248,7 @@ TOKEN_RESPONSE=$(curl -s -X POST \
 ACCESS_TOKEN=$(echo $TOKEN_RESPONSE | python -c \
   "import sys, json; print(json.load(sys.stdin)['access_token'])")
 \end{lstlisting}
-
+\selectlanguage{greek}
 Η επιτυχής λήψη \textlatin{access token} από τον \textlatin{Keyrock}
 υποδηλώνει ότι:
 \begin{enumerate}
@@ -252,15 +262,17 @@ ACCESS_TOKEN=$(echo $TOKEN_RESPONSE | python -c \
 \subsection{Βήμα 3: Πρόσβαση στα Δεδομένα Μέσω \textlatin{Kong}}
 \label{subsec:scenario3-data-access}
 
-\begin{lstlisting}[language=bash, caption={Αίτημα ανάγνωσης δεδομένων από τον καταναλωτή.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Data read request by the consumer.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 curl http://localhost:8000/ngsi-ld/v1/entities \
      ?type=https://plegma.example.org/vocab%23HouseholdElectricMeasurement \
      &limit=1 \
      -H "Authorization: Bearer $ACCESS_TOKEN"
 \end{lstlisting}
-
+\selectlanguage{greek}
 \noindent \textbf{Αποτέλεσμα (\textlatin{HTTP 200 OK}):}
-\begin{lstlisting}[language=bash, caption={Επιτυχής ανάγνωση δεδομένων από τον καταναλωτή.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Successful data read by the consumer.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 [
   {
     "id": "urn:ngsi-ld:HouseholdElectricMeasurement:House01:2022-07-15T00:00:00Z",
@@ -278,7 +290,7 @@ curl http://localhost:8000/ngsi-ld/v1/entities \
   }
 ]
 \end{lstlisting}
-
+\selectlanguage{greek}
 Το \textlatin{Kong} επαλήθευσε το \textlatin{access token}, εξέτασε το
 \textlatin{delegationEvidence} που ενσωματώνει, διαπίστωσε ότι ο τύπος
 πόρου και η ενέργεια \textlatin{GET} καλύπτονται από την πολιτική του
@@ -296,11 +308,11 @@ curl http://localhost:8000/ngsi-ld/v1/entities \
 \centering
 \caption{Αποτελέσματα σεναρίων επίδειξης ελέγχου πρόσβασης.}
 \label{tab:demo-results}
-\begin{tabular}{|p{0.5cm}|p{5cm}|p{2.5cm}|p{5cm}|}
+\begin{tabular}{|>{\centering\arraybackslash}m{0.5cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
 \hline
 \textbf{\#} & \textbf{Σενάριο} & \textbf{Αποτέλεσμα} & \textbf{Αιτιολογία} \\
 \hline
-1 & Χωρίς \textlatin{token} & \textlatin{401 Unauthorized} & Απουσία κεφαλίδας \texttt{Authorization} \\
+1 & Χωρίς \textlatin{token} & \textlatin{401 Unauthorized} & Απουσία κεφαλίδας \textlatin{Authorization} \\
 \hline
 2α & Πάροχος, \textlatin{HouseholdElectricMeasurement} & \textlatin{200 OK} & Έγκυρο \textlatin{iSHARE JWT}, τοπική αρχή \\
 \hline
@@ -317,26 +329,14 @@ curl http://localhost:8000/ngsi-ld/v1/entities \
 ενός \textlatin{Data Space} βάσει \textlatin{iSHARE}:
 
 \begin{itemize}
-    \item \textbf{Μηδενική πρόσβαση χωρίς ταυτοποίηση}: Κανένα αίτημα
+    \item Μηδενική πρόσβαση χωρίς ταυτοποίηση: Κανένα αίτημα
     χωρίς έγκυρο \textlatin{token} δεν φτάνει στα δεδομένα.
-    \item \textbf{Πλήρης πρόσβαση παρόχου}: Ο πάροχος έχει πρόσβαση σε
+    \item Πλήρης πρόσβαση παρόχου: Ο πάροχος έχει πρόσβαση σε
     όλα τα δεδομένα που κατέχει, αποδεικνύοντας ταυτότητα μέσω
     ψηφιακής υπογραφής.
-    \item \textbf{Ελεγχόμενη πρόσβαση καταναλωτή}: Ο καταναλωτής αποκτά
+    \item Ελεγχόμενη πρόσβαση καταναλωτή: Ο καταναλωτής αποκτά
     πρόσβαση μόνο στα δεδομένα για τα οποία ο πάροχος έχει εκδώσει
     πολιτική εκχώρησης — διατηρώντας έτσι ο πάροχος την ψηφιακή του
     κυριαρχία.
 \end{itemize}
 
-% ------------------------------------------------------------------
-\section{Σύνοψη}
-\label{sec:ch8-summary}
-% ------------------------------------------------------------------
-
-Στο παρόν κεφάλαιο παρουσιάστηκε πειραματικά ο κύκλος εκχώρησης πρόσβασης
-του \textlatin{Plegma Data Space} μέσω πέντε σεναρίων επίδειξης. Επαληθεύτηκε
-η ορθή λειτουργία του ελέγχου πρόσβασης τόσο για τον πάροχο όσο και για τον
-καταναλωτή, καθώς και η αποτελεσματική απόρριψη μη εξουσιοδοτημένων αιτημάτων.
-
-Στο τελευταίο κεφάλαιο παρουσιάζονται τα συμπεράσματα της εργασίας και οι
-προτάσεις για μελλοντικές επεκτάσεις του συστήματος.

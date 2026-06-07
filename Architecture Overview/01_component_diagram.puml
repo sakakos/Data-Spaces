@@ -1,5 +1,5 @@
 @startuml component_diagram
-title Plegma Data Space - Component Architecture
+title Data Space Component Diagram
 
 ' ──────────────────────────────────────────────────────────
 ' Styling

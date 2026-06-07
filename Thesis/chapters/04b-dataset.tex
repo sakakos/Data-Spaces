@@ -1,8 +1,8 @@
-\chapter{Το \textlatin{Plegma Dataset} και το Μοντέλο Δεδομένων \textlatin{NGSI-LD}}
+\chapter{Το \textlatin{Dataset} και το Μοντέλο Δεδομένων}
 \label{ch:dataset}
 
 Το παρόν κεφάλαιο παρουσιάζει αναλυτικά το \textlatin{Plegma Dataset} που
-χρησιμοποιήθηκε ως πηγή δεδομένων για το \textlatin{Plegma Data Space}, καθώς
+χρησιμοποιήθηκε ως πηγή δεδομένων, καθώς
 και τον τρόπο με τον οποίο τα δεδομένα αυτά αναπαρίστανται σε μορφή
 \textlatin{NGSI-LD}. Ο στόχος είναι να γίνει κατανοητό, μέσα από πρακτικά
 παραδείγματα, πώς το \textlatin{NGSI-LD} μοντελοποιεί πραγματικά δεδομένα
@@ -19,97 +19,42 @@
 νοικοκυριά στην Ελλάδα. Δημοσιεύτηκε από το \textlatin{University of
 Strathclyde} και διατίθεται ελεύθερα για ερευνητικούς σκοπούς.
 
-\subsection{Περιεχόμενο του \textlatin{Dataset}}
-\label{subsec:dataset-content}
-
 Το \textlatin{dataset} περιλαμβάνει δεδομένα που συλλέχθηκαν σε διάστημα
-περίπου 15 μηνών (Ιούλιος 2022 -- Σεπτέμβριος 2023) με χρονική ανάλυση ενός
+περίπου 15 μηνών (Ιούλιος 2022 με Σεπτέμβριος 2023) με χρονική ανάλυση ενός
 λεπτού. Για κάθε νοικοκυριό διατίθενται:
 
 \begin{itemize}
-    \item \textbf{Ηλεκτρολογικές μετρήσεις} (\texttt{Electric\_data/}): Ολική
+    \item Ηλεκτρολογικές μετρήσεις (\textlatin{Electric\_data}): Ολική
     ενεργός ισχύς (\textlatin{P\_agg} σε \textlatin{W}), τάση (\textlatin{V}),
     ρεύμα (\textlatin{A}) και ισχύς ανά συσκευή (κλιματιστικά, ψυγείο,
     πλυντήριο, θερμοσίφωνας).
-    \item \textbf{Περιβαλλοντικές μετρήσεις} (\texttt{Environmental\_data/}):
-    Εσωτερική και εξωτερική θερμοκρασία (°C) και υγρασία (\%).
-    \item \textbf{Μεταδεδομένα κτιρίου} (\texttt{appliances\_metadata.csv},
-    \texttt{houses\_metadata.xlsx}): Χαρακτηριστικά κτιρίου, σύστημα θέρμανσης,
+    \item Περιβαλλοντικές μετρήσεις (\textlatin{Environmental\_data}):
+    Εσωτερική και εξωτερική θερμοκρασία (°\textlatin{C}) και υγρασία (\%).
+    \item Μεταδεδομένα κτιρίου (\textlatin{appliances\_metadata.csv},
+    \textlatin{houses\_metadata.xlsx}): Χαρακτηριστικά κτιρίου, σύστημα θέρμανσης,
     έτος κατασκευής, αριθμός δωματίων, κατάσταση ένοικου.
-    \item \textbf{Δημογραφικά στοιχεία}: Ανωνυμοποιημένα σωκοδημογραφικά
+    \item Δημογραφικά στοιχεία: Ανωνυμοποιημένα σωκοδημογραφικά
     δεδομένα του νοικοκύρη (ηλικιακή ομάδα, εκπαιδευτικό επίπεδο, εισόδημα).
 \end{itemize}
 
-\subsection{Κλίμακα Δεδομένων}
-\label{subsec:dataset-scale}
-
 Για 13 νοικοκυριά, μετρήσεις ανά λεπτό, σε διάστημα 15 μηνών, ο συνολικός
 όγκος ανέρχεται σε περίπου 8,1 εκατομμύρια χρονοσφραγίδες ανά τύπο μέτρησης.
-Στα πλαίσια της παρούσας εργασίας, φορτώθηκαν δεδομένα από ένα νοικοκυριό
-(\textlatin{House01}) για τον μήνα Ιούλιο 2022, με \textlatin{limit=10} εγγραφές
-για λόγους επίδειξης.
+Εάν προσπαθούσαμε να φορτώσουμε όλα αυτά τα δεδομένα ως πάροχος, αποδεικνύοντας κάθε φορά την
+ταυτότητά μας θα θέλαμε περίπου 1 ημέρα για ολοκληρωθεί η διαδικασία. Έτσι τα δεδομένα 
+φορτώθηκα στο σύστημα παρακάμπτοντας την διαδικασία πιστοποίησης.
 
 % ------------------------------------------------------------------
-\section{Σχεδίαση του Μοντέλου Δεδομένων \textlatin{NGSI-LD}}
-\label{sec:data-model-design}
-% ------------------------------------------------------------------
-
-Η αναπαράσταση του \textlatin{Plegma Dataset} σε \textlatin{NGSI-LD} απαιτεί
-τη μοντελοποίηση των δεδομένων ως αλληλοσυνδεόμενες οντότητες. Σχεδιάστηκαν
-πέντε τύποι οντοτήτων που αντανακλούν τη φυσική δομή του \textlatin{dataset}.
-
-\subsection{Η Φιλοσοφία του \textlatin{NGSI-LD}}
-\label{subsec:ngsi-ld-philosophy}
-
-Σε αντίθεση με μια σχεσιακή βάση δεδομένων ή ένα απλό \textlatin{JSON} έγγραφο,
-το \textlatin{NGSI-LD} μοντελοποιεί τον κόσμο ως ένα γράφο οντοτήτων
-συνδεδεμένων μέσω \textlatin{Σχέσεων} (\textlatin{Relationships}). Κάθε
-οντότητα χαρακτηρίζεται από:
-
-\begin{itemize}
-    \item \textbf{Ιδιότητες (\textlatin{Properties})}: Μετρήσιμα χαρακτηριστικά
-    με τιμή, μονάδα μέτρησης και χρονοσφραγίδα.
-    \item \textbf{Σχέσεις (\textlatin{Relationships})}: Συνδέσεις με άλλες
-    οντότητες μέσω \textlatin{URI}.
-    \item \textbf{\textlatin{Context}}: Αντιστοίχιση ονομάτων ιδιοτήτων σε
-    παγκόσμια \textlatin{URI} (\textlatin{Linked Data}).
-\end{itemize}
-
-\subsection{Επισκόπηση Οντοτήτων}
-\label{subsec:entities-overview}
-
-Οι πέντε τύποι οντοτήτων και οι σχέσεις τους αποτυπώνονται στο ακόλουθο
-γράφο:
-
-\begin{lstlisting}[language=bash, caption={Γράφος σχέσεων οντοτήτων \textlatin{Plegma Data Space}.}]
-Building ──hasOccupant──> Person
-   |
-   └──hasAppliance──> Device (x5: ac_1, ac_2, boiler, fridge, washing_machine)
-
-HouseholdElectricMeasurement ──refBuilding──> Building
-EnvironmentalMeasurement     ──refBuilding──> Building
-\end{lstlisting}
-
-Οι στατικές οντότητες (\texttt{Building}, \texttt{Person}, \texttt{Device})
-δημιουργούνται \textbf{μία φορά} ανά νοικοκυριό και περιγράφουν σταθερά
-χαρακτηριστικά. Οι χρονοσειρές
-(\texttt{HouseholdElectricMeasurement}, \texttt{EnvironmentalMeasurement})
-δημιουργούνται \textbf{μία φορά ανά χρονοσφραγίδα} και αναφέρονται στο
-αντίστοιχο κτίριο μέσω \textlatin{Relationship}.
-
-% ------------------------------------------------------------------
-\section{Οντότητα \texttt{Building}}
+\section{Οντότητα \textlatin{Building}}
 \label{sec:entity-building}
 % ------------------------------------------------------------------
 
-Η οντότητα \texttt{Building} αναπαριστά ένα νοικοκυριό και αποθηκεύει
+Η οντότητα \textlatin{Building} αναπαριστά ένα νοικοκυριό και αποθηκεύει
 τα στατικά μεταδεδομένα του. Εμπνέεται από το επίσημο μοντέλο
-\textlatin{smart-data-models/dataModel.Building}.
+\textlatin{smart-data-models/dataModel.Building}. Έτσι έχει την μορφή:
 
-\subsection{Παράδειγμα Οντότητας}
-\label{subsec:building-example}
-
-\begin{lstlisting}[language=bash, caption={Οντότητα \texttt{Building} για το \textlatin{House01} σε \textlatin{NGSI-LD}.}]
+\vspace{0.5cm}
+\selectlanguage{english}
+\begin{lstlisting}[language={}, caption={Building entity for House01 in NGSI-LD.}]
 {
   "id": "urn:ngsi-ld:Building:House01",
   "type": "https://plegma.example.org/vocab#Building",
@@ -159,36 +104,36 @@ EnvironmentalMeasurement     ──refBuilding──> Building
   "@context": "https://example.org/plegma-context.jsonld"
 }
 \end{lstlisting}
-
-\subsection{Αξιοσημείωτα Σημεία}
-\label{subsec:building-notes}
+\selectlanguage{greek}
 
 Αξίζει να παρατηρηθούν τα εξής:
 \begin{itemize}
-    \item Η ιδιότητα \texttt{hasAppliance} είναι \textbf{Σχέση} τύπου
-    \textlatin{Relationship} και δείχνει σε ένα \textbf{σύνολο} από
+    \item Η ιδιότητα \textlatin{hasAppliance} είναι Σχέση
+    (\textlatin{Relationship}) και δείχνει σε ένα σύνολο από
     \textlatin{Device URI}. Αυτό επιτρέπει ερωτήματα όπως «ποιες συσκευές
     ανήκουν σε αυτό το κτίριο» χωρίς να χρειαστεί \textlatin{JOIN} ή
     εξωτερική αναζήτηση.
     \item Οι ιδιότητες που ανήκουν στο \textlatin{Plegma} προσαρτώνται με
-    το \textlatin{namespace} \texttt{https://plegma.example.org/vocab\#},
-    ενώ οι κοινές ιδιότητες (π.χ. \texttt{category}) χρησιμοποιούν τον
+    το \textlatin{namespace} \textlatin{https://plegma.example.org/vocab\#},
+    ενώ οι κοινές ιδιότητες χρησιμοποιούν τον
     κοινό \textlatin{namespace} \textlatin{smart-data-models}.
-    \item Το αναγνωριστικό (\texttt{id}) ακολουθεί το πρότυπο
-    \texttt{urn:ngsi-ld:\{EntityType\}:\{HouseXX\}}.
+    \item Το αναγνωριστικό (\textlatin{id}) ακολουθεί το πρότυπο
+    \textlatin{urn:ngsi-ld:\{EntityType\}:\{HouseXX\}}.
 \end{itemize}
 
 % ------------------------------------------------------------------
-\section{Οντότητα \texttt{Device}}
+\section{Οντότητα \textlatin{Device}}
 \label{sec:entity-device}
 % ------------------------------------------------------------------
 
-Η οντότητα \texttt{Device} αναπαριστά μια μετρούμενη οικιακή συσκευή.
-Δημιουργούνται πέντε \texttt{Device} οντότητες ανά νοικοκυριό, μία για κάθε
+Η οντότητα \textlatin{Device} αναπαριστά μια μετρούμενη οικιακή συσκευή.
+Δημιουργούνται πέντε \textlatin{Device} οντότητες ανά νοικοκυριό, μία για κάθε
 συσκευή που καταγράφεται στο \textlatin{dataset} (δύο κλιματιστικά,
 θερμοσίφωνας, ψυγείο, πλυντήριο).
 
-\begin{lstlisting}[language=bash, caption={Οντότητα \texttt{Device} για το κλιματιστικό \textlatin{ac\_1}.}]
+\vspace{0.5cm}
+\selectlanguage{english}
+\begin{lstlisting}[language={}, caption={Device entity for air conditioner ac\_1.}]
 {
   "id": "urn:ngsi-ld:Device:House01:ac_1",
   "type": "https://plegma.example.org/vocab#Device",
@@ -222,20 +167,20 @@ EnvironmentalMeasurement     ──refBuilding──> Building
   "@context": "https://example.org/plegma-context.jsonld"
 }
 \end{lstlisting}
+\selectlanguage{greek}
 
 % ------------------------------------------------------------------
-\section{Οντότητα \texttt{HouseholdElectricMeasurement}}
+\section{Οντότητα \textlatin{HouseholdElectricMeasurement}}
 \label{sec:entity-electric}
 % ------------------------------------------------------------------
 
-Η οντότητα \texttt{HouseholdElectricMeasurement} αναπαριστά ένα στιγμιότυπο
+Η οντότητα \textlatin{HouseholdElectricMeasurement} αναπαριστά ένα στιγμιότυπο
 ηλεκτρολογικών μετρήσεων από τον έξυπνο μετρητή ενός νοικοκυριού. Είναι η
-πιο πυκνή οντότητα του \textlatin{dataset} — μία ανά λεπτό ανά νοικοκυριό.
+πιο πυκνή οντότητα του \textlatin{dataset}.
 
-\subsection{Παράδειγμα Οντότητας}
-\label{subsec:electric-example}
-
-\begin{lstlisting}[language=bash, caption={Οντότητα \texttt{HouseholdElectricMeasurement} για \textlatin{House01}.}]
+\vspace{0.5cm}
+\selectlanguage{english}
+\begin{lstlisting}[language={}, caption={HouseholdElectricMeasurement entity for House01.}]
 {
   "id": "urn:ngsi-ld:HouseholdElectricMeasurement:House01:2022-07-15T00:00:00Z",
   "type": "https://plegma.example.org/vocab#HouseholdElectricMeasurement",
@@ -285,39 +230,35 @@ EnvironmentalMeasurement     ──refBuilding──> Building
   "@context": "https://example.org/plegma-context.jsonld"
 }
 \end{lstlisting}
+\selectlanguage{greek}
 
-\subsection{Σχεδιαστική Επιλογή: \texttt{appliancePower} ως Λεξικό}
-\label{subsec:appliance-power-design}
-
-Η ισχύς ανά συσκευή αποθηκεύεται ως \textbf{ένα} αντικείμενο
-\texttt{appliancePower} με τιμή λεξικού (π.χ. \texttt{\{"ac\_1": 0, "fridge":
+Η ισχύς ανά συσκευή αποθηκεύεται ως ένα αντικείμενο
+\textlatin{appliancePower} με τιμή λεξικού (π.χ. \textlatin{\{"ac\_1": 0, "fridge":
 45.2, ...\}}), αντί να δημιουργείται ξεχωριστή οντότητα για κάθε συσκευή ανά
-χρονοσφραγίδα. Η επιλογή αυτή βασίστηκε στα εξής κριτήρια:
+χρονοσφραγίδα. Η επιλογή αυτή βασίστηκε στο ότι η δημιουργία ξεχωριστών οντοτήτων ανά συσκευή
+ανά λεπτό θα αύξανε τον αριθμό οντοτήτων κατά 5 φορές ($\approx$3,4
+εκατομμύρια αντί για $\approx$560 χιλιάδες ανά μήνα για 13 νοικοκυριά),
+χωρίς ουσιαστικό πλεονέκτημα για τα ερωτήματα του παρόντος
+\textlatin{Data Space}. Επίση, το κλειδί του λεξικού (π.χ.
+\textlatin{ac\_1}) αντιστοιχεί άμεσα στο επίθημα του \textlatin{URI} της
+αντίστοιχης \textlatin{Device} οντότητας
+(\textlatin{urn:ngsi-ld:Device:House01:ac\_1}), διατηρώντας τη σημασιολογική
+σύνδεση χωρίς επιπλέον οντότητες.
 
-\begin{itemize}
-    \item \textbf{Κλιμάκωση}: Η δημιουργία ξεχωριστών οντοτήτων ανά συσκευή
-    ανά λεπτό θα αύξανε τον αριθμό οντοτήτων κατά 5 φορές ($\approx$3,4
-    εκατομμύρια αντί για $\approx$560 χιλιάδες ανά μήνα για 13 νοικοκυριά),
-    χωρίς ουσιαστικό πλεονέκτημα για τα ερωτήματα του παρόντος
-    \textlatin{Data Space}.
-    \item \textbf{Σημασιολογικός Σύνδεσμος}: Το κλειδί του λεξικού (π.χ.
-    \texttt{ac\_1}) αντιστοιχεί άμεσα στο επίθημα του \textlatin{URI} της
-    αντίστοιχης \texttt{Device} οντότητας
-    (\texttt{urn:ngsi-ld:Device:House01:ac\_1}), διατηρώντας τη σημασιολογική
-    σύνδεση χωρίς επιπλέον οντότητες.
-\end{itemize}
 
 % ------------------------------------------------------------------
-\section{Οντότητα \texttt{EnvironmentalMeasurement}}
+\section{Οντότητα \textlatin{EnvironmentalMeasurement}}
 \label{sec:entity-environmental}
 % ------------------------------------------------------------------
 
-Η οντότητα \texttt{EnvironmentalMeasurement} αναπαριστά ένα στιγμιότυπο
+Η οντότητα \textlatin{EnvironmentalMeasurement} αναπαριστά ένα στιγμιότυπο
 περιβαλλοντικών μετρήσεων. Εμπνέεται από το μοντέλο
 \textlatin{smart-data-models/dataModel.Weather/WeatherObserved} αλλά διακρίνει
 μεταξύ εσωτερικών και εξωτερικών μετρήσεων.
 
-\begin{lstlisting}[language=bash, caption={Οντότητα \texttt{EnvironmentalMeasurement} για \textlatin{House01}.}]
+\vspace{0.5cm}
+\selectlanguage{english}
+\begin{lstlisting}[language={}, caption={EnvironmentalMeasurement entity for House01.}]
 {
   "id": "urn:ngsi-ld:EnvironmentalMeasurement:House01:2022-07-15T00:00:00Z",
   "type": "https://plegma.example.org/vocab#EnvironmentalMeasurement",
@@ -357,39 +298,41 @@ EnvironmentalMeasurement     ──refBuilding──> Building
   "@context": "https://example.org/plegma-context.jsonld"
 }
 \end{lstlisting}
+\selectlanguage{greek}
 
 % ------------------------------------------------------------------
-\section{Το \textlatin{JSON-LD Context} του \textlatin{Plegma}}
+\section{Το \textlatin{JSON-LD Context} του \textlatin{Plegma Dataset}}
 \label{sec:plegma-context}
 % ------------------------------------------------------------------
 
 Ένα κρίσιμο στοιχείο του \textlatin{NGSI-LD} είναι το \textlatin{context}
-(\texttt{@context}), το οποίο αντιστοιχίζει τα σύντομα ονόματα των
+(\textlatin{@context}), το οποίο αντιστοιχίζει τα σύντομα ονόματα των
 ιδιοτήτων σε παγκόσμια \textlatin{URI}. Αυτό επιτρέπει στους αναγνώστες
 να κατανοούν τη σημασία κάθε ιδιότητας ανεξάρτητα από τον οργανισμό που τη
-δημοσίευσε — η βάση της διαλειτουργικότητας \textlatin{Linked Data}.
+δημοσίευσε.
 
-\subsection{Δομή του \textlatin{Context}}
-\label{subsec:context-structure}
-
-Το αρχείο \texttt{plegma-context.jsonld} ορίζει τρία επίπεδα:
+Το αρχείο \textlatin{plegma-context.jsonld} ορίζει τρία επίπεδα:
 
 \begin{enumerate}
-    \item \textbf{Εισαγωγή επίσημων \textlatin{context}}: Ο \textlatin{Plegma
+    \item Εισαγωγή επίσημων \textlatin{context}: Ο \textlatin{Plegma
     context} εισάγει πρώτα τα επίσημα \textlatin{context} της
     \textlatin{ETSI} (\textlatin{NGSI-LD core}) και των
     \textlatin{smart-data-models}, κληρονομώντας τον ορισμό κοινών
-    ιδιοτήτων όπως \texttt{dateObserved}, \texttt{location} κ.λπ.
+    ιδιοτήτων όπως \textlatin{dateObserved}, \textlatin{location} κ.λπ.
 
-    \item \textbf{\textlatin{Namespace} \texttt{plegma:}}: Ορίζεται μια
+    \item \textlatin{Namespace} \textlatin{plegma:}: Ορίζεται μια
     σύντομη αναφορά στο \textlatin{namespace} του \textlatin{Plegma}:
-\begin{lstlisting}[language=bash]
+
+\selectlanguage{english}
+\begin{lstlisting}[language={}]
 "plegma": "https://plegma.example.org/vocab#"
 \end{lstlisting}
+\selectlanguage{greek}
 
-    \item \textbf{Αντιστοίχιση Ιδιοτήτων}: Κάθε ιδιότητα που ορίζεται
+    \item Αντιστοίχιση Ιδιοτήτων: Κάθε ιδιότητα που ορίζεται
     στα \textlatin{schemas} αντιστοιχίζεται σε ένα \textlatin{URI}:
-\begin{lstlisting}[language=bash, caption={Απόσπασμα \textlatin{context} αντιστοίχισης ιδιοτήτων.}]
+\selectlanguage{english}
+\begin{lstlisting}[language={}, caption={Context mapping excerpt.}]
 {
   "@context": {
     "plegma": "https://plegma.example.org/vocab#",
@@ -410,10 +353,8 @@ EnvironmentalMeasurement     ──refBuilding──> Building
   }
 }
 \end{lstlisting}
+\selectlanguage{greek}
 \end{enumerate}
-
-\subsection{Πρόσβαση στο \textlatin{Context} από τον \textlatin{Orion-LD}}
-\label{subsec:context-access}
 
 Ο \textlatin{Orion-LD} απαιτεί το \textlatin{context} να είναι προσβάσιμο
 μέσω \textlatin{HTTP} κατά τη δημιουργία οντοτήτων. Αυτό επιτρέπει στον
@@ -421,17 +362,19 @@ EnvironmentalMeasurement     ──refBuilding──> Building
 \textlatin{URI} τους εσωτερικά. Στη διάρκεια της επίδειξης, χρησιμοποιήθηκε
 το επίσημο \textlatin{context} των \textlatin{smart-data-models}:
 
-\begin{lstlisting}[language=bash]
+\selectlanguage{english}
+\begin{lstlisting}[language={}]
 CONTEXT_URL = "https://raw.githubusercontent.com/smart-data-models/
                dataModel.Energy/master/context.jsonld"
 \end{lstlisting}
+\selectlanguage{greek}
 
 % ------------------------------------------------------------------
 \section{Αντιστοίχιση \textlatin{CSV} σε \textlatin{NGSI-LD}}
 \label{sec:csv-mapping}
 % ------------------------------------------------------------------
 
-Ο Πίνακας~\ref{tab:electric-mapping} παρουσιάζει την αντιστοίχιση μεταξύ
+Οι παρακάτω πίνακες  παρουσιάζουν την αντιστοίχιση μεταξύ
 στηλών \textlatin{CSV} και ιδιοτήτων \textlatin{NGSI-LD} για τα ηλεκτρολογικά
 δεδομένα.
 
@@ -439,31 +382,31 @@ CONTEXT_URL = "https://raw.githubusercontent.com/smart-data-models/
 \centering
 \caption{Αντιστοίχιση στηλών \textlatin{CSV} σε ιδιότητες \textlatin{NGSI-LD} (ηλεκτρολογικά δεδομένα).}
 \label{tab:electric-mapping}
-\begin{tabular}{|p{3.5cm}|p{5cm}|p{2cm}|p{2cm}|}
+\begin{tabular}{|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
 \hline
 \textbf{Στήλη \textlatin{CSV}} & \textbf{Ιδιότητα \textlatin{NGSI-LD}} & \textbf{Μονάδα} & \textbf{Τύπος} \\
 \hline
-\texttt{timestamp} & \texttt{dateObserved} & — & \textlatin{Property} \\
+\textlatin{timestamp} & \textlatin{dateObserved} & - & \textlatin{Property} \\
 \hline
-\texttt{P\_agg} & \texttt{plegma:activePower} & W & \textlatin{Property} \\
+\textlatin{P\_agg} & \textlatin{plegma:activePower} & \textlatin{W} & \textlatin{Property} \\
 \hline
-\texttt{V} & \texttt{plegma:phaseVoltage} & V & \textlatin{Property} \\
+\textlatin{V} & \textlatin{plegma:phaseVoltage} & \textlatin{V} & \textlatin{Property} \\
 \hline
-\texttt{A} & \texttt{plegma:current} & A & \textlatin{Property} \\
+\textlatin{A} & \textlatin{plegma:current} & \textlatin{A} & \textlatin{Property} \\
 \hline
-\texttt{ac\_1} & \texttt{plegma:appliancePower.ac\_1} & W & \textlatin{Property} \\
+\textlatin{ac\_1} & \textlatin{plegma:appliancePower.ac\_1} & \textlatin{W} & \textlatin{Property} \\
 \hline
-\texttt{ac\_2} & \texttt{plegma:appliancePower.ac\_2} & W & \textlatin{Property} \\
+\textlatin{ac\_2} & \textlatin{plegma:appliancePower.ac\_2} & \textlatin{W} & \textlatin{Property} \\
 \hline
-\texttt{boiler} & \texttt{plegma:appliancePower.boiler} & W & \textlatin{Property} \\
+\textlatin{boiler} & \textlatin{plegma:appliancePower.boiler} & \textlatin{W} & \textlatin{Property} \\
 \hline
-\texttt{fridge} & \texttt{plegma:appliancePower.fridge} & W & \textlatin{Property} \\
+\textlatin{fridge} & \textlatin{plegma:appliancePower.fridge} & \textlatin{W} & \textlatin{Property} \\
 \hline
-\texttt{washing\_machine} & \texttt{plegma:appliancePower.washing\_machine} & W & \textlatin{Property} \\
+\textlatin{washing\_machine} & \textlatin{washing\_machine} & \textlatin{W} & \textlatin{Property} \\
 \hline
-\texttt{issues} & \texttt{plegma:dataQualityIssue} & — & \textlatin{Property (bool)} \\
+\textlatin{issues} & \textlatin{plegma:dataQualityIssue} & - & \textlatin{Property (bool)} \\
 \hline
-— & \texttt{plegma:refBuilding} & — & \textlatin{Relationship} \\
+- & \textlatin{plegma:refBuilding} & - & \textlatin{Relationship} \\
 \hline
 \end{tabular}
 \end{table}
@@ -472,48 +415,19 @@ CONTEXT_URL = "https://raw.githubusercontent.com/smart-data-models/
 \centering
 \caption{Αντιστοίχιση στηλών \textlatin{CSV} σε ιδιότητες \textlatin{NGSI-LD} (περιβαλλοντικά δεδομένα).}
 \label{tab:env-mapping}
-\begin{tabular}{|p{4cm}|p{5cm}|p{2cm}|p{2cm}|}
+\begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
 \hline
 \textbf{Στήλη \textlatin{CSV}} & \textbf{Ιδιότητα \textlatin{NGSI-LD}} & \textbf{Μονάδα} & \textbf{Τύπος} \\
 \hline
-\texttt{timestamp} & \texttt{dateObserved} & — & \textlatin{Property} \\
+\textlatin{timestamp} & \textlatin{dateObserved} & - & \textlatin{Property} \\
 \hline
-\texttt{internal\_temperature} & \texttt{plegma:indoorTemperature} & °C & \textlatin{Property} \\
+\textlatin{internal\_temperature} & \textlatin{plegma:indoorTemperature} & °\textlatin{C} & \textlatin{Property} \\
 \hline
-\texttt{internal\_humidity} & \texttt{plegma:indoorHumidity} & \% & \textlatin{Property} \\
+\textlatin{internal\_humidity} & \textlatin{plegma:indoorHumidity} & \% & \textlatin{Property} \\
 \hline
-\texttt{external\_temperature} & \texttt{plegma:outdoorTemperature} & °C & \textlatin{Property} \\
+\textlatin{external\_temperature} & \textlatin{plegma:outdoorTemperature} & °\textlatin{C} & \textlatin{Property} \\
 \hline
-\texttt{external\_humidity} & \texttt{plegma:outdoorHumidity} & \% & \textlatin{Property} \\
+\textlatin{external\_humidity} & \textlatin{plegma:outdoorHumidity} & \% & \textlatin{Property} \\
 \hline
 \end{tabular}
 \end{table}
-
-% ------------------------------------------------------------------
-\section{Σύνοψη}
-\label{sec:ch-dataset-summary}
-% ------------------------------------------------------------------
-
-Στο παρόν κεφάλαιο παρουσιάστηκε αναλυτικά το \textlatin{Plegma Dataset}
-και ο τρόπος αναπαράστασής του σε μορφή \textlatin{NGSI-LD}. Τα βασικά
-σημεία που αξίζει να επισημανθούν είναι:
-
-\begin{itemize}
-    \item Το \textlatin{NGSI-LD} μοντελοποιεί δεδομένα ως αλληλοσυνδεόμενες
-    οντότητες με σαφή διάκριση μεταξύ \textlatin{Properties} (μετρήσιμα
-    χαρακτηριστικά) και \textlatin{Relationships} (συνδέσεις μεταξύ
-    οντοτήτων).
-    \item Ο διαχωρισμός σε πέντε τύπους οντοτήτων αντανακλά τη φυσική δομή
-    του \textlatin{dataset} και επιτρέπει εκφραστικά ερωτήματα που δεν θα
-    ήταν δυνατά με ενιαία αναπαράσταση.
-    \item Το \textlatin{JSON-LD context} είναι ο μηχανισμός που μετατρέπει
-    ένα απλό \textlatin{JSON} έγγραφο σε \textlatin{Linked Data} με παγκόσμια
-    σημασιολογία.
-    \item Σχεδιαστικές επιλογές, όπως η χρήση λεξικού για το
-    \texttt{appliancePower}, επηρεάζουν σημαντικά την κλιμάκωση και την
-    αποδοτικότητα του συστήματος.
-\end{itemize}
-
-Το κεφάλαιο αυτό παρέχει το αναγκαίο υπόβαθρο για την κατανόηση των
-δεδομένων που χρησιμοποιούνται στις ροές \textlatin{end-to-end} και στα
-σενάρια επίδειξης που παρουσιάζονται στα επόμενα κεφάλαια.

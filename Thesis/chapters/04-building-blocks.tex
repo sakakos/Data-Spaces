@@ -1,299 +1,513 @@
 \chapter{Τα Δομικά Στοιχεία της Υλοποίησης}
 \label{ch:building-blocks}
 
-Το παρόν κεφάλαιο παρουσιάζει τα λογισμικά εργαλεία που αξιοποιήθηκαν για την
-υλοποίηση του \textlatin{Plegma Data Space}. Κάθε εργαλείο αντιστοιχεί σε έναν
-συγκεκριμένο ρόλο εντός της αρχιτεκτονικής και επιλέχθηκε λόγω της συμβατότητάς
-του με το πλαίσιο \textlatin{i4Trust} και της ανοιχτής φύσης του κώδικά του.
+Στο προηγούμενο κεφάλαιο παρουσιάστηκαν τα πρότυπα και οι τεχνολογίες που
+αποτελούν τη θεωρητική βάση. Το παρόν κεφάλαιο εστιάζει στα συγκεκριμένα
+εργαλεία ανοιχτού λογισμικού που υλοποιούν αυτά τα πρότυπα.
 
-% ------------------------------------------------------------------
+% ==================================================================
 \section{\textlatin{FIWARE Orion-LD Context Broker}}
 \label{sec:orion-ld}
-% ------------------------------------------------------------------
+% ==================================================================
 
-Ο \textlatin{Orion-LD Context Broker}~\cite{orion-ld2023} είναι ο κεντρικός
-κόμβος αποθήκευσης και διαχείρισης δεδομένων του \textlatin{Data Space}. Αποτελεί
-εξέλιξη του αρχικού \textlatin{Orion Context Broker} της \textlatin{FIWARE Foundation}
-με πλήρη υποστήριξη του προτύπου \textlatin{NGSI-LD}, επιτρέποντας την αποθήκευση
-και ανάκτηση οντοτήτων με σημασιολογικό περιεχόμενο.
+Ο \textlatin{Orion-LD Context Broker}~\cite{orion-ld2023} είναι μια
+υλοποίηση ανοιχτού κώδικα του προτύπου \textlatin{NGSI-LD} που
+αναπτύσσεται από το \textlatin{FIWARE Foundation}. Αποτελεί τον κεντρικό
+κόμβο αποθήκευσης και διαχείρισης δεδομένων του \textlatin{Data Space}.
 
-\subsection{Ρόλος στην Αρχιτεκτονική}
+Ο \textlatin{Context Broker} δεν είναι μια απλή βάση δεδομένων. Είναι
+ένα ενδιάμεσο λογισμικό (\textlatin{middleware}) που διαχειρίζεται
+πλαισιακές πληροφορίες (\textlatin{context information}), δηλαδή
+πληροφορίες για την τρέχουσα κατάσταση πραγματικών αντικειμένων. Σε
+αντίθεση με μια παραδοσιακή βάση δεδομένων, ο \textlatin{Context Broker}:
+
+\begin{itemize}
+    \item Κατανοεί τη σημασιολογία των δεδομένων μέσω \textlatin{JSON-LD
+    context}.
+    \item Υποστηρίζει ερωτήματα βάσει τύπου οντότητας, ιδιοτήτων,
+    σχέσεων και χωροχρονικών φίλτρων.
+    \item Παρέχει μηχανισμό ειδοποιήσεων (\textlatin{subscriptions}) όπου
+    ένας καταναλωτής μπορεί να εγγραφεί για να λαμβάνει αυτόματα
+    ειδοποιήσεις όταν αλλάζει μια οντότητα.
+    \item Υποστηρίζει χρονικά ερωτήματα (\textlatin{temporal queries})
+    μέσω του πεδίου \textlatin{observedAt} των ιδιοτήτων.
+\end{itemize}
+
+\subsection{Εσωτερική Αρχιτεκτονική}
+\label{subsec:orion-internals}
+
+Ο \textlatin{Orion-LD} είναι γραμμένος σε \textlatin{C/C++} για υψηλή
+απόδοση. Εσωτερικά αποθηκεύει τα δεδομένα σε μια βάση
+\textlatin{MongoDB}. Η επιλογή της \textlatin{MongoDB} 
+αντί μιας σχεσιακής βάσης δεδομένων δεν είναι τυχαία. Τα
+\textlatin{NGSI-LD entities} είναι εγγενώς ιεραρχικά αντικείμενα
+\textlatin{JSON} χωρίς σταθερό σχήμα, κάτι που ταιριάζει στο μοντέλο
+\textlatin{document store} της \textlatin{MongoDB}.
+
+Κατά τη λήψη ενός αιτήματος \textlatin{POST} για δημιουργία οντότητας,
+ο \textlatin{Orion-LD}:
+\begin{enumerate}
+    \item Αναλύει το σώμα \textlatin{JSON-LD} του αιτήματος.
+    \item Επιλύει το \textlatin{@context}: αν δοθεί ως \textlatin{URL},
+    το κατεβάζει μέσω \textlatin{HTTP} και αντιστοιχίζει τα σύντομα
+    ονόματα ιδιοτήτων στα πλήρη \textlatin{URI} τους.
+    \item Ελέγχει ότι το \textlatin{id} δεν υπάρχει ήδη (διαφορετικά
+    επιστρέφει \textlatin{HTTP 409 Conflict}).
+    \item Αποθηκεύει την οντότητα στη \textlatin{MongoDB} με τα πλήρη
+    \textlatin{URI} ως ονόματα πεδίων.
+    \item Επιστρέφει \textlatin{HTTP 201 Created}.
+\end{enumerate}
+
+Αυτή η εσωτερική επέκταση των ονομάτων σε
+\textlatin{URI} εξηγεί γιατί, κατά την ανάκτηση οντοτήτων, οι ιδιότητες
+εμφανίζονται με πλήρη \textlatin{URI} αντί για τα
+σύντομα ονόματα,  εκτός αν παρέχεται
+\textlatin{context} στο αίτημα \textlatin{GET}.
+
+Ο \textlatin{Orion-LD} εκθέτει τις ακόλουθες βασικές λειτουργίες στο
+μονοπάτι \textlatin{/ngsi-ld/v1/}:
+
+\begin{itemize}
+    \item \textlatin{POST /entities}: Δημιουργία νέας οντότητας. Το σώμα
+    πρέπει να είναι \textlatin{JSON-LD} (\textlatin{Content-Type:
+    application/ld+json}).
+    \item \textlatin{GET /entities}: Αναζήτηση οντοτήτων. Υποστηρίζει
+    φίλτρα \textlatin{type}, \textlatin{q} (φίλτρο ιδιοτήτων), \textlatin{limit},
+    \textlatin{offset}, \textlatin{attrs} (επιλογή ιδιοτήτων).
+    \item \textlatin{GET /entities/\{id\}}: Ανάκτηση μεμονωμένης οντότητας.
+    \item \textlatin{PATCH /entities/\{id\}/attrs}: Μερική ενημέρωση
+    ιδιοτήτων.
+    \item \textlatin{DELETE /entities/\{id\}}: Διαγραφή οντότητας.
+    \item \textlatin{POST /subscriptions}: Εγγραφή για ειδοποιήσεις
+    αλλαγών.
+\end{itemize}
+
+\subsection{Ρόλος στο \textlatin{Data Space}}
 \label{subsec:orion-role}
 
-Ο \textlatin{Orion-LD} επιτελεί τον ρόλο του \textbf{αποθετηρίου δεδομένων}
-(\textlatin{data store}). Δέχεται αιτήσεις \textlatin{NGSI-LD} για δημιουργία,
-ανάγνωση, ενημέρωση και διαγραφή οντοτήτων, και αποθηκεύει τα δεδομένα σε μια
-βάση δεδομένων \textlatin{MongoDB}. Στην παρούσα υλοποίηση, ο \textlatin{Orion-LD}
-\textbf{δεν είναι απευθείας προσβάσιμος} από εξωτερικούς χρήστες: όλες οι αιτήσεις
-δρομολογούνται μέσω του \textlatin{Kong API Gateway}, εξασφαλίζοντας ότι κάθε
-πρόσβαση ελέγχεται από τους μηχανισμούς εξουσιοδότησης.
+Στην παρούσα αρχιτεκτονική, ο \textlatin{Orion-LD} εκτίθεται
+\textbf{αποκλειστικά} στο εσωτερικό \textlatin{Docker network}. Η
+θύρα \textlatin{1026} δεν είναι προσβάσιμη εξωτερικά. Μοναδικό σημείο
+πρόσβασης για εξωτερικούς χρήστες είναι το \textlatin{Kong API Gateway}
+(\textlatin{localhost:8000}), το οποίο προωθεί τις αιτήσεις στον
+\textlatin{Orion-LD} μόνο μετά από επιτυχή έλεγχο εξουσιοδότησης. Αυτός
+ο διαχωρισμός εξασφαλίζει ότι τα δεδομένα δεν μπορούν να προσπελαστούν
+παρακάμπτοντας τους μηχανισμούς ασφαλείας.
 
 \subsection{Τεχνικά Χαρακτηριστικά}
-\label{subsec:orion-tech}
-
 \begin{itemize}
-    \item \textbf{Εικόνα \textlatin{Docker}:} \texttt{quay.io/fiware/orion-ld}
-    \item \textbf{Θύρα:} \texttt{1026} (εσωτερικά, εντός του \textlatin{Docker network})
-    \item \textbf{Αποθήκευση:} \textlatin{MongoDB} (βάση δεδομένων εγγράφων)
-    \item \textbf{Πρωτόκολλο:} \textlatin{NGSI-LD v1} (\textlatin{ETSI GS CIM 009})
+    \item Εικόνα \textlatin{Docker}: \textlatin{quay.io/fiware/orion-ld}
+    \item Θύρα: \textlatin{1026} (εσωτερικά)
+    \item Αποθήκευση: \textlatin{MongoDB}
+    \item Γλώσσα: \textlatin{C/C++}
+    \item Πρωτόκολλο:\textlatin{NGSI-LD v1}
+    (\textlatin{ETSI GS CIM 009})
+    \item \textbf{Άδεια:} \textlatin{AGPL-3.0}
 \end{itemize}
 
-% ------------------------------------------------------------------
+% ==================================================================
 \section{\textlatin{Keyrock Identity Manager}}
 \label{sec:keyrock}
-% ------------------------------------------------------------------
+% ==================================================================
 
-Ο \textlatin{Keyrock}~\cite{keyrock2023} είναι ένας διαχειριστής ταυτότητας
-(\textlatin{Identity Manager}) της \textlatin{FIWARE Foundation} που στην παρούσα
-υλοποίηση επιτελεί έναν διπλό ρόλο: αυτόν του \textbf{παρόχου ταυτότητας}
-(\textlatin{Identity Provider}) και αυτόν του \textbf{Μητρώου Εξουσιοδότησης}
+Ο \textlatin{Keyrock}~\cite{keyrock2023} είναι ένα εργαλείο διαχείρισης
+ταυτότητας (\textlatin{Identity Manager}) της \textlatin{FIWARE
+Foundation}. Στην παρούσα υλοποίηση επιτελεί ταυτόχρονα δύο ρόλους:
+αυτόν του παρόχου ταυτότητας (\textlatin{Identity Provider})
+και αυτόν του Μητρώου Εξουσιοδότησης
 (\textlatin{Authorization Registry, AR}).
 
-\subsection{Ρόλος ως \textlatin{Authorization Registry}}
+\subsection{Ρόλος ως Πάροχος Ταυτότητας}
+\label{subsec:keyrock-idp}
+
+Ο \textlatin{Keyrock} είναι υπεύθυνος για την ταυτοποίηση χρηστών
+και οργανισμών. Υποστηρίζει τόσο παραδοσιακή ταυτοποίηση μέσω
+ονόματος χρήστη/κωδικού πρόσβασης όσο
+και ταυτοποίηση μέσω \textlatin{iSHARE JWT}.
+
+Στη ροή \textlatin{M2M} που χρησιμοποιείται στην παρούσα εργασία, η
+ταυτοποίηση λειτουργεί ως εξής:
+\begin{enumerate}
+    \item Ο καταναλωτής αποστέλλει ένα \textlatin{iSHARE JWT} στο
+    \textlatin{endpoint} \textlatin{POST /oauth2/token}.
+    \item Ο \textlatin{Keyrock} εξάγει την αλυσίδα πιστοποιητικών
+    από το πεδίο \textlatin{x5c} και επαληθεύει ότι η υπογραφή του
+    \textlatin{JWT} αντιστοιχεί στο δημόσιο κλειδί του πιστοποιητικού.
+    \item Ελέγχει ότι το πιστοποιητικό φέρει την επέκταση
+    \textlatin{keyUsage: digitalSignature}. Αυτός ο έλεγχος γίνεται
+    στο αρχείο \textlatin{validate\_client\_certificate} και, αν
+    αποτύχει, ο \textlatin{Keyrock} επιστρέφει σφάλμα.
+    \item Επικοινωνεί με τον \textlatin{iSHARE Satellite} (βλ.
+    ενότητα~\ref{sec:satellite}) για να επαληθεύσει ότι ο καταναλωτής
+    είναι ενεργός συμμετέχων στο \textlatin{Data Space}.
+    \item Αν όλα τα παραπάνω είναι επιτυχή, ο \textlatin{Keyrock}
+    δημιουργεί (ή εντοπίζει) μια εσωτερική εγγραφή χρήστη για τον
+    καταναλωτή μέσω του μηχανισμού \textlatin{extparticipant}.
+\end{enumerate}
+
+\subsection{Ρόλος ως Μητρώο Εξουσιοδότησης }
 \label{subsec:keyrock-ar}
 
-Στο πλαίσιο \textlatin{iSHARE}, το \textlatin{Μητρώο Εξουσιοδότησης} είναι ο
-φορέας που αποθηκεύει και εκδίδει τις πολιτικές εκχώρησης εξουσιοδότησης
-(\textlatin{delegation policies}). Ο \textlatin{Keyrock} υλοποιεί τις ακόλουθες
-διεπαφές \textlatin{iSHARE}:
+Ο \textlatin{Keyrock} αποθηκεύει και εκδίδει τις πολιτικές εκχώρησης
+εξουσιοδότησης (\textlatin{delegation policies}). Εκθέτει τρεις σχετικές
+διεπαφές:
 
 \begin{itemize}
-    \item \texttt{POST /oauth2/token}: Αποδέχεται ένα \textlatin{iSHARE JWT} και
-    επιστρέφει ένα \textlatin{access token} που ενσωματώνει τα στοιχεία
-    \textlatin{delegation evidence}.
-    \item \texttt{POST /ar/policy}: Επιτρέπει τη δημιουργία νέων πολιτικών
-    εξουσιοδότησης από τον πάροχο δεδομένων.
-    \item \texttt{POST /ar/delegation}: Επιστρέφει τα στοιχεία εκχώρησης
-    εξουσιοδότησης για έναν συγκεκριμένο συνδυασμό πόρου και υποκειμένου.
+    \item \textlatin{POST /ar/policy}: Δημιουργεί νέα πολιτική. Δέχεται
+    ένα αντικείμενο \textlatin{JSON} με τη δομή
+    \textlatin{delegationEvidence} που ορίζει η προδιαγραφή
+    \textlatin{iSHARE}. Απαιτεί \textlatin{access token} διαχειριστή
+    στην κεφαλίδα \textlatin{Authorization}.
+    \item \textlatin{POST /ar/delegation}: Αναζητά πολιτική εκχώρησης για
+    ένα συγκεκριμένο ζεύγος υποκειμένου-πόρου. Χρησιμοποιείται από το
+    \textlatin{Kong} κατά τον έλεγχο εξουσιοδότησης.
+    \item \textlatin{POST /oauth2/token}: Εκτός από ταυτοποίηση, αυτό
+    το \textlatin{endpoint} ενσωματώνει αυτόματα τα στοιχεία
+    \textlatin{delegation evidence} στο \textlatin{access token} που
+    επιστρέφει, εφόσον υπάρχει αντίστοιχη πολιτική.
 \end{itemize}
+
+\subsection{Μηχανισμός \textlatin{extparticipant}}
+\label{subsec:extparticipant}
+
+Ο μηχανισμός \textlatin{extparticipant} (εξωτερικός συμμετέχων) είναι
+ο τρόπος με τον οποίο ο \textlatin{Keyrock} διαχειρίζεται οργανισμούς
+που αναγνωρίζονται μέσω \textlatin{iSHARE} αλλά δεν έχουν δημιουργηθεί
+χειροκίνητα στη βάση δεδομένων. Την πρώτη φορά που ένας εξωτερικός
+οργανισμός υποβάλλει \textlatin{iSHARE JWT}:
+
+\begin{enumerate}
+    \item Ο \textlatin{Keyrock} ελέγχει αν υπάρχει ήδη χρήστης με
+    αυτό το \textlatin{EORI} στη βάση δεδομένων \textlatin{MySQL}.
+    \item Αν δεν υπάρχει, δημιουργεί αυτόματα μια εγγραφή με
+    \textlatin{username} = \textlatin{EU.EORI.NLPLEGMACONSUMER} και ένα εσωτερικό
+    \textlatin{UUID}.
+    \item Αυτό το \textlatin{UUID}
+    χρησιμοποιείται στη συνέχεια ως αναγνωριστικό στις πολιτικές
+    εκχώρησης. Αυτό είναι κρίσημο γιατί αν η πολιτική
+    αποθηκευτεί με αναφορά στο \textlatin{EORI} αντί για το
+    \textlatin{UUID}, δεν θα βρεθεί ποτέ κατά τον έλεγχο
+    εξουσιοδότησης.
+\end{enumerate}
 
 \subsection{Επικοινωνία με τον \textlatin{iSHARE Satellite}}
 \label{subsec:keyrock-satellite}
 
-Κατά την επαλήθευση ενός \textlatin{iSHARE JWT} από καταναλωτή, ο \textlatin{Keyrock}
-επικοινωνεί αυτόματα με τον \textlatin{iSHARE Satellite} για να επαληθεύσει ότι
-ο εκδότης του \textlatin{token} είναι εγγεγραμμένος και αξιόπιστος συμμετέχων
-στο \textlatin{Data Space}, μέσω του \textlatin{endpoint} \texttt{GET /parties}.
+Κατά την ταυτοποίηση ενός εξωτερικού συμμετέχοντα, ο \textlatin{Keyrock}
+εκτελεί μια ακολουθία κλήσεων προς τον \textlatin{Satellite}:
+
+\begin{enumerate}
+    \item \textlatin{POST /token}: Αποκτά ένα \textlatin{access token}
+    για τον εαυτό του (ως \textlatin{EU.EORI.NLPLEGMA}), ώστε να μπορεί
+    να ρωτήσει τον \textlatin{Satellite}.
+    \item \textlatin{GET /parties?eori=EU.EORI.NLPLEGMACONSUMER}: Ρωτά
+    τον \textlatin{Satellite} αν ο καταναλωτής είναι εγγεγραμμένος,
+    ενεργός και αν το αποτύπωμα του πιστοποιητικού του ταιριάζει.
+    \item Ο \textlatin{Satellite} απαντά με ένα υπογεγραμμένο
+    \textlatin{JWT} (\textlatin{parties token}) που βεβαιώνει την
+    κατάσταση του συμμετέχοντα.
+    \item Ο \textlatin{Keyrock} επαληθεύει την υπογραφή αυτού του
+    \textlatin{JWT} χρησιμοποιώντας το δημόσιο κλειδί του
+    \textlatin{Satellite}.
+\end{enumerate}
 
 \subsection{Τεχνικά Χαρακτηριστικά}
 \label{subsec:keyrock-tech}
 
 \begin{itemize}
-    \item \textbf{Εικόνα \textlatin{Docker}:} \texttt{quay.io/fiware/idm}
-    \item \textbf{Θύρα:} \texttt{3007}
-    \item \textbf{Αποθήκευση:} \textlatin{MySQL}
-    \item \textbf{Αναγνωριστικό \textlatin{EORI}:} \texttt{EU.EORI.NLPLEGMA}
-    (λειτουργεί ως \textlatin{Authorization Registry} του παρόχου)
+    \item Εικόνα \textlatin{Docker}: \textlatin{quay.io/fiware/idm}
+    \item Θύρα: \textlatin{3007}
+    \item Αποθήκευση: \textlatin{MySQL}
+    \item Γλώσσα: \textlatin{Node.js}
+    \item Αναγνωριστικό \textlatin{EORI}:
+    \textlatin{EU.EORI.NLPLEGMA}
+    \item Ρόλοι: \textlatin{Identity Provider} +
+    \textlatin{Authorization Registry}
+    \item Άδεια: \textlatin{MIT}
 \end{itemize}
 
-% ------------------------------------------------------------------
+% ==================================================================
 \section{\textlatin{iSHARE Satellite}}
 \label{sec:satellite}
-% ------------------------------------------------------------------
+% ==================================================================
 
-Ο \textlatin{iSHARE Satellite}~\cite{ishare-satellite2023} επιτελεί τον ρόλο
-της \textbf{Αρχής Εμπιστοσύνης} (\textlatin{Trust Anchor}) εντός του
-\textlatin{Data Space}. Διαχειρίζεται το μητρώο των εγκεκριμένων συμμετεχόντων
-και επαληθεύει την εγκυρότητα των ψηφιακών τους πιστοποιητικών.
+Ο \textlatin{iSHARE Satellite}~\cite{ishare-satellite2023} επιτελεί
+τον ρόλο της Αρχής Εμπιστοσύνης (\textlatin{Trust Anchor}) εντός
+του \textlatin{Data Space}. Μπορεί να θεωρηθεί ως ο συμβολαιογράφος
+του οικοσυστήματος γιατί δεν βλέπει ποτέ τα δεδομένα, αλλά βεβαιώνει ότι
+κάθε συμμετέχων είναι αυτός που ισχυρίζεται ότι είναι.
 
-\subsection{Ρόλος στην Αρχιτεκτονική}
-\label{subsec:satellite-role}
+Ο \textlatin{Satellite} εκθέτει τρεις βασικές διεπαφές:
 
-Κάθε φορά που ένας συμμετέχων παρουσιάζει ένα \textlatin{iSHARE JWT}, ο
-παραλήπτης επικοινωνεί με τον \textlatin{Satellite} για να:
-\begin{enumerate}
-    \item Αποκτήσει ένα \textlatin{access token} για τον ίδιο, μέσω του
-    \texttt{POST /token}.
-    \item Λάβει τη λίστα εμπιστευμένων \textlatin{CA} (\textlatin{trusted\_list}),
-    μέσω του \texttt{GET /trusted\_list}, ώστε να επαληθεύσει την αλυσίδα
-    πιστοποιητικών του \textlatin{JWT}.
-    \item Επαληθεύσει ότι ο αιτών εκπροσωπεί ενεργό συμμετέχοντα, μέσω του
-    \texttt{GET /parties}.
-\end{enumerate}
-
-\subsection{Παραμετροποίηση}
-\label{subsec:satellite-config}
-
-Η παραμετροποίηση του \textlatin{Satellite} γίνεται μέσω του αρχείου
-\texttt{satellite.yml}, το οποίο ορίζει:
 \begin{itemize}
-    \item Τo αναγνωριστικό και τα κρυπτογραφικά κλειδιά του \textlatin{Satellite}.
-    \item Τη λίστα εμπιστευμένων \textlatin{CA} (\textlatin{trusted\_list}).
-    \item Το μητρώο εγκεκριμένων συμμετεχόντων (\textlatin{parties}), με τα
-    στοιχεία του παρόχου (\texttt{EU.EORI.NLPLEGMA}) και του καταναλωτή
-    (\texttt{EU.EORI.NLPLEGMACONSUMER}).
+    \item \textbf{\textlatin{POST /token}}: Δέχεται ένα \textlatin{iSHARE
+    JWT} και, αφού επαληθεύσει ότι ο εκδότης είναι εγγεγραμμένος
+    συμμετέχων, επιστρέφει ένα \textlatin{access token} που μπορεί
+    να χρησιμοποιηθεί στις υπόλοιπες κλήσεις. Αυτό το βήμα εξασφαλίζει
+    ότι μόνο εγγεγραμμένοι συμμετέχοντες μπορούν να ρωτήσουν τον
+    \textlatin{Satellite}.
+
+    \item \textbf{\textlatin{GET /trusted\_list}}: Επιστρέφει τη λίστα
+    εμπιστευμένων Αρχών Πιστοποίησης (\textlatin{CA}). Η λίστα αυτή
+    περιέχει τα αποτυπώματα (\textlatin{SHA-256 fingerprints}) των
+    \textlatin{CA} που ο \textlatin{Satellite} αναγνωρίζει ως
+    αξιόπιστες. Όταν ένα συστατικό λαμβάνει
+    ένα \textlatin{JWT} με αλυσίδα πιστοποιητικών, ελέγχει αν η
+    \textlatin{CA} στην κορυφή της αλυσίδας βρίσκεται σε αυτή
+    τη λίστα.
+
+    \item \textbf{\textlatin{GET /parties}}: Επιστρέφει τα στοιχεία
+    ενός συγκεκριμένου συμμετέχοντα, φιλτράροντας βάσει \textlatin{EORI},
+    κατάστασης (\textlatin{active\_only}) και αποτυπώματος
+    πιστοποιητικού (\textlatin{certificate\_subject\_name}). Η
+    απόκριση είναι ένα υπογεγραμμένο \textlatin{JWT}
+    (\textlatin{parties token}) που βεβαιώνει ότι ο συμμετέχων
+    υπάρχει, είναι ενεργός και διαθέτει συγκεκριμένες πιστοποιήσεις
+    (\textlatin{certifications}).
+\end{itemize}
+
+\subsection{Μητρώο Συμμετεχόντων (\textlatin{Parties Registry})}
+\label{subsec:parties-registry}
+
+Κάθε συμμετέχων καταχωρείται στο μητρώο με τα ακόλουθα πεδία:
+
+\begin{itemize}
+    \item \textlatin{id}: Το \textlatin{EORI} του οργανισμού.
+    \item \textlatin{name}: Περιγραφικό όνομα.
+    \item \textlatin{status}: Κατάσταση (\textlatin{Active} ή
+    \textlatin{Revoked}).
+    \item \textlatin{start\_date} / \textlatin{end\_date}: Περίοδος
+    ισχύος της εγγραφής.
+    \item \textlatin{crt}: Το πιστοποιητικό \textlatin{X.509}
+    του συμμετέχοντα σε μορφή \textlatin{PEM}.
+    \item \textlatin{certifications}: Λίστα ρόλων. Ο πάροχος
+    φέρει τους ρόλους \textlatin{IdentityProvider} και
+    \textlatin{AuthorisationRegistry}, ενώ ο καταναλωτής φέρει τον
+    ρόλο \textlatin{ServiceConsumer}.
+    \item \textlatin{certificates.certificate\_fingerprint}: Το
+    αποτύπωμα \textlatin{SHA-256} του πιστοποιητικού που χρησιμοποιείται
+    ως πρόσθετος μηχανισμός επαλήθευσης. Ακόμα και αν ένα
+    πιστοποιητικό είναι υπογεγραμμένο από αξιόπιστη \textlatin{CA},
+    ελέγχεται ότι το αποτύπωμά του ταιριάζει με αυτό που είναι
+    καταχωρημένο στον \textlatin{Satellite}.
 \end{itemize}
 
 \subsection{Τεχνικά Χαρακτηριστικά}
 \label{subsec:satellite-tech}
 
-\begin{itemize}
-    \item \textbf{Εικόνα \textlatin{Docker}:} \texttt{fiware/ishare-satellite:2.0.2}
-    \item \textbf{Θύρα:} \texttt{8085} (εξωτερικά), \texttt{8080} (εσωτερικά)
-    \item \textbf{Υλοποίηση:} \textlatin{Python/Flask} (\textlatin{WSGI})
-    \item \textbf{Αναγνωριστικό \textlatin{EORI}:} \texttt{EU.EORI.NLPLEGMA}
-\end{itemize}
-
-% ------------------------------------------------------------------
-\section{\textlatin{Kong API Gateway}}
-\label{sec:kong}
-% ------------------------------------------------------------------
-
-Το \textlatin{Kong API Gateway}~\cite{kong2023} επιτελεί τον ρόλο του
-\textbf{Σημείου Επιβολής Πολιτικής} (\textlatin{Policy Enforcement Point, PEP}).
-Είναι το μοναδικό σημείο εισόδου για όλες τις αιτήσεις δεδομένων και εξασφαλίζει
-ότι καμία αίτηση δεν φτάνει στον \textlatin{Orion-LD} χωρίς να έχει ελεγχθεί
-η εξουσιοδότησή της.
-
-\subsection{Το \textlatin{Plugin ngsi-ishare-policies}}
-\label{subsec:kong-plugin}
-
-Το \textlatin{Kong} επεκτείνεται με το \textlatin{plugin}
-\texttt{ngsi-ishare-policies}~\cite{kong-ngsi-plugin2023}, ειδικά σχεδιασμένο
-για \textlatin{Data Spaces} βάσει \textlatin{iSHARE}. Το \textlatin{plugin} αυτό,
-κατά την παραλαβή κάθε αιτήσεως:
+Ο \textlatin{Satellite} παραμετροποιείται μέσω του αρχείου
+\textlatin{satellite.yml}. Αυτό το αρχείο περιέχει:
 
 \begin{enumerate}
-    \item Εξάγει το \textlatin{Bearer token} από την κεφαλίδα
-    \texttt{Authorization} της αίτησης.
-    \item Επαληθεύει την υπογραφή του \textlatin{token} χρησιμοποιώντας την
-    αλυσίδα πιστοποιητικών \textlatin{X.509} από το πεδίο \texttt{x5c} και
-    τη λίστα εμπιστευμένων \textlatin{CA} από τον \textlatin{Satellite}.
-    \item Ελέγχει αν ο εκδότης (\texttt{iss}) είναι ο ίδιος ο πάροχος
-    (απευθείας πρόσβαση) ή τρίτος οργανισμός (απαιτείται \textlatin{delegation
-    evidence}).
-    \item Σε περίπτωση τρίτου, ελέγχει το \textlatin{delegationEvidence}
-    εντός του \textlatin{token} για να εξακριβώσει αν η αιτούμενη ενέργεια
-    επιτρέπεται.
-    \item Προωθεί την αίτηση στον \textlatin{Orion-LD} μόνο εφόσον η
-    εξουσιοδότηση είναι έγκυρη.
+    \item Το αναγνωριστικό \textlatin{EORI} του \textlatin{Satellite}
+    (\textlatin{EU.EORI.NLPLEGMA}).
+    \item Το ιδιωτικό κλειδί και το πιστοποιητικό του
+    \textlatin{Satellite} (χρησιμοποιούνται για την υπογραφή
+    των \textlatin{parties tokens} που επιστρέφει).
+    \item Τη λίστα \textlatin{trusted\_list} με τα αποτυπώματα
+    εμπιστευμένων \textlatin{CA}.
+    \item Το μητρώο \textlatin{parties} με τις εγγραφές όλων
+    των συμμετεχόντων.
 \end{enumerate}
 
-\subsection{Παραμετροποίηση μέσω \texttt{kong.yml}}
-\label{subsec:kong-config}
-
-Η παραμετροποίηση του \textlatin{Kong} γίνεται μέσω δηλωτικού αρχείου
-\texttt{kong.yml} (\textlatin{declarative configuration}), χωρίς τη χρήση
-βάσης δεδομένων (\textlatin{DB-less mode}). Το αρχείο ορίζει:
 \begin{itemize}
-    \item Την υπηρεσία-στόχο (\textlatin{upstream service}): \texttt{http://fiware-orion-ld:1026}
-    \item Τα \textlatin{routes} που θα δέχεται: \texttt{/ngsi-ld}
-    \item Τις παραμέτρους του \textlatin{plugin}: τα κλειδιά και πιστοποιητικά
-    του παρόχου για υπογραφή \textlatin{JWT}, τα \textlatin{endpoints} του
-    \textlatin{Satellite} και του \textlatin{Keyrock AR}.
+    \item Εικόνα \textlatin{Docker}:
+    \textlatin{fiware/ishare-satellite:2.0.2}
+    \item Θύρα: \textlatin{8085} (εξωτερικά) / \textlatin{8080}
+    (εσωτερικά)
+    \item Γλώσσα: \textlatin{Python} (\textlatin{Flask/WSGI})
+    \item Αναγνωριστικό \textlatin{EORI}:
+    \textlatin{EU.EORI.NLPLEGMA}
+    \item Άδεια: \textlatin{Apache 2.0}
 \end{itemize}
+
+% ==================================================================
+\section{\textlatin{Kong API Gateway}}
+\label{sec:kong}
+% ==================================================================
+
+Το \textlatin{Kong API Gateway}~\cite{kong2023} είναι ένα ανοιχτού
+κώδικα \textlatin{API Gateway} βασισμένο στον \textlatin{Nginx} και
+τη γλώσσα \textlatin{Lua}. Στην παρούσα αρχιτεκτονική, αποτελεί το
+μοναδικό σημείο εισόδου για τα δεδομένα και επιτελεί τον ρόλο του
+Σημείου Επιβολής Πολιτικής (\textlatin{Policy Enforcement Point, PEP}).
+
+Γενικά, ένα \textlatin{API Gateway} παρεμβάλλεται μεταξύ του πελάτη και
+των εσωτερικών υπηρεσιών (\textlatin{backend services}). Κάθε αίτηση
+περνά πρώτα από το \textlatin{gateway}, το οποίο μπορεί να εφαρμόσει
+ελέγχους ασφαλείας, μετασχηματισμούς, περιορισμούς ρυθμού
+(\textlatin{rate limiting}) και καταγραφή (\textlatin{logging}) πριν
+προωθήσει ή απορρίψει το αίτημα. Στην παρούσα υλοποίηση, το \textlatin{Kong} δέχεται αιτήσεις στη
+θύρα \textlatin{8000} και τις προωθεί στον \textlatin{Orion-LD}
+(θύρα \textlatin{1026}) μόνο εφόσον ο αιτών έχει εξουσιοδοτηθεί.
+
+Το \textlatin{Kong} υποστηρίζει δύο λειτουργίες: με βάση δεδομένων
+(\textlatin{PostgreSQL}) ή χωρίς (\textlatin{DB-less}). Στην παρούσα
+υλοποίηση χρησιμοποιείται η λειτουργία \textlatin{DB-less}, όπου
+ολόκληρη η παραμετροποίηση φορτώνεται από ένα δηλωτικό αρχείο
+\textlatin{YAML} (\textlatin{kong.yml}) κατά την εκκίνηση. Έτσι η εκκίνησή του είναι 
+τχαύτερη και η παραμετροποίηση του είναι αναπαραγώγιμη.
+
+\subsection{Το \textlatin{Plugin} \textlatin{ngsi-ishare-policies}}
+\label{subsec:kong-plugin}
+
+Η κεντρική λειτουργικότητα ελέγχου πρόσβασης παρέχεται μέσω του
+\textlatin{plugin} \textlatin{ngsi-ishare-policies}~\cite{kong-ngsi-plugin2023},
+το οποίο αναπτύχθηκε ειδικά για \textlatin{FIWARE Data Spaces} βάσει του
+\textlatin{iSHARE}. Το \textlatin{plugin} γράφτηκε σε \textlatin{Lua}
+και εκτελεί τα ακόλουθα βήματα για κάθε εισερχόμενο αίτημα:
+
+\begin{enumerate}
+    \item Εξαγωγή \textlatin{token}: Αναζητά την κεφαλίδα
+    \textlatin{Authorization: Bearer <token>}. Αν δεν υπάρχει, επιστρέφει
+    \textlatin{HTTP 401 Unauthorized} αμέσως.
+
+    \item Αποκωδικοποίηση \textlatin{JWT}: Αποκωδικοποιεί
+    το \textlatin{JWT} και εξάγει την αλυσίδα πιστοποιητικών
+    \textlatin{X.509} από το πεδίο \textlatin{x5c} της επικεφαλίδας.
+
+    \item Επαλήθευση υπογραφής: Χρησιμοποιεί τη βιβλιοθήκη
+    \textlatin{lua-resty-jwt} για να επαληθεύσει ότι η υπογραφή του
+    \textlatin{JWT} αντιστοιχεί στο δημόσιο κλειδί του πρώτου
+    πιστοποιητικού στην αλυσίδα.
+
+    \item Επαλήθευση αλυσίδας εμπιστοσύνης: Αυθεντικοποιεί
+    τον εαυτό του στον \textlatin{Satellite} (\textlatin{POST /token})
+    και λαμβάνει τη λίστα εμπιστευμένων \textlatin{CA}
+    (\textlatin{GET /trusted\_list}). Ελέγχει ότι το αποτύπωμα της
+    \textlatin{CA} στην αλυσίδα βρίσκεται στη λίστα.
+
+    \item Έλεγχος εκδότη (\textlatin{iss}): Εξετάζει αν ο
+    εκδότης του \textlatin{token} ταυτίζεται με τον τοπικό πάροχο
+    (\textlatin{EU.EORI.NLPLEGMA}). Αν ναι, η πρόσβαση επιτρέπεται
+    χωρίς περαιτέρω έλεγχο αφού ο πάροχος έχει πλήρη πρόσβαση στα
+    δικά του δεδομένα.
+
+    \item Έλεγχος \textlatin{delegation} (μόνο για τρίτους):
+    Αν ο εκδότης δεν είναι ο τοπικός πάροχος, το \textlatin{plugin}
+    αναζητά πεδίο \textlatin{delegationEvidence} εντός του
+    \textlatin{token}. Αντιπαραβάλλει τον τύπο πόρου, τα
+    αναγνωριστικά και τις ενέργειες του αιτήματος με αυτά που
+    ορίζει η πολιτική. Αν δεν ταιριάζουν, επιστρέφει
+    \textlatin{HTTP 401} με μήνυμα
+    \textlatin{«None of the delivered policies matched a required
+    policy for this action»}.
+
+    \item Προώθηση: Αν ο έλεγχος είναι επιτυχής, το
+    αίτημα προωθείται στον \textlatin{Orion-LD}.
+\end{enumerate}
 
 \subsection{Τεχνικά Χαρακτηριστικά}
 \label{subsec:kong-tech}
 
+Η παραμετροποίηση του \textlatin{plugin} γίνεται στο τμήμα
+\textlatin{plugins} του αρχείου \textlatin{kong.yml} και χωρίζεται σε
+τρεις ενότητες:
+
 \begin{itemize}
-    \item \textbf{Εικόνα \textlatin{Docker}:} \texttt{quay.io/fiware/kong:0.5.4}
-    \item \textbf{Θύρα:} \texttt{8000} (\textlatin{proxy}), \texttt{8001}
-    (\textlatin{admin API})
-    \item \textbf{Λειτουργία:} \textlatin{DB-less} (δηλωτική παραμετροποίηση)
-    \item \textbf{Αναγνωριστικό \textlatin{EORI}:} \texttt{EU.EORI.NLPLEGMA}
+    \item \textlatin{jws}: Περιέχει τα στοιχεία που χρειάζεται
+    το \textlatin{Kong} για να υπογράφει τα δικά του \textlatin{JWT}
+    κατά την επικοινωνία με τον \textlatin{Satellite}. Συγκεκριμένα,
+    ορίζεται το αναγνωριστικό \textlatin{EORI} του παρόχου
+    (\textlatin{identifier}), η διαδρομή προς το ιδιωτικό κλειδί σε
+    μορφή \textlatin{PKCS\#1} (\textlatin{private\_key}), η διαδρομή
+    προς το πιστοποιητικό ρίζας (\textlatin{root\_ca\_file}) και η
+    αλυσίδα πιστοποιητικών σε \textlatin{Base64} (\textlatin{x5c}).
+
+    \item \textlatin{satellite}: Ορίζει πού βρίσκεται ο
+    \textlatin{iSHARE Satellite} ώστε το \textlatin{Kong} να μπορεί
+    να επικοινωνεί μαζί του για επαλήθευση εμπιστοσύνης. Περιλαμβάνει
+    τη διεύθυνση του \textlatin{Satellite}
+    (\textlatin{host: http://ishare-satellite:8080}), το μονοπάτι για
+    απόκτηση \textlatin{token} (\textlatin{token\_endpoint: /token})
+    και το μονοπάτι για λήψη της λίστας εμπιστευμένων \textlatin{CA}
+    (\textlatin{trusted\_list\_endpoint: /trusted\_list}).
+
+    \item \textlatin{ar}: Ορίζει πού βρίσκεται το Μητρώο
+    Εξουσιοδότησης (\textlatin{Keyrock}) ώστε το \textlatin{Kong}
+    να μπορεί να αναζητά πολιτικές εκχώρησης. Περιλαμβάνει τη
+    διεύθυνση του \textlatin{Keyrock}
+    (\textlatin{host: http://fiware-keyrock:3007}), το μονοπάτι για
+    απόκτηση \textlatin{token}
+    (\textlatin{token\_endpoint: /oauth2/token}) και το μονοπάτι για
+    αναζήτηση πολιτικών
+    (\textlatin{delegation\_endpoint: /ar/delegation}).
 \end{itemize}
 
-% ------------------------------------------------------------------
+\begin{itemize}
+    \item Εικόνα \textlatin{Docker}:
+    \textlatin{quay.io/fiware/kong:0.5.4}
+    \item Θύρες: \textlatin{8000} (\textlatin{proxy}),
+    \textlatin{8001} (\textlatin{admin API})
+    \item Γλώσσα: \textlatin{Lua} (πάνω σε \textlatin{Nginx})
+    \item Λειτουργία: \textlatin{DB-less}
+    \item Αναγνωριστικό \textlatin{EORI}:
+    \textlatin{EU.EORI.NLPLEGMA}
+    \item Άδεια: \textlatin{Apache 2.0}
+\end{itemize}
+
+% ==================================================================
 \section{\textlatin{DSBA Policy Decision Point (DSBA-PDP)}}
 \label{sec:dsba-pdp}
-% ------------------------------------------------------------------
+% ==================================================================
 
-Ο \textlatin{DSBA-PDP}~\cite{dsba-pdp2023} είναι ο \textbf{κόμβος λήψης
-αποφάσεων πρόσβασης} (\textlatin{Policy Decision Point, PDP}) της αρχιτεκτονικής.
-Αξιολογεί τις αιτήσεις πρόσβασης σε σχέση με τις ισχύουσες πολιτικές
-\textlatin{iSHARE} και επιστρέφει απόφαση \textlatin{Permit} ή \textlatin{Deny}.
+Ο \textlatin{DSBA-PDP}~\cite{dsba-pdp2023} είναι μια υλοποίηση
+ανοιχτού κώδικα του ρόλου \textlatin{Policy Decision Point (PDP)}
+σύμφωνα με τις προδιαγραφές του \textlatin{Data Spaces Business
+Alliance (DSBA)}.
 
-\subsection{Ρόλος στην Αρχιτεκτονική}
-\label{subsec:pdp-role}
-
-Στην παρούσα υλοποίηση, ο \textlatin{DSBA-PDP} ενεργοποιείται έμμεσα μέσω του
-\textlatin{plugin} \texttt{ngsi-ishare-policies} του \textlatin{Kong}. Η λογική
-αξιολόγησης των πολιτικών \textlatin{iSHARE} (\textlatin{delegation evidence})
-υλοποιείται εντός του \textlatin{plugin}, ενώ ο \textlatin{DSBA-PDP} παρέχει
-πρόσθετες δυνατότητες αξιολόγησης πολιτικών για πιο σύνθετα σενάρια.
+Ο \textlatin{PDP} δέχεται ερωτήματα της μορφής «ο χρήστης Χ μπορεί
+να εκτελέσει την ενέργεια Ψ στον πόρο Ζ;» και αποφασίζει
+\textlatin{Permit} ή \textlatin{Deny} βάσει των πολιτικών που
+ανακτά από τον \textlatin{Keyrock AR} και τις πληροφορίες εμπιστοσύνης
+από τον \textlatin{Satellite}. Στην παρούσα υλοποίηση, η βασική λογική αξιολόγησης πολιτικών
+υλοποιείται εντός του \textlatin{Kong plugin} \textlatin{ngsi-ishare-policies}.
+Ο \textlatin{DSBA-PDP} λειτουργεί παράλληλα και μπορεί να
+χρησιμοποιηθεί για πιο σύνθετα σενάρια αξιολόγησης πολιτικών,
+όπως πολιτικές βάσει \textlatin{Verifiable Credentials}, που
+ξεφεύγουν από το πεδίο εφαρμογής αυτής της εργασίας.
 
 \subsection{Τεχνικά Χαρακτηριστικά}
 \label{subsec:pdp-tech}
 
 \begin{itemize}
-    \item \textbf{Εικόνα \textlatin{Docker}:} \texttt{quay.io/fiware/dsba-pdp:latest}
-    \item \textbf{Θύρα:} \texttt{8080}
-    \item \textbf{Παραμετροποίηση:} Αναγνωριστικό \textlatin{EORI} παρόχου,
-    διαδρομές πιστοποιητικών, \textlatin{endpoint} \textlatin{Satellite} και
-    \textlatin{Keyrock AR}
+    \item Εικόνα \textlatin{Docker}:
+    \textlatin{quay.io/fiware/dsba-pdp:latest}
+    \item Θύρα: \textlatin{8080}
+    \item Γλώσσα: \textlatin{Java}
+    \item Άδεια: \textlatin{Apache 2.0}
 \end{itemize}
 
-% ------------------------------------------------------------------
+% ==================================================================
 \section{Βάσεις Δεδομένων}
 \label{sec:databases}
-% ------------------------------------------------------------------
+% ==================================================================
 
-Η υλοποίηση χρησιμοποιεί δύο βάσεις δεδομένων, καθεμία εξυπηρετώντας
-διαφορετικές ανάγκες:
+Η υλοποίηση χρησιμοποιεί δύο βάσεις δεδομένων που εξυπηρετούν
+εντελώς διαφορετικές ανάγκες.
 
-\subsection{\textlatin{MongoDB}}
-\label{subsec:mongodb}
+Η \textlatin{MongoDB} χρησιμοποιείται από τον
+\textlatin{Orion-LD} για την αποθήκευση οντοτήτων \textlatin{NGSI-LD}.
+Ως βάση δεδομένων εγγράφων (\textlatin{document store}), η
+\textlatin{MongoDB} αποθηκεύει δεδομένα ως αντικείμενα
+\textlatin{JSON}/\textlatin{BSON} χωρίς να απαιτεί σταθερό σχήμα.
+Αυτό ταιριάζει στο μοντέλο \textlatin{NGSI-LD}, όπου κάθε
+οντότητα μπορεί να έχει διαφορετικές ιδιότητες ανάλογα με τον
+τύπο της.
 
-Η \textlatin{MongoDB} χρησιμοποιείται από τον \textlatin{Orion-LD} για την
-αποθήκευση των οντοτήτων \textlatin{NGSI-LD}. Ως βάση δεδομένων εγγράφων
-(\textlatin{document store}), η \textlatin{MongoDB} είναι ιδανική για την
-αποθήκευση οντοτήτων \textlatin{JSON-LD}, καθώς δεν απαιτεί προκαθορισμένο
-σχήμα (\textlatin{schema-less}).
-
-\subsection{\textlatin{MySQL}}
-\label{subsec:mysql}
-
-Η \textlatin{MySQL} χρησιμοποιείται από τον \textlatin{Keyrock} για την
-αποθήκευση χρηστών, εφαρμογών και πολιτικών εξουσιοδότησης. Κατά την εκκίνηση
-του συστήματος, ο \textlatin{Keyrock} δημιουργεί αυτόματα τις απαραίτητες
-εγγραφές για τους δύο συμμετέχοντες (\texttt{EU.EORI.NLPLEGMA} και
-\texttt{EU.EORI.NLPLEGMACONSUMER}) μέσω του μηχανισμού
-\textlatin{extparticipant}.
-
-% ------------------------------------------------------------------
-\section{Συγκριτική Αξιολόγηση Εργαλείων}
-\label{sec:comparison}
-% ------------------------------------------------------------------
-
-Αξίζει να σημειωθεί ότι η \textlatin{FIWARE Foundation} παρέχει επίσης έναν
-\textlatin{Data Space Connector}, ο οποίος αποτελεί μια εναλλακτική, πιο
-ολοκληρωμένη προσέγγιση υλοποίησης \textlatin{Data Spaces} βάσει νεότερης
-αρχιτεκτονικής (\textlatin{OID4VC}/\textlatin{Verifiable Credentials}). Η
-παρούσα εργασία ακολουθεί το παλαιότερο, αλλά πλήρως λειτουργικό, μοντέλο
-\textlatin{i4Trust}/\textlatin{iSHARE}, το οποίο αντιστοιχεί ρητά στις
-απαιτήσεις της εκφώνησης και παρέχει μια σαφή, ευέλικτη αρχιτεκτονική με
-ανεξάρτητα, ελεγχόμενα συστατικά.
-
-Τα πλεονεκτήματα της επιλεγμένης προσέγγισης είναι:
+Η \textlatin{MySQL} χρησιμοποιείται από τον
+\textlatin{Keyrock} για την αποθήκευση:
 \begin{itemize}
-    \item \textbf{Ανοιχτός κώδικας:} Όλα τα εργαλεία διατίθενται υπό ανοιχτές
-    άδειες χρήσης.
-    \item \textbf{Ευελιξία:} Κάθε συστατικό μπορεί να αντικατασταθεί ανεξάρτητα.
-    \item \textbf{Διαφάνεια:} Η λογική εξουσιοδότησης είναι ορατή και ελέγξιμη
-    σε κάθε βήμα της ροής.
-    \item \textbf{Δυνατότητα τοπικής ανάπτυξης:} Το σύστημα μπορεί να
-    εκτελεστεί πλήρως σε τοπικό περιβάλλον με \textlatin{Docker Compose},
-    χωρίς εξάρτηση από εξωτερικές υπηρεσίες.
+    \item Λογαριασμών χρηστών (εσωτερικών και εξωτερικών
+    \textlatin{iSHARE} συμμετεχόντων).
+    \item Εφαρμογών \textlatin{OAuth 2.0} (\textlatin{client\_id},
+    \textlatin{client\_secret}).
+    \item Πολιτικών εκχώρησης εξουσιοδότησης
+    (\textlatin{delegation policies}).
+    \item Ρόλων και αδειών πρόσβασης.
 \end{itemize}
 
-% ------------------------------------------------------------------
-\section{Σύνοψη}
-\label{sec:ch4-summary}
-% ------------------------------------------------------------------
+Η \textlatin{MySQL} εκτίθεται στη θύρα \textlatin{3307} (αντί της
+προεπιλεγμένης \textlatin{3306}) για αποφυγή σύγκρουσης με τυχόν
+τοπικές εγκαταστάσεις.
 
-Στο παρόν κεφάλαιο παρουσιάστηκαν τα πέντε κύρια συστατικά της υλοποίησης:
-
-\begin{itemize}
-    \item \textbf{\textlatin{Orion-LD}}: Αποθετήριο δεδομένων \textlatin{NGSI-LD}.
-    \item \textbf{\textlatin{Keyrock}}: Διαχειριστής ταυτότητας και Μητρώο
-    Εξουσιοδότησης.
-    \item \textbf{\textlatin{iSHARE Satellite}}: Αρχή εμπιστοσύνης και μητρώο
-    συμμετεχόντων.
-    \item \textbf{\textlatin{Kong API Gateway}}: Σημείο επιβολής πολιτικής.
-    \item \textbf{\textlatin{DSBA-PDP}}: Κόμβος λήψης αποφάσεων πρόσβασης.
-\end{itemize}
-
-Στο επόμενο κεφάλαιο παρουσιάζεται η αρχιτεκτονική που προκύπτει από τη
-σύνθεση αυτών των συστατικών, με αναλυτικά διαγράμματα και περιγραφή των
-δικτυακών διασυνδέσεων τους.

@@ -1,5 +1,5 @@
 @startuml data_ingestion_sequence
-title Provider Data Ingestion Flow - Loading HouseholdMeasurement data via Kong
+title Provider Data Insertion Flow 
 hide footbox
 
 skinparam shadowing false
@@ -75,11 +75,5 @@ loop For each row in CSV
     Provider -> Provider : print("Row ingested successfully via Kong")
 
 end
-
-note over Provider, Orion
-After ingestion, all HouseholdMeasurement entities
-are stored in Orion-LD and accessible via Kong
-to authorized participants (Provider and Consumer).
-end note
 
 @enduml

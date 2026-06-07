@@ -1,336 +1,598 @@
 \chapter{Τεχνολογίες και Πρότυπα}
 \label{ch:technologies}
 
-Το παρόν κεφάλαιο παρουσιάζει τις τεχνολογίες και τα πρότυπα που αποτελούν τη
-θεμελίωση της υλοποιούμενης αρχιτεκτονικής. Η κατανόησή τους είναι απαραίτητη
-προϋπόθεση για την ανάλυση των \textlatin{end-to-end} ροών που περιγράφονται στα
-επόμενα κεφάλαια.
+Το παρόν κεφάλαιο αναλύει σε βάθος τις τεχνολογίες και τα πρότυπα που χρησιμοποιήθηκαν. 
+Για κάθε τεχνολογία παρουσιάζεται ο σκοπός της, ο τρόπος λειτουργίας της και ο ρόλος που διαδραματίζει στο σύνολο
+του συστήματος. Η κατανόηση αυτών των τεχνολογιών αποτελεί προϋπόθεση για την
+ανάγνωση των επόμενων κεφαλαίων.
 
-% ------------------------------------------------------------------
-\section{\textlatin{JSON Web Tokens (JWT)}}
-\label{sec:jwt}
-% ------------------------------------------------------------------
+% ==================================================================
+\section{Κρυπτογραφία Δημόσιου Κλειδιού}
+\label{sec:public-key-crypto}
+% ==================================================================
 
-Το \textlatin{JSON Web Token (JWT)} είναι ένα ανοιχτό πρότυπο (\textlatin{RFC 7519})
-που ορίζει έναν συμπαγή και αυτόνομο τρόπο ασφαλούς μεταφοράς πληροφοριών μεταξύ
-δύο μερών ως αντικείμενο \textlatin{JSON}~\cite{rfc7519}. Η πληροφορία αυτή μπορεί
-να επαληθευτεί και να θεωρηθεί αξιόπιστη διότι φέρει ψηφιακή υπογραφή.
-
-\subsection{Δομή ενός \textlatin{JWT}}
-\label{subsec:jwt-structure}
-
-Ένα \textlatin{JWT} αποτελείται από τρία τμήματα, διαχωρισμένα με τελεία
-(\texttt{.}), τα οποία είναι κωδικοποιημένα σε \textlatin{Base64URL}:
-
-\begin{enumerate}
-    \item \textbf{Επικεφαλίδα (\textlatin{Header}):} Περιέχει τον τύπο του
-    \textlatin{token} (συνήθως \texttt{JWT}) και τον αλγόριθμο υπογραφής που
-    χρησιμοποιείται. Ο αλγόριθμος \textlatin{RS256} (υπογραφή \textlatin{RSA}
-    με κατακερματισμό \textlatin{SHA-256}) χρησιμοποιείται στο πλαίσιο
-    \textlatin{iSHARE}:
-\selectlanguage{english}
-\begin{lstlisting}[language={}]
-{
-  "alg": "RS256",
-  "typ": "JWT",
-  "x5c": ["<certificate_in_Base64>", "<CA_in_Base64>"]
-}
-\end{lstlisting}
-\selectlanguage{greek}
-    \item \textbf{Ωφέλιμο φορτίο (\textlatin{Payload}):} Περιέχει τους
-    ισχυρισμούς (\textlatin{claims}), δηλαδή τις πληροφορίες σχετικά με την
-    οντότητα (συνήθως τον χρήστη ή τον οργανισμό) και επιπλέον δεδομένα. Στο
-    πλαίσιο \textlatin{iSHARE}, τα κύρια \textlatin{claims} είναι:
-\begin{lstlisting}[language={}]
-{
-  "iss": "EU.EORI.NLPLEGMA",
-  "sub": "EU.EORI.NLPLEGMA",
-  "aud": "EU.EORI.NLPLEGMA",
-  "jti": "a1b2c3d4-...",
-  "iat": 1716000000,
-  "exp": 1716000030
-}
-\end{lstlisting}
-
-    \item \textbf{Υπογραφή (\textlatin{Signature}):} Παράγεται εφαρμόζοντας τον
-    αλγόριθμο υπογραφής στα δύο πρώτα τμήματα, κωδικοποιημένα σε
-    \textlatin{Base64URL}, χρησιμοποιώντας το ιδιωτικό κλειδί του εκδότη.
-    Ο παραλήπτης μπορεί να επαληθεύσει την υπογραφή χρησιμοποιώντας το
-    αντίστοιχο δημόσιο κλειδί.
-\end{enumerate}
-
-\subsection{\textlatin{iSHARE JWT}: Επέκταση για \textlatin{Data Spaces}}
-\label{subsec:ishare-jwt}
-
-Το πλαίσιο \textlatin{iSHARE} επεκτείνει την προδιαγραφή \textlatin{JWT} με
-δύο σημαντικές προσθήκες:
+Στο μοντέλο κρυπτογραφίας δημόσιου κλειδιού (\textlatin{asymmetric cryptography})
+κάθε οντότητα κατέχει ένα ζεύγος κλειδιών:
 
 \begin{itemize}
-    \item \textbf{Πεδίο \texttt{x5c} στην επικεφαλίδα:} Περιέχει την αλυσίδα
-    πιστοποιητικών \textlatin{X.509} του εκδότη (\textlatin{leaf certificate} +
-    \textlatin{CA certificate}), επιτρέποντας στον παραλήπτη να επαληθεύσει
-    την ταυτότητα του εκδότη χωρίς να χρειαστεί να αναζητήσει το πιστοποιητικό
-    αλλού.
-
-    \item \textbf{Σύντομη διάρκεια ισχύος:} Τα \textlatin{iSHARE JWT} έχουν
-    διάρκεια ισχύος 30 δευτερολέπτων (\texttt{exp = iat + 30}), ελαχιστοποιώντας
-    τον κίνδυνο κατάχρησης σε περίπτωση υποκλοπής.
+    \item Ιδιωτικό κλειδί (\textlatin{private key}): Παραμένει
+    αυστηρά μυστικό και χρησιμοποιείται για τη δημιουργία ψηφιακών υπογραφών
+    και την αποκρυπτογράφηση μηνυμάτων.
+    \item Δημόσιο κλειδί (\textlatin{public key}): Κοινοποιείται
+    ελεύθερα και χρησιμοποιείται για την επαλήθευση ψηφιακών υπογραφών και
+    την κρυπτογράφηση μηνυμάτων.
 \end{itemize}
 
-% ------------------------------------------------------------------
-\section{Ψηφιακά Πιστοποιητικά \textlatin{X.509} και \textlatin{PKI}}
-\label{sec:x509}
-% ------------------------------------------------------------------
+Η σχέση μεταξύ των δύο κλειδιών είναι μαθηματικά αποδεδειγμένη: ό,τι υπογράφεται
+με το ιδιωτικό κλειδί μπορεί να επαληθευτεί μόνο με το αντίστοιχο δημόσιο
+κλειδί, και αντίστροφα. Αυτή η ιδιότητα επιτρέπει σε δύο μέρη που δεν
+γνωρίζονται μεταξύ τους να εδραιώσουν εμπιστοσύνη χωρίς να χρειάζεται να
+μοιραστούν κάποιο μυστικό εκ των προτέρων.
 
-Τα ψηφιακά πιστοποιητικά \textlatin{X.509} αποτελούν τη θεμελίωση της
-κρυπτογραφίας δημόσιου κλειδιού (\textlatin{Public Key Infrastructure, PKI})
-που χρησιμοποιείται στο πλαίσιο \textlatin{iSHARE}~\cite{x509rfc}.
+Στην  υλοποίηση μας χρησιμοποιείται ο αλγόριθμος \textlatin{RSA} με
+μήκος κλειδιού 2048 \textlatin{bits}. Ο αλγόριθμος αυτός βασίζεται στη
+δυσκολία παραγοντοποίησης μεγάλων ακεραίων αριθμών και αποτελεί τον πιο
+ευρέως χρησιμοποιούμενο αλγόριθμο δημόσιου κλειδιού σε εφαρμογές ψηφιακών
+υπογραφών.
+
+% ==================================================================
+\section{Ψηφιακά Πιστοποιητικά \textlatin{X.509 }  }
+\label{sec:x509}
+% ==================================================================
+
+Η κρυπτογραφία δημόσιου κλειδιού λύνει το πρόβλημα της υπογραφής, αλλά
+δημιουργεί ένα νέο, το πώς δηλαδή μπορεί κάποιος να βεβαιωθεί ότι ένα δημόσιο κλειδί
+ανήκει σε συγκεκριμένη οντότητα και δεν έχει πλαστογραφηθεί. Η απάντηση
+είναι τα ψηφιακά πιστοποιητικά \textlatin{X.509}~\cite{x509rfc} και η
+Υποδομή Δημόσιου Κλειδιού (\textlatin{Public Key Infrastructure, PKI}).
+
+Ένα πιστοποιητικό \textlatin{X.509} είναι ένα ψηφιακό έγγραφο που συνδέει
+ένα δημόσιο κλειδί με μια ταυτότητα. Μπορεί να θεωρηθεί ως ένα ψηφιακό
+διαβατήριο γιατί όπως ένα φυσικό διαβατήριο εκδίδεται από μια αρχή (το κράτος)
+και πιστοποιεί την ταυτότητα του κατόχου, έτσι και ένα πιστοποιητικό
+\textlatin{X.509} εκδίδεται από μια Αρχή Πιστοποίησης (\textlatin{Certificate
+Authority, CA}) και πιστοποιεί ότι ένα δημόσιο κλειδί ανήκει σε συγκεκριμένη
+οντότητα.
 
 \subsection{Δομή Πιστοποιητικού}
 \label{subsec:x509-structure}
 
-Ένα πιστοποιητικό \textlatin{X.509} περιέχει:
+Ένα πιστοποιητικό \textlatin{X.509 v3} αποτελείται από τα ακόλουθα πεδία:
+
 \begin{itemize}
-    \item Το δημόσιο κλειδί του κατόχου.
-    \item Πληροφορίες ταυτοποίησης (π.χ. \textlatin{Common Name}, αριθμό
-    \textlatin{EORI} στο πεδίο \textlatin{Serial Number}).
-    \item Την ψηφιακή υπογραφή μιας \textlatin{Αρχής Πιστοποίησης
-    (Certificate Authority, CA)}, που βεβαιώνει την αυθεντικότητα του
-    πιστοποιητικού.
-    \item Πληροφορίες διάρκειας ισχύος (\texttt{notBefore}, \texttt{notAfter}).
-    \item Επεκτάσεις \textlatin{X.509v3}, όπως η \texttt{keyUsage} που ορίζει
-    τις επιτρεπόμενες χρήσεις του κλειδιού.
+    \item Έκδοση (\textlatin{Version}): Η έκδοση του προτύπου
+    (συνήθως \textlatin{v3}).
+    \item Σειριακός Αριθμός (\textlatin{Serial Number}): Ένας
+    μοναδικός αριθμός που εκχωρεί η \textlatin{CA} σε κάθε πιστοποιητικό
+    που εκδίδει.
+    \item Αλγόριθμος Υπογραφής (\textlatin{Signature Algorithm}):
+    Ο αλγόριθμος που χρησιμοποίησε η \textlatin{CA} για να υπογράψει
+    το πιστοποιητικό (π.χ. \textlatin{SHA-256 with RSA}).
+    \item Εκδότης (\textlatin{Issuer}): Το \textlatin{Distinguished
+    Name (DN)} της \textlatin{CA} που εξέδωσε το πιστοποιητικό.
+    \item Περίοδος Ισχύος (\textlatin{Validity}): Τα πεδία
+    \textlatin{notBefore} και \textlatin{notAfter} που ορίζουν το χρονικό
+    παράθυρο εγκυρότητας.
+    \item Υποκείμενο (\textlatin{Subject}): Το \textlatin{DN} του
+    κατόχου. Στο πλαίσιο \textlatin{iSHARE}, το πεδίο \textlatin{Common
+    Name (CN)} περιέχει ένα περιγραφικό όνομα, ενώ το πεδίο
+    \textlatin{Serial Number} περιέχει το αναγνωριστικό \textlatin{EORI}
+    του οργανισμού (π.χ. \textlatin{EU.EORI.NLPLEGMA}).
+    \item Δημόσιο Κλειδί (\textlatin{Subject Public Key Info}):
+    Ο αλγόριθμος και η τιμή του δημόσιου κλειδιού.
+    \item Επεκτάσεις \textlatin{v3} (\textlatin{Extensions}):
+    Πρόσθετες πληροφορίες, όπως:
+    \begin{itemize}
+        \item \textlatin{basicConstraints}: Υποδεικνύει αν το πιστοποιητικό
+        ανήκει σε \textlatin{CA} (\textlatin{CA:TRUE}) ή σε τελικό χρήστη
+        (\textlatin{CA:FALSE}).
+        \item \textlatin{keyUsage}: Καθορίζει τις επιτρεπόμενες χρήσεις του
+        κλειδιού. Η τιμή \textlatin{digitalSignature} είναι κρίσιμη για την
+        υλοποίηση, καθώς ο \textlatin{Keyrock} ελέγχει ρητά αυτή την
+        επέκταση κατά την επαλήθευση πιστοποιητικών. Αν απουσιάζει, ο
+        \textlatin{Keyrock} απορρίπτει το πιστοποιητικό.
+        \item \textlatin{subjectKeyIdentifier} και
+        \textlatin{authorityKeyIdentifier}: Χρησιμοποιούνται για τη σύνδεση
+        του πιστοποιητικού με τη \textlatin{CA} που το εξέδωσε.
+    \end{itemize}
+    \item Υπογραφή (\textlatin{Signature}): Η ψηφιακή υπογραφή
+    της \textlatin{CA} πάνω σε όλα τα παραπάνω πεδία.
 \end{itemize}
 
-\subsection{Αλυσίδα Εμπιστοσύνης}
+\subsection{Αλυσίδα Εμπιστοσύνης (\textlatin{Chain of Trust})}
 \label{subsec:trust-chain}
 
-Στην παρούσα υλοποίηση χρησιμοποιείται μια ιεραρχία δύο επιπέδων:
+Η εμπιστοσύνη σε ένα πιστοποιητικό μεταφράζεται σε εμπιστοσύνη στη
+\textlatin{CA} που το εξέδωσε. Η \textlatin{CA} μπορεί με τη σειρά της
+να είναι πιστοποιημένη από μια ανώτερη \textlatin{CA}, δημιουργώντας μια
+ιεραρχία που ονομάζεται αλυσίδα εμπιστοσύνης (\textlatin{chain of trust}).
+
+Η επαλήθευση μιας αλυσίδας εμπιστοσύνης γίνεται ως εξής:
+\begin{enumerate}
+    \item Ο παραλήπτης του πιστοποιητικού λαμβάνει το πιστοποιητικό μαζί με τα ενδιάμεσα πιστοποιητικά.
+    \item Για κάθε πιστοποιητικό στην αλυσίδα, ελέγχει ότι η υπογραφή
+    του έχει δημιουργηθεί από το ιδιωτικό κλειδί του αμέσως ανώτερου
+    πιστοποιητικού.
+    \item Η αλυσίδα τερματίζεται σε ένα πιστοποιητικό ρίζας
+    (\textlatin{root certificate}) που ο επαληθευτής εμπιστεύεται εκ
+    των προτέρων.
+    \item Ελέγχεται ότι κανένα πιστοποιητικό στην αλυσίδα δεν έχει λήξει.
+\end{enumerate}
+
+Ως ψηφιακό αποτύπωμα (\textlatin{fingerprint}) ενός πιστοποιητικού ορίζεται 
+η μοναδική συμβολοσειρά σταθερού μήκους που προκύπτει από την εφαρμογή μιας 
+κρυπτογραφικής συνάρτησης κατακερματισμού, 
+όπως ο αλγόριθμος \textlatin{SHA-256}, επί των δυαδικών δεδομένων του ίδιου 
+του πιστοποιητικού. Το αποτύπωμα λειτουργεί ως ένα μοναδικό 
+αναγνωριστικό το οποίο εξασφαλίζει την ακεραιότητα του πιστοποιητικού, καθώς 
+οποιαδήποτε αλλαγή στα αρχικά δεδομένα θα παρήγαγε ένα εντελώς διαφορετικό 
+αποτέλεσμα. Η χρήση του αποτυπώματος, αντί για την αποθήκευση ολόκληρου του αρχείου του πιστοποιητικού, 
+βελτιστοποιεί τους πόρους του συστήματος και επιταχύνει τη διαδικασία 
+επαλήθευσης της αλυσίδας εμπιστοσύνης.
+
+Στην παρούσα υλοποίηση, η αλυσίδα αποτελείται από δύο μόνο επίπεδα:
 \begin{itemize}
-    \item \textbf{Πιστοποιητικό \textlatin{CA (PlegmaCA)}:} Η ρίζα εμπιστοσύνης.
-    Υπογράφει τα πιστοποιητικά των συμμετεχόντων. Το αποτύπωμά του
-    (\textlatin{fingerprint}) καταχωρείται στον \textlatin{iSHARE Satellite}.
-    \item \textbf{Πιστοποιητικά οντοτήτων:} Εκδίδονται για τον πάροχο
-    (\texttt{EU.EORI.NLPLEGMA}) και τον καταναλωτή
-    (\texttt{EU.EORI.NLPLEGMACONSUMER}).
+    \item Ρίζα (\textlatin{root}): Το πιστοποιητικό της τοπικής
+    \textlatin{CA} (\textlatin{PlegmaCA}), του οποίου το αποτύπωμα
+    (\textlatin{SHA-256 fingerprint}) καταχωρείται στη λίστα εμπιστευμένων
+    \textlatin{CA} του \textlatin{iSHARE Satellite}.
+    \item Φύλλα (\textlatin{leaf}): Τα πιστοποιητικά του παρόχου
+    (\textlatin{EU.EORI.NLPLEGMA}) και του καταναλωτή
+    (\textlatin{EU.EORI.NLPLEGMACONSUMER}), υπογεγραμμένα από τη
+    \textlatin{PlegmaCA}.
 \end{itemize}
 
-Κρίσιμη παράμετρος στην υλοποίηση είναι η επέκταση \texttt{keyUsage} με τιμή
-\texttt{digitalSignature}, η οποία απαιτείται για την επαλήθευση του
-πιστοποιητικού από τον \textlatin{Keyrock}. Επίσης, το ιδιωτικό κλειδί
-αποθηκεύεται σε μορφή \textlatin{PKCS\#1} (\textlatin{BEGIN RSA PRIVATE KEY})
-για συμβατότητα με το \textlatin{Kong API Gateway}.
+\subsection{\textlatin{PKCS\#8} και \textlatin{PKCS\#1}}
+\label{subsec:key-formats}
 
-% ------------------------------------------------------------------
+Ένα ζήτημα που αναδεικνύεται στην πράξη είναι η ύπαρξη δύο διαφορετικών
+μορφών αποθήκευσης ιδιωτικών κλειδιών \textlatin{RSA}:
+
+\begin{itemize}
+    \item \textlatin{PKCS\#8}: Μια γενική μορφή που μπορεί να περιέχει κλειδιά
+    οποιουδήποτε αλγορίθμου. Χρησιμοποιείται από το \textlatin{Keyrock} και το
+    \textlatin{DSBA-PDP}. Η κεφαλίδα του είναι της μορφής \textlatin{-----BEGIN PRIVATE
+    KEY-----}.
+    \item \textlatin{PKCS\#1}: Μια ειδική μορφή αποκλειστικά για κλειδιά
+    \textlatin{RSA}. Απαιτείται από τη βιβλιοθήκη
+    \textlatin{lua-resty-jwt} που χρησιμοποιεί εσωτερικά το \textlatin{Kong
+    API Gateway}. Η κεφαλίδα του είναι της μορφής \textlatin{-----BEGIN RSA
+    PRIVATE KEY-----}.
+\end{itemize}
+
+Η διαφορά αυτή δεν είναι εμφανής θεωρητικά, αλλά στην πράξη οδηγεί σε
+πολλά σφάλματα και στην υλοποιησή μας θα αναφέρουμε κάθε φορά τι χρησιμοποιείται
+προκειμένου να αποφευχθούν.
+
+% ==================================================================
+\section{\textlatin{JSON Web Tokens (JWT)}}
+\label{sec:jwt}
+% ==================================================================
+
+Τα \textlatin{JSON Web Tokens (JWT)}~\cite{rfc7519} αποτελούν το κύριο
+μέσο ταυτοποίησης και εξουσιοδότησης στην αρχιτεκτονική
+\textlatin{iSHARE}. Ένα \textlatin{JWT} είναι ένα αυτόνομο ψηφιακό
+\textlatin{token} που μεταφέρει πληροφορίες, που ονομάζονται ισχυρισμοί, σε μορφή
+\textlatin{JSON}, υπογεγραμμένο ψηφιακά ώστε ο παραλήπτης να μπορεί να
+επαληθεύσει τόσο την ακεραιότητα όσο και τον εκδότη του.
+
+\subsection{Δομή ενός \textlatin{JWT}}
+\label{subsec:jwt-structure}
+
+Ένα \textlatin{JWT} αποτελείται από τρία τμήματα, <\textlatin{Header}>.<\textlatin{Payload}>.<\textlatin{Signature}>, 
+διαχωρισμένα με τελεία. Κάθε τμήμα κωδικοποιείται σε \textlatin{Base64URL}, μια παραλλαγή της
+κωδικοποίησης \textlatin{Base64} ασφαλή για χρήση σε \textlatin{URL}.
+
+Η επικεφαλίδα (\textlatin{Header}) δηλώνει τον τύπο του \textlatin{token} και τον αλγόριθμο
+υπογραφής. Στο πλαίσιο \textlatin{iSHARE}, περιέχει επίσης την αλυσίδα
+πιστοποιητικών \textlatin{X.509}:
+
+\selectlanguage{english}
+\begin{lstlisting}[language={}, caption={Header ενός iSHARE JWT.}]
+{
+  "alg": "RS256",
+  "typ": "JWT",
+  "x5c": [
+    "<leaf_certificate_base64>",
+    "<CA_certificate_base64>"
+  ]
+}
+\end{lstlisting}
+\selectlanguage{greek}
+
+Τα πεδία ερμηνεύονται ως εξής:
+\begin{itemize}
+    \item \textlatin{alg}: Ο αλγόριθμος υπογραφής. Η τιμή \textlatin{RS256}
+    σημαίνει υπογραφή \textlatin{RSA} με κατακερματισμό \textlatin{SHA-256}.
+    Η διαδικασία περιλαμβάνει τον υπολογισμό του \textlatin{SHA-256 hash}
+    των δύο πρώτων τμημάτων και την κρυπτογράφηση αυτού του \textlatin{hash}
+    με το ιδιωτικό κλειδί \textlatin{RSA} του εκδότη.
+    \item \textlatin{typ}: Ο τύπος \textlatin{token} που είναι πάντα \textlatin{JWT}.
+    \item \textlatin{x5c}: Ένας πίνακας με τα
+    πιστοποιητικά \textlatin{X.509} σε κωδικοποίηση \textlatin{Base64}
+    (\textlatin{DER}). Το πρώτο στοιχείο είναι το πιστοποιητικό του εκδότη
+    (\textlatin{leaf}), το δεύτερο το πιστοποιητικό της \textlatin{CA}.
+    Αυτό επιτρέπει στον παραλήπτη να επαληθεύσει ολόκληρη την αλυσίδα
+    εμπιστοσύνης χωρίς να χρειαστεί εξωτερική αναζήτηση.
+\end{itemize}
+
+Το ωφέλιμο φορτίο (\textlatin{Payload}) περιέχει τους ισχυρισμούς (\textlatin{claims}), δηλαδή
+τις πληροφορίες που μεταφέρει το \textlatin{token}. Στο πλαίσιο
+\textlatin{iSHARE}, χρησιμοποιούνται τα ακόλουθα τυποποιημένα
+\textlatin{claims}:
+
+\selectlanguage{english}
+\begin{lstlisting}[language={}, caption={Payload ενός iSHARE JWT.}]
+{
+  "iss": "EU.EORI.NLPLEGMA",
+  "sub": "EU.EORI.NLPLEGMA",
+  "aud": "EU.EORI.NLPLEGMA",
+  "jti": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "iat": 1716000000,
+  "exp": 1716000030
+}
+\end{lstlisting}
+\selectlanguage{greek}
+
+Κάθε πεδίο αναλύεται ως εξής:
+\begin{itemize}
+    \item \textlatin{iss} (\textlatin{issuer}): Το αναγνωριστικό
+    \textlatin{EORI} του εκδότη. Υποδεικνύει ποιος δημιούργησε και
+    υπέγραψε το \textlatin{token}.
+    \item \textlatin{sub} (\textlatin{subject}): Το αναγνωριστικό της
+    οντότητας για την οποία εκδόθηκε το \textlatin{token} όπου συνήθως ταυτίζεται συνήθως με τον εκδότη.
+    \item \textlatin{aud} (\textlatin{audience}): Ο αποδέκτης για τον οποίο
+    προορίζεται το \textlatin{token}. Ο αποδέκτης πρέπει να ελέγξει ότι
+    αυτό το πεδίο αντιστοιχεί στο δικό του αναγνωριστικό, αλλιώς να
+    απορρίψει το \textlatin{token}. 
+    \item \textlatin{jti} (\textlatin{JWT ID}): Ένα μοναδικό αναγνωριστικό
+    σε μορφή \textlatin{UUID v4}. Αποτρέπει την επαναχρησιμοποίηση
+    του ίδιου \textlatin{token} (\textlatin{replay attack}).
+    \item \textlatin{iat} (\textlatin{issued at}): Η χρονοσφραγίδα
+    \textlatin{Unix} (δευτερόλεπτα από 1/1/1970) στην οποία εκδόθηκε
+    το \textlatin{token}.
+    \item \textlatin{exp} (\textlatin{expiration}): Η χρονοσφραγίδα μετά
+    την οποία το \textlatin{token} δεν είναι πλέον έγκυρο. Στο πλαίσιο
+    \textlatin{iSHARE}, η τιμή αυτή ορίζεται σε 30 δευτερόλεπτα, ένα εξαιρετικά μικρό παράθυρο που ελαχιστοποιεί
+    τον κίνδυνο κατάχρησης σε περίπτωση υποκλοπής.
+\end{itemize}
+
+Η υπογραφή (\textlatin{Signature})παράγεται εφαρμόζοντας τον αλγόριθμο \textlatin{RS256} στο
+κείμενο που προκύπτει από τη συνένωση των δύο πρώτων τμημάτων
+(κωδικοποιημένων σε \textlatin{Base64URL}) με τελεία:
+
+\textlatin{\textlatin{RSASHA256(base64url(header) + "." + base64url(payload), private\_key)}}
+
+Ο παραλήπτης επαληθεύει την υπογραφή εξάγοντας το δημόσιο κλειδί από
+το πιστοποιητικό στο πεδίο \textlatin{x5c} και εφαρμόζοντας τον αντίστροφο
+υπολογισμό. Αν η υπογραφή δεν ταιριάζει, το \textlatin{token}
+απορρίπτεται.
+
+\subsection{Διαφορές μεταξύ Παρόχου και Καταναλωτή \textlatin{JWT}}
+\label{subsec:jwt-differences}
+
+Μια κρίσιμη διάκριση στην υλοποίηση αφορά τον τρόπο με τον οποίο
+δημιουργούνται τα \textlatin{JWT} ανάλογα με τον ρόλο του εκδότη:
+
+\begin{itemize}
+    \item Πάροχος: Τα πεδία \textlatin{iss}, \textlatin{sub} και
+    \textlatin{aud} έχουν όλα την ίδια τιμή (\textlatin{EU.EORI.NLPLEGMA}).
+    Ο πάροχος εκδίδει \textlatin{token} για τον εαυτό του, προς τον
+    εαυτό του. Υπογράφει με το \textlatin{client.key} και ενσωματώνει
+    στο \textlatin{x5c} τα \textlatin{client.pem} + \textlatin{ca.pem}.
+    \item Καταναλωτής: Το πεδίο \textlatin{aud} δείχνει στον
+    πάροχο (\textlatin{EU.EORI.NLPLEGMA}), υποδηλώνοντας ότι αυτό το
+    \textlatin{token} προορίζεται για τον \textlatin{Keyrock} του
+    παρόχου. Υπογράφει με το \textlatin{consumer.key} και ενσωματώνει
+    στο \textlatin{x5c} τα \textlatin{consumer.pem} + \textlatin{ca.pem}.
+\end{itemize}
+
+% ==================================================================
 \section{Το Πλαίσιο \textlatin{iSHARE}}
 \label{sec:ishare}
-% ------------------------------------------------------------------
+% ==================================================================
 
-Το \textlatin{iSHARE} είναι ένα πλαίσιο εμπιστοσύνης (\textlatin{trust framework})
-για τον διαμοιρασμό δεδομένων, αρχικά αναπτυχθέν για τον κλάδο της εφοδιαστικής
-αλυσίδας στις Κάτω Χώρες και στη συνέχεια υιοθετηθέν από τη \textlatin{FIWARE
-Foundation} ως βάση για τους \textlatin{Data Spaces}~\cite{ishare2023}.
+Το \textlatin{iSHARE}~\cite{ishare2023} είναι ένα πλαίσιο εμπιστοσύνης
+(\textlatin{trust framework}) που ορίζει τους κανόνες, τα πρωτόκολλα
+και τις τεχνικές προδιαγραφές για τον ασφαλή διαμοιρασμό δεδομένων
+μεταξύ οργανισμών. Αναπτύχθηκε αρχικά στις Κάτω Χώρες για τον κλάδο
+της εφοδιαστικής αλυσίδας και υιοθετήθηκε από τη \textlatin{FIWARE
+Foundation} ως βάση του πλαισίου \textlatin{i4Trust}~\cite{i4trust2023}
+για τη δημιουργία \textlatin{Data Spaces}.
 
 \subsection{Αναγνωριστικό \textlatin{EORI}}
 \label{subsec:eori}
 
-Κάθε συμμετέχων σε ένα \textlatin{iSHARE Data Space} αναγνωρίζεται μέσω του
-αναγνωριστικού \textlatin{Economic Operators Registration and Identification (EORI)},
-ένα πρότυπο αναγνωριστικό που χρησιμοποιείται στην ευρωπαϊκή τελωνειακή
-νομοθεσία. Στο πλαίσιο \textlatin{iSHARE}, το \textlatin{EORI} αποτελεί τον
-μοναδικό αναγνωριστικό κάθε νομικής οντότητας εντός του \textlatin{Data Space}.
-Στην παρούσα υλοποίηση χρησιμοποιούνται τα αναγνωριστικά
-\texttt{EU.EORI.NLPLEGMA} (πάροχος) και \texttt{EU.EORI.NLPLEGMACONSUMER}
-(καταναλωτής).
+Κάθε συμμετέχων σε ένα \textlatin{iSHARE Data Space} αναγνωρίζεται
+μοναδικά μέσω του αναγνωριστικού \textlatin{Economic Operators Registration
+and Identification (EORI)}. Το \textlatin{EORI} είναι ένα αναγνωριστικό
+που χρησιμοποιείται στην ευρωπαϊκή τελωνειακή νομοθεσία για την
+αναγνώριση νομικών οντοτήτων που δραστηριοποιούνται σε εξωτερικό εμπόριο.
 
-\subsection{Ροή Επαλήθευσης \textlatin{iSHARE}}
-\label{subsec:ishare-flow}
+Αυτό το μοναδικό αναγνωριστικό καταχωρείται τόσο στο πιστοποιητικό
+\textlatin{X.509} (στο πεδίο \textlatin{Serial Number} του \textlatin{DN})
+όσο και στο μητρώο του \textlatin{Satellite}. Στην παρούσα υλοποίηση:
+\begin{itemize}
+    \item Πάροχος: \textlatin{EU.EORI.NLPLEGMA}
+    \item Καταναλωτής: \textlatin{EU.EORI.NLPLEGMACONSUMER}
+\end{itemize}
 
-Η βασική ροή επαλήθευσης στο \textlatin{iSHARE} ακολουθεί τα εξής βήματα:
+\subsection{Ροή Επαλήθευσης \textlatin{iSHARE} }
+\label{subsec:ishare-flow-detail}
+
+Η ροή επαλήθευσης κατά τον \textlatin{iSHARE} είναι μια ακολουθία
+βημάτων που εξασφαλίζει ότι ο αιτών είναι αυτός που ισχυρίζεται
+ότι είναι, ότι είναι αξιόπιστος συμμετέχων του \textlatin{Data
+Space} και ότι διαθέτει τα κατάλληλα δικαιώματα πρόσβασης.
+Αναλυτικά:
 
 \begin{enumerate}
-    \item Ο αιτών δημιουργεί ένα \textlatin{iSHARE JWT}, υπογεγραμμένο με το
-    ιδιωτικό κλειδί του, και το υποβάλλει στον αποδέκτη.
-    \item Ο αποδέκτης εξάγει την αλυσίδα πιστοποιητικών από το πεδίο
-    \texttt{x5c} της επικεφαλίδας.
-    \item Ο αποδέκτης επικοινωνεί με τον \textlatin{iSHARE Satellite} για να
-    επαληθεύσει ότι ο εκδότης είναι εγγεγραμμένος και αξιόπιστος συμμετέχων.
-    \item Αφού επαληθευτεί η ταυτότητα, ο αποδέκτης ελέγχει αν ο αιτών
-    διαθέτει την κατάλληλη εξουσιοδότηση για την εκτέλεση της αιτούμενης
-    ενέργειας.
+    \item Ο αιτών δημιουργεί \textlatin{iSHARE JWT}: Φτιάχνει
+    ένα \textlatin{JWT} με τα στοιχεία του (πεδία \textlatin{iss},
+    \textlatin{sub}, \textlatin{aud}) και ενσωματώνει την αλυσίδα
+    πιστοποιητικών στο πεδίο \textlatin{x5c}. Υπογράφει με το ιδιωτικό
+    κλειδί του.
+    \item Ο αποδέκτης λαμβάνει το \textlatin{JWT}: Εξάγει
+    το πιστοποιητικό \textlatin{leaf} από το πρώτο στοιχείο του
+    \textlatin{x5c} και ελέγχει ότι η υπογραφή του \textlatin{JWT}
+    αντιστοιχεί στο δημόσιο κλειδί αυτού του πιστοποιητικού.
+    \item Έλεγχος αλυσίδας πιστοποιητικών: Ο αποδέκτης
+    ελέγχει ότι το πιστοποιητικό \textlatin{leaf} έχει υπογραφεί
+    από τη \textlatin{CA} και ότι αυτή η \textlatin{CA} βρίσκεται στη λίστα εμπιστευμένων
+    \textlatin{CA} που παρέχει ο \textlatin{Satellite}
+    (\textlatin{trusted\_list}).
+    \item Επικοινωνία με τον \textlatin{Satellite}: Ο
+    αποδέκτης αποκτά πρώτα ένα δικό του \textlatin{access token}
+    από τον \textlatin{Satellite} (\textlatin{POST /token}) και στη
+    συνέχεια χρησιμοποιεί αυτό το \textlatin{token} για να ζητήσει
+    τη λίστα εμπιστευμένων \textlatin{CA}
+    (\textlatin{GET /trusted\_list}) και τα στοιχεία του αιτούντα
+    (\textlatin{GET /parties}).
+    \item Έλεγχος κατάστασης συμμετέχοντα: Ο
+    \textlatin{Satellite} επιστρέφει τα στοιχεία του αιτούντα
+    (κατάσταση, πιστοποιήσεις, αποτύπωμα πιστοποιητικού). Ο
+    αποδέκτης ελέγχει ότι η κατάσταση είναι \textlatin{Active} και
+    ότι το αποτύπωμα αντιστοιχεί στο πιστοποιητικό του \textlatin{JWT}.
+    \item Έλεγχος εξουσιοδότησης: Αν ο αιτών δεν είναι ο
+    ίδιος ο πάροχος, ο αποδέκτης αναζητά πολιτική εκχώρησης
+    εξουσιοδότησης (\textlatin{delegation evidence}) στο
+    \textlatin{Authorization Registry}.
 \end{enumerate}
 
 \subsection{Πολιτικές Εκχώρησης Εξουσιοδότησης (\textlatin{Delegation Policies})}
 \label{subsec:delegation}
 
-Ένας από τους κεντρικούς μηχανισμούς του \textlatin{iSHARE} είναι η δυνατότητα
-εκχώρησης εξουσιοδότησης (\textlatin{delegation}). Ο πάροχος δεδομένων μπορεί να
-εκδίδει πολιτικές που επιτρέπουν σε συγκεκριμένους καταναλωτές να έχουν πρόσβαση
-σε συγκεκριμένους πόρους, υπό συγκεκριμένες συνθήκες.
+Ο μηχανισμός εκχώρησης εξουσιοδότησης (\textlatin{delegation}) επιτρέπει
+στον πάροχο δεδομένων να ορίζει ρητά τι δικαιούται να κάνει κάθε
+καταναλωτής. Μια πολιτική εκχώρησης αποτελείται από τα ακόλουθα στοιχεία:
 
-Μια πολιτική εκχώρησης εξουσιοδότησης (\textlatin{delegation evidence}) έχει τη
-μορφή:
+\begin{itemize}
+    \item \textlatin{policyIssuer}: Ο οργανισμός που εκδίδει
+    την πολιτική, πάντα ο πάροχος δεδομένων.
+    \item \textlatin{target.accessSubject}: Ο αποδέκτης της
+    πολιτικής, ο καταναλωτής που λαμβάνει δικαίωμα πρόσβασης.
+    Στην υλοποίηση, χρησιμοποιείται το εσωτερικό \textlatin{UUID}
+    του καταναλωτή στη βάση δεδομένων του \textlatin{Keyrock}.
+    \item \textlatin{notBefore} / \textlatin{notOnOrAfter}:
+    Χρονικό παράθυρο εγκυρότητας, σε μορφή \textlatin{Unix timestamp}.
+    \item \textlatin{policySets}: Ένα ή περισσότερα σύνολα
+    πολιτικών, καθένα περιέχοντας:
+    \begin{itemize}
+        \item \textlatin{resource.type}: Ο τύπος πόρου στον οποίο
+        αφορά η πολιτική.
+        \item \textlatin{resource.identifiers}: Ποιες οντότητες
+        αφορά (\textlatin{["*"]} σημαίνει όλες).
+        \item \textlatin{resource.attributes}: Ποια χαρακτηριστικά
+        αφορά (\textlatin{["*"]} σημαίνει όλα).
+        \item \textlatin{actions}: Ποιες ενέργειες επιτρέπονται
+        (\textlatin{["GET"]}, \textlatin{["POST"]}, κ.λπ.).
+        \item \textlatin{rules}: Η απόφαση (\textlatin{Permit} ή
+        \textlatin{Deny}).
+    \end{itemize}
+\end{itemize}
 
-\begin{lstlisting}[language={}]
-{
-  "delegationEvidence": {
-    "notBefore": 1735689600,
-    "notOnOrAfter": 1798761600,
-    "policyIssuer": "EU.EORI.NLPLEGMA",
-    "target": {
-      "accessSubject": "<UUID καταναλωτή>"
-    },
-    "policySets": [{
-      "policies": [{
-        "target": {
-          "resource": {
-            "type": "https://plegma.example.org/vocab#HouseholdElectricMeasurement",
-            "identifiers": ["*"],
-            "attributes": ["*"]
-          },
-          "actions": ["GET"]
-        },
-        "rules": [{ "effect": "Permit" }]
-      }]
-    }]
-  }
-}
-\end{lstlisting}
+Αυτή η δομή επιτρέπει ακριβή καθορισμό δικαιωμάτων (\textlatin{fine grained access control}).
 
-Η παραπάνω πολιτική ορίζει ότι ο πάροχος (\texttt{EU.EORI.NLPLEGMA}) επιτρέπει
-στον καταναλωτή να εκτελεί λειτουργίες \textlatin{GET} σε οποιοδήποτε
-\textlatin{entity} τύπου \texttt{HouseholdElectricMeasurement}.
+% ==================================================================
+\section{\textlatin{OAuth 2.0 }}
+\label{sec:oauth2} 
+% ==================================================================
 
-% ------------------------------------------------------------------
-\section{\textlatin{OAuth 2.0} και Ροή \textlatin{Client Credentials}}
-\label{sec:oauth2}
-% ------------------------------------------------------------------
+Το \textlatin{OAuth 2.0} είναι ένα πρωτόκολλο
+εξουσιοδότησης που ορίζει τον τρόπο με τον οποίο μια εφαρμογή μπορεί
+να αποκτήσει πρόσβαση σε πόρους εκ μέρους ενός χρήστη ή οργανισμού.
+Δεν πρόκειται για πρωτόκολλο ταυτοποίησης αλλά ασχολείται αποκλειστικά
+με την εξουσιοδότηση.
 
-Το \textlatin{OAuth 2.0} είναι ένα πρωτόκολλο εξουσιοδότησης (\textlatin{RFC 6749})
-που επιτρέπει σε εφαρμογές να αποκτούν πρόσβαση σε πόρους εκ μέρους ενός
-χρήστη ή οργανισμού~\cite{rfc6749}. Στο πλαίσιο \textlatin{iSHARE}, χρησιμοποιείται
-η ροή \textlatin{Client Credentials} για \textlatin{Machine-to-Machine (M2M)}
-επικοινωνία, κατά την οποία ο καταναλωτής υποβάλλει το \textlatin{iSHARE JWT} του
-στον \textlatin{Keyrock} και λαμβάνει ένα \textlatin{access token}:
+Το \textlatin{OAuth 2.0} ορίζει τέσσερις βασικές ροές (\textlatin{grant
+types}):
 
-\begin{lstlisting}[language={}]
-POST /oauth2/token
+\begin{itemize}
+    \item \textlatin{Authorization Code}: Για εφαρμογές ιστού
+    (\textlatin{web apps}) όπου ο χρήστης ταυτοποιείται μέσω
+    \textlatin{browser}. Είναι η πιο ασφαλής ροή.
+    \item \textlatin{Client Credentials}: Για επικοινωνία μεταξύ
+    μηχανών (\textlatin{M2M}), χωρίς εμπλοκή ανθρώπινου χρήστη. Αυτή
+    η ροή χρησιμοποιείται στην παρούσα υλοποίηση.
+    \item \textlatin{Resource Owner Password Credentials}:
+    Για απευθείας αποστολή ονόματος χρήστη και κωδικού.
+    \item \textlatin{Implicit}: Για εφαρμογές \textlatin{browser}
+    χωρίς \textlatin{backend}, ροή που έχει αρχίσει να αποσύρεται.
+\end{itemize}
+
+\subsection{Ροή \textlatin{Client Credentials }}
+\label{subsec:client-credentials}
+
+Στην παρούσα υλοποίηση, ο καταναλωτής χρησιμοποιεί τη ροή
+\textlatin{Client Credentials} για να αποκτήσει \textlatin{access
+token} από τον \textlatin{Keyrock}. Η ροή αυτή προσαρμόζεται ώστε
+αντί για παραδοσιακά \textlatin{client\_id, client\_secret} να
+χρησιμοποιεί \textlatin{iSHARE JWT}.
+
+Η αίτηση αποστέλλεται ως \textlatin{HTTP POST}:
+
+\selectlanguage{english}
+\begin{lstlisting}[language={}, caption={Αίτηση OAuth 2.0 Client Credentials με iSHARE JWT.}]
+POST /oauth2/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials
 &scope=iSHARE
 &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
-&client_assertion=<iSHARE JWT>
+&client_assertion=eyJhbGciOiJSUzI1NiIs...
 &client_id=EU.EORI.NLPLEGMACONSUMER
 \end{lstlisting}
+\selectlanguage{greek}
 
-Το \textlatin{access token} που επιστρέφεται είναι ένα \textlatin{JWT} υπογεγραμμένο
-από τον \textlatin{Keyrock}, το οποίο ενσωματώνει τα στοιχεία εκχώρησης
-εξουσιοδότησης (\textlatin{delegationEvidence}) και χρησιμοποιείται στη συνέχεια
-για πρόσβαση στους πόρους μέσω του \textlatin{Kong API Gateway}.
-
-% ------------------------------------------------------------------
-\section{\textlatin{NGSI-LD} και \textlatin{JSON-LD}}
-\label{sec:ngsi-ld}
-% ------------------------------------------------------------------
-
-Το \textlatin{NGSI-LD} (\textlatin{Next Generation Service Interfaces - Linked Data})
-είναι ένα πρότυπο \textlatin{API} που αναπτύχθηκε από τον οργανισμό
-\textlatin{ETSI}~\cite{ngsi-ld2023} και αποτελεί εξέλιξη του \textlatin{NGSI-v2}.
-Αξιοποιεί τις αρχές των \textlatin{Linked Data} και του \textlatin{JSON-LD}~\cite{jsonld2020}
-για την περιγραφή οντοτήτων με πλούσιο σημασιολογικό περιεχόμενο.
-
-\subsection{Οντότητες \textlatin{NGSI-LD}}
-\label{subsec:ngsi-entities}
-
-Η βασική μονάδα πληροφορίας στο \textlatin{NGSI-LD} είναι η \textbf{οντότητα}
-(\textlatin{entity}). Κάθε οντότητα χαρακτηρίζεται από:
+Τα ορίσματα αναλύονται ως εξής:
 \begin{itemize}
-    \item Ένα μοναδικό αναγνωριστικό (\texttt{id}) σε μορφή \textlatin{URI}.
-    \item Έναν τύπο (\texttt{type}) που περιγράφει την κατηγορία της οντότητας.
-    \item Ιδιότητες (\textlatin{Properties}) και Σχέσεις (\textlatin{Relationships})
-    που περιγράφουν τα χαρακτηριστικά και τις συνδέσεις της με άλλες οντότητες.
-    \item Ένα \textlatin{context} (\texttt{@context}) που αντιστοιχίζει τα ονόματα
-    ιδιοτήτων σε \textlatin{URI} (\textlatin{JSON-LD}).
+    \item \textlatin{grant\_type}: Η ροή \textlatin{OAuth 2.0} που
+    χρησιμοποιείται. Η τιμή \textlatin{client\_credentials} υποδεικνύει
+    ότι δεν εμπλέκεται ανθρώπινος χρήστης.
+    \item \textlatin{scope}: Η τιμή \textlatin{iSHARE} ενεργοποιεί τη
+    λογική \textlatin{iSHARE} στον \textlatin{Keyrock}, αντί της
+    τυπικής ροής \textlatin{OAuth 2.0}.
+    \item \textlatin{client\_assertion\_type}: Δηλώνει ότι τα
+    διαπιστευτήρια του πελάτη παρέχονται ως \textlatin{JWT}
+    (\textlatin{jwt-bearer}) αντί για \textlatin{client\_secret}.
+    \item \textlatin{client\_assertion}: Το ίδιο το \textlatin{iSHARE
+    JWT} του καταναλωτή, κωδικοποιημένο σε \textlatin{Base64URL}.
+    \item \textlatin{client\_id}: Το \textlatin{EORI} του καταναλωτή.
 \end{itemize}
 
-Παράδειγμα οντότητας τύπου \texttt{HouseholdElectricMeasurement} από το
-\textlatin{Plegma Dataset}:
+Εφόσον η ταυτοποίηση του καταναλωτή ολοκληρωθεί επιτυχώς και επιβεβαιωθεί 
+ότι διαθέτει τα απαραίτητα δικαιώματα πρόσβασης, ο διαχειριστής ταυτοτήτων 
+(όπως το \textlatin{Keyrock}) εκδίδει ένα ψηφιακό διαπιστευτήριο (\textlatin{access token}).
+Το διαπιστευτήριο αυτό λειτουργεί ως ένα ασφαλές διαβατήριο, καθώς εμπεριέχει την 
+κρυπτογραφική απόδειξη των δικαιωμάτων που έχουν εκχωρηθεί στον χρήστη 
+(\textlatin{delegation evidence}). Στη συνέχεια, ο καταναλωτής επισυνάπτει αυτό 
+το διαπιστευτήριο σε κάθε αίτημά του προς την κεντρική πύλη ελέγχου του συστήματος 
+(\textlatin{API Gateway}, ρόλο τον οποίο αναλαμβάνει το \textlatin{Kong}), 
+προκειμένου να αποδείξει με ασφάλεια την εξουσιοδότησή του και να του 
+επιτραπεί η τελική προσπέλαση στα δεδομένα.
 
-\begin{lstlisting}[language={}]
-{
-  "id": "urn:ngsi-ld:HouseholdElectricMeasurement:House01:2022-07-15T00:00:00Z",
-  "type": "https://plegma.example.org/vocab#HouseholdElectricMeasurement",
-  "https://plegma.example.org/vocab#activePower": {
-    "type": "Property",
-    "value": 121.542,
-    "unitCode": "WTT"
-  },
-  "https://plegma.example.org/vocab#phaseVoltage": {
-    "type": "Property",
-    "value": 236.83,
-    "unitCode": "VLT"
-  },
-  "@context": "https://raw.githubusercontent.com/smart-data-models/dataModel.Energy/master/context.jsonld"
-}
-\end{lstlisting}
+% ==================================================================
+\section{\textlatin{NGSI-LD} και \textlatin{JSON-LD}}
+\label{sec:ngsi-ld}
+% ==================================================================
+
+Το \textlatin{NGSI-LD}~\cite{ngsi-ld2023} (\textlatin{Next Generation
+Service Interfaces - Linked Data}) είναι ένα πρότυπο \textlatin{API}
+που αναπτύχθηκε από τον ευρωπαϊκό οργανισμό τυποποίησης
+\textlatin{ETSI} (προδιαγραφή \textlatin{ETSI GS CIM 009}). Αποτελεί
+εξέλιξη του \textlatin{NGSI-v2} με ενσωμάτωση αρχών
+\textlatin{Linked Data} μέσω \textlatin{JSON-LD}~\cite{jsonld2020}.
+
+Το μοντέλο πληροφορίας του \textlatin{NGSI-LD} βασίζεται σε τρεις
+θεμελιώδεις έννοιες:
+
+\begin{itemize}
+    \item Οντότητα (\textlatin{Entity}): Αναπαριστά ένα
+    πραγματικό ή εννοιολογικό αντικείμενο (π.χ. ένα κτίριο, μια
+    μέτρηση, μια συσκευή). Κάθε οντότητα έχει ένα μοναδικό
+    αναγνωριστικό σε μορφή \textlatin{URI} και έναν τύπο.
+    \item Ιδιότητα (\textlatin{Property}): Αναπαριστά ένα
+    μετρήσιμο ή περιγραφικό χαρακτηριστικό μιας οντότητας. Κάθε
+    ιδιότητα έχει μια τιμή (\textlatin{value}) και προαιρετικά μια
+    μονάδα μέτρησης (\textlatin{unitCode}) και μια χρονοσφραγίδα
+    (\textlatin{observedAt}).
+    \item Σχέση (\textlatin{Relationship}): Αναπαριστά μια
+    σύνδεση μεταξύ δύο οντοτήτων. Σε αντίθεση με τις ιδιότητες, η
+    τιμή μιας σχέσης δεν είναι δεδομένο αλλά ένα \textlatin{URI}
+    που δείχνει σε άλλη οντότητα.
+\end{itemize}
+
+\subsection{\textlatin{JSON-LD Context}}
+\label{subsec:json-ld-context}
+
+Το \textlatin{JSON-LD} (\textlatin{JSON for Linked Data})~\cite{jsonld2020}
+είναι μια μέθοδος κωδικοποίησης \textlatin{Linked Data} χρησιμοποιώντας
+τη μορφή \textlatin{JSON}. Η βασική ιδέα είναι η χρήση ενός ειδικού
+πεδίου \textlatin{@context} που μετατρέπει τα σύντομα ονόματα ιδιοτήτων
+σε παγκόσμια \textlatin{URI}.
+
+Η χρησιμότητα αυτού γίνεται κατανοητή με ένα παράδειγμα: η ιδιότητα
+\textlatin{activePower} σε ένα \textlatin{JSON} δεν φέρει εγγενώς σημασία,
+κάθε οργανισμός θα μπορούσε να χρησιμοποιεί αυτό το όνομα με
+διαφορετική σημασία. Ωστόσο, μέσω του \textlatin{@context}, η ιδιότητα
+\textlatin{activePower} αντιστοιχίζεται στο \textlatin{URI}
+\textlatin{https://plegma.example.org/vocab\#activePower}, το οποίο
+είναι παγκόσμια μοναδικό.
+
+\subsection{Βασικές Λειτουργίες \textlatin{API}}
+\label{subsec:ngsi-api}
+
+Το \textlatin{NGSI-LD API} ακολουθεί τις αρχές \textlatin{REST} και
+παρέχει τις ακόλουθες βασικές λειτουργίες:
+
+\begin{itemize}
+    \item \textlatin{POST /ngsi-ld/v1/entities}: Δημιουργία νέας
+    οντότητας.
+    \item \textlatin{GET /ngsi-ld/v1/entities}: Αναζήτηση οντοτήτων με
+    φίλτρα.
+    \item \textlatin{GET /ngsi-ld/v1/entities/\{id\}}: Ανάκτηση
+    συγκεκριμένης οντότητας μέσω αναγνωριστικού.
+    \item \textlatin{PATCH /ngsi-ld/v1/entities/\{id\}/attrs}:
+    Ενημέρωση ιδιοτήτων υπάρχουσας οντότητας.
+    \item \textlatin{DELETE /ngsi-ld/v1/entities/\{id\}}: Διαγραφή
+    οντότητας.
+\end{itemize}
 
 \subsection{\textlatin{Smart Data Models}}
 \label{subsec:smart-data-models}
 
-Τα \textlatin{Smart Data Models}~\cite{smart-data-models2023} αποτελούν μια κοινή
-πρωτοβουλία της \textlatin{FIWARE Foundation}, του \textlatin{IUDX}, του
-\textlatin{TM Forum} και του \textlatin{OASC}, που παρέχει ανοιχτά, επαναχρησιμοποιήσιμα
-σχήματα δεδομένων (\textlatin{data models}) για διάφορους τομείς εφαρμογής. Στην
-παρούσα εργασία χρησιμοποιείται το \textlatin{context} από τον κατάλογο
-\textlatin{Smart Data Models Energy} ως βάση για τη σύνδεση με την παγκόσμια
-σημασιολογία \textlatin{Linked Data}.
+Τα \textlatin{Smart Data Models}~\cite{smart-data-models2023}
+αποτελούν μια πρωτοβουλία που παρέχει ανοιχτά, τυποποιημένα σχήματα
+δεδομένων για τα πιο κοινά αντικείμενα σε τομείς όπως η ενέργεια, τα
+κτίρια, ο καιρός, οι μεταφορές κ.ά. Η πρωτοβουλία διοικείται
+από τη \textlatin{FIWARE Foundation}, τον \textlatin{IUDX}, το
+\textlatin{TM Forum} και τον \textlatin{OASC}.
 
-% ------------------------------------------------------------------
-\section{Έλεγχος Πρόσβασης βάσει \textlatin{XACML}}
+Στην παρούσα εργασία, τα μοντέλα δεδομένων του \textlatin{Plegma
+Dataset} σχεδιάστηκαν ώστε να κληρονομούν τη σημασιολογία των
+επίσημων \textlatin{Smart Data Models}, επεκτείνοντάς τα με ιδιότητες
+ειδικές για τα δεδομένα νοικοκυριών.
+
+% ==================================================================
+\section{Αρχιτεκτονική Ελέγχου Πρόσβασης \textlatin{XACML}}
 \label{sec:xacml}
-% ------------------------------------------------------------------
+% ==================================================================
 
-Η \textlatin{eXtensible Access Control Markup Language (XACML)} είναι ένα πρότυπο
-\textlatin{OASIS} για την έκφραση και αξιολόγηση πολιτικών ελέγχου πρόσβασης~\cite{xacml3}.
-Στο πλαίσιο \textlatin{i4Trust}, ο \textlatin{DSBA Policy Decision Point (DSBA-PDP)}
-χρησιμοποιεί \textlatin{XACML}-συμβατή λογική για να αποφασίσει αν μια αίτηση
-πρόσβασης θα εγκριθεί ή θα απορριφθεί.
-
-Η αρχιτεκτονική ελέγχου πρόσβασης βασίζεται στη διάκριση μεταξύ:
-\begin{itemize}
-    \item \textbf{\textlatin{Policy Enforcement Point (PEP)}:} Το σημείο επιβολής
-    της πολιτικής. Στην παρούσα υλοποίηση, τον ρόλο αυτό επιτελεί το
-    \textlatin{Kong API Gateway}.
-    \item \textbf{\textlatin{Policy Decision Point (PDP)}:} Το σημείο λήψης
-    απόφασης. Αξιολογεί την αίτηση σε σχέση με τις ισχύουσες πολιτικές και
-    επιστρέφει απόφαση \textlatin{Permit} ή \textlatin{Deny}. Τον ρόλο αυτό
-    επιτελεί ο \textlatin{DSBA-PDP}.
-\end{itemize}
-
-% ------------------------------------------------------------------
-\section{Σύνοψη}
-\label{sec:ch3-summary}
-% ------------------------------------------------------------------
-
-Στο παρόν κεφάλαιο παρουσιάστηκαν οι βασικές τεχνολογίες και τα πρότυπα που
-διέπουν την υλοποιούμενη αρχιτεκτονική:
+Η \textlatin{eXtensible Access Control Markup Language
+(XACML)}~\cite{xacml3} είναι ένα πρότυπο \textlatin{OASIS} που ορίζει
+τόσο μια γλώσσα έκφρασης πολιτικών ελέγχου πρόσβασης όσο και μια
+αρχιτεκτονική αξιολόγησής τους. Η αρχιτεκτονική αυτή βασίζεται στον
+διαχωρισμό ευθυνών μεταξύ τεσσάρων σημείων:
 
 \begin{itemize}
-    \item Τα \textlatin{JSON Web Tokens (JWT)} και η επέκτασή τους στο πλαίσιο
-    \textlatin{iSHARE} για ασφαλή ταυτοποίηση των συμμετεχόντων.
-    \item Τα ψηφιακά πιστοποιητικά \textlatin{X.509} και ο ρόλος τους στην
-    αλυσίδα εμπιστοσύνης.
-    \item Το πλαίσιο \textlatin{iSHARE} και ο μηχανισμός εκχώρησης
-    εξουσιοδότησης μέσω \textlatin{delegation policies}.
-    \item Το πρωτόκολλο \textlatin{OAuth 2.0} και η ροή \textlatin{Client
-    Credentials} για \textlatin{M2M} επικοινωνία.
-    \item Το πρότυπο \textlatin{NGSI-LD} και η χρήση \textlatin{JSON-LD} για
-    σημασιολογικά πλούσια δεδομένα.
-    \item Η αρχιτεκτονική \textlatin{PEP/PDP} για έλεγχο πρόσβασης βάσει
-    \textlatin{XACML}.
+    \item \textlatin{Policy Enforcement Point (PEP)}: Το
+    σημείο που παρεμβάλλεται μεταξύ αιτούντα και πόρου. Λαμβάνει
+    κάθε αίτηση, ρωτά τον \textlatin{PDP} αν πρέπει να επιτραπεί
+    και εφαρμόζει την απόφαση. Στην παρούσα υλοποίηση, ο ρόλος αυτός
+    ανατίθεται στο \textlatin{Kong API Gateway}.
+    \item \textlatin{Policy Decision Point (PDP)}: Το
+    σημείο που αξιολογεί μια αίτηση πρόσβασης σε σχέση με τις
+    ισχύουσες πολιτικές. Λαμβάνει ως είσοδο τα στοιχεία της
+    αίτησης (ποιος ζητά τι, πώς) και τις πολιτικές, και επιστρέφει
+    απόφαση \textlatin{Permit} ή \textlatin{Deny}. Τον ρόλο αυτό
+    επιτελεί ο \textlatin{DSBA-PDP} σε συνεργασία με τη λογική
+    του \textlatin{plugin} \textlatin{ngsi-ishare-policies}.
+    \item \textlatin{Policy Administration Point (PAP)}:
+    Το σημείο όπου δημιουργούνται και αποθηκεύονται οι πολιτικές.
+    Στην υλοποίηση, ο ρόλος αυτός ανατίθεται στον \textlatin{Keyrock}
+    μέσω του \textlatin{endpoint} \textlatin{POST /ar/policy}.
+    \item \textlatin{Policy Information Point (PIP)}:
+    Το σημείο που παρέχει πρόσθετα δεδομένα που χρειάζεται ο
+    \textlatin{PDP} για τη λήψη απόφασης. Στην υλοποίηση, αυτός
+    ο ρόλος εκπληρώνεται μερικώς από τον \textlatin{iSHARE
+    Satellite} (παρέχει πληροφορίες εμπιστοσύνης) και τον
+    \textlatin{Keyrock} (παρέχει πολιτικές εκχώρησης).
 \end{itemize}
 
-Τα τεχνολογικά αυτά δομικά στοιχεία αξιοποιούνται στο επόμενο κεφάλαιο για την
-παρουσίαση των εργαλείων που επιλέχθηκαν για την υλοποίηση του
-\textlatin{Plegma Data Space}.
+Ο διαχωρισμός αυτός είναι σημαντικός γιατί επιτρέπει τη χρήση
+διαφορετικών υλοποιήσεων για κάθε σημείο, εφόσον τηρούν τις
+τυποποιημένες διεπαφές. Στην παρούσα αρχιτεκτονική, η λογική αξιολόγησης
+πολιτικών \textlatin{iSHARE} (\textlatin{delegation evidence}) ενσωματώνεται
+στο \textlatin{Kong plugin}, ενώ ο εξωτερικός \textlatin{DSBA-PDP}
+παρέχει πρόσθετες δυνατότητες για πιο σύνθετα σενάρια.
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.16)  20 MAY 2026 20:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.16)  7 JUN 2026 20:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1790,6 +1790,23 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \c@nlinenum=\count349
 \TeXr@lab=\toks40
 )
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/ragged2e\ragged2e.sty
+Package: ragged2e 2023/06/22 v3.6 ragged2e Package
+\CenteringLeftskip=\skip87
+\RaggedLeftLeftskip=\skip88
+\RaggedRightLeftskip=\skip89
+\CenteringRightskip=\skip90
+\RaggedLeftRightskip=\skip91
+\RaggedRightRightskip=\skip92
+\CenteringParfillskip=\skip93
+\RaggedLeftParfillskip=\skip94
+\RaggedRightParfillskip=\skip95
+\JustifyingParfillskip=\skip96
+\CenteringParindent=\skip97
+\RaggedLeftParindent=\skip98
+\RaggedRightParindent=\skip99
+\JustifyingParindent=\skip100
+)
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.sty
 Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty
@@ -1797,7 +1814,7 @@ Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
 \g_MT_multlinerow_int=\count350
 \l_MT_multwidth_dim=\dimen263
-\origjot=\skip87
+\origjot=\skip101
 \l_MT_shortvdotswithinadjustabove_dim=\dimen264
 \l_MT_shortvdotswithinadjustbelow_dim=\dimen265
 \l_MT_above_intertext_sep=\dimen266
@@ -2015,7 +2032,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip88
+\Hy@SectionHShift=\skip102
 )
 Package hyperref Info: Option `final' set `true' on input line 139.
 Package hyperref Info: Option `colorlinks' set `true' on input line 139.
@@ -2594,7 +2611,7 @@ LaTeX Info: Redefining \omega on input line 38.
    defining Unicode char U+03F5 (decimal 1013)
 \c@lstlisting=\count396
 Package tocbasic Info: setting babel extension for `lol' on input line 38.
-\scr@dte@lstlisting@maxnumwidth=\skip89
+\scr@dte@lstlisting@maxnumwidth=\skip103
 Package hyperref Info: Link coloring ON on input line 38.
 <NTUA-logo.png, id=30, 1898.09125pt x 1903.11pt>
 File: NTUA-logo.png Graphic file (type png)
@@ -2625,12 +2642,14 @@ LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
 (Font)              scaled to size 20.74pt on input line 57.
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
 (Font)              scaled to size 20.74pt on input line 57.
+LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
+(Font)              scaled to size 20.74pt on input line 57.
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
 (Font)              scaled to size 17.28pt on input line 59.
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 63.
+(Font)              scaled to size 12.0pt on input line 64.
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 66.
+(Font)              scaled to size 12.0pt on input line 67.
 [1
 
 
@@ -2669,4316 +2688,418 @@ TLF.
 LaTeX Font Info:    Font shape `TS1/Tempora-TLF/m/n' will be
 (Font)              scaled to size 12.0pt on input line 58.
  [4{C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tempora/tmp_ac
-5xuc.enc}]) (dedications.tex
+5xuc.enc}]) (abstract.tex
 LaTeX Font Info:    Trying to load font information for LGR+cmss on input line 
-6.
+1.
 
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cbfonts-fd\lgrcmss.fd
 File: lgrcmss.fd 2017/07/29 v1.2 Greek European Computer Sans Serif
 )
+Underfull \hbox (badness 1939) in paragraph at lines 18--24
+\LGR/Tempora-TLF/m/n/12 pi-sto-poi-h-ti-k� \T1/Tempora-TLF/m/n/12 X.509 \LGR/Te
+mpora-TLF/m/n/12 kai \T1/Tempora-TLF/m/n/12 JSON W-eb To-kens (JWT) \LGR/Tempor
+a-TLF/m/n/12 gia thn tau-to-po-�h-sh twn
+ []
+
 [5
 
 ] [6
 
-]) (abstract.tex [7
+]) (abstract_eng.tex
+Underfull \hbox (badness 1097) in paragraph at lines 43--44
+\T1/Tempora-TLF/m/n/12 re-quire-ments, and the ini-tial-iza-tion or-der of sys-
+tem com-po-nents. These find-ings are
+ []
+
+LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 46.
+[7
 
 
 ] [8
 
-]) (abstract_eng.tex
-LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 33.
- [9
+]) (acknowledgements.tex [9
 
 
 ] [10
 
-])
-(acknowledgements.tex [11
+]) (diploma_thesis.toc [11
 
 
-] [12
-
-]) (diploma_thesis.toc [13
-
-
-]
-LaTeX Font Info:    Trying to load font information for LGR+cmtt on input line 
-60.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cbfonts-fd\lgrcmtt.fd
-File: lgrcmtt.fd 2017/07/29 v1.2 Greek European Computer Typewriter
-)
-[14] [15])
+] [12])
 \tf@toc=\write4
 \openout4 = `diploma_thesis.toc'.
 
- [16] [17
 
-] (diploma_body.tex (chapters/01-introduction.tex [18
+[13] [14
 
-
-]
+] (diploma_body.tex (chapters/01-introduction.tex
 chapter 1.
-[19]
 
-LaTeX Warning: Citation `plegma2024' on page 20 undefined on input line 50.
+Underfull \hbox (badness 1264) in paragraph at lines 24--28
+[]\LGR/Tempora-TLF/m/n/12 Oi e-rw-t�seic au-t�c a-po-te-lo-�n ton pu-r�na thc i
+-d�ac tou \T1/Tempora-TLF/m/n/12 Da-ta Spa-ce\LGR/Tempora-TLF/m/n/12 : e-n�c
+ []
 
-[20]) (chapters/02-data-spaces.tex [21] [22
+
+Underfull \hbox (badness 5189) in paragraph at lines 44--46
+[]\LGR/Tempora-TLF/m/n/12 Trofodote�tai me prag-ma-ti-k� de-do-m�na a-p� to \T1
+/Tempora-TLF/m/n/12 Pleg-ma Da-ta-set\LGR/Tempora-TLF/m/n/12 , mia
+ []
+
+[15
+
+
+]) (chapters/02-data-spaces.tex [16]
+chapter 2.
+
+Underfull \hbox (badness 2035) in paragraph at lines 14--21
+\LGR/Tempora-TLF/m/n/12 Paradosiak�, h a-ntal-la-g� de-do-m�nwn gi-n�tan e-�te 
+m�sw ke-ntri-ko-poi-h-m�nwn
+ []
+
+
+Underfull \hbox (badness 1867) in paragraph at lines 14--21
+\LGR/Tempora-TLF/m/n/12 de-do-m�na, e-�te m�sw di-me-r�n sum-fw-ni-�n me-ta-x� 
+or-ga-ni-sm�n. Kai oi d�o
+ []
+
+[17
 
 ]
-chapter 2.
-[23] [24] [25] [26]) (chapters/03-technologies.tex [27] [28]
+Underfull \hbox (badness 1142) in paragraph at lines 47--50
+[]\LGR/Tempora-TLF/m/n/12 Pla�sio e-mpi-sto-s�nhc (\T1/Tempora-TLF/m/n/12 Trust
+ Fra-me-w-ork\LGR/Tempora-TLF/m/n/12 ): U-p�r-qei �nac koi-n� a-po-de-kt�c
+ []
+
+
+Underfull \hbox (badness 3049) in paragraph at lines 63--66
+[]\LGR/Tempora-TLF/m/n/12 Diaqe�rish Tau-t�th-tac kai E-mpi-sto-s�nhc (\T1/Temp
+ora-TLF/m/n/12 Identity & Trust Ma-na-ge-ment\LGR/Tempora-TLF/m/n/12 ):
+ []
+
+
+Underfull \hbox (badness 1895) in paragraph at lines 90--97
+[]\T1/Tempora-TLF/b/n/12 International Da-ta Spa-ces As-so-cia-tion (ID-SA)\LGR
+/Tempora-TLF/b/n/12 : \LGR/Tempora-TLF/m/n/12 H \T1/Tempora-TLF/m/n/12 I-nter-n
+a-tio-nal Da-ta Spa-ces
+ []
+
+[18]
+Underfull \hbox (badness 1502) in paragraph at lines 136--139
+[]\T1/Tempora-TLF/m/n/12 iSHARE\LGR/Tempora-TLF/m/n/12 : 'E-na pla-�sio e-mpi-s
+to-s�nhc pou o-r�zei ton tr�po e-pa-l�jeu-shc
+ []
+
+
+Underfull \hbox (badness 2707) in paragraph at lines 136--139
+\LGR/Tempora-TLF/m/n/12 tau-t�th-tac kai e-xou-sio-d�th-shc twn sum-me-te-q�ntw
+n, me b�sh yh-fia-k�
+ []
+
+[19]
+Underfull \hbox (badness 2521) in paragraph at lines 165--170
+[]\LGR/Tempora-TLF/m/n/12 Katanalwt�c De-do-m�nwn (\T1/Tempora-TLF/m/n/12 Data 
+Con-su-mer\LGR/Tempora-TLF/m/n/12 ): O or-ga-ni-sm�c pou ai-te-�tai
+ []
+
+
+Underfull \hbox (badness 3895) in paragraph at lines 165--170
+\LGR/Tempora-TLF/m/n/12 pr�sba-sh sta de-do-m�na tou pa-r�qou. H pr�sba-sh pa-r
+a-qw-re-�tai
+ []
+
+
+Underfull \hbox (badness 2409) in paragraph at lines 165--170
+\LGR/Tempora-TLF/m/n/12 er-ga-s�a, o r�loc au-t�c a-nti-stoi-qe-� ston or-ga-ni
+-sm� me a-na-gnw-ri-sti-k�
+ []
+
+) (chapters/03-technologies.tex [20]
 chapter 3.
 
-LaTeX Warning: Citation `rfc7519' on page 29 undefined on input line 16.
-
-LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 49.
-[29
-
-]
-LaTeX Font Info:    Font shape `LGR/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `LGR/cmtt/m/n' tried instead on input line 69.
+Underfull \hbox (badness 1342) in paragraph at lines 4--8
+\LGR/Tempora-TLF/m/n/12 To pa-r�n ke-f�laio a-na-l�ei se b�joc tic te-qno-lo-g�
+ec kai ta pr�tu-pa pou
+ []
 
 
-LaTeX Warning: Citation `x509rfc' on page 30 undefined on input line 87.
+Underfull \hbox (badness 1173) in paragraph at lines 14--16
+\LGR/Tempora-TLF/m/n/12 Sto mo-nt�lo kru-pto-gra-f�ac dh-m�siou klei-dio-� (\T1
+/Tempora-TLF/m/n/12 asymmetric cry-pto-gra-phy\LGR/Tempora-TLF/m/n/12 ) k�je
+ []
 
-[30]
-
-LaTeX Warning: Citation `ishare2023' on page 31 undefined on input line 132.
-
-[31]
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte "BA.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/03-technologies.tex:181: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.181 ...essSubject": "<UUID καταναλωτή>
-                                                  "
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-LaTeX Warning: Citation `rfc6749' on page 32 undefined on input line 211.
-
-[32]
-
-LaTeX Warning: Citation `ngsi-ld2023' on page 33 undefined on input line 239.
-
-
-LaTeX Warning: Citation `jsonld2020' on page 33 undefined on input line 240.
-
-[33]
-
-LaTeX Warning: Citation `smart-data-models2023' on page 34 undefined on input l
-ine 281.
-
-
-LaTeX Warning: Citation `xacml3' on page 34 undefined on input line 295.
-
-[34]) (chapters/04-building-blocks.tex [35] [36
+[21
 
 ]
+Underfull \hbox (badness 1490) in paragraph at lines 71--73
+[]\LGR/Tempora-TLF/m/n/12 Ekd�thc (\T1/Tempora-TLF/m/n/12 Issuer\LGR/Tempora-TL
+F/m/n/12 ): To \T1/Tempora-TLF/m/n/12 Di-stin-gui-shed Na-me (DN) \LGR/Tempora-
+TLF/m/n/12 thc \T1/Tempora-TLF/m/n/12 CA \LGR/Tempora-TLF/m/n/12 pou e-x�dw-se 
+to
+ []
+
+[22]
+Underfull \hbox (badness 5832) in paragraph at lines 122--132
+\LGR/Tempora-TLF/m/n/12 sum-bo-lo-sei-r� sta-je-ro-� m�kouc pou pro-k�ptei a-p�
+ thn e-far-mo-g� miac
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 122--132
+\LGR/Tempora-TLF/m/n/12 ka-j�c o-poia-d�po-te al-la-g� sta ar-qi-k� de-do-m�na 
+ja pa-r�ga-ge �na e-nte-l�c
+ []
+
+[23]
+Underfull \hbox (badness 1337) in paragraph at lines 172--178
+\LGR/Tempora-TLF/m/n/12 Ta \T1/Tempora-TLF/m/n/12 JSON W-eb To-kens (JWT) \LGR/
+Tempora-TLF/m/n/12 [[]] a-po-te-lo-�n to k�rio m�so tau-to-po-�h-shc kai
+ []
+
+LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 199.
+[24]
+LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 200.
+LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 200.
+ [25]
+Underfull \hbox (badness 5939) in paragraph at lines 278--283
+[]\LGR/Tempora-TLF/m/n/12 P�roqoc: Ta pe-d�a \T1/Tempora-TLF/m/n/12 iss\LGR/Tem
+pora-TLF/m/n/12 , \T1/Tempora-TLF/m/n/12 sub \LGR/Tempora-TLF/m/n/12 kai \T1/Te
+mpora-TLF/m/n/12 aud \LGR/Tempora-TLF/m/n/12 �qoun �la thn �dia ti-m�
+ []
+
+[26]
+Underfull \hbox (badness 1337) in paragraph at lines 356--360
+[]\LGR/Tempora-TLF/m/n/12 'Elegqoc e-xou-sio-d�th-shc: An o ai-t�n den e-�nai o
+ �dioc o p�ro-qoc, o
+ []
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 365--368
+\LGR/Tempora-TLF/m/n/12 O mh-qa-ni-sm�c ek-q�rh-shc e-xou-sio-d�th-shc (\T1/Tem
+pora-TLF/m/n/12 delegation\LGR/Tempora-TLF/m/n/12 ) e-pi-tr�pei ston p�ro-qo
+ []
+
+[27] [28] [29] [30]
+Underfull \hbox (badness 5359) in paragraph at lines 533--535
+[]\T1/Tempora-TLF/m/n/12 GET /ngsi-ld/v1/entities/{id}\LGR/Tempora-TLF/m/n/12 :
+ A-n�kth-sh su-gke-kri-m�nhc o-nt�th-tac m�sw
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 535--537
+[]\T1/Tempora-TLF/m/n/12 PATCH /ngsi-ld/v1/entities/{id}/attrs\LGR/Tempora-TLF/
+m/n/12 : E-nh-m�rw-sh i-dio-t�twn u-p�r-qou-sac
+ []
+
+
+Underfull \hbox (badness 4713) in paragraph at lines 580--584
+[]\T1/Tempora-TLF/m/n/12 Policy A-dmi-ni-stra-tion Point (PAP)\LGR/Tempora-TLF/
+m/n/12 : To sh-me-�o �pou dh-miour-go-�ntai kai
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 584--590
+[]\T1/Tempora-TLF/m/n/12 Policy In-for-ma-tion Point (PIP)\LGR/Tempora-TLF/m/n/
+12 : To sh-me-�o pou pa-r�qei pr�sje-ta de-do-m�na
+ []
+
+[31]) (chapters/04-building-blocks.tex [32]
 chapter 4.
 
-LaTeX Warning: Citation `orion-ld2023' on page 37 undefined on input line 14.
+Underfull \hbox (badness 1728) in paragraph at lines 27--29
+[]\LGR/Tempora-TLF/m/n/12 Uposthr�zei e-rw-t�ma-ta b�sei t�pou o-nt�th-tac, i-d
+io-t�twn, sq�se-wn kai
+ []
+
+[33
+
+] [34]
+Underfull \hbox (badness 1024) in paragraph at lines 143--146
+[]\LGR/Tempora-TLF/m/n/12 An �la ta pa-ra-p�nw e-�nai e-pi-tu-q�, o \T1/Tempora
+-TLF/m/n/12 Key-ro-ck \LGR/Tempora-TLF/m/n/12 dh-miour-ge-� (� e-nto-p�zei)
+ []
+
+[35]
+Underfull \hbox (badness 1424) in paragraph at lines 161--164
+[]\T1/Tempora-TLF/m/n/12 POST /ar/delegation\LGR/Tempora-TLF/m/n/12 : A-na-zh-t
+� po-li-ti-k� ek-q�rh-shc gia �na su-gke-kri-m�no
+ []
 
 
-LaTeX Warning: Citation `keyrock2023' on page 37 undefined on input line 46.
+Underfull \hbox (badness 4805) in paragraph at lines 182--185
+[]\LGR/Tempora-TLF/m/n/12 An den u-p�r-qei, dh-miour-ge-� au-t�ma-ta mia eg-gra
+-f� me \T1/Tempora-TLF/m/n/12 u-ser-na-me \LGR/Tempora-TLF/m/n/12 =
+ []
+
+
+Underfull \hbox (badness 7963) in paragraph at lines 200--203
+[]\T1/Tempora-TLF/m/n/12 POST /to-ken\LGR/Tempora-TLF/m/n/12 : A-po-kt� �na \T1
+/Tempora-TLF/m/n/12 a-ccess to-ken \LGR/Tempora-TLF/m/n/12 gia ton e-au-t� tou 
+(wc
+ []
+
+[36]
+Underfull \hbox (badness 1629) in paragraph at lines 203--206
+[]\T1/Tempora-TLF/m/n/12 GET /par-ties?eori=EU.EORI.NLPLEGMACONSUMER\LGR/Tempor
+a-TLF/m/n/12 : Rw-t� ton \T1/Tempora-TLF/m/n/12 Sa-tel-li-te \LGR/Tempora-TLF/m
+/n/12 an
+ []
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 203--206
+\LGR/Tempora-TLF/m/n/12 o ka-ta-na-lw-t�c e-�nai eg-ge-gram-m�noc, e-ner-g�c ka
+i an to a-po-t�pw-ma tou
+ []
 
 [37]
+Underfull \hbox (badness 1102) in paragraph at lines 259--267
+[]\T1/Tempora-TLF/b/n/12 GET /par-ties\LGR/Tempora-TLF/m/n/12 : E-pi-str�fei ta
+ stoi-qe-�a e-n�c su-gke-kri-m�nou sum-me-t�qo-nta,
+ []
 
-LaTeX Warning: Citation `ishare-satellite2023' on page 38 undefined on input li
-ne 94.
+
+Underfull \hbox (badness 3281) in paragraph at lines 259--267
+\LGR/Tempora-TLF/m/n/12 fil-tr�ro-ntac b�sei \T1/Tempora-TLF/m/n/12 E-O-RI\LGR/
+Tempora-TLF/m/n/12 , ka-t�sta-shc (\T1/Tempora-TLF/m/n/12 active_only\LGR/Tempo
+ra-TLF/m/n/12 ) kai a-po-tu-p�ma-toc
+ []
 
 [38]
+Underfull \hbox (badness 2376) in paragraph at lines 354--359
+\LGR/Tempora-TLF/m/n/12 H ke-ntri-k� lei-tour-gi-k�th-ta e-l�g-qou pr�sba-shc p
+a-r�qe-tai m�sw tou \T1/Tempora-TLF/m/n/12 plu-gin
+ []
 
-LaTeX Warning: Citation `kong2023' on page 39 undefined on input line 142.
 
-[39]
+Underfull \hbox (badness 1019) in paragraph at lines 365--368
+[]\LGR/Tempora-TLF/m/n/12 Apokwdikopo�hsh \T1/Tempora-TLF/m/n/12 JWT\LGR/Tempor
+a-TLF/m/n/12 : A-po-kw-di-ko-poie-� to \T1/Tempora-TLF/m/n/12 JWT \LGR/Tempora-
+TLF/m/n/12 kai e-x�gei thn a-lu-s�da
+ []
 
-LaTeX Warning: Citation `kong-ngsi-plugin2023' on page 40 undefined on input li
-ne 152.
+[39] [40]
+Underfull \hbox (badness 2418) in paragraph at lines 486--488
+\LGR/Tempora-TLF/m/n/12 H u-lo-po-�h-sh qrh-si-mo-poie-� d�o b�seic de-do-m�nwn
+ pou e-xu-ph-re-to-�n e-nte-l�c
+ []
 
-[40]
-
-LaTeX Warning: Citation `dsba-pdp2023' on page 41 undefined on input line 202.
-
-[41] [42]) (chapters/04b-dataset.tex [43] [44
-
-]
+[41]) (chapters/04b-dataset.tex [42]
 chapter 5.
 
-LaTeX Warning: Citation `plegma2024' on page 45 undefined on input line 17.
+Underfull \hbox (badness 1028) in paragraph at lines 31--33
+[]\LGR/Tempora-TLF/m/n/12 Periballontik�c me-tr�seic (\T1/Tempora-TLF/m/n/12 En
+vironmental_data\LGR/Tempora-TLF/m/n/12 ): E-sw-te-ri-k� kai e-xw-te-ri-k�
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--36
+[]\LGR/Tempora-TLF/m/n/12 Metadedom�na kti-r�ou (\T1/Tempora-TLF/m/n/12 applian
+ces_metadata.csv\LGR/Tempora-TLF/m/n/12 , \T1/Tempora-TLF/m/n/12 h-ou-ses_metad
+ata.xlsx\LGR/Tempora-TLF/m/n/12 ):
+ []
+
+
+Underfull \hbox (badness 1577) in paragraph at lines 33--36
+\LGR/Tempora-TLF/m/n/12 Qa-ra-kth-ri-sti-k� kti-r�ou, s�sth-ma j�r-man-shc, �to
+c ka-ta-skeu-�c, a-rij-m�c
+ []
+
+[43
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 51--54
+\LGR/Tempora-TLF/m/n/12 H o-nt�th-ta \T1/Tempora-TLF/m/n/12 Buil-ding \LGR/Temp
+ora-TLF/m/n/12 a-na-pa-ri-st� �na noi-ko-ku-ri-� kai a-po-jh-ke-�ei
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--54
+\LGR/Tempora-TLF/m/n/12 ta sta-ti-k� me-ta-de-do-m�na tou. E-mpn�e-tai a-p� to 
+e-p�sh-mo mo-nt�lo
+ []
+
+[44]
+Underfull \hbox (badness 2285) in paragraph at lines 116--120
+[]\LGR/Tempora-TLF/m/n/12 Oi i-di-�th-tec pou a-n�koun sto \T1/Tempora-TLF/m/n/
+12 Pleg-ma \LGR/Tempora-TLF/m/n/12 pro-sar-t�ntai me to \T1/Tempora-TLF/m/n/12 
+na-me-spa-ce
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--122
+[]\LGR/Tempora-TLF/m/n/12 To a-na-gnw-ri-sti-k� (\T1/Tempora-TLF/m/n/12 id\LGR/
+Tempora-TLF/m/n/12 ) a-ko-lou-je-� to pr�tu-po
+ []
 
 [45]
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2025/11/14 1.11b listings language file
-)
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2025/11/14 1.11b listings language file
-)
+Underfull \hbox (badness 10000) in paragraph at lines 177--180
+\LGR/Tempora-TLF/m/n/12 H o-nt�th-ta \T1/Tempora-TLF/m/n/12 H-ou-se-hol-dE-le-c
+tri-cMe-a-su-re-ment \LGR/Tempora-TLF/m/n/12 a-na-pa-ri-st� �na stig-mi-�tu-po
+ []
 
-chapters/04b-dataset.tex:85: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@Fi
-llFixed@\lst@EC�).
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.85 Building ──hasOccupant──>
-                                       Person
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
+Overfull \hbox (12.47585pt too wide) in paragraph at lines 185--186
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][]  
+ []
 
-
-chapters/04b-dataset.tex:85: LaTeX Error: Invalid UTF-8 byte "80.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.85 Building ──hasOccupant──>
-                                       Person
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:85: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.85 Building ──hasOccupant──>
-                                       Person
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:85: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.85 Building ──hasOccupant──>
-                                       Person
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:85: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.85 Building ──hasOccupant──>
-                                       Person
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:87: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@Fi
-llFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87    └──hasAppliance──>
-                                     Device (x5: ac_1, ac_2, boiler, fridge,...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:87: LaTeX Error: Invalid UTF-8 byte "94.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87    └──hasAppliance──>
-                                     Device (x5: ac_1, ac_2, boiler, fridge,...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:87: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87    └──hasAppliance──>
-                                     Device (x5: ac_1, ac_2, boiler, fridge,...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:87: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87    └──hasAppliance──>
-                                     Device (x5: ac_1, ac_2, boiler, fridge,...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:87: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87    └──hasAppliance──>
-                                     Device (x5: ac_1, ac_2, boiler, fridge,...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:87: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87    └──hasAppliance──>
-                                     Device (x5: ac_1, ac_2, boiler, fridge,...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:89: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@Fi
-llFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.89 ...ectricMeasurement ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:89: LaTeX Error: Invalid UTF-8 byte "80.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.89 ...ectricMeasurement ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:89: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.89 ...ectricMeasurement ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:89: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.89 ...ectricMeasurement ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:89: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.89 ...ectricMeasurement ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:90: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@Fi
-llFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 ...alMeasurement     ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:90: LaTeX Error: Invalid UTF-8 byte "80.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 ...alMeasurement     ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:90: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 ...alMeasurement     ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:90: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 ...alMeasurement     ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/04b-dataset.tex:90: LaTeX Error: Invalid UTF-8 byte sequence (�\lst@EC
-�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 ...alMeasurement     ──refBuilding──>
-                                                   Building
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 91.
-LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 91.
 [46]
-LaTeX Font Info:    Font shape `LGR/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `LGR/cmtt/m/n' tried instead on input line 101.
- [47]
-LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-178.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 178.
+Underfull \hbox (badness 10000) in paragraph at lines 254--258
+\LGR/Tempora-TLF/m/n/12 H o-nt�th-ta \T1/Tempora-TLF/m/n/12 E-nvi-ron-me-ntal-M
+e-a-su-re-ment \LGR/Tempora-TLF/m/n/12 a-na-pa-ri-st� �na stig-mi-�tu-po
+ []
 
 
-LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 178.
+Underfull \hbox (badness 10000) in paragraph at lines 254--258
+\LGR/Tempora-TLF/m/n/12 pe-ri-bal-lo-nti-k�n me-tr�se-wn. E-mpn�e-tai a-p� to m
+o-nt�lo
+ []
 
-[48] [49] [50] [51]
+
+Underfull \hbox (badness 10000) in paragraph at lines 254--258
+\T1/Tempora-TLF/m/n/12 smart-data-models/dataModel.Weather/WeatherObserved \LGR
+/Tempora-TLF/m/n/12 al-l� dia-kr�nei me-ta-x�
+ []
+
+[47]
+Overfull \hbox (5.83888pt too wide) in paragraph at lines 341--342
+[][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+[48]
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 444.
+(Font)              scaled to size 10.0pt on input line 383.
+LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
+(Font)              scaled to size 10.95pt on input line 387.
 LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 444.
-
-Overfull \hbox (3.54501pt too wide) in paragraph at lines 454--454
-[]|\LGR/cmtt/m/n/10.95 plegma:appliancePower.ac[]1| 
- []
-
-
-Overfull \hbox (3.54501pt too wide) in paragraph at lines 456--456
-[]|\LGR/cmtt/m/n/10.95 plegma:appliancePower.ac[]2| 
- []
-
-
-Overfull \hbox (16.47054pt too wide) in paragraph at lines 458--458
-[]|\LGR/cmtt/m/n/10.95 plegma:appliancePower.boiler| 
- []
-
-
-Overfull \hbox (16.47054pt too wide) in paragraph at lines 460--460
-[]|\LGR/cmtt/m/n/10.95 plegma:appliancePower.fridge| 
- []
-
-
-Overfull \hbox (65.90492pt too wide) in paragraph at lines 462--462
-[]|\LGR/cmtt/m/n/10.95 plegma:appliancePower.washing[]machine| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 464--465
-[]|\T1/Tempora-TLF/m/n/10.95 Property
- []
-
-[52]
+(Font)              scaled to size 10.95pt on input line 387.
 LaTeX Font Info:    Font shape `TS1/Tempora-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 481.
-) (chapters/05-architecture.tex [53] [54]
+(Font)              scaled to size 10.95pt on input line 424.
+) (chapters/05-architecture.tex [49] [50
+
+]
 chapter 6.
+<figures/Data Space Component Diagram.png, id=796, 1273.75874pt x 1045.9075pt>
+File: figures/Data Space Component Diagram.png Graphic file (type png)
+<use figures/Data Space Component Diagram.png>
+Package pdftex.def Info: figures/Data Space Component Diagram.png  used on inpu
+t line 23.
+(pdftex.def)             Requested size: 441.0178pt x 362.11522pt.
+[51] [52 <./figures/Data Space Component Diagram.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 72--74
+[]\LGR/Tempora-TLF/m/n/12 P�roqoc: \T1/Tempora-TLF/m/n/12 EU.EORI.NLPLEGMA\LGR/
+Tempora-TLF/m/n/12 , me r�louc \T1/Tempora-TLF/m/n/12 I-de-ntity-Pro-vi-der \LG
+R/Tempora-TLF/m/n/12 kai
+ []
 
-LaTeX Warning: File `figures/01_component_diagram.png' not found on input line 
-28.
-
-
-chapters/05-architecture.tex:28: Package pdftex.def Error: File `figures/01_com
-ponent_diagram.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.28 ...xtwidth]{figures/01_component_diagram.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[55
-
-] [56] [57] [58]) (chapters/06-implementation.tex [59] [60
-
-]
+[53]) (chapters/06-implementation.tex [54]
 chapter 7.
-[61] [62] [63] [64] [65] [66]
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 
-                 1: Δημιουργία iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 
-                 1: Δημιουργία iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 
-                 1: Δημιουργία iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 
-                 1: Δημιουργία iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 
-                 1: Δημιουργία iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte "94.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 # Βήμα 1: Δημιουργία 
-                                         iSHARE JWT για τον καταν...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...: Δημιουργία iSHARE JWT για 
-                                                  τον καταναλωτή
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte "B3.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...: Δημιουργία iSHARE JWT για 
-                                                  τον καταναλωτή
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...: Δημιουργία iSHARE JWT για 
-                                                  τον καταναλωτή
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...: Δημιουργία iSHARE JWT για 
-                                                  τον καταναλωτή
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...�ιουργία iSHARE JWT για τον 
-                                                  καταναλωτή
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte "84.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...�ιουργία iSHARE JWT για τον 
-                                                  καταναλωτή
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...�ιουργία iSHARE JWT για τον 
-                                                  καταναλωτή
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...�ιουργία iSHARE JWT για τον 
-                                                  καταναλωτή
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte "BA.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.319 ...RE JWT για τον καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 
-                 2: Αποστολή αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 
-                 2: Αποστολή αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 
-                 2: Αποστολή αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 
-                 2: Αποστολή αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 
-                 2: Αποστολή αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte "91.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 # Βήμα 2: Αποστολή 
-                                     αιτήματος token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte "B1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...� 2: Αποστολή αιτήματος 
-                                                  token στον Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...ολή αιτήματος token στον 
-                                                  Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte "83.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...ολή αιτήματος token στον 
-                                                  Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...ολή αιτήματος token στον 
-                                                  Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...ολή αιτήματος token στον 
-                                                  Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/06-implementation.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (�
-\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...ολή αιτήματος token στον 
-                                                  Keyrock
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-LaTeX Warning: Citation `plegma2024' on page 67 undefined on input line 371.
-
-[67]) (chapters/07-end-to-end-flows.tex [68] [69] [70
-
-]
-chapter 8.
-
-LaTeX Warning: File `figures/04_data_ingestion_sequence.png' not found on input
- line 26.
-
-
-chapters/07-end-to-end-flows.tex:26: Package pdftex.def Error: File `figures/04
-_data_ingestion_sequence.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.26 ...h]{figures/04_data_ingestion_sequence.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[71] [72] [73]
-
-LaTeX Warning: File `figures/02_provider_sequence.png' not found on input line 
-109.
-
-
-chapters/07-end-to-end-flows.tex:109: Package pdftex.def Error: File `figures/0
-2_provider_sequence.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...twidth]{figures/02_provider_sequence.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[74] [75] [76]
-
-LaTeX Warning: File `figures/03_consumer_sequence.png' not found on input line 
-212.
-
-
-chapters/07-end-to-end-flows.tex:212: Package pdftex.def Error: File `figures/0
-3_consumer_sequence.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.212 ...twidth]{figures/03_consumer_sequence.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[77]
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte "91.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...LPLEGMA",       # Απευθύνεται 
-                                                  στον πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...       # Απευθύνεται στον 
-                                                  πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte "83.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...       # Απευθύνεται στον 
-                                                  πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...       # Απευθύνεται στον 
-                                                  πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...       # Απευθύνεται στον 
-                                                  πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...       # Απευθύνεται στον 
-                                                  πάροχο
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...�ευθύνεται στον πάροχο
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte "80.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...�ευθύνεται στον πάροχο
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...�ευθύνεται στον πάροχο
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...�ευθύνεται στον πάροχο
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...�ευθύνεται στον πάροχο
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...�ευθύνεται στον πάροχο
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:231: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...�ευθύνεται στον πάροχο
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[78]
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte "BA.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:251: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...sertion=<iSHARE JWT καταναλωτή>
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:283: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.283 # Payload του 
-                       access token
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:283: LaTeX Error: Invalid UTF-8 byte "84.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.283 # Payload του 
-                       access token
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:283: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.283 # Payload του 
-                       access token
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:283: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.283 # Payload του 
-                       access token
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ....EORI.NLPLEGMA",        # Εκδότης:
-                                                   ο πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte "95.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ....EORI.NLPLEGMA",        # Εκδότης:
-                                                   ο πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ....EORI.NLPLEGMA",        # Εκδότης:
-                                                   ο πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ....EORI.NLPLEGMA",        # Εκδότης:
-                                                   ο πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ....EORI.NLPLEGMA",        # Εκδότης:
-                                                   ο πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ....EORI.NLPLEGMA",        # Εκδότης:
-                                                   ο πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ....EORI.NLPLEGMA",        # Εκδότης:
-                                                   ο πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ....EORI.NLPLEGMA",        # Εκδότης:
-                                                   ο πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...I.NLPLEGMA",        # Εκδότης: ο 
-                                                  πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte "BF.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...I.NLPLEGMA",        # Εκδότης: ο 
-                                                  πάροχος
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...      # Εκδότης: ο πάροχος
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte "80.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...      # Εκδότης: ο πάροχος
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...      # Εκδότης: ο πάροχος
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...      # Εκδότης: ο πάροχος
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...      # Εκδότης: ο πάροχος
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...      # Εκδότης: ο πάροχος
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...      # Εκδότης: ο πάροχος
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:285: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285 ...      # Εκδότης: ο πάροχος
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[79]
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte "BA.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:286: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.286 ...",            # UUID καταναλωτή
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:316: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.316 Authorization: Bearer <access token με 
-                                               delegationEvidence>
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:316: LaTeX Error: Invalid UTF-8 byte "BC.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.316 Authorization: Bearer <access token με 
-                                               delegationEvidence>
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:316: LaTeX Error: Invalid UTF-8 byte sequence 
-(�\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.316 Authorization: Bearer <access token με 
-                                               delegationEvidence>
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/07-end-to-end-flows.tex:328: LaTeX Error: Unicode character ✓ (U+271
-3)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.328 ...t{EU.EORI.NLPLEGMA}); \textbf{ΝΑΙ} ✓
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-chapters/07-end-to-end-flows.tex:331: LaTeX Error: Unicode character ✓ (U+271
-3)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.331     \textbf{ΝΑΙ} ✓
-                             
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-chapters/07-end-to-end-flows.tex:332: LaTeX Error: Unicode character ✓ (U+271
-3)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.332 ...πιτρέπεται; \textbf{ΝΑΙ} ✓
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-[80]
-Underfull \hbox (badness 1275) in paragraph at lines 359--359
-[]|\LGR/Tempora-TLF/m/n/10.95 An�gnwsh (ka-ta-na-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
-[]|\LGR/Tempora-TLF/m/n/10.95 M�sw \T1/Tempora-TLF/m/n/10.95 de-le-ga-tion
- []
-
-) (chapters/08-demonstration.tex [81] [82
-
-]
-chapter 9.
-[83]
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 # Το 
-            script gen_token.py εκτελείται μέσα σε container...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte "A4.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 # Το 
-            script gen_token.py εκτελείται μέσα σε container...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 # Το 
-            script gen_token.py εκτελείται μέσα σε container...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte "B5.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ... script gen_token.py εκτελείται 
-                                                  μέσα σε container Py...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ...en_token.py εκτελείται μέσα 
-                                                  σε container Python
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte "BC.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ...en_token.py εκτελείται μέσα 
-                                                  σε container Python
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ...en_token.py εκτελείται μέσα 
-                                                  σε container Python
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ...en_token.py εκτελείται μέσα 
-                                                  σε container Python
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ...en_token.py εκτελείται μέσα 
-                                                  σε container Python
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ...ken.py εκτελείται μέσα σε 
-                                                  container Python
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte "83.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ...ken.py εκτελείται μέσα σε 
-                                                  container Python
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:74: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 ...ken.py εκτελείται μέσα σε 
-                                                  container Python
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε 
-                να έχει πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte "8E.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε 
-                να έχει πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε 
-                να έχει πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε 
-                να έχει πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε 
-                να έχει πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να 
-                     έχει πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte "BD.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να 
-                     έχει πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να 
-                     έχει πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει 
-                              πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte "AD.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει 
-                              πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει 
-                              πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει 
-                              πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει 
-                              πρόσβαση στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte "80.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 # ώστε να έχει πρόσβαση 
-                                               στα certificates χωρί�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...�ε να έχει πρόσβαση στα 
-                                                  certificates χωρίς τ...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte "83.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...�ε να έχει πρόσβαση στα 
-                                                  certificates χωρίς τ...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...�ε να έχει πρόσβαση στα 
-                                                  certificates χωρίς τ...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...�ε να έχει πρόσβαση στα 
-                                                  certificates χωρίς τ...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...σβαση στα certificates χωρίς 
-                                                  τοπική εγκατά�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte "87.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...σβαση στα certificates χωρίς 
-                                                  τοπική εγκατά�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...σβαση στα certificates χωρίς 
-                                                  τοπική εγκατά�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...σβαση στα certificates χωρίς 
-                                                  τοπική εγκατά�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...σβαση στα certificates χωρίς 
-                                                  τοπική εγκατά�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...σβαση στα certificates χωρίς 
-                                                  τοπική εγκατά�...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...τα certificates χωρίς τοπική 
-                                                  εγκατάσταση
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte "84.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...τα certificates χωρίς τοπική 
-                                                  εγκατάσταση
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...τα certificates χωρίς τοπική 
-                                                  εγκατάσταση
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...τα certificates χωρίς τοπική 
-                                                  εγκατάσταση
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...τα certificates χωρίς τοπική 
-                                                  εγκατάσταση
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...τα certificates χωρίς τοπική 
-                                                  εγκατάσταση
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...τα certificates χωρίς τοπική 
-                                                  εγκατάσταση
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte "B5.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-chapters/08-demonstration.tex:75: LaTeX Error: Invalid UTF-8 byte sequence (�\l
-st@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...ρίς τοπική εγκατάσταση
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[84] [85] [86] [87]
-Underfull \hbox (badness 2158) in paragraph at lines 303--303
-[]|\T1/Tempora-TLF/m/n/10.95 401 U-nau-tho-ri-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 303--304
-[]|\LGR/Tempora-TLF/m/n/10.95 Apous�a ke-fa-l�dac
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 305--305
-[]|\LGR/Tempora-TLF/m/n/10.95 P�roqoc, \T1/Tempora-TLF/m/n/10.95 H-ou-se-hol-dE
--le-ctri-
- []
-
-
-Underfull \hbox (badness 1728) in paragraph at lines 307--307
-[]|\LGR/Tempora-TLF/m/n/10.95 P�roqoc, \T1/Tempora-TLF/m/n/10.95 E-nvi-ron-me-n
-tal-Me-a-
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 311--311
-[]|\LGR/Tempora-TLF/m/n/10.95 Katanalwt�c, \T1/Tempora-TLF/m/n/10.95 H-ou-se-ho
-l-dE-le-
- []
-
-[88]) (chapters/09-conclusions.tex [89] [90
-
-]
-chapter 10.
-[91] [92] [93]) [94]) (bibliography.tex [95] [96
-
-]) (diploma_thesis.bbl [97]
-[98
-
-]
-chapter without number
-LaTeX Font Info:    Trying to load font information for OT1+Tempora-TLF on inpu
-t line 4.
-
-(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/tempora\ot1tempora-tlf.
-fd
-File: OT1Tempora-TLF.fd 2016/02/02 (autoinst) Font definitions for OT1/Tempora-
-TLF.
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
-LaTeX Font Info:    Font shape `OT1/Tempora-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 4.
-LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 5.
-) [99{C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tempora/tmp_
-q3dzgc.enc}] (diploma_thesis.aux)
- ***********
-LaTeX2e <2025-11-01>
-L3 programming layer <2026-03-20>
- ***********
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
- ) 
-Here is how much of TeX's memory you used:
- 40970 strings out of 467690
- 768182 string characters out of 5414966
- 1664874 words of memory out of 5000000
- 68308 multiletter control sequences out of 15000+600000
- 695294 words of font info for 137 fonts, out of 8000000 for 9000
- 1147 hyphenation exceptions out of 8191
- 108i,12n,107p,11268b,2587s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
-1200.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\tctt0900.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ectt0900.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecsx1440.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecsx2074.pk><C:/Users/SAKak/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/tempora/Tempora-Bold.pfb><C:/Users/SAKak/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/tempora/Tempora-Italic.pfb><C:/Users/SAKak/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/tempora/Tempora-Regular.pfb><C:
-/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/cbgreek/
-gsxn1095.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/c
-bgreek/gsxn1200.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/cbgreek/gsxn1440.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/cbgreek/gsxn2074.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/cbgreek/gttn0900.pfb><C:/Users/SAKak/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/cbgreek/gttn1000.pfb><C:/Users/SAKak/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/cbgreek/gttn1095.pfb><C:/Users/SAKak/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/cbgreek/gttn1200.pfb><C:/Users/SAKak/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/cbgreek/gttn1440.pfb>
-Output written on diploma_thesis.pdf (99 pages, 936560 bytes).
-PDF statistics:
- 2408 PDF objects out of 2487 (max. 8388607)
- 927 named destinations out of 1000 (max. 500000)
- 1426 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+(C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listing

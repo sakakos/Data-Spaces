@@ -1,101 +1,109 @@
-@startuml consumer_sequence
-title Consumer M2M Flow - Plegma Data Consumer accesses Provider's data via delegation
-hide footbox
+@startuml component_diagram
+title Data Space Component Diagram
 
+' ──────────────────────────────────────────────────────────
+' Styling
+' ──────────────────────────────────────────────────────────
+skinparam componentStyle rectangle
 skinparam shadowing false
 skinparam defaultFontName "Helvetica"
-skinparam sequence {
-    ArrowColor          #555555
-    ActorBorderColor    #555555
-    LifeLineBorderColor #999999
-    LifeLineBackgroundColor #EEEEEE
-    ParticipantBorderColor #555555
-    ParticipantBackgroundColor #B3D9FF
-    NoteBackgroundColor #FFF9C4
-    NoteBorderColor     #999999
+skinparam roundCorner 8
+
+skinparam component {
+    BackgroundColor<<external>> #FFE5CC
+    BackgroundColor<<pep>>      #B3D9FF
+    BackgroundColor<<pdp>>      #B3D9FF
+    BackgroundColor<<trust>>    #D4EDDA
+    BackgroundColor<<identity>> #D4EDDA
+    BackgroundColor<<data>>     #F8D7DA
+    BackgroundColor<<storage>>  #E2D5F0
+    BorderColor                 #555555
+    FontColor                   #000000
 }
 
-actor "Consumer Application\n(EU.EORI.NLPLEGMACONSUMER)" as Consumer
-participant "Keyrock IdM + AR\n(fiware-keyrock:3007)" as Keyrock
-participant "iSHARE Satellite\n(ishare-satellite:8080)" as Satellite
-participant "Kong API Gateway\n(kong-standalone:8000)" as Kong
-participant "Orion-LD\n(fiware-orion-ld:1026)" as Orion
+' ──────────────────────────────────────────────────────────
+' External actors
+' ──────────────────────────────────────────────────────────
+package "External Actors" {
+    [Provider Application\n(EU.EORI.NLPLEGMA)] as Provider <<external>>
+    [Consumer Application\n(EU.EORI.NLPLEGMACONSUMER)] as Consumer <<external>>
+}
 
-== Step 1: Consumer creates self-signed iSHARE JWT ==
+' ──────────────────────────────────────────────────────────
+' Data Space Components
+' ──────────────────────────────────────────────────────────
+package "Data Space Components" {
 
-Consumer -> Consumer : gen_consumer_token.py:\nbuild JWT with\n• iss=EU.EORI.NLPLEGMACONSUMER\n• sub=EU.EORI.NLPLEGMACONSUMER\n• aud=EU.EORI.NLPLEGMA\n• x5c=[consumer.pem, ca.pem]\nsign with consumer.key (RS256)
+    package "Policy Enforcement Layer" {
+        [Kong API Gateway\n<<kong-standalone>>\n:8000] as Kong <<pep>>
+        note right of Kong
+          PEP (Policy Enforcement Point)
+          Plugin: ngsi-ishare-policies
+          Endpoint: /ngsi-ld/v1/*
+        end note
 
-== Step 2: Consumer requests access token from Keyrock ==
+        [DSBA-PDP\n<<dsba-pdp>>\n:8080] as PDP <<pdp>>
+        note right of PDP
+          PDP (Policy Decision Point)
+          Evaluates iSHARE policies
+        end note
+    }
 
-Consumer -> Keyrock : POST /oauth2/token\ngrant_type=client_credentials\nclient_assertion_type=jwt-bearer\nclient_assertion=<iSHARE JWT>\nclient_id=EU.EORI.NLPLEGMACONSUMER
+    package "Trust & Identity Layer" {
+        [iSHARE Satellite\n<<ishare-satellite>>\n:8085] as Satellite <<trust>>
+        note right of Satellite
+          Trust Anchor
+          Endpoints:
+          - /token
+          - /trusted_list
+          - /parties
+          Holds: parties registry,
+          trusted certificates
+        end note
 
-activate Keyrock
+        [Keyrock IdM + AR\n<<fiware-keyrock>>\n:3007] as Keyrock <<identity>>
+        note right of Keyrock
+          Identity Manager + 
+          Authorization Registry
+          Endpoints:
+          - /oauth2/token
+          - /ar/delegation
+          - /ar/policy
+        end note
 
-== Step 3: Keyrock validates the participant via Satellite ==
+        database "MySQL\n<<db-mysql>>\n:3307" as MySQL <<storage>>
+    }
 
-Keyrock -> Keyrock : Validate JWT signature\n& certificate chain
+    package "Data Layer" {
+        [Orion-LD\n<<fiware-orion-ld>>\n:1026] as Orion <<data>>
+        note right of Orion
+          NGSI-LD Context Broker
+          Stores: HouseholdMeasurement
+          entities (Plegma dataset)
+        end note
 
-Keyrock -> Satellite : POST /token\n(Keyrock authenticates as EU.EORI.NLPLEGMA)
-activate Satellite
-Satellite --> Keyrock : access_token
-deactivate Satellite
+        database "MongoDB\n<<db-mongo>>" as Mongo <<storage>>
+    }
+}
 
-Keyrock -> Satellite : GET /parties?eori=EU.EORI.NLPLEGMACONSUMER&\ncertificate_subject_name=...&active_only=true\nAuthorization: Bearer <access_token>
-activate Satellite
-Satellite -> Satellite : Check parties registry:\nConsumer found,\nstatus=Active,\nfingerprint matches
-Satellite --> Keyrock : parties_token\n(signed JWT with party info)
-deactivate Satellite
+' ──────────────────────────────────────────────────────────
+' Relationships
+' ──────────────────────────────────────────────────────────
+Provider --> Kong : "iSHARE JWT\n(direct)"
+Consumer --> Keyrock : "1. Get access token\n(iSHARE JWT)"
+Consumer --> Kong : "2. Use access token"
 
-Keyrock -> Keyrock : Verify parties_token signature\nResult: Consumer is valid participant ✓
+Kong --> PDP : "Authorize?"
+Kong --> Satellite : "Validate JWT\n(trusted_list)"
+Kong --> Keyrock : "Get delegation evidence\n(/ar/delegation)"
+Kong --> Orion : "Proxy request\n(if authorized)"
 
-== Step 4: Keyrock looks up delegation policy ==
+PDP --> Satellite : "Verify trust chain"
+PDP --> Keyrock : "Get policies"
 
-Keyrock -> Keyrock : Query DB for delegation policy:\naccess_subject = consumer's UUID\npolicy_issuer = EU.EORI.NLPLEGMA\nFOUND: Permit GET on HouseholdMeasurement
+Keyrock --> Satellite : "Validate participants\n(/parties)"
+Keyrock --> MySQL : "Store users,\npolicies"
 
-Keyrock -> Keyrock : build_access_token():\n• iss=EU.EORI.NLPLEGMA\n• sub=<consumer_uuid>\n• aud=EU.EORI.NLPLEGMACONSUMER\n• delegationEvidence={...Permit...}\nsign with provider key
-
-Keyrock --> Consumer : 200 OK\n{access_token: <JWT with delegationEvidence>}
-deactivate Keyrock
-
-== Step 5: Consumer sends request to Kong ==
-
-Consumer -> Kong : GET /ngsi-ld/v1/entities?type=HouseholdMeasurement\nAuthorization: Bearer <access_token>
-
-activate Kong
-
-== Step 6: Kong validates the access token ==
-
-Kong -> Kong : Parse JWT, extract x5c chain
-
-Kong -> Satellite : GET /token + GET /trusted_list
-activate Satellite
-Satellite --> Kong : trusted CA list
-deactivate Satellite
-
-Kong -> Kong : Verify JWT signature: VALID ✓
-
-== Step 7: Kong evaluates the delegation policy ==
-
-Kong -> Kong : Token contains delegationEvidence:\n• policyIssuer=EU.EORI.NLPLEGMA\n• target.accessSubject=<consumer_uuid>\n• policies: [HouseholdMeasurement, GET, Permit]
-
-Kong -> Kong : Match request against policy:\nGET /ngsi-ld/v1/entities?type=HouseholdMeasurement\n→ matches policy → PERMIT ✓
-
-== Step 8: Kong forwards request to Orion-LD ==
-
-Kong -> Orion : GET /ngsi-ld/v1/entities?type=HouseholdMeasurement
-activate Orion
-Orion --> Kong : 200 OK\n[HouseholdMeasurement entities]
-deactivate Orion
-
-Kong --> Consumer : 200 OK\n[HouseholdMeasurement entities]
-deactivate Kong
-
-note over Consumer, Orion
-The Consumer obtained access to the Provider's data
-through an iSHARE-compliant delegation flow:
-1. Identity proven via certificate (Satellite)
-2. Permission verified via delegation evidence (Keyrock AR)
-3. Access enforced at the gateway (Kong as PEP)
-end note
+Orion --> Mongo : "Persist entities"
 
 @enduml

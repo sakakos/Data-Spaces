@@ -1,5 +1,5 @@
 @startuml provider_sequence
-title Provider M2M Flow - Plegma Data Provider accesses own data
+title Provider Flow
 hide footbox
 
 skinparam shadowing false
@@ -65,12 +65,5 @@ deactivate Orion
 
 Kong --> Provider : 200 OK\n[HouseholdMeasurement entities]
 deactivate Kong
-
-note over Provider, Orion
-The Provider obtained access to its own data
-by signing an iSHARE JWT with its certificate.
-This proves ownership of the EORI identity
-through the iSHARE trust framework.
-end note
 
 @enduml

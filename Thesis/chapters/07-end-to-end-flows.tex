@@ -3,7 +3,7 @@
 
 Το παρόν κεφάλαιο παρουσιάζει αναλυτικά τις ροές επικοινωνίας
 (\textlatin{end-to-end flows}) που πραγματοποιούνται κατά την πρόσβαση στα
-δεδομένα του \textlatin{Plegma Data Space}. Καλύπτονται τρεις διακριτές ροές:
+δεδομένα του \textlatin{Data Space}. Καλύπτονται τρεις διακριτές ροές:
 η φόρτωση δεδομένων από τον πάροχο, η ανάγνωση δεδομένων από τον πάροχο και
 η ανάγνωση δεδομένων από τον καταναλωτή μέσω μηχανισμού εκχώρησης
 εξουσιοδότησης. Κάθε ροή συνοδεύεται από αναλυτικό διάγραμμα ακολουθίας
@@ -23,7 +23,7 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figures/04_data_ingestion_sequence.png}
+    \includegraphics[width=\textwidth]{figures/Provider Data Insertion Flow.png}
     \caption{Διάγραμμα ακολουθίας ροής φόρτωσης δεδομένων από τον πάροχο.}
     \label{fig:ingestion-sequence}
 \end{figure}
@@ -31,7 +31,7 @@
 \subsection{Βήμα 1: Ανάγνωση \textlatin{CSV}}
 \label{subsec:ingestion-step1}
 
-Το \textlatin{script} \texttt{orion\_ld\_loading\_script\_kong.py} φορτώνει
+Το \textlatin{script} \textlatin{orion\_ld\_loading\_script\_kong.py} φορτώνει
 τα δεδομένα του \textlatin{Plegma Dataset} από \textlatin{CSV} αρχεία
 χρησιμοποιώντας τη βιβλιοθήκη \textlatin{pandas}. Κάθε γραμμή του
 \textlatin{CSV} αντιστοιχεί σε μια χρονική μέτρηση, που περιλαμβάνει
@@ -41,10 +41,11 @@
 \label{subsec:ingestion-step2}
 
 Για κάθε εγγραφή που πρόκειται να αποσταλεί, το \textlatin{script} καλεί
-τη συνάρτηση \texttt{get\_ishare\_token()}, η οποία δημιουργεί ένα νέο
+τη συνάρτηση \textlatin{get\_ishare\_token()}, η οποία δημιουργεί ένα νέο
 \textlatin{iSHARE JWT} υπογεγραμμένο με το ιδιωτικό κλειδί του παρόχου:
 
-\begin{lstlisting}[language=bash, caption={Κλήση \textlatin{HTTP POST} για φόρτωση οντότητας μέσω Kong.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={HTTP POST request for entity ingestion via Kong.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 POST http://localhost:8000/ngsi-ld/v1/entities
 Authorization: Bearer <iSHARE JWT>
 Content-Type: application/ld+json
@@ -60,9 +61,10 @@ Content-Type: application/ld+json
   "@context": "https://raw.githubusercontent.com/.../context.jsonld"
 }
 \end{lstlisting}
+\selectlanguage{greek}
 
-Η δημιουργία νέου \textlatin{JWT} ανά εγγραφή — αντί χρήσης ενός και μόνο
-\textlatin{token} για ολόκληρη τη φόρτωση — είναι αναγκαία λόγω της σύντομης
+Η δημιουργία νέου \textlatin{JWT} ανά εγγραφή, αντί χρήσης ενός και μόνο
+\textlatin{token} για ολόκληρη τη φόρτωση, είναι αναγκαία λόγω της σύντομης
 διάρκειας ισχύος 30 δευτερολέπτων που ορίζει το πλαίσιο \textlatin{iSHARE}.
 
 \subsection{Βήματα 3--5: Επαλήθευση από το \textlatin{Kong}}
@@ -72,15 +74,15 @@ Content-Type: application/ld+json
 την ίδια ακριβώς διαδικασία επαλήθευσης με αυτή της ανάγνωσης:
 \begin{enumerate}
     \item Εξάγει την αλυσίδα πιστοποιητικών \textlatin{X.509} από το πεδίο
-    \texttt{x5c} του \textlatin{JWT}.
+    \textlatin{x5c} του \textlatin{JWT}.
     \item Αποκτά \textlatin{access token} από τον \textlatin{Satellite}
-    (\texttt{POST /token}).
+    (\textlatin{POST /token}).
     \item Λαμβάνει τη λίστα εμπιστευμένων \textlatin{CA} από τον
-    \textlatin{Satellite} (\texttt{GET /trusted\_list}).
+    \textlatin{Satellite} (\textlatin{GET /trusted\_list}).
     \item Επαληθεύει την υπογραφή του \textlatin{JWT} έναντι της αλυσίδας
     πιστοποιητικών και της λίστας \textlatin{CA}. Επιστρέφει \textlatin{HTTP 401}
     εάν η επαλήθευση αποτύχει.
-    \item Ελέγχει τον εκδότη (\texttt{iss}): επειδή \texttt{iss ==
+    \item Ελέγχει τον εκδότη (\textlatin{iss}): επειδή \textlatin{iss ==
     EU.EORI.NLPLEGMA}, δηλαδή ο ίδιος ο πάροχος, δεν απαιτείται
     \textlatin{delegation evidence} και η αίτηση επιτρέπεται χωρίς περαιτέρω
     έλεγχο.
@@ -95,7 +97,7 @@ Content-Type: application/ld+json
 εγγραφή είναι επιτυχής.
 
 % ------------------------------------------------------------------
-\section{Ροή Ανάγνωσης Δεδομένων από τον Πάροχο (\textlatin{Provider M2M Read})}
+\section{Ροή Ανάγνωσης Δεδομένων από τον Πάροχο}
 \label{sec:flow-provider-read}
 % ------------------------------------------------------------------
 
@@ -106,7 +108,7 @@ Content-Type: application/ld+json
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figures/02_provider_sequence.png}
+    \includegraphics[width=\textwidth]{figures/Provider Flow.png}
     \caption{Διάγραμμα ακολουθίας ροής ανάγνωσης δεδομένων από τον πάροχο.}
     \label{fig:provider-sequence}
 \end{figure}
@@ -115,10 +117,11 @@ Content-Type: application/ld+json
 \label{subsec:provider-step1}
 
 Ο πάροχος δημιουργεί ένα \textlatin{iSHARE JWT} χρησιμοποιώντας το
-\textlatin{script} \texttt{gen\_token.py}. Το \textlatin{JWT} έχει τα εξής
+\textlatin{script} \textlatin{gen\_token.py}. Το \textlatin{JWT} έχει τα εξής
 χαρακτηριστικά:
 
-\begin{lstlisting}[language=bash, caption={Δομή \textlatin{iSHARE JWT} παρόχου.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Provider iSHARE JWT structure.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 # Header
 {
   "alg": "RS256",
@@ -136,9 +139,10 @@ Content-Type: application/ld+json
   "exp": 1716000030
 }
 \end{lstlisting}
+\selectlanguage{greek}
 
-\noindent Αξίζει να σημειωθεί ότι για τον πάροχο, τα πεδία \texttt{iss},
-\texttt{sub} και \texttt{aud} έχουν όλα την ίδια τιμή (\texttt{EU.EORI.NLPLEGMA}):
+\noindent Αξίζει να σημειωθεί ότι για τον πάροχο, τα πεδία \textlatin{iss},
+\textlatin{sub} και \textlatin{aud} έχουν όλα την ίδια τιμή (\textlatin{EU.EORI.NLPLEGMA}):
 ο πάροχος εκδίδει \textlatin{token} για τον ίδιο, προς τον ίδιο.
 
 \subsection{Βήμα 2: Αίτηση \textlatin{GET} μέσω \textlatin{Kong}}
@@ -146,20 +150,22 @@ Content-Type: application/ld+json
 
 Ο πάροχος αποστέλλει αίτηση \textlatin{HTTP GET} στο \textlatin{Kong}:
 
-\begin{lstlisting}[language=bash, caption={Αίτηση ανάγνωσης δεδομένων από τον πάροχο.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Data read request by the provider.}]
 GET http://localhost:8000/ngsi-ld/v1/entities
     ?type=https://plegma.example.org/vocab%23HouseholdElectricMeasurement
     &limit=1
 Authorization: Bearer <iSHARE JWT>
 \end{lstlisting}
+\selectlanguage{greek}
 
 \noindent Τα ορίσματα του αιτήματος ερμηνεύονται ως εξής:
 \begin{itemize}
-    \item \texttt{type}: Το πλήρες \textlatin{URI} του τύπου οντότητας που
+    \item \textlatin{type}: Το πλήρες \textlatin{URI} του τύπου οντότητας που
     αναζητείται. Χρησιμοποιείται \textlatin{URL encoding} για τον χαρακτήρα
-    \texttt{\#} (\texttt{\%23}).
-    \item \texttt{limit}: Ο μέγιστος αριθμός οντοτήτων που θα επιστραφούν.
-    \item \texttt{Authorization: Bearer}: Το \textlatin{iSHARE JWT} ως
+    \textlatin{\#} (\textlatin{\%23}).
+    \item \textlatin{limit}: Ο μέγιστος αριθμός οντοτήτων που θα επιστραφούν.
+    \item \textlatin{Authorization: Bearer}: Το \textlatin{iSHARE JWT} ως
     \textlatin{Bearer token}.
 \end{itemize}
 
@@ -168,7 +174,7 @@ Authorization: Bearer <iSHARE JWT>
 
 Το \textlatin{Kong} εκτελεί πλήρη επαλήθευση του \textlatin{JWT} μέσω του
 \textlatin{iSHARE Satellite}. Το κρίσιμο βήμα είναι ο έλεγχος του εκδότη
-(\texttt{iss}): επειδή \texttt{iss == EU.EORI.NLPLEGMA == local authority},
+(\textlatin{iss}): επειδή \textlatin{iss == EU.EORI.NLPLEGMA == local authority},
 το \textlatin{Kong} αναγνωρίζει ότι ο αιτών είναι ο ίδιος ο πάροχος. Δεν
 χρειάζεται επαλήθευση \textlatin{delegation evidence} — ο πάροχος έχει πλήρη
 πρόσβαση στα δικά του δεδομένα.
@@ -179,7 +185,8 @@ Authorization: Bearer <iSHARE JWT>
 Το \textlatin{Kong} προωθεί το αίτημα στον \textlatin{Orion-LD} και επιστρέφει
 τα αποτελέσματα στον πάροχο με \textlatin{HTTP 200 OK}:
 
-\begin{lstlisting}[language=bash, caption={Απόκριση \textlatin{Orion-LD} για αίτηση ανάγνωσης.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Orion-LD response for a read request.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 HTTP/1.1 200 OK
 [
   {
@@ -194,9 +201,10 @@ HTTP/1.1 200 OK
   }
 ]
 \end{lstlisting}
+\selectlanguage{greek}
 
 % ------------------------------------------------------------------
-\section{Ροή Ανάγνωσης Δεδομένων από τον Καταναλωτή (\textlatin{Consumer M2M Read})}
+\section{Ροή Ανάγνωσης Δεδομένων από τον Καταναλωτή }
 \label{sec:flow-consumer-read}
 % ------------------------------------------------------------------
 
@@ -209,7 +217,7 @@ HTTP/1.1 200 OK
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figures/03_consumer_sequence.png}
+    \includegraphics[width=\textwidth]{figures/Consumer Flow.png}
     \caption{Διάγραμμα ακολουθίας ροής ανάγνωσης δεδομένων από τον καταναλωτή.}
     \label{fig:consumer-sequence}
 \end{figure}
@@ -218,22 +226,24 @@ HTTP/1.1 200 OK
 \label{subsec:consumer-step1}
 
 Ο καταναλωτής δημιουργεί ένα \textlatin{iSHARE JWT} χρησιμοποιώντας το
-\textlatin{script} \texttt{gen\_consumer\_token.py}. Η βασική διαφορά από το
-\textlatin{JWT} του παρόχου είναι ότι το πεδίο \texttt{aud} δείχνει στον
+\textlatin{script} \textlatin{gen\_consumer\_token.py}. Η βασική διαφορά από το
+\textlatin{JWT} του παρόχου είναι ότι το πεδίο \textlatin{aud} δείχνει στον
 πάροχο (και όχι στον εαυτό του), υποδηλώνοντας ότι το \textlatin{token} απευθύνεται
 στον \textlatin{Keyrock} του παρόχου:
 
-\begin{lstlisting}[language=bash, caption={Δομή \textlatin{iSHARE JWT} καταναλωτή.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Consumer iSHARE JWT structure.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 # Payload
 {
   "iss": "EU.EORI.NLPLEGMACONSUMER",
   "sub": "EU.EORI.NLPLEGMACONSUMER",
-  "aud": "EU.EORI.NLPLEGMA",       # Απευθύνεται στον πάροχο
+  "aud": "EU.EORI.NLPLEGMA",
   "jti": "...",
   "iat": 1716000000,
   "exp": 1716000030
 }
 \end{lstlisting}
+\selectlanguage{greek}
 
 \subsection{Βήμα 2: Λήψη \textlatin{Access Token} από τον \textlatin{Keyrock}}
 \label{subsec:consumer-step2}
@@ -241,16 +251,19 @@ HTTP/1.1 200 OK
 Ο καταναλωτής υποβάλλει το \textlatin{iSHARE JWT} στον \textlatin{Keyrock}
 μέσω αιτήματος \textlatin{OAuth 2.0 Client Credentials}:
 
-\begin{lstlisting}[language=bash, caption={Αίτημα \textlatin{access token} από τον καταναλωτή.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Access token request by the consumer.}]
 POST http://localhost:3007/oauth2/token
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials
 &scope=iSHARE
 &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
-&client_assertion=<iSHARE JWT καταναλωτή>
+&client_assertion=<iSHARE JWT consumer>
 &client_id=EU.EORI.NLPLEGMACONSUMER
 \end{lstlisting}
+\selectlanguage{greek}
+
 
 \subsection{Βήμα 3: Επαλήθευση Καταναλωτή μέσω \textlatin{Satellite}}
 \label{subsec:consumer-step3}
@@ -260,9 +273,9 @@ grant_type=client_credentials
 
 \begin{enumerate}
     \item Αποκτά \textlatin{access token} από τον \textlatin{Satellite}
-    εκ μέρους του παρόχου (\texttt{POST /token}).
+    εκ μέρους του παρόχου (\textlatin{POST /token}).
     \item Ερωτά τον \textlatin{Satellite} για τα στοιχεία του καταναλωτή
-    (\texttt{GET /parties?eori=EU.EORI.NLPLEGMACONSUMER\&active\_only=true}).
+    (\textlatin{GET /parties?eori=EU.EORI.NLPLEGMACONSUMER\&active\_only=true}).
     \item Ο \textlatin{Satellite} επιστρέφει ένα υπογεγραμμένο
     \textlatin{JWT} (\textlatin{parties token}) που βεβαιώνει ότι ο
     καταναλωτής είναι ενεργός συμμετέχων με έγκυρο πιστοποιητικό.
@@ -279,11 +292,11 @@ grant_type=client_credentials
 πολιτική, ο \textlatin{Keyrock} συνθέτει ένα \textlatin{access token} που
 ενσωματώνει τα στοιχεία εκχώρησης (\textlatin{delegationEvidence}):
 
-\begin{lstlisting}[language=bash, caption={Δομή \textlatin{access token} που εκδίδει ο \textlatin{Keyrock}.}]
-# Payload του access token
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Access token structure issued by Keyrock.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 {
-  "iss": "EU.EORI.NLPLEGMA",        # Εκδότης: ο πάροχος
-  "sub": "f9b23a01-...",            # UUID καταναλωτή
+  "iss": "EU.EORI.NLPLEGMA",        
+  "sub": "f9b23a01-...",            
   "aud": "EU.EORI.NLPLEGMACONSUMER",
   "delegationEvidence": {
     "policyIssuer": "EU.EORI.NLPLEGMA",
@@ -302,6 +315,7 @@ grant_type=client_credentials
   }
 }
 \end{lstlisting}
+\selectlanguage{greek}
 
 \subsection{Βήματα 5--6: Αίτηση \textlatin{GET} μέσω \textlatin{Kong}}
 \label{subsec:consumer-steps5-6}
@@ -309,12 +323,14 @@ grant_type=client_credentials
 Ο καταναλωτής χρησιμοποιεί το \textlatin{access token} για να αποστείλει
 αίτηση \textlatin{GET} στο \textlatin{Kong}:
 
-\begin{lstlisting}[language=bash, caption={Αίτηση ανάγνωσης δεδομένων από τον καταναλωτή.}]
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Data read request by the consumer.}]
 GET http://localhost:8000/ngsi-ld/v1/entities
     ?type=https://plegma.example.org/vocab%23HouseholdElectricMeasurement
     &limit=1
-Authorization: Bearer <access token με delegationEvidence>
+Authorization: Bearer <access token with delegationEvidence>
 \end{lstlisting}
+\selectlanguage{greek}
 
 \subsection{Βήμα 7: Αξιολόγηση Πολιτικής από το \textlatin{Kong}}
 \label{subsec:consumer-step7}
@@ -324,12 +340,11 @@ Authorization: Bearer <access token με delegationEvidence>
 \textlatin{delegationEvidence}. Ο έλεγχος που εκτελεί είναι ο ακόλουθος:
 
 \begin{itemize}
-    \item Ο εκδότης της πολιτικής (\texttt{policyIssuer}) ταυτίζεται με τον
-    τοπικό πάροχο (\texttt{EU.EORI.NLPLEGMA}); \textbf{ΝΑΙ} ✓
+    \item Ο εκδότης της πολιτικής (\textlatin{policyIssuer}) πρέπει ναταυτίζεται με τον
+    τοπικό πάροχο (\textlatin{EU.EORI.NLPLEGMA}).
     \item Ο τύπος πόρου του αιτήματος
-    (\texttt{HouseholdElectricMeasurement}) καλύπτεται από την πολιτική;
-    \textbf{ΝΑΙ} ✓
-    \item Η ενέργεια \textlatin{GET} επιτρέπεται; \textbf{ΝΑΙ} ✓
+    (\textlatin{HouseholdElectricMeasurement}) πρέπει νακαλύπτεται από την πολιτική.
+    \item Η ενέργεια \textlatin{GET} πρέπει να επιτρέπεται.
 \end{itemize}
 
 Εφόσον όλοι οι έλεγχοι είναι επιτυχείς, το \textlatin{Kong} προωθεί το
@@ -348,7 +363,7 @@ Authorization: Bearer <access token με delegationEvidence>
 \centering
 \caption{Σύγκριση ροών πρόσβασης στο \textlatin{Plegma Data Space}.}
 \label{tab:flows-comparison}
-\begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{4cm}|}
+\begin{tabular}{|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{4cm}|}
 \hline
 \textbf{Ροή} & \textbf{Μέθοδος} & \textbf{Token} & \textbf{Εξουσιοδότηση} \\
 \hline
@@ -368,23 +383,3 @@ Authorization: Bearer <access token με delegationEvidence>
 αρχή του \textlatin{iSHARE}: ο καταναλωτής δεν αρκεί να αποδείξει ποιος
 είναι· πρέπει επίσης να αποδείξει ότι ο πάροχος του έχει εκχωρήσει άδεια.
 
-% ------------------------------------------------------------------
-\section{Σύνοψη}
-\label{sec:ch7-summary}
-% ------------------------------------------------------------------
-
-Στο παρόν κεφάλαιο παρουσιάστηκαν αναλυτικά οι τρεις βασικές ροές
-επικοινωνίας του \textlatin{Plegma Data Space}. Αποδείχθηκε ότι:
-
-\begin{itemize}
-    \item Κάθε αίτηση — είτε ανάγνωσης είτε εγγραφής — διέρχεται από το
-    \textlatin{Kong API Gateway}, εξασφαλίζοντας κεντρικό έλεγχο πρόσβασης.
-    \item Ο πάροχος αποκτά πρόσβαση αποδεικνύοντας την ταυτότητά του μέσω
-    ψηφιακής υπογραφής \textlatin{iSHARE JWT}.
-    \item Ο καταναλωτής αποκτά πρόσβαση μέσω μηχανισμού εκχώρησης
-    εξουσιοδότησης, που εξασφαλίζει ότι ο πάροχος διατηρεί τον πλήρη έλεγχο
-    επί των δεδομένων του.
-\end{itemize}
-
-Στο επόμενο κεφάλαιο παρουσιάζεται η επίδειξη ελέγχου πρόσβασης που
-επαληθεύει πειραματικά τις ροές αυτές σε πραγματικές συνθήκες λειτουργίας.
