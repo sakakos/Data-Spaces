@@ -1,0 +1,244 @@
+\hypersetup {linkcolor=.}
+\babel@toc {greek}{}\relax 
+\contentsline {chapter}{Περίληψη}{5}{chapter*.1}%
+\contentsline {chapter}{\foreignlanguage {english}{Abstract}}{7}{chapter*.2}%
+\contentsline {chapter}{Ευχαριστίες}{9}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Εισαγωγή}{17}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Κίνητρο και Πρόβλημα}{17}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Αντικείμενο της εργασίας}{17}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Δομή της εργασίας}{18}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Θεωρητικό υπόβαθρο των \textlatin {Data Spaces}}{19}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Ορισμός και Βασικές Αρχές}{19}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Αρχιτεκτονικά Δομικά Στοιχεία}{20}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Κύριες Πρωτοβουλίες και Οργανισμοί}{20}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Το Πλαίσιο \textlatin {i4Trust}}{21}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Ρόλοι σε ένα \textlatin {Data Space}}{22}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Τεχνολογίες και Πρότυπα}{23}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Κρυπτογραφία Δημόσιου Κλειδιού}{23}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Ψηφιακά Πιστοποιητικά \textlatin {X.509 }}{24}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Δομή Πιστοποιητικού}{24}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Αλυσίδα Εμπιστοσύνης (\textlatin {Chain of Trust})}{25}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}\textlatin {PKCS\#8} και \textlatin {PKCS\#1}}{26}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}\textlatin {JSON Web Tokens (JWT)}}{26}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Δομή ενός \textlatin {JWT}}{26}{subsection.3.3.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {3.3.2}Διαφορές μεταξύ Παρόχου και Καταναλωτή \textlatin {JWT}}{28}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Το Πλαίσιο \textlatin {iSHARE}}{28}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Αναγνωριστικό \textlatin {EORI}}{29}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Ροή Επαλήθευσης \textlatin {iSHARE}}{29}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Πολιτικές Εκχώρησης Εξουσιοδότησης (\textlatin {Delegation Policies})}{30}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}\textlatin {OAuth 2.0 }}{30}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Ροή \textlatin {Client Credentials }}{31}{subsection.3.5.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {3.6}\textlatin {NGSI-LD} και \textlatin {JSON-LD}}{32}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}\textlatin {JSON-LD Context}}{32}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Βασικές Λειτουργίες \textlatin {API}}{32}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}\textlatin {Smart Data Models}}{33}{subsection.3.6.3}%
+\contentsline {section}{\numberline {3.7}Αρχιτεκτονική Ελέγχου Πρόσβασης \textlatin {XACML}}{33}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Τα Δομικά Στοιχεία της Υλοποίησης}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}\textlatin {FIWARE Orion-LD Context Broker}}{35}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Εσωτερική Αρχιτεκτονική}{35}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Ρόλος στο \textlatin {Data Space}}{36}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Τεχνικά Χαρακτηριστικά}{37}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}\textlatin {Keyrock Identity Manager}}{37}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Ρόλος ως Πάροχος Ταυτότητας}{37}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Ρόλος ως Μητρώο Εξουσιοδότησης}{38}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Μηχανισμός \textlatin {extparticipant}}{38}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Επικοινωνία με τον \textlatin {iSHARE Satellite}}{38}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Τεχνικά Χαρακτηριστικά}{39}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}\textlatin {iSHARE Satellite}}{39}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Μητρώο Συμμετεχόντων (\textlatin {Parties Registry})}{40}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Τεχνικά Χαρακτηριστικά}{40}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}\textlatin {Kong API Gateway}}{41}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Το \textlatin {Plugin} \textlatin {ngsi-ishare-policies}}{41}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Τεχνικά Χαρακτηριστικά}{42}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}\textlatin {DSBA Policy Decision Point (DSBA-PDP)}}{43}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Τεχνικά Χαρακτηριστικά}{43}{subsection.4.5.1}%
+\contentsline {section}{\numberline {4.6}Βάσεις Δεδομένων}{43}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Το \textlatin {Dataset} και το Μοντέλο Δεδομένων}{45}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Το \textlatin {Plegma Dataset}}{45}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Οντότητα \textlatin {Building}}{46}{section.5.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {5.3}Οντότητα \textlatin {Device}}{47}{section.5.3}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {5.4}Οντότητα \textlatin {HouseholdElectricMeasurement}}{48}{section.5.4}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {5.5}Οντότητα \textlatin {EnvironmentalMeasurement}}{49}{section.5.5}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {5.6}Το \textlatin {JSON-LD Context} του \textlatin {Plegma Dataset}}{50}{section.5.6}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {5.7}Αντιστοίχιση \textlatin {CSV} σε \textlatin {NGSI-LD}}{51}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Αρχιτεκτονική του \textlatin {Plegma Data Space}}{53}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Επισκόπηση Αρχιτεκτονικής}{53}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Επίπεδο Επιβολής Πολιτικής}{54}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Επίπεδο Εμπιστοσύνης και Ταυτότητας}{55}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Επίπεδο Δεδομένων}{55}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Δικτυακή Τοπολογία}{56}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Υλοποίηση και Στήσιμο}{57}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Βήμα 1: Δημιουργία Κρυπτογραφικών Πιστοποιητικών}{57}{section.7.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {7.2}Βήμα 2: Παραμετροποίηση \textlatin {iSHARE Satellite}}{59}{section.7.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {7.3}Βήμα 3: Παραμετροποίηση \textlatin {Kong API Gateway}}{59}{section.7.3}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {7.4}Βήμα 4: Παραμετροποίηση \textlatin {Keyrock}}{60}{section.7.4}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {7.5}Βήμα 5: Εκκίνηση \textlatin {Containers}}{61}{section.7.5}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {7.6}Βήμα 6: Δημιουργία Πολιτικής Εξουσιοδότησης}{61}{section.7.6}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {7.6.1}Αρχική Καταχώρηση Καταναλωτή}{62}{subsection.7.6.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {7.7}Βήμα 7: Φόρτωση Δεδομένων \textlatin {Plegma Dataset}}{63}{section.7.7}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {7.8}Σύνοψη Διαδικασίας Στησίματος}{63}{section.7.8}%
+\contentsline {chapter}{\numberline {8}Ροές \textlatin {End-to-End}}{65}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Ροή Φόρτωσης Δεδομένων (\textlatin {Provider Data Ingestion})}{65}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Βήμα 1: Ανάγνωση \textlatin {CSV}}{66}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Βήμα 2: Δημιουργία \textlatin {iSHARE JWT}}{67}{subsection.8.1.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {8.1.3}Βήματα 3--5: Επαλήθευση από το \textlatin {Kong}}{67}{subsection.8.1.3}%
+\contentsline {subsection}{\numberline {8.1.4}Βήμα 6: Αποθήκευση στον \textlatin {Orion-LD}}{68}{subsection.8.1.4}%
+\contentsline {section}{\numberline {8.2}Ροή Ανάγνωσης Δεδομένων από τον Πάροχο}{68}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Βήμα 1: Δημιουργία \textlatin {iSHARE JWT}}{69}{subsection.8.2.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {8.2.2}Βήμα 2: Αίτηση \textlatin {GET} μέσω \textlatin {Kong}}{70}{subsection.8.2.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {8.2.3}Βήματα 3--4: Επαλήθευση \textlatin {JWT} και Έλεγχος \textlatin {Issuer}}{70}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Βήμα 5: Επιστροφή Αποτελέσματος}{70}{subsection.8.2.4}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {8.3}Ροή Ανάγνωσης Δεδομένων από τον Καταναλωτή}{71}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Βήμα 1: Δημιουργία \textlatin {iSHARE JWT} Καταναλωτή}{72}{subsection.8.3.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {8.3.2}Βήμα 2: Λήψη \textlatin {Access Token} από τον \textlatin {Keyrock}}{73}{subsection.8.3.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {8.3.3}Βήμα 3: Επαλήθευση Καταναλωτή μέσω \textlatin {Satellite}}{73}{subsection.8.3.3}%
+\contentsline {subsection}{\numberline {8.3.4}Βήμα 4: Αναζήτηση Πολιτικής Εκχώρησης}{73}{subsection.8.3.4}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {8.3.5}Βήματα 5--6: Αίτηση \textlatin {GET} μέσω \textlatin {Kong}}{74}{subsection.8.3.5}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {8.3.6}Βήμα 7: Αξιολόγηση Πολιτικής από το \textlatin {Kong}}{74}{subsection.8.3.6}%
+\contentsline {section}{\numberline {8.4}Σύγκριση των Τριών Ροών}{75}{section.8.4}%
+\contentsline {chapter}{\numberline {9}Επίδειξη Ελέγχου Πρόσβασης}{77}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Περιβάλλον Επίδειξης}{77}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Σενάριο 1: Πρόσβαση Χωρίς Ταυτοποίηση}{77}{section.9.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {9.3}Σενάριο 2: Πρόσβαση με \textlatin {Token} Παρόχου}{78}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Δημιουργία \textlatin {iSHARE JWT} Παρόχου}{78}{subsection.9.3.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {9.3.2}Ανάγνωση Δεδομένων \textlatin {HouseholdElectricMeasurement}}{79}{subsection.9.3.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {9.3.3}Ανάγνωση Περιβαλλοντικών Μετρήσεων}{79}{subsection.9.3.3}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {9.3.4}Ανάγνωση Δεδομένων Κτιρίου}{80}{subsection.9.3.4}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {9.4}Σενάριο 3: Κύκλος Εκχώρησης Πρόσβασης στον Καταναλωτή}{81}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Βήμα 1: Δημιουργία \textlatin {iSHARE JWT} Καταναλωτή}{81}{subsection.9.4.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {9.4.2}Βήμα 2: Λήψη \textlatin {Access Token} από τον \textlatin {Keyrock}}{81}{subsection.9.4.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {subsection}{\numberline {9.4.3}Βήμα 3: Πρόσβαση στα Δεδομένα Μέσω \textlatin {Kong}}{81}{subsection.9.4.3}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {9.5}Σύνοψη Αποτελεσμάτων Επίδειξης}{82}{section.9.5}%
+\contentsline {chapter}{\numberline {10}Συμπεράσματα και Μελλοντικές Επεκτάσεις}{85}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Κύρια Συμπεράσματα}{85}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Μελλοντικές Επεκτάσεις}{86}{section.10.2}%
+\contentsline {chapter}{\textlatin {Appendices}}{87}{section*.13}%
+\contentsline {chapter}{\numberline {{\greekscript \textAlpha \textnumeralsigngreek }}Αρχεία Παραμετροποίησης}{89}{chapter.1.{\LGR \textAlpha \LGR \textdexiakeraia }}%
+\contentsline {section}{\numberline {{\greekscript \textAlpha \textnumeralsigngreek }.1}\textlatin {Docker Compose Kong}}{89}{section.1.{\LGR \textAlpha \LGR \textdexiakeraia }.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {{\greekscript \textAlpha \textnumeralsigngreek }.2}\textlatin {Docker Compose Keyrock}}{90}{section.1.{\LGR \textAlpha \LGR \textdexiakeraia }.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {{\greekscript \textAlpha \textnumeralsigngreek }.3}Παραμετροποίηση \textlatin {Kong} (\textlatin {kong.yml})}{92}{section.1.{\LGR \textAlpha \LGR \textdexiakeraia }.3}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {{\greekscript \textAlpha \textnumeralsigngreek }.4}Μητρώο Συμμετεχόντων (\textlatin {satellite.yml})}{92}{section.1.{\LGR \textAlpha \LGR \textdexiakeraia }.4}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {{\greekscript \textAlpha \textnumeralsigngreek }.5}Πολιτική Εκχώρησης Εξουσιοδότησης (\textlatin {policy.json})}{93}{section.1.{\LGR \textAlpha \LGR \textdexiakeraia }.5}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {chapter}{\numberline {{\greekscript \textBeta \textnumeralsigngreek }}\textlatin {Scripts} Επίδειξης}{95}{chapter.1.{\LGR \textBeta \LGR \textdexiakeraia }}%
+\contentsline {section}{\numberline {{\greekscript \textBeta \textnumeralsigngreek }.1}Επίδειξη Παρόχου (\textlatin {demo.ps1})}{95}{section.1.{\LGR \textBeta \LGR \textdexiakeraia }.1}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\contentsline {section}{\numberline {{\greekscript \textBeta \textnumeralsigngreek }.2}Επίδειξη Καταναλωτή (\textlatin {demo\_consumer.ps1})}{96}{section.1.{\LGR \textBeta \LGR \textdexiakeraia }.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\nonumberline Bibliography}{99}{chapter*.14}%
+\babel@toc {greek}{}\relax 
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

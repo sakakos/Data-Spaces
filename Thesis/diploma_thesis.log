@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.16)  7 JUN 2026 20:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.16)  11 JUN 2026 18:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2695,10 +2695,15 @@ LaTeX Font Info:    Trying to load font information for LGR+cmss on input line
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/cbfonts-fd\lgrcmss.fd
 File: lgrcmss.fd 2017/07/29 v1.2 Greek European Computer Sans Serif
 )
-Underfull \hbox (badness 1939) in paragraph at lines 18--24
-\LGR/Tempora-TLF/m/n/12 pi-sto-poi-h-ti-kˆ \T1/Tempora-TLF/m/n/12 X.509 \LGR/Te
-mpora-TLF/m/n/12 kai \T1/Tempora-TLF/m/n/12 JSON W-eb To-kens (JWT) \LGR/Tempor
-a-TLF/m/n/12 gia thn tau-to-po-Ðh-sh twn
+Underfull \hbox (badness 10000) in paragraph at lines 11--19
+[]\LGR/Tempora-TLF/m/n/12 H pa-ro-Ôsa di-plw-ma-ti-k  er-ga-sÐa u-lo-poie-Ð èna
+ lei-tour-gi-kì \T1/Tempora-TLF/m/n/12 Da-ta Spa-ce\LGR/Tempora-TLF/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 2961) in paragraph at lines 28--33
+[]\LGR/Tempora-TLF/m/n/12 H er-ga-sÐa a-po-te-le-Ð èna a-na-pa-ra-g¸gi-mo sh-me
+-Ðo a-na-fo-rˆc gia mel-lo-nti-kèc
  []
 
 [5
@@ -2706,13 +2711,13 @@ a-TLF/m/n/12 gia thn tau-to-po-Ðh-sh twn
 ] [6
 
 ]) (abstract_eng.tex
-Underfull \hbox (badness 1097) in paragraph at lines 43--44
-\T1/Tempora-TLF/m/n/12 re-quire-ments, and the ini-tial-iza-tion or-der of sys-
-tem com-po-nents. These find-ings are
+Underfull \hbox (badness 2460) in paragraph at lines 28--28
+[]\T1/Tempora-TLF/m/n/12 To eval-u-ate the sys-tem, an ac-cess del-e-ga-tion cy
+-cle was demon-strated be-tween two
  []
 
 LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 46.
+(Font)              scaled to size 12.0pt on input line 31.
 [7
 
 
@@ -2726,14 +2731,17 @@ LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
 ]) (diploma_thesis.toc [11
 
 
-] [12])
+] [12] [13])
 \tf@toc=\write4
 \openout4 = `diploma_thesis.toc'.
 
 
-[13] [14
+[14] [15
 
-] (diploma_body.tex (chapters/01-introduction.tex
+] (diploma_body.tex (chapters/01-introduction.tex [16
+
+
+]
 chapter 1.
 
 Underfull \hbox (badness 1264) in paragraph at lines 24--28
@@ -2747,10 +2755,7 @@ Underfull \hbox (badness 5189) in paragraph at lines 44--46
 /Tempora-TLF/m/n/12 Pleg-ma Da-ta-set\LGR/Tempora-TLF/m/n/12 , mia
  []
 
-[15
-
-
-]) (chapters/02-data-spaces.tex [16]
+[17]) (chapters/02-data-spaces.tex [18]
 chapter 2.
 
 Underfull \hbox (badness 2035) in paragraph at lines 14--21
@@ -2764,7 +2769,7 @@ Underfull \hbox (badness 1867) in paragraph at lines 14--21
 or-ga-ni-sm¸n. Kai oi dÔo
  []
 
-[17
+[19
 
 ]
 Underfull \hbox (badness 1142) in paragraph at lines 47--50
@@ -2785,7 +2790,7 @@ Underfull \hbox (badness 1895) in paragraph at lines 90--97
 a-tio-nal Da-ta Spa-ces
  []
 
-[18]
+[20]
 Underfull \hbox (badness 1502) in paragraph at lines 136--139
 []\T1/Tempora-TLF/m/n/12 iSHARE\LGR/Tempora-TLF/m/n/12 : 'E-na pla-Ðsio e-mpi-s
 to-sÔnhc pou o-rÐzei ton trìpo e-pa-l jeu-shc
@@ -2797,7 +2802,7 @@ Underfull \hbox (badness 2707) in paragraph at lines 136--139
 n, me bˆsh yh-fia-kˆ
  []
 
-[19]
+[21]
 Underfull \hbox (badness 2521) in paragraph at lines 165--170
 []\LGR/Tempora-TLF/m/n/12 Katanalwt c De-do-mènwn (\T1/Tempora-TLF/m/n/12 Data 
 Con-su-mer\LGR/Tempora-TLF/m/n/12 ): O or-ga-ni-smìc pou ai-te-Ðtai
@@ -2815,7 +2820,7 @@ Underfull \hbox (badness 2409) in paragraph at lines 165--170
 -smì me a-na-gnw-ri-sti-kì
  []
 
-) (chapters/03-technologies.tex [20]
+) (chapters/03-technologies.tex [22]
 chapter 3.
 
 Underfull \hbox (badness 1342) in paragraph at lines 4--8
@@ -2829,7 +2834,7 @@ Underfull \hbox (badness 1173) in paragraph at lines 14--16
 /Tempora-TLF/m/n/12 asymmetric cry-pto-gra-phy\LGR/Tempora-TLF/m/n/12 ) kˆje
  []
 
-[21
+[23
 
 ]
 Underfull \hbox (badness 1490) in paragraph at lines 71--73
@@ -2839,7 +2844,7 @@ TLF/m/n/12 thc \T1/Tempora-TLF/m/n/12 CA \LGR/Tempora-TLF/m/n/12 pou e-xèdw-se
 to
  []
 
-[22]
+[24]
 Underfull \hbox (badness 5832) in paragraph at lines 122--132
 \LGR/Tempora-TLF/m/n/12 sum-bo-lo-sei-rˆ sta-je-ro-Ô m kouc pou pro-kÔptei a-pì
  thn e-far-mo-g  miac
@@ -2851,7 +2856,7 @@ Underfull \hbox (badness 1314) in paragraph at lines 122--132
 ja pa-r ga-ge èna e-nte-l¸c
  []
 
-[23]
+[25]
 Underfull \hbox (badness 1337) in paragraph at lines 172--178
 \LGR/Tempora-TLF/m/n/12 Ta \T1/Tempora-TLF/m/n/12 JSON W-eb To-kens (JWT) \LGR/
 Tempora-TLF/m/n/12 [[]] a-po-te-lo-Ôn to kÔrio mèso tau-to-po-Ðh-shc kai
@@ -2859,19 +2864,19 @@ Tempora-TLF/m/n/12 [[]] a-po-te-lo-Ôn to kÔrio mèso tau-to-po-Ðh-shc kai
 
 LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 199.
-[24]
+[26]
 LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 200.
 LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 200.
- [25]
+ [27]
 Underfull \hbox (badness 5939) in paragraph at lines 278--283
 []\LGR/Tempora-TLF/m/n/12 Pˆroqoc: Ta pe-dÐa \T1/Tempora-TLF/m/n/12 iss\LGR/Tem
 pora-TLF/m/n/12 , \T1/Tempora-TLF/m/n/12 sub \LGR/Tempora-TLF/m/n/12 kai \T1/Te
 mpora-TLF/m/n/12 aud \LGR/Tempora-TLF/m/n/12 èqoun ìla thn Ðdia ti-m 
  []
 
-[26]
+[28]
 Underfull \hbox (badness 1337) in paragraph at lines 356--360
 []\LGR/Tempora-TLF/m/n/12 'Elegqoc e-xou-sio-dìth-shc: An o ai-t¸n den e-Ðnai o
  Ðdioc o pˆro-qoc, o
@@ -2883,7 +2888,7 @@ Underfull \hbox (badness 2221) in paragraph at lines 365--368
 pora-TLF/m/n/12 delegation\LGR/Tempora-TLF/m/n/12 ) e-pi-trèpei ston pˆro-qo
  []
 
-[27] [28] [29] [30]
+[29] [30] [31] [32]
 Underfull \hbox (badness 5359) in paragraph at lines 533--535
 []\T1/Tempora-TLF/m/n/12 GET /ngsi-ld/v1/entities/{id}\LGR/Tempora-TLF/m/n/12 :
  A-nˆkth-sh su-gke-kri-mènhc o-ntìth-tac mèsw
@@ -2907,7 +2912,7 @@ Underfull \hbox (badness 1033) in paragraph at lines 584--590
 12 : To sh-me-Ðo pou pa-rèqei prìsje-ta de-do-mèna
  []
 
-[31]) (chapters/04-building-blocks.tex [32]
+[33]) (chapters/04-building-blocks.tex [34]
 chapter 4.
 
 Underfull \hbox (badness 1728) in paragraph at lines 27--29
@@ -2915,15 +2920,15 @@ Underfull \hbox (badness 1728) in paragraph at lines 27--29
 io-t twn, sqèse-wn kai
  []
 
-[33
+[35
 
-] [34]
+] [36]
 Underfull \hbox (badness 1024) in paragraph at lines 143--146
 []\LGR/Tempora-TLF/m/n/12 An ìla ta pa-ra-pˆnw e-Ðnai e-pi-tu-q , o \T1/Tempora
 -TLF/m/n/12 Key-ro-ck \LGR/Tempora-TLF/m/n/12 dh-miour-ge-Ð (  e-nto-pÐzei)
  []
 
-[35]
+[37]
 Underfull \hbox (badness 1424) in paragraph at lines 161--164
 []\T1/Tempora-TLF/m/n/12 POST /ar/delegation\LGR/Tempora-TLF/m/n/12 : A-na-zh-t
 ˆ po-li-ti-k  ek-q¸rh-shc gia èna su-gke-kri-mèno
@@ -2942,7 +2947,7 @@ Underfull \hbox (badness 7963) in paragraph at lines 200--203
 (wc
  []
 
-[36]
+[38]
 Underfull \hbox (badness 1629) in paragraph at lines 203--206
 []\T1/Tempora-TLF/m/n/12 GET /par-ties?eori=EU.EORI.NLPLEGMACONSUMER\LGR/Tempor
 a-TLF/m/n/12 : Rw-tˆ ton \T1/Tempora-TLF/m/n/12 Sa-tel-li-te \LGR/Tempora-TLF/m
@@ -2955,7 +2960,7 @@ Underfull \hbox (badness 1052) in paragraph at lines 203--206
 i an to a-po-tÔpw-ma tou
  []
 
-[37]
+[39]
 Underfull \hbox (badness 1102) in paragraph at lines 259--267
 []\T1/Tempora-TLF/b/n/12 GET /par-ties\LGR/Tempora-TLF/m/n/12 : E-pi-strèfei ta
  stoi-qe-Ða e-nìc su-gke-kri-mènou sum-me-tèqo-nta,
@@ -2968,7 +2973,7 @@ Tempora-TLF/m/n/12 , ka-tˆsta-shc (\T1/Tempora-TLF/m/n/12 active_only\LGR/Tempo
 ra-TLF/m/n/12 ) kai a-po-tu-p¸ma-toc
  []
 
-[38]
+[40]
 Underfull \hbox (badness 2376) in paragraph at lines 354--359
 \LGR/Tempora-TLF/m/n/12 H ke-ntri-k  lei-tour-gi-kìth-ta e-lèg-qou prìsba-shc p
 a-rèqe-tai mèsw tou \T1/Tempora-TLF/m/n/12 plu-gin
@@ -2981,13 +2986,13 @@ a-TLF/m/n/12 : A-po-kw-di-ko-poie-Ð to \T1/Tempora-TLF/m/n/12 JWT \LGR/Tempora-
 TLF/m/n/12 kai e-xˆgei thn a-lu-sÐda
  []
 
-[39] [40]
+[41] [42]
 Underfull \hbox (badness 2418) in paragraph at lines 486--488
 \LGR/Tempora-TLF/m/n/12 H u-lo-po-Ðh-sh qrh-si-mo-poie-Ð dÔo bˆseic de-do-mènwn
  pou e-xu-ph-re-to-Ôn e-nte-l¸c
  []
 
-[41]) (chapters/04b-dataset.tex [42]
+[43]) (chapters/04b-dataset.tex [44]
 chapter 5.
 
 Underfull \hbox (badness 1028) in paragraph at lines 31--33
@@ -3008,7 +3013,7 @@ Underfull \hbox (badness 1577) in paragraph at lines 33--36
 c ka-ta-skeu- c, a-rij-mìc
  []
 
-[43
+[45
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 51--54
@@ -3022,7 +3027,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--54
 e-pÐsh-mo mo-ntèlo
  []
 
-[44]
+[46]
 Underfull \hbox (badness 2285) in paragraph at lines 116--120
 []\LGR/Tempora-TLF/m/n/12 Oi i-di-ìth-tec pou a-n koun sto \T1/Tempora-TLF/m/n/
 12 Pleg-ma \LGR/Tempora-TLF/m/n/12 pro-sar-t¸ntai me to \T1/Tempora-TLF/m/n/12 
@@ -3035,7 +3040,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 120--122
 Tempora-TLF/m/n/12 ) a-ko-lou-je-Ð to prìtu-po
  []
 
-[45]
+[47]
 Underfull \hbox (badness 10000) in paragraph at lines 177--180
 \LGR/Tempora-TLF/m/n/12 H o-ntìth-ta \T1/Tempora-TLF/m/n/12 H-ou-se-hol-dE-le-c
 tri-cMe-a-su-re-ment \LGR/Tempora-TLF/m/n/12 a-na-pa-ri-stˆ èna stig-mi-ìtu-po
@@ -3047,7 +3052,7 @@ Overfull \hbox (12.47585pt too wide) in paragraph at lines 185--186
 ][][]  
  []
 
-[46]
+[48]
 Underfull \hbox (badness 10000) in paragraph at lines 254--258
 \LGR/Tempora-TLF/m/n/12 H o-ntìth-ta \T1/Tempora-TLF/m/n/12 E-nvi-ron-me-ntal-M
 e-a-su-re-ment \LGR/Tempora-TLF/m/n/12 a-na-pa-ri-stˆ èna stig-mi-ìtu-po
@@ -3065,12 +3070,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 254--258
 /Tempora-TLF/m/n/12 al-lˆ dia-krÐnei me-ta-xÔ
  []
 
-[47]
+[49]
 Overfull \hbox (5.83888pt too wide) in paragraph at lines 341--342
 [][][][][][][][][][][][][][][][][][][][][][]  
  []
 
-[48]
+[50]
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 383.
 LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
@@ -3079,27 +3084,366 @@ LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 387.
 LaTeX Font Info:    Font shape `TS1/Tempora-TLF/m/n' will be
 (Font)              scaled to size 10.95pt on input line 424.
-) (chapters/05-architecture.tex [49] [50
+) (chapters/05-architecture.tex [51] [52
 
 ]
 chapter 6.
-<figures/Data Space Component Diagram.png, id=796, 1273.75874pt x 1045.9075pt>
+<figures/Data Space Component Diagram.png, id=824, 1273.75874pt x 1045.9075pt>
 File: figures/Data Space Component Diagram.png Graphic file (type png)
 <use figures/Data Space Component Diagram.png>
 Package pdftex.def Info: figures/Data Space Component Diagram.png  used on inpu
 t line 23.
 (pdftex.def)             Requested size: 441.0178pt x 362.11522pt.
-[51] [52 <./figures/Data Space Component Diagram.png (PNG copy)>]
+[53] [54 <./figures/Data Space Component Diagram.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 72--74
 []\LGR/Tempora-TLF/m/n/12 Pˆroqoc: \T1/Tempora-TLF/m/n/12 EU.EORI.NLPLEGMA\LGR/
 Tempora-TLF/m/n/12 , me rìlouc \T1/Tempora-TLF/m/n/12 I-de-ntity-Pro-vi-der \LG
 R/Tempora-TLF/m/n/12 kai
  []
 
-[53]) (chapters/06-implementation.tex [54]
+[55]) (chapters/06-implementation.tex [56]
 chapter 7.
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 (C:\Users\SAKak\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2025/11/14 1.11b listing
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+)
+[57
+
+]
+Underfull \hbox (badness 1314) in paragraph at lines 80--85
+[]\LGR/Tempora-TLF/m/n/12 Arijmìc \T1/Tempora-TLF/m/n/12 E-O-RI \LGR/Tempora-TL
+F/m/n/12 sto pe-dÐo \T1/Tempora-TLF/m/n/12 Se-rial Num-ber\LGR/Tempora-TLF/m/n/
+12 : To a-na-gnw-ri-sti-kì \T1/Tempora-TLF/m/n/12 E-O-RI \LGR/Tempora-TLF/m/n/1
+2 kˆje
+ []
+
+[58] [59]
+Underfull \hbox (badness 4366) in paragraph at lines 195--197
+\LGR/Tempora-TLF/m/n/12 O \T1/Tempora-TLF/m/n/12 Key-ro-ck \LGR/Tempora-TLF/m/n
+/12 pa-ra-me-tro-poie-Ðtai mèsw me-ta-blh-t¸n pe-ri-bˆl-lo-ntoc sto ar-qe-Ðo
+ []
+
+[60] [61]
+Overfull \hbox (40.8192pt too wide) in paragraph at lines 329--330
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][]  
+ []
+
+[62] [63]) (chapters/07-end-to-end-flows.tex [64]
+chapter 8.
+<figures/Provider Data Insertion Flow.png, id=994, 1264.725pt x 1479.5275pt>
+File: figures/Provider Data Insertion Flow.png Graphic file (type png)
+<use figures/Provider Data Insertion Flow.png>
+Package pdftex.def Info: figures/Provider Data Insertion Flow.png  used on inpu
+t line 26.
+(pdftex.def)             Requested size: 441.0178pt x 515.90088pt.
+[65
+
+] [66 <./figures/Provider Data Insertion Flow.png>]
+Overfull \hbox (12.47585pt too wide) in paragraph at lines 54--55
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][]  
+ []
+
+[67]
+<figures/Provider Flow.png, id=1030, 1053.9375pt x 1109.14375pt>
+File: figures/Provider Flow.png Graphic file (type png)
+<use figures/Provider Flow.png>
+Package pdftex.def Info: figures/Provider Flow.png  used on input line 111.
+(pdftex.def)             Requested size: 441.0178pt x 464.12787pt.
+ [68] [69 <./figures/Provider Flow.png>] [70]
+Overfull \hbox (23.81319pt too wide) in paragraph at lines 193--194
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][]  
+ []
+
+<figures/Consumer Flow.png, id=1067, 1554.80875pt x 1817.79124pt>
+File: figures/Consumer Flow.png Graphic file (type png)
+<use figures/Consumer Flow.png>
+Package pdftex.def Info: figures/Consumer Flow.png  used on input line 220.
+(pdftex.def)             Requested size: 441.0178pt x 515.60728pt.
+[71]
+Underfull \hbox (badness 6284) in paragraph at lines 228--233
+\LGR/Tempora-TLF/m/n/12 O ka-ta-na-lw-t c dh-miour-ge-Ð èna \T1/Tempora-TLF/m/n
+/12 i-SHA-RE JWT \LGR/Tempora-TLF/m/n/12 qrh-si-mo-poi-¸ntac to \T1/Tempora-TLF
+/m/n/12 scri-pt
+ []
+
+[72 <./figures/Consumer Flow.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 277--279
+[]\LGR/Tempora-TLF/m/n/12 Erwtˆ ton \T1/Tempora-TLF/m/n/12 Sa-tel-li-te \LGR/Te
+mpora-TLF/m/n/12 gia ta stoi-qe-Ða tou ka-ta-na-lw-t  (\T1/Tempora-TLF/m/n/12 G
+ET
+ []
+
+[73]
+Overfull \hbox (35.15053pt too wide) in paragraph at lines 308--309
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Underfull \hbox (badness 6428) in paragraph at lines 345--347
+[]\LGR/Tempora-TLF/m/n/12 O tÔpoc pìrou tou ai-t ma-toc (\T1/Tempora-TLF/m/n/12
+ HouseholdElectricMeasurement\LGR/Tempora-TLF/m/n/12 ) prèpei
+ []
+
+[74]) (chapters/08-demonstration.tex [75] [76
+
+]
+chapter 9.
+[77]
+Underfull \hbox (badness 1424) in paragraph at lines 90--92
+[]\T1/Tempora-TLF/m/n/12 pip in-stall Py-JWT cry-pto-gra-phy -q 2>/de-v/null\LG
+R/Tempora-TLF/m/n/12 : E-gka-ji-stˆ tic a-pa-ra-Ðth-tec
+ []
+
+[78]
+Overfull \hbox (23.81319pt too wide) in paragraph at lines 112--113
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][]  
+ []
+
+
+Overfull \hbox (1.1385pt too wide) in paragraph at lines 156--157
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][]  
+ []
+
+[79] [80]
+Overfull \hbox (40.8192pt too wide) in paragraph at lines 244--245
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][]  
+ []
+
+[81]
+Overfull \hbox (23.81319pt too wide) in paragraph at lines 278--279
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][]  
+ []
+
+[82]) (chapters/09-conclusions.tex [83] [84
+
+]
+chapter 10.
+
+Underfull \hbox (badness 1540) in paragraph at lines 4--9
+\LGR/Tempora-TLF/m/n/12 H pa-ro-Ôsa di-plw-ma-ti-k  er-ga-sÐa prag-ma-te-Ôth-ke
+ th sqe-dÐa-sh kai u-lo-po-Ðh-sh
+ []
+
+[85]
+Underfull \hbox (badness 4779) in paragraph at lines 49--54
+[]\LGR/Tempora-TLF/m/n/12 Epèktash \T1/Tempora-TLF/m/n/12 ke-yU-sa-ge \LGR/Temp
+ora-TLF/m/n/12 pi-sto-poi-h-ti-k¸n: H e-pèkta-sh \T1/Tempora-TLF/m/n/12 di-gi-t
+al-Si-gna-tu-re \LGR/Tempora-TLF/m/n/12 sta
+ []
+
+)) [86]
+LaTeX Font Info:    Font shape `LGR/Tempora-TLF/m/n' will be
+(Font)              scaled to size 24.88pt on input line 88.
+LaTeX Font Info:    Font shape `LGR/Tempora-TLF/b/n' will be
+(Font)              scaled to size 24.88pt on input line 88.
+LaTeX Font Info:    Font shape `T1/Tempora-TLF/b/n' will be
+(Font)              scaled to size 24.88pt on input line 88.
+ [87
+
+
+] [88] (appendices/A-config-files.tex
+chapter {\greekscript \textAlpha \textnumeralsigngreek }.
+
+Underfull \hbox (badness 1057) in paragraph at lines 4--9
+\LGR/Tempora-TLF/m/n/12 To pa-rìn pa-rˆr-th-ma pe-ri-èqei ta ar-qe-Ða pa-ra-me-
+tro-po-Ðh-shc pou o-rÐzoun thn
+ []
+
+
+Underfull \hbox (badness 1838) in paragraph at lines 4--9
+\LGR/Tempora-TLF/m/n/12 ar-qi-te-kto-ni-k  tou \T1/Tempora-TLF/m/n/12 Pleg-ma D
+a-ta Spa-ce\LGR/Tempora-TLF/m/n/12 . Au-tˆ ta ar-qe-Ða, se sun-dua-smì me
+ []
+
+[89
+
+] [90] [91]
+Underfull \hbox (badness 1102) in paragraph at lines 228--232
+\LGR/Tempora-TLF/m/n/12 lÐsta e-mpi-steu-mènwn \T1/Tempora-TLF/m/n/12 CA\LGR/Te
+mpora-TLF/m/n/12 . Ta kru-pto-gra-fi-kˆ klei-di-ˆ kai pi-sto-poi-h-ti-kˆ èqoun
+ []
+
+[92] [93]
+Overfull \hbox (57.82521pt too wide) in paragraph at lines 315--316
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+) (appendices/B-demo-scripts.tex [94]
+chapter {\greekscript \textBeta \textnumeralsigngreek }.
+
+Overfull \hbox (23.81319pt too wide) in paragraph at lines 32--33
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (1.1385pt too wide) in paragraph at lines 33--34
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ 
+ []
+
+
+Overfull \hbox (29.48186pt too wide) in paragraph at lines 49--51
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+[95
+
+]
+Overfull \hbox (23.81319pt too wide) in paragraph at lines 99--101
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (29.48186pt too wide) in paragraph at lines 114--116
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+[96]
+Overfull \hbox (23.81319pt too wide) in paragraph at lines 120--122
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (80.4999pt too wide) in paragraph at lines 127--129
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (602.0176pt too wide) in paragraph at lines 133--135
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][]  
+ []
+
+) (diploma_thesis.bbl [97] [98
+
+]
+chapter without number
+LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 5.
+
+Underfull \hbox (badness 2277) in paragraph at lines 9--12
+[]\T1/Tempora-TLF/m/n/12 Data Spaces Busi-ness Al-liance, ``Tech-ni-cal con-ver
+-gence: Rec-om-men-da-tions for
+ []
+
+
+Underfull \hbox (badness 4120) in paragraph at lines 20--22
+[]\T1/Tempora-TLF/m/n/12 Gaia-X AISBL, ``Gaia-x ar-chi-tec-ture doc-u-ment,'' t
+ech. rep., Gaia-X Eu-ro-pean
+ []
+
+
+Underfull \hbox (badness 1448) in paragraph at lines 25--27
+[]\T1/Tempora-TLF/m/n/12 FIWARE Foun-da-tion, ``FI-WARE cat-a-logue: Open sourc
+e com-po-nents for smart
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 55--57
+[]\T1/Tempora-TLF/m/n/12 G. Kel-logg, P.-A. Champin, and D. Lon-g-ley, ``JSON-L
+D 1.1: A JSON-based
+ []
+
+[99{C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tempora/tmp_aq
+2g6w.enc}]) [100] (diploma_thesis.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 41628 strings out of 467690
+ 776284 string characters out of 5414966
+ 1815879 words of memory out of 5000000
+ 68633 multiletter control sequences out of 15000+600000
+ 714252 words of font info for 136 fonts, out of 8000000 for 9000
+ 1147 hyphenation exceptions out of 8191
+ 108i,11n,107p,11268b,2634s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{section.1.{\\LGR\040\\LGR\\textBeta\040\\LGR\040\\L
+GR\\textdexiakeraia\040}.2} has been referenced but does not exist, replaced by
+ a fixed one
+
+
+pdfTeX warning (dest): name{section.1.{\\LGR\040\\LGR\\textBeta\040\\LGR\040\\L
+GR\\textdexiakeraia\040}.1} has been referenced but does not exist, replaced by
+ a fixed one
+
+
+pdfTeX warning (dest): name{chapter.1.{\\LGR\040\\LGR\\textBeta\040\\LGR\040\\L
+GR\\textdexiakeraia\040}} has been referenced but does not exist, replaced by a
+ fixed one
+
+
+pdfTeX warning (dest): name{section.1.{\\LGR\040\\LGR\\textAlpha\040\\LGR\040\\
+LGR\\textdexiakeraia\040}.5} has been referenced but does not exist, replaced b
+y a fixed one
+
+
+pdfTeX warning (dest): name{section.1.{\\LGR\040\\LGR\\textAlpha\040\\LGR\040\\
+LGR\\textdexiakeraia\040}.4} has been referenced but does not exist, replaced b
+y a fixed one
+
+
+pdfTeX warning (dest): name{section.1.{\\LGR\040\\LGR\\textAlpha\040\\LGR\040\\
+LGR\\textdexiakeraia\040}.3} has been referenced but does not exist, replaced b
+y a fixed one
+
+
+pdfTeX warning (dest): name{section.1.{\\LGR\040\\LGR\\textAlpha\040\\LGR\040\\
+LGR\\textdexiakeraia\040}.2} has been referenced but does not exist, replaced b
+y a fixed one
+
+
+pdfTeX warning (dest): name{section.1.{\\LGR\040\\LGR\\textAlpha\040\\LGR\040\\
+LGR\\textdexiakeraia\040}.1} has been referenced but does not exist, replaced b
+y a fixed one
+
+
+pdfTeX warning (dest): name{chapter.1.{\\LGR\040\\LGR\\textAlpha\040\\LGR\040\\
+LGR\\textdexiakeraia\040}} has been referenced but does not exist, replaced by 
+a fixed one
+
+ <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt09
+00.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
+ecsx1440.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
+pi600\ecsx1095.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappe
+n/ec/dpi600\ecsx1200.pk> <C:\Users\SAKak\AppData\Local\MiKTeX\fonts/pk/ljfour/j
+knappen/ec/dpi600\ecsx2074.pk><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/tempora/Tempora-Bold.pfb><C:/Users/SAKak/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/tempora/Tempora-Italic.pfb><C:/Users/SAKak/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/tempora/Tempora-Regular.pfb><C:/Users/S
+AKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C
+:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/cbgreek/gsxn1095
+.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/cbgreek/g
+sxn1200.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/cb
+greek/gsxn1440.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/cbgreek/gsxn2074.pfb>
+Output written on diploma_thesis.pdf (100 pages, 1163577 bytes).
+PDF statistics:
+ 2685 PDF objects out of 2984 (max. 8388607)
+ 1260 named destinations out of 1440 (max. 500000)
+ 1118 words of extra memory for PDF output out of 10000 (max. 10000000)
+

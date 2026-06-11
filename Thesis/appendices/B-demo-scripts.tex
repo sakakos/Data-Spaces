@@ -1,0 +1,156 @@
+\chapter{\textlatin{Scripts} Επίδειξης}
+\label{app:demo-scripts}
+
+Το παρόν παράρτημα περιέχει τα \textlatin{scripts} που χρησιμοποιήθηκαν
+για την επίδειξη του κύκλου εκχώρησης πρόσβασης. Τα \textlatin{scripts}
+εκτελούνται σε \textlatin{PowerShell} και αξιοποιούν τα εργαλεία
+\textlatin{curl} και \textlatin{Docker}.
+
+% ------------------------------------------------------------------
+\section{Επίδειξη Παρόχου (\textlatin{demo.ps1})}
+\label{app:demo-provider}
+% ------------------------------------------------------------------
+
+Το \textlatin{script} \textlatin{demo.ps1} εκτελεί δύο σενάρια: πρόσβαση
+χωρίς \textlatin{token} (αναμένεται \textlatin{401}) και πρόσβαση
+με \textlatin{token} παρόχου (αναμένεται \textlatin{200}) για τρεις
+τύπους οντοτήτων.
+
+\selectlanguage{english}
+\begin{lstlisting}[language={},]
+# demo.ps1
+# =========================================================
+# Access control demonstration via Kong/PEP with iSHARE JWT
+#
+# Scenario 1: No token        -> 401 Unauthorized
+# Scenario 2: Provider token  -> 200 OK + data
+# =========================================================
+
+$ISHARE_DIR = "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Kong\iShare"
+$KONG_BASE  = "http://localhost:8000/ngsi-ld/v1/entities"
+
+$ELECTRIC_TYPE = "https://plegma.example.org/vocab%23HouseholdElectricMeasurement"
+$ENV_TYPE      = "https://plegma.example.org/vocab%23EnvironmentalMeasurement"
+$BUILDING_TYPE = "https://smartdatamodels.org/dataModel.Building/Building"
+
+Write-Host "============================================================"
+Write-Host "  Plegma Data Space - Provider Access Control Demo"
+Write-Host "============================================================"
+
+# 1. No token -> expect 401
+Write-Host "`n=== 1. No token (expected: 401) ==="
+curl.exe -s "$KONG_BASE`?type=$ELECTRIC_TYPE&limit=1"
+
+# 2. Provider token -> generate fresh JWT and send request
+Write-Host "`n=== 2. Provider token (expected: 200) ==="
+$PROVIDER_TOKEN = docker run --rm `
+    -v "${ISHARE_DIR}:/iShare" `
+    python:3.9-slim sh -c `
+    "pip install PyJWT cryptography -q 2>/dev/null && python3 /iShare/gen_token.py"
+
+Write-Host "HouseholdElectricMeasurement:"
+curl.exe -s -H "Authorization: Bearer $PROVIDER_TOKEN" `
+    "$KONG_BASE`?type=$ELECTRIC_TYPE&limit=1" | python -m json.tool
+
+Write-Host "`nEnvironmentalMeasurement:"
+curl.exe -s -H "Authorization: Bearer $PROVIDER_TOKEN" `
+    "$KONG_BASE`?type=$ENV_TYPE&limit=1" | python -m json.tool
+
+Write-Host "`nBuilding:"
+curl.exe -s -H "Authorization: Bearer $PROVIDER_TOKEN" `
+    "$KONG_BASE`?type=$BUILDING_TYPE&limit=1" | python -m json.tool
+\end{lstlisting}
+\selectlanguage{greek}
+
+% ------------------------------------------------------------------
+\section{Επίδειξη Καταναλωτή (\textlatin{demo\_consumer.ps1})}
+\label{app:demo-consumer}
+% ------------------------------------------------------------------
+
+Το \textlatin{script} \textlatin{demo\_consumer.ps1} εκτελεί τρία σενάρια:
+πρόσβαση χωρίς \textlatin{token}, πρόσβαση με \textlatin{token} παρόχου,
+και πρόσβαση με \textlatin{token} καταναλωτή μέσω \textlatin{delegation}.
+Το τρίτο σενάριο περιλαμβάνει και τα τρία βήματα της ροής
+\textlatin{M2M} του καταναλωτή: δημιουργία \textlatin{iSHARE JWT},
+ανταλλαγή με \textlatin{access token} μέσω \textlatin{Keyrock} και
+πρόσβαση μέσω \textlatin{Kong}.
+
+\selectlanguage{english}
+\begin{lstlisting}[language={},]
+# demo_consumer.ps1
+# =========================================================
+# Access delegation cycle demonstration (iSHARE delegation)
+#
+# Scenario 1: No token              -> 401 Unauthorized
+# Scenario 2: Provider token (M2M)  -> 200 OK
+# Scenario 3: Consumer token (M2M)  -> 200 OK (via delegation)
+#
+# Consumer Flow:
+#   1. Consumer creates iSHARE JWT with consumer.key
+#   2. Consumer sends JWT to Keyrock -> gets access token
+#      (Keyrock verifies consumer via Satellite + finds delegation policy)
+#   3. Consumer sends access token to Kong -> gets data
+# =========================================================
+
+$ISHARE_DIR    = "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Kong\iShare"
+$KONG_BASE     = "http://localhost:8000/ngsi-ld/v1/entities"
+$KEYROCK_URL   = "http://localhost:3007/oauth2/token"
+$CONSUMER_EORI = "EU.EORI.NLPLEGMACONSUMER"
+$ELECTRIC_TYPE = "https://plegma.example.org/vocab%23HouseholdElectricMeasurement"
+
+Write-Host "============================================================"
+Write-Host "  Plegma Data Space - Consumer Access Control Demo"
+Write-Host "============================================================"
+
+# --- Scenario 1: No token ---
+Write-Host "`n=== 1. No token (expected: 401 Unauthorized) ==="
+curl.exe -s "$KONG_BASE`?type=$ELECTRIC_TYPE&limit=1"
+
+# --- Scenario 2: Provider token (M2M) ---
+Write-Host "`n=== 2. Provider iSHARE JWT (expected: 200 OK) ==="
+$PROVIDER_TOKEN = docker run --rm `
+    -v "${ISHARE_DIR}:/iShare" `
+    python:3.9-slim sh -c `
+    "pip install PyJWT cryptography -q 2>/dev/null && python3 /iShare/gen_token.py"
+
+curl.exe -s -H "Authorization: Bearer $PROVIDER_TOKEN" `
+    "$KONG_BASE`?type=$ELECTRIC_TYPE&limit=1" | python -m json.tool
+
+# --- Scenario 3: Consumer token (M2M with delegation) ---
+Write-Host "`n=== 3. Consumer token via Keyrock delegation (expected: 200 OK) ==="
+
+# Step 1: Create consumer iSHARE JWT
+Write-Host "  Step 1/3: Creating iSHARE JWT for Consumer..."
+$CONSUMER_JWT = docker run --rm `
+    -v "${ISHARE_DIR}:/iShare" `
+    python:3.9-slim sh -c `
+    "pip install PyJWT cryptography -q 2>/dev/null && python3 /iShare/gen_consumer_token.py"
+
+# Step 2: Exchange JWT for access token from Keyrock
+Write-Host "  Step 2/3: Getting access token from Keyrock..."
+$tokenResponse = curl.exe -s -X POST $KEYROCK_URL `
+    -H "Content-Type: application/x-www-form-urlencoded" `
+    -d "grant_type=client_credentials&scope=iSHARE&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&client_assertion=$CONSUMER_JWT&client_id=$CONSUMER_EORI"
+
+$ACCESS_TOKEN = ($tokenResponse | ConvertFrom-Json).access_token
+
+if (-not $ACCESS_TOKEN) {
+    Write-Host "  ERROR: No access token received from Keyrock!"
+    Write-Host "  Response: $tokenResponse"
+    exit 1
+}
+Write-Host "  Access token received (length: $($ACCESS_TOKEN.Length) chars)"
+
+# Step 3: Use access token to access data via Kong
+Write-Host "  Step 3/3: Sending request to Kong with access token..."
+curl.exe -s -H "Authorization: Bearer $ACCESS_TOKEN" `
+    "$KONG_BASE`?type=$ELECTRIC_TYPE&limit=1" | python -m json.tool
+
+Write-Host "`n============================================================"
+Write-Host "  Results:"
+Write-Host "  1. No token       -> 401 Unauthorized"
+Write-Host "  2. Provider token -> 200 OK"
+Write-Host "  3. Consumer token -> 200 OK (via delegation)"
+Write-Host "============================================================"
+\end{lstlisting}
+\selectlanguage{greek}
