@@ -1,0 +1,857 @@
+\documentclass[11pt]{beamer}
+
+\usetheme{Boadilla}
+
+%---------------------------------------------------------------------
+% PACKAGES
+%---------------------------------------------------------------------
+\usepackage[english,greek]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[LGR,T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{listings}
+
+% Shortcut για αγγλικό κείμενο μέσα σε ελληνικό
+\newcommand{\en}[1]{\foreignlanguage{english}{#1}}
+
+%---------------------------------------------------------------------
+% FOOTLINE (όπως στο template)
+%---------------------------------------------------------------------
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}%
+    \insertsectionnavigationhorizontal{.7\paperwidth}{}{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\beamertemplatenavigationsymbolsempty
+
+%---------------------------------------------------------------------
+% ΧΡΩΜΑΤΑ ΕΜΠ
+%---------------------------------------------------------------------
+\definecolor{NTUABlue}{RGB}{0,75,135}
+\definecolor{Black}{RGB}{35,35,35}
+\definecolor{White}{RGB}{255,255,255}
+\definecolor{Darkgrey}{RGB}{98,100,104}
+\definecolor{Middlegrey}{RGB}{192,193,195}
+\definecolor{Lightgrey}{RGB}{230,230,231}
+
+\setbeamercolor{item projected}{bg=NTUABlue,fg=White}
+\setbeamercolor{section in toc}{fg=Black,bg=White}
+\setbeamercolor{alerted text}{fg=NTUABlue}
+\setbeamercolor*{palette primary}{fg=NTUABlue,bg=Lightgrey}
+\setbeamercolor*{palette secondary}{fg=NTUABlue,bg=Lightgrey}
+\setbeamercolor*{palette tertiary}{bg=NTUABlue,fg=White}
+\setbeamercolor*{palette quaternary}{fg=NTUABlue,bg=Black}
+\setbeamercolor{titlelike}{parent=palette primary,fg=NTUABlue}
+\setbeamercolor{frametitle}{bg=Lightgrey, fg=NTUABlue}
+\setbeamercolor{frametitle right}{bg=Middlegrey}
+
+%---------------------------------------------------------------------
+% LISTINGS STYLE
+%---------------------------------------------------------------------
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{Middlegrey},
+  backgroundcolor=\color{Lightgrey!30},
+  showstringspaces=false,
+  language={},
+}
+
+%---------------------------------------------------------------------
+% ΤΙΤΛΟΦΥΛΛΟ
+%---------------------------------------------------------------------
+\title[\en{Data Spaces} με \en{FIWARE/i4Trust}]{Περιβάλλον πειραματισμού με \en{Data Spaces} με χρήση \en{FIWARE} και \en{i4Trust}}
+
+\author{Σωτήριος Κάκος}
+
+\institute{Εθνικό Μετσόβιο Πολυτεχνείο \\ Σχολή Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών \\ Εργαστήριο Δικτύων Υπολογιστών}
+
+\date{\today}
+
+%=====================================================================
+\begin{document}
+%=====================================================================
+
+% ─── Διαφάνεια 1: Τιτλοφύλλο ─────────────────────────────────────
+\begin{frame}
+\titlepage
+\begin{center}
+\small
+\textbf{Επιβλέποντες:} Ε. Συκάς, Δ. Καλογεράς
+\end{center}
+\end{frame}
+
+% ─── Διαφάνεια 2: Περιεχόμενα ────────────────────────────────────
+\begin{frame}{Περιεχόμενα Παρουσίασης}
+\tableofcontents
+\end{frame}
+
+%=====================================================================
+\section{Εισαγωγή}
+%=====================================================================
+
+% ─── Διαφάνεια 3: Το πρόβλημα ────────────────────────────────────
+\begin{frame}{Το Πρόβλημα του Διαμοιρασμού Δεδομένων}
+Στη σύγχρονη ψηφιακή οικονομία, η ανταλλαγή δεδομένων μεταξύ οργανισμών
+αποτελεί κρίσιμη παράμετρο για την καινοτομία και τη λήψη αποφάσεων.
+Ωστόσο, ο διαμοιρασμός αυτός εγείρει σοβαρά ζητήματα:
+\bigskip
+\begin{itemize}
+    \item Πώς διασφαλίζεται η εμπιστοσύνη μεταξύ οργανισμών που δεν
+    γνωρίζονται μεταξύ τους;
+    \item Πώς διατηρεί ο πάροχος τον έλεγχο επί των δεδομένων του
+    μετά τη δημοσίευσή τους;
+    \item Πώς επιτυγχάνεται η διαλειτουργικότητα χωρίς κεντρική
+    αποθήκευση;
+\end{itemize}
+\bigskip
+Οι παραδοσιακές προσεγγίσεις — κεντρικές πλατφόρμες ή διμερείς συμφωνίες —
+δεν κλιμακώνονται και δημιουργούν εξάρτηση από ενδιάμεσους φορείς.
+\end{frame}
+
+% ─── Διαφάνεια 4: Data Spaces - η απάντηση ────────────────────────
+\begin{frame}{Η Έννοια των \en{Data Spaces}}
+Οι \en{Data Spaces} προτείνουν μια αποκεντρωμένη απάντηση στο πρόβλημα
+του διαμοιρασμού δεδομένων.
+\bigskip
+
+\textbf{Βασικές αρχές:}
+\begin{itemize}
+    \item \textbf{Ψηφιακή Κυριαρχία:} Κάθε οργανισμός διατηρεί τον πλήρη
+    έλεγχο επί των δεδομένων του.
+    \item \textbf{Αποκεντρωμένη Αρχιτεκτονική:} Τα δεδομένα παραμένουν
+    στις υποδομές του παρόχου.
+    \item \textbf{Διαλειτουργικότητα:} Κοινά πρότυπα και πρωτόκολλα
+    επιτρέπουν την επικοινωνία μεταξύ ετερογενών συστημάτων.
+    \item \textbf{Πλαίσιο Εμπιστοσύνης:} Τεχνικοί μηχανισμοί
+    (πιστοποιητικά, υπογραφές) αντικαθιστούν την εμπιστοσύνη σε
+    μεσάζοντα.
+\end{itemize}
+\end{frame}
+
+% ─── Διαφάνεια 5: Αντικείμενο και στόχοι ─────────────────────────
+\begin{frame}{Αντικείμενο της Εργασίας}
+Η παρούσα διπλωματική σχεδιάζει και υλοποιεί ένα λειτουργικό περιβάλλον
+πειραματισμού — το \en{Plegma Data Space} — που αποδεικνύει στην πράξη
+τον κύκλο εκχώρησης πρόσβασης σε δεδομένα.
+\bigskip
+
+\textbf{Συγκεκριμένα:}
+\begin{itemize}
+    \item Αξιοποίηση των ανοιχτών τεχνολογιών της \en{FIWARE Foundation}.
+    \item Εφαρμογή του πλαισίου εμπιστοσύνης \en{i4Trust/iSHARE}.
+    \item Μοντελοποίηση δεδομένων σε \en{NGSI-LD} με χρήση
+    \en{Smart Data Models}.
+    \item Επίδειξη ροών \en{Machine-to-Machine} τόσο για τον πάροχο όσο
+    και για τον καταναλωτή.
+    \item Τροφοδότηση του συστήματος με πραγματικά δεδομένα από το
+    \en{Plegma Dataset}.
+\end{itemize}
+\end{frame}
+
+%=====================================================================
+\section{Θεωρητικό Υπόβαθρο}
+%=====================================================================
+
+% ─── Διαφάνεια 6: Δομικά στοιχεία Data Space ──────────────────────
+\begin{frame}{Τα Δομικά Στοιχεία ενός \en{Data Space}}
+Σύμφωνα με τη \en{Data Spaces Business Alliance (DSBA)}, ένας
+\en{Data Space} αποτελείται από τέσσερις κατηγορίες δομικών στοιχείων:
+\bigskip
+\begin{itemize}
+    \item \textbf{Διαχείριση Ταυτότητας \& Εμπιστοσύνης:} Επαλήθευση
+    συμμετεχόντων και αξιολόγηση αξιοπιστίας.
+    \item \textbf{Έλεγχος Πρόσβασης \& Χρήσης:} Πολιτικές που ορίζουν
+    ποιος έχει πρόσβαση σε ποια δεδομένα.
+    \item \textbf{Δημοσίευση \& Ανακάλυψη Δεδομένων:} Τυποποιημένη
+    δημοσίευση πόρων και αναζήτηση από καταναλωτές.
+    \item \textbf{Κυριαρχία Δεδομένων:} Διασφάλιση ότι κάθε
+    συμμετέχων διατηρεί τον έλεγχο των δεδομένων του.
+\end{itemize}
+\bigskip
+% TODO: εικόνα από το pdf της εκφώνησης (DSBA building blocks)
+\begin{center}
+\textit{[Εικόνα: \en{DSBA Building Blocks}]}
+\end{center}
+\end{frame}
+
+% ─── Διαφάνεια 7: Πρωτοβουλίες ────────────────────────────────────
+\begin{frame}{Διεθνείς Πρωτοβουλίες}
+Η ανάπτυξη των \en{Data Spaces} υποστηρίζεται από διεθνείς οργανισμούς:
+\bigskip
+\begin{itemize}
+    \item \textbf{\en{IDSA}}: \en{International Data Spaces Association} —
+    το αναφορικό μοντέλο \en{IDS-RAM}.
+    \item \textbf{\en{Gaia-X}}: Ευρωπαϊκή πρωτοβουλία για ομοσπονδιακή
+    και ασφαλή ψηφιακή υποδομή.
+    \item \textbf{\en{FIWARE Foundation}}: Ανοιχτά πρότυπα και λογισμικό,
+    με ιδιαίτερη συνεισφορά στο πρότυπο \en{NGSI-LD}.
+    \item \textbf{\en{DSBA}}: Κοινή πρωτοβουλία των παραπάνω για
+    τεχνική σύγκλιση μεταξύ των οικοσυστημάτων.
+\end{itemize}
+\bigskip
+Η παρούσα εργασία αξιοποιεί το πλαίσιο \en{i4Trust} — μια συνεργασία
+\en{FIWARE} και \en{iSHARE} — που παρέχει συγκεκριμένη υλοποίηση των
+δομικών στοιχείων με ανοιχτά εργαλεία.
+\end{frame}
+
+%=====================================================================
+\section{Τεχνολογίες}
+%=====================================================================
+
+% ─── Διαφάνεια 8: PKI και X.509 ───────────────────────────────────
+\begin{frame}{Κρυπτογραφία Δημόσιου Κλειδιού και Πιστοποιητικά \en{X.509}}
+Η ταυτοποίηση των συμμετεχόντων βασίζεται στην κρυπτογραφία δημόσιου
+κλειδιού. Κάθε οργανισμός διαθέτει ένα ζεύγος ιδιωτικού/δημόσιου
+κλειδιού \en{RSA-2048}.
+\bigskip
+
+Τα ψηφιακά πιστοποιητικά \en{X.509} συνδέουν ένα δημόσιο κλειδί με μια
+ταυτότητα, υπογεγραμμένα από μια Αρχή Πιστοποίησης (\en{CA}).
+\bigskip
+
+\textbf{Κρίσιμα στοιχεία της υλοποίησης:}
+\begin{itemize}
+    \item Το αναγνωριστικό \en{EORI} του οργανισμού καταχωρείται στο
+    πεδίο \en{Serial Number} του πιστοποιητικού.
+    \item Η επέκταση \texttt{keyUsage: digitalSignature} είναι
+    υποχρεωτική για την επαλήθευση από τον \en{Keyrock}.
+    \item Η αλυσίδα εμπιστοσύνης τερματίζεται σε μια τοπική \en{CA}
+    (\en{PlegmaCA}).
+\end{itemize}
+\end{frame}
+
+% ─── Διαφάνεια 9: JWT ─────────────────────────────────────────────
+\begin{frame}[fragile]{\en{JSON Web Tokens} και η Επέκταση \en{iSHARE}}
+Τα \en{JSON Web Tokens (JWT)} είναι αυτόνομα ψηφιακά \en{tokens} που
+μεταφέρουν πληροφορίες υπογεγραμμένες ψηφιακά. Αποτελούνται από
+τρία τμήματα: επικεφαλίδα, ωφέλιμο φορτίο, υπογραφή.
+\bigskip
+
+Το πλαίσιο \en{iSHARE} επεκτείνει τα \en{JWT} με δύο σημαντικές
+προσθήκες:
+
+\selectlanguage{english}
+\begin{lstlisting}
+Header:  { "alg": "RS256", "typ": "JWT",
+           "x5c": ["<cert_leaf>", "<cert_CA>"] }
+
+Payload: { "iss": "EU.EORI.NLPLEGMA",
+           "sub": "EU.EORI.NLPLEGMA",
+           "aud": "EU.EORI.NLPLEGMA",
+           "iat": 1716000000,
+           "exp": 1716000030 }
+\end{lstlisting}
+\selectlanguage{greek}
+
+Η αλυσίδα πιστοποιητικών (\texttt{x5c}) επιτρέπει την αυτοτελή
+επαλήθευση, ενώ η σύντομη διάρκεια ισχύος των 30 δευτερολέπτων
+ελαχιστοποιεί τον κίνδυνο κατάχρησης.
+\end{frame}
+
+% ─── Διαφάνεια 10: iSHARE ─────────────────────────────────────────
+\begin{frame}{Το Πλαίσιο Εμπιστοσύνης \en{iSHARE}}
+Το \en{iSHARE} ορίζει τους κανόνες και τα πρωτόκολλα για ασφαλή
+ανταλλαγή δεδομένων μεταξύ οργανισμών.
+\bigskip
+
+\textbf{Βασικοί ρόλοι:}
+\begin{itemize}
+    \item \textbf{\en{Service Provider}}: Διαχειρίζεται και
+    δημοσιεύει τα δεδομένα.
+    \item \textbf{\en{Service Consumer}}: Αιτείται πρόσβαση σε
+    δεδομένα τρίτων.
+    \item \textbf{\en{Satellite}}: Κεντρική αρχή εμπιστοσύνης —
+    διατηρεί το μητρώο συμμετεχόντων.
+    \item \textbf{\en{Authorization Registry (AR)}}: Αποθηκεύει
+    και εκδίδει τις πολιτικές εκχώρησης.
+\end{itemize}
+\bigskip
+
+Ο μηχανισμός \textbf{εκχώρησης εξουσιοδότησης (\en{delegation})}
+επιτρέπει στον πάροχο να ορίζει με ακρίβεια τα δικαιώματα κάθε
+καταναλωτή, εξασφαλίζοντας έτσι την ψηφιακή του κυριαρχία.
+\end{frame}
+
+% ─── Διαφάνεια 11: NGSI-LD ────────────────────────────────────────
+\begin{frame}{Το Πρότυπο \en{NGSI-LD}}
+Το \en{NGSI-LD} (\en{ETSI GS CIM 009}) είναι το πρότυπο \en{API} που
+χρησιμοποιείται για την ανταλλαγή πλαισιακών πληροφοριών εντός του
+\en{Data Space}.
+\bigskip
+
+\textbf{Μοντέλο πληροφορίας — τρεις θεμελιώδεις έννοιες:}
+\begin{itemize}
+    \item \textbf{Οντότητα (\en{Entity})}: Αντικείμενο με μοναδικό
+    αναγνωριστικό \en{URI} και τύπο.
+    \item \textbf{Ιδιότητα (\en{Property})}: Χαρακτηριστικό με τιμή,
+    μονάδα μέτρησης και χρονοσφραγίδα.
+    \item \textbf{Σχέση (\en{Relationship})}: Σύνδεση με άλλη οντότητα
+    μέσω \en{URI}.
+\end{itemize}
+\bigskip
+
+Το \texttt{@context} (από το \en{JSON-LD}) αντιστοιχίζει τα ονόματα
+ιδιοτήτων σε παγκόσμια \en{URI}, δίνοντας στα δεδομένα σημασιολογική
+βάση συμβατή με \en{Linked Data}.
+\end{frame}
+
+%=====================================================================
+\section{Αρχιτεκτονική}
+%=====================================================================
+
+% ─── Διαφάνεια 12: Επισκόπηση αρχιτεκτονικής ──────────────────────
+\begin{frame}{Αρχιτεκτονική του \en{Plegma Data Space}}
+Η αρχιτεκτονική οργανώνεται σε \textbf{τρία λογικά επίπεδα}:
+\bigskip
+\begin{itemize}
+    \item \textbf{Επίπεδο Επιβολής Πολιτικής}: \en{Kong API Gateway} +
+    \en{DSBA-PDP}
+    \item \textbf{Επίπεδο Εμπιστοσύνης \& Ταυτότητας}: \en{iSHARE
+    Satellite} + \en{Keyrock}
+    \item \textbf{Επίπεδο Δεδομένων}: \en{Orion-LD Context Broker} +
+    \en{MongoDB}
+\end{itemize}
+\bigskip
+
+% TODO: το component diagram εδώ
+\begin{center}
+\textit{[Εικόνα: \en{Component Diagram} του \en{Plegma Data Space}]}
+\end{center}
+\end{frame}
+
+% ─── Διαφάνεια 13: Building blocks - Kong & PDP ───────────────────
+\begin{frame}{Επίπεδο Επιβολής Πολιτικής}
+Το επίπεδο αυτό αναχαιτίζει κάθε αίτημα πρόσβασης και αποφασίζει
+αν θα προωθηθεί στα δεδομένα.
+\bigskip
+
+\textbf{\en{Kong API Gateway} — \en{Policy Enforcement Point (PEP)}:}
+\begin{itemize}
+    \item Μοναδικό σημείο εισόδου για όλες τις αιτήσεις (θύρα 8000).
+    \item Αξιοποιεί το \en{plugin} \texttt{ngsi-ishare-policies}
+    ειδικά σχεδιασμένο για \en{Data Spaces}.
+    \item Λειτουργεί σε \en{DB-less} κατάσταση, με δηλωτική
+    παραμετροποίηση μέσω \texttt{kong.yml}.
+\end{itemize}
+\bigskip
+
+\textbf{\en{DSBA-PDP} — \en{Policy Decision Point (PDP)}:}
+\begin{itemize}
+    \item Αξιολογεί αιτήματα έναντι πολιτικών \en{iSHARE}.
+    \item Επιστρέφει αποφάσεις \en{Permit} ή \en{Deny}.
+    \item Υποστηρίζει σύνθετα σενάρια αξιολόγησης.
+\end{itemize}
+\end{frame}
+
+% ─── Διαφάνεια 14: Trust & Identity layer ─────────────────────────
+\begin{frame}{Επίπεδο Εμπιστοσύνης και Ταυτότητας}
+\textbf{\en{iSHARE Satellite} — \en{Trust Anchor}:}
+\begin{itemize}
+    \item Διατηρεί το μητρώο εγκεκριμένων συμμετεχόντων.
+    \item Παρέχει τη λίστα εμπιστευμένων \en{CA} (\texttt{trusted\_list}).
+    \item Επαληθεύει την κατάσταση συμμετεχόντων μέσω του
+    \texttt{/parties} \en{endpoint}.
+\end{itemize}
+\bigskip
+
+\textbf{\en{Keyrock Identity Manager} — \en{Authorization Registry}:}
+\begin{itemize}
+    \item Διπλός ρόλος: πάροχος ταυτότητας \textit{και} μητρώο
+    εξουσιοδότησης.
+    \item Δέχεται \en{iSHARE JWT} και εκδίδει \en{access tokens}.
+    \item Διαχειρίζεται τις πολιτικές εκχώρησης μέσω της βάσης
+    \en{MySQL}.
+    \item Μηχανισμός \en{extparticipant} για αυτόματη καταχώρηση
+    εξωτερικών οργανισμών.
+\end{itemize}
+\end{frame}
+
+% ─── Διαφάνεια 15: Data layer ─────────────────────────────────────
+\begin{frame}{Επίπεδο Δεδομένων}
+\textbf{\en{Orion-LD Context Broker}:}
+\begin{itemize}
+    \item Υλοποίηση \en{NGSI-LD} από τη \en{FIWARE Foundation}.
+    \item Αποθηκεύει οντότητες σε μορφή \en{JSON-LD} στη
+    \en{MongoDB}.
+    \item Υποστηρίζει χρονικά ερωτήματα και ειδοποιήσεις αλλαγών.
+\end{itemize}
+\bigskip
+
+\textbf{Σημαντική αρχιτεκτονική επιλογή:} Ο \en{Orion-LD}
+εκτίθεται \textbf{αποκλειστικά} στο εσωτερικό δίκτυο
+\en{Docker}. Δεν είναι προσβάσιμος εξωτερικά.
+\bigskip
+
+Έτσι εξασφαλίζεται ότι \textbf{καμία αίτηση δεν μπορεί να
+παρακάμψει το \en{Kong} και τους μηχανισμούς εξουσιοδότησης}.
+\end{frame}
+
+%=====================================================================
+\section{Μοντέλο Δεδομένων}
+%=====================================================================
+
+% ─── Διαφάνεια 16: Plegma Dataset ────────────────────────────────
+\begin{frame}{Το \en{Plegma Dataset}}
+Πραγματικά δεδομένα από 13 νοικοκυριά στην Ελλάδα, διαθέσιμα από
+το \en{University of Strathclyde}.
+\bigskip
+
+\textbf{Περιεχόμενο:}
+\begin{itemize}
+    \item Ηλεκτρολογικές μετρήσεις: ολική ισχύς, τάση, ρεύμα,
+    κατανάλωση ανά συσκευή (15 μήνες, ανάλυση 1 λεπτού).
+    \item Περιβαλλοντικές μετρήσεις: θερμοκρασία, υγρασία
+    (εσωτερικά και εξωτερικά).
+    \item Μεταδεδομένα κτιρίου και ανωνυμοποιημένα δημογραφικά
+    στοιχεία.
+\end{itemize}
+\bigskip
+
+\textbf{Κλίμακα:} $\sim$8,1 εκατομμύρια χρονοσφραγίδες ανά τύπο
+μέτρησης συνολικά για όλα τα νοικοκυριά. Στην παρούσα υλοποίηση
+φορτώθηκε δείγμα 10 εγγραφών από το νοικοκυριό \en{House01}, ώστε
+να επιδειχθεί η διαδικασία.
+\end{frame}
+
+% ─── Διαφάνεια 17: Σχεδίαση μοντέλου ──────────────────────────────
+\begin{frame}[fragile]{Σχεδίαση Μοντέλου \en{NGSI-LD}}
+Τα δεδομένα μοντελοποιήθηκαν ως \textbf{πέντε τύποι οντοτήτων} που
+αντανακλούν τη φυσική δομή του \en{dataset}:
+
+\selectlanguage{english}
+\begin{lstlisting}
+Building --hasOccupant--> Person
+   |
+   +--hasAppliance--> Device (x5)
+
+HouseholdElectricMeasurement --refBuilding--> Building
+EnvironmentalMeasurement     --refBuilding--> Building
+\end{lstlisting}
+\selectlanguage{greek}
+
+Οι στατικές οντότητες (\en{Building}, \en{Person}, \en{Device})
+δημιουργούνται μία φορά ανά νοικοκυριό· οι χρονοσειρές
+(\en{Measurement}) δημιουργούνται μία φορά ανά χρονοσφραγίδα.
+\bigskip
+
+Το σχήμα κληρονομεί τη σημασιολογία των επίσημων
+\en{Smart Data Models}, εξασφαλίζοντας διαλειτουργικότητα με άλλα
+\en{Data Spaces}.
+\end{frame}
+
+%=====================================================================
+\section{Υλοποίηση}
+%=====================================================================
+
+% ─── Διαφάνεια 18: Βήματα στησίματος ─────────────────────────────
+\begin{frame}{Βήματα Υλοποίησης}
+Το στήσιμο του \en{Data Space} ακολουθεί επτά διακριτά βήματα,
+κάθε ένα από τα οποία αποτελεί προϋπόθεση για το επόμενο:
+\bigskip
+\begin{enumerate}
+    \item Δημιουργία κρυπτογραφικής υποδομής (\en{CA} και
+    πιστοποιητικά οντοτήτων).
+    \item Παραμετροποίηση \en{iSHARE Satellite}.
+    \item Παραμετροποίηση \en{Kong API Gateway}.
+    \item Παραμετροποίηση \en{Keyrock}.
+    \item Εκκίνηση \en{containers}.
+    \item Δημιουργία πολιτικής εξουσιοδότησης.
+    \item Φόρτωση δεδομένων.
+\end{enumerate}
+\bigskip
+Όλα τα συστατικά εκτελούνται ως \en{Docker containers}, με
+αυτοματοποιημένη ρύθμιση μέσω \en{scripts} \en{Python} και
+\en{PowerShell}.
+\end{frame}
+
+% ─── Διαφάνεια 19: Πρακτικές προκλήσεις ───────────────────────────
+\begin{frame}{Πρακτικές Προκλήσεις}
+Η υλοποίηση ανέδειξε αρκετές μη προφανείς προκλήσεις:
+\bigskip
+\begin{itemize}
+    \item \textbf{Μορφή κλειδιού:} Το \en{Kong} απαιτεί
+    \en{PKCS\#1} ενώ τα υπόλοιπα συστατικά \en{PKCS\#8} — απαιτείται
+    παράλληλη παραγωγή και των δύο μορφών.
+
+    \item \textbf{Επέκταση \texttt{keyUsage}:} Ο \en{Keyrock}
+    απορρίπτει πιστοποιητικά χωρίς την επέκταση
+    \texttt{digitalSignature}.
+
+    \item \textbf{\en{UUID} έναντι \en{EORI}:} Οι πολιτικές
+    εκχώρησης αποθηκεύονται στον \en{Keyrock} με βάση το εσωτερικό
+    \en{UUID} του καταναλωτή, όχι το \en{EORI} του.
+
+    \item \textbf{Σειρά αρχικοποίησης:} Ο καταναλωτής πρέπει να
+    συνδεθεί στον \en{Keyrock} τουλάχιστον μία φορά πριν δημιουργηθεί
+    η πολιτική, ώστε να εκχωρηθεί \en{UUID}.
+\end{itemize}
+\end{frame}
+
+%=====================================================================
+\section{Ροές End-to-End}
+%=====================================================================
+
+% ─── Διαφάνεια 20: Σύνοψη ροών ────────────────────────────────────
+\begin{frame}{Τρεις Βασικές Ροές Επικοινωνίας}
+Το σύστημα υποστηρίζει τρεις διακριτές ροές, οι οποίες αντιστοιχούν
+στα τρία βασικά σενάρια χρήσης ενός \en{Data Space}:
+\bigskip
+\begin{enumerate}
+    \item \textbf{Φόρτωση Δεδομένων} (\en{Data Ingestion}): Ο πάροχος
+    δημοσιεύει δεδομένα στο \en{Data Space}.
+    \item \textbf{Ανάγνωση από Πάροχο}: Ο πάροχος ανακτά τα δικά του
+    δεδομένα — πλήρης πρόσβαση χωρίς πρόσθετο έλεγχο εξουσιοδότησης.
+    \item \textbf{Ανάγνωση από Καταναλωτή}: Ο καταναλωτής ανακτά
+    δεδομένα μέσω του μηχανισμού εκχώρησης εξουσιοδότησης.
+\end{enumerate}
+\bigskip
+Και στις τρεις περιπτώσεις, κάθε αίτημα διέρχεται από το
+\en{Kong API Gateway}, εξασφαλίζοντας κεντρικό έλεγχο πρόσβασης.
+\end{frame}
+
+% ─── Διαφάνεια 21: Provider flow ──────────────────────────────────
+\begin{frame}{Ροή Ανάγνωσης από τον Πάροχο}
+Η απλούστερη ροή — ο πάροχος αποδεικνύει την ταυτότητά του και
+αποκτά πρόσβαση χωρίς εξωτερική εξουσιοδότηση.
+\bigskip
+\begin{itemize}
+    \item Δημιουργία \en{iSHARE JWT} υπογεγραμμένο με
+    \texttt{client.key}.
+    \item Αποστολή \en{HTTP GET} στο \en{Kong} με το \en{JWT} ως
+    \en{Bearer token}.
+    \item Το \en{Kong} επαληθεύει υπογραφή και αλυσίδα πιστοποιητικών.
+    \item Επειδή \texttt{iss = EU.EORI.NLPLEGMA} (τοπικός πάροχος),
+    η πρόσβαση επιτρέπεται άμεσα.
+    \item Προώθηση στον \en{Orion-LD} και επιστροφή αποτελεσμάτων.
+\end{itemize}
+\bigskip
+
+% TODO: provider sequence diagram
+\begin{center}
+\textit{[Εικόνα: \en{Provider Sequence Diagram}]}
+\end{center}
+\end{frame}
+
+% ─── Διαφάνεια 22: Consumer flow ──────────────────────────────────
+\begin{frame}{Ροή Ανάγνωσης από τον Καταναλωτή — Η Πιο Σύνθετη Ροή}
+Ο καταναλωτής δεν αρκεί να αποδείξει ποιος είναι· πρέπει επίσης να
+αποδείξει ότι ο πάροχος του έχει εκχωρήσει άδεια.
+\bigskip
+\begin{enumerate}
+    \item Ο καταναλωτής δημιουργεί \en{iSHARE JWT}.
+    \item Στέλνει το \en{JWT} στον \en{Keyrock} (ροή \en{OAuth 2.0
+    Client Credentials}).
+    \item Ο \en{Keyrock} επαληθεύει τον καταναλωτή μέσω
+    \en{Satellite}, αναζητά πολιτική εκχώρησης, και επιστρέφει
+    \en{access token} με ενσωματωμένο \en{delegationEvidence}.
+    \item Ο καταναλωτής στέλνει το \en{access token} στο \en{Kong}.
+    \item Το \en{Kong} αξιολογεί το \en{delegationEvidence} και
+    αποφασίζει αν θα επιτραπεί η πρόσβαση.
+\end{enumerate}
+\bigskip
+
+% TODO: consumer sequence diagram
+\begin{center}
+\textit{[Εικόνα: \en{Consumer Sequence Diagram}]}
+\end{center}
+\end{frame}
+
+% ─── Διαφάνεια 23: Πολιτική εκχώρησης ─────────────────────────────
+\begin{frame}[fragile]{Πολιτική Εκχώρησης Εξουσιοδότησης}
+Η πολιτική που εκδίδει ο πάροχος για τον καταναλωτή ακολουθεί τη
+δομή \en{XACML}, μεταφρασμένη σε \en{JSON}:
+
+\selectlanguage{english}
+\begin{lstlisting}
+{
+  "delegationEvidence": {
+    "policyIssuer": "EU.EORI.NLPLEGMA",
+    "target": { "accessSubject": "<consumer_UUID>" },
+    "policySets": [{
+      "policies": [{
+        "target": {
+          "resource": {
+            "type": "...HouseholdElectricMeasurement",
+            "actions": ["GET"]
+          }
+        },
+        "rules": [{ "effect": "Permit" }]
+      }]
+    }]
+  }
+}
+\end{lstlisting}
+\selectlanguage{greek}
+
+Η πολιτική επιτρέπει στον καταναλωτή να εκτελεί \texttt{GET} στις
+ηλεκτρολογικές μετρήσεις, και τίποτε άλλο.
+\end{frame}
+
+%=====================================================================
+\section{Επίδειξη}
+%=====================================================================
+
+% ─── Διαφάνεια 24: Σενάρια επίδειξης ──────────────────────────────
+\begin{frame}{Σενάρια Επίδειξης Ελέγχου Πρόσβασης}
+Η πειραματική αξιολόγηση εκτελέστηκε σε πραγματικές συνθήκες
+λειτουργίας μέσω τριών διακριτών σεναρίων:
+\bigskip
+\begin{enumerate}
+    \item \textbf{Πρόσβαση χωρίς ταυτοποίηση} — επαληθεύει ότι το
+    σύστημα απορρίπτει μη εξουσιοδοτημένα αιτήματα.
+    \item \textbf{Πρόσβαση με \en{token} παρόχου} — επαληθεύει
+    την πλήρη πρόσβαση του παρόχου στα δεδομένα του.
+    \item \textbf{Πρόσβαση με \en{token} καταναλωτή} — επαληθεύει
+    τον πλήρη κύκλο εκχώρησης εξουσιοδότησης μέσω \en{Keyrock}.
+\end{enumerate}
+\bigskip
+Τα σενάρια εκτελούνται μέσω \en{scripts} \en{PowerShell} που
+αυτοματοποιούν τη δημιουργία \en{tokens} και την αποστολή
+αιτημάτων μέσω \en{curl}.
+\end{frame}
+
+% ─── Διαφάνεια 25: Αποτελέσματα ───────────────────────────────────
+\begin{frame}{Αποτελέσματα Επίδειξης}
+\begin{table}
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{Σενάριο} & \textbf{Απόκριση} & \textbf{Αποτέλεσμα} \\
+\midrule
+Χωρίς \en{token} & \en{401} & Απόρριψη \\
+Πάροχος, ηλεκτρολογικά & \en{200} & Επιτυχία \\
+Πάροχος, περιβαλλοντικά & \en{200} & Επιτυχία \\
+Πάροχος, κτίριο & \en{200} & Επιτυχία \\
+Καταναλωτής, ηλεκτρολογικά & \en{200} & Επιτυχία (μέσω \en{delegation}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+\bigskip
+
+Τα αποτελέσματα επιβεβαιώνουν ότι:
+\begin{itemize}
+    \item Η ψηφιακή κυριαρχία του παρόχου διατηρείται πλήρως.
+    \item Ο καταναλωτής έχει πρόσβαση \textbf{αποκλειστικά} στους
+    πόρους που του έχουν εκχωρηθεί ρητά.
+    \item Καμία αίτηση χωρίς έγκυρο \en{token} δεν φτάνει στα
+    δεδομένα.
+\end{itemize}
+\end{frame}
+
+%=====================================================================
+\section{Συμπεράσματα}
+%=====================================================================
+
+% ─── Διαφάνεια 26: Συμπεράσματα ───────────────────────────────────
+\begin{frame}{Κύρια Συμπεράσματα}
+\begin{itemize}
+    \item \textbf{Εφικτότητα:} Η δημιουργία ενός λειτουργικού
+    \en{Data Space} είναι εφικτή αποκλειστικά με ανοιχτά εργαλεία
+    και πρότυπα, προσιτή σε οργανισμούς κάθε μεγέθους.
+
+    \item \textbf{Αποτελεσματικότητα Εκχώρησης:} Ο μηχανισμός
+    \en{iSHARE delegation} υλοποιεί αποτελεσματικά την ψηφιακή
+    κυριαρχία — ο πάροχος ορίζει με ακρίβεια ποιος έχει πρόσβαση
+    σε τι.
+
+    \item \textbf{Αξία της \en{PEP/PDP} Αρχιτεκτονικής:} Ο
+    διαχωρισμός μεταξύ επιβολής και απόφασης πολιτικής καθιστά το
+    σύστημα ευέλικτο, επεκτάσιμο και διαφανές.
+
+    \item \textbf{Τεκμηρίωση Προκλήσεων:} Η εργασία αναδεικνύει
+    και τεκμηριώνει πρακτικές προκλήσεις που δεν είναι εμφανείς
+    από τις θεωρητικές προδιαγραφές.
+\end{itemize}
+\end{frame}
+
+% ─── Διαφάνεια 27: Συνεισφορά ──────────────────────────────────────
+\begin{frame}{Συνεισφορά της Εργασίας}
+\begin{itemize}
+    \item Σχεδίαση και πλήρης υλοποίηση αρχιτεκτονικής \en{Data
+    Space} βάσει \en{i4Trust}/\en{iSHARE}, με πέντε ανοιχτά
+    συστατικά λογισμικού.
+
+    \item Αυτοματοποιημένα \en{scripts} στησίματος που επιτρέπουν
+    την αναπαραγωγή της υλοποίησης σε λίγα λεπτά.
+
+    \item Τεκμηρίωση πρακτικών προκλήσεων (μορφές κλειδιών, σειρά
+    αρχικοποίησης, αντιστοίχιση \en{UUID}/\en{EORI}) — γνώση που
+    δεν υπάρχει στις προδιαγραφές.
+
+    \item Πλήρης επίδειξη \en{end-to-end} ροών με πραγματικά
+    δεδομένα από το \en{Plegma Dataset}.
+
+    \item Σχήμα δεδομένων \en{NGSI-LD} βασισμένο σε
+    \en{Smart Data Models}, επεκτάσιμο σε άλλους τομείς ενέργειας.
+\end{itemize}
+\end{frame}
+
+% ─── Διαφάνεια 28: Περιορισμοί ─────────────────────────────────────
+\begin{frame}{Περιορισμοί}
+Η παρούσα υλοποίηση έχει συνειδητούς περιορισμούς που πρέπει να
+ληφθούν υπόψη:
+\bigskip
+\begin{itemize}
+    \item \textbf{Τοπικό περιβάλλον:} Εκτελείται σε ένα μηχάνημα
+    μέσω \en{Docker Compose}. Δεν υλοποιεί \en{HTTPS}, εξισορρόπηση
+    φορτίου, ή μηχανισμούς αποκατάστασης βλαβών.
+
+    \item \textbf{Μόνο ροές \en{M2M}}: Η ροή
+    \en{Human-to-Machine} (πρόσβαση μέσω \en{browser}) δεν
+    υλοποιείται, αν και υποστηρίζεται από τα συστατικά.
+
+    \item \textbf{Ένα \en{dataset}:} Το σύστημα τροφοδοτείται από
+    έναν μόνο πάροχο. Σε πραγματικό \en{Data Space} θα υπήρχαν
+    πολλαπλοί πάροχοι με ανεξάρτητες υποδομές.
+\end{itemize}
+\end{frame}
+
+% ─── Διαφάνεια 29: Μελλοντικές επεκτάσεις ─────────────────────────
+\begin{frame}{Μελλοντικές Επεκτάσεις}
+Βάσει της εμπειρίας από την παρούσα υλοποίηση, προτείνονται:
+\bigskip
+\begin{itemize}
+    \item \textbf{Ροή \en{Human-to-Machine}:} Πρόσβαση χρηστών μέσω
+    \en{browser} με ροή \en{OAuth 2.0 Authorization Code} και
+    διεπαφή \en{Keyrock}.
+
+    \item \textbf{Ανάπτυξη σε \en{Kubernetes}:} Μεταφορά σε
+    περιβάλλον \en{cloud} με χρήση \en{Helm charts} της
+    \en{FIWARE Foundation}.
+
+    \item \textbf{Πολλαπλοί Πάροχοι:} Επέκταση σε πραγματικά
+    ομοσπονδιακό \en{Data Space} με ανεξάρτητους οργανισμούς.
+
+    \item \textbf{\en{Verifiable Credentials}:} Μετάβαση στη
+    νεότερη αρχιτεκτονική του \en{FIWARE Data Space Connector}
+    με χρήση \en{OID4VC}.
+
+    \item \textbf{Ανακάλυψη Δεδομένων:} Προσθήκη μηχανισμού
+    αυτόματης αναζήτησης διαθέσιμων \en{datasets} από
+    καταναλωτές.
+\end{itemize}
+\end{frame}
+
+%=====================================================================
+% ΤΕΛΟΣ
+%=====================================================================
+
+% ─── Διαφάνεια 30: Επίδειξη ──────────────────────────────────────
+\begin{frame}{Επίδειξη Συστήματος}
+\begin{center}
+\vspace{1.5cm}
+\Huge \textcolor{NTUABlue}{Live Demo}
+\bigskip
+
+\normalsize
+\textit{Επίδειξη του κύκλου εκχώρησης πρόσβασης σε λειτουργία.}
+\end{center}
+\end{frame}
+
+% ─── Διαφάνεια 31: Ερωτήσεις ──────────────────────────────────────
+\begin{frame}{Ερωτήσεις}
+\begin{center}
+\vspace{2cm}
+\Huge \textcolor{NTUABlue}{Ευχαριστώ!}
+\bigskip\bigskip
+
+\normalsize
+Ερωτήσεις και σχόλια
+\bigskip\bigskip
+
+\small
+\textbf{Σωτήριος Κάκος} \\
+Εργαστήριο Δικτύων Υπολογιστών, Ε.Μ.Π.
+\end{center}
+\end{frame}
+
+% ─── Backup διαφάνειες (για ερωτήσεις) ───────────────────────────
+
+\appendix
+
+\begin{frame}{Επιπλέον Πληροφορίες — \en{Backup Slides}}
+\begin{center}
+\vspace{2cm}
+\Huge \textcolor{NTUABlue}{Παράρτημα}
+\bigskip
+
+\normalsize
+\textit{Επιπλέον διαφάνειες για ερωτήσεις}
+\end{center}
+\end{frame}
+
+% ─── Backup 1: kong plugin ────────────────────────────────────────
+\begin{frame}{\en{Backup}: Το \en{Plugin} \texttt{ngsi-ishare-policies}}
+Η λογική του \en{plugin} για κάθε αίτημα:
+\bigskip
+\begin{enumerate}
+    \item Εξάγει το \en{Bearer token} από την κεφαλίδα
+    \texttt{Authorization}.
+    \item Αποκωδικοποιεί το \en{JWT} και εξάγει την αλυσίδα
+    πιστοποιητικών.
+    \item Επαληθεύει την υπογραφή με τη βιβλιοθήκη
+    \texttt{lua-resty-jwt}.
+    \item Αυθεντικοποιείται στον \en{Satellite} και λαμβάνει τη
+    λίστα εμπιστευμένων \en{CA}.
+    \item Ελέγχει αν ο εκδότης (\texttt{iss}) είναι ο τοπικός πάροχος.
+    \item Αν όχι, ελέγχει το ενσωματωμένο \en{delegationEvidence}.
+    \item Αν όλα είναι έγκυρα, προωθεί την αίτηση στον \en{Orion-LD}.
+\end{enumerate}
+\end{frame}
+
+% ─── Backup 2: Data ingestion ─────────────────────────────────────
+\begin{frame}{\en{Backup}: Ροή Φόρτωσης Δεδομένων}
+Η φόρτωση δεδομένων από τον πάροχο διέρχεται από τους ίδιους
+μηχανισμούς ασφαλείας με την ανάγνωση:
+\bigskip
+\begin{itemize}
+    \item Το \en{script} \texttt{orion\_ld\_loading\_script.py}
+    διαβάζει \en{CSV} αρχεία με \en{pandas}.
+    \item Για κάθε εγγραφή δημιουργεί νέο \en{iSHARE JWT} (λόγω της
+    διάρκειας ισχύος των 30 δευτερολέπτων).
+    \item Στέλνει \en{HTTP POST} στο \en{Kong} με το \en{entity} σε
+    \en{JSON-LD} μορφή.
+    \item Το \en{Kong} επαληθεύει την εξουσιοδότηση και προωθεί στον
+    \en{Orion-LD}.
+\end{itemize}
+\bigskip
+
+% TODO: ingestion sequence diagram
+\begin{center}
+\textit{[Εικόνα: \en{Data Ingestion Sequence Diagram}]}
+\end{center}
+\end{frame}
+
+% ─── Backup 3: Εικόνα Plegma ──────────────────────────────────────
+\begin{frame}{\en{Backup}: Δομή Οντοτήτων \en{NGSI-LD}}
+% TODO: εικόνα με το διάγραμμα των 5 οντοτήτων και των σχέσεων
+\begin{center}
+\vspace{1cm}
+\textit{[Εικόνα: Σχέσεις μεταξύ \en{Building}, \en{Person}, \en{Device}, \en{HouseholdElectricMeasurement}, \en{EnvironmentalMeasurement}]}
+\end{center}
+\bigskip
+
+Αυτή η οργάνωση επιτρέπει ερωτήματα όπως:
+\begin{itemize}
+    \item «Όλες οι μετρήσεις από νοικοκυριά με ηλιακούς συλλέκτες»
+    \item «Μέση κατανάλωση ψυγείων στο \en{dataset}»
+\end{itemize}
+χωρίς να χρειάζεται \en{join} ή εξωτερική αναζήτηση.
+\end{frame}
+
+\end{document}

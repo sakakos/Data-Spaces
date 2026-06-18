@@ -1,0 +1,28 @@
+\frametitle{Πολιτική Εκχώρησης Εξουσιοδότησης}
+Η πολιτική που εκδίδει ο πάροχος για τον καταναλωτή ακολουθεί τη
+δομή \en{XACML}, μεταφρασμένη σε \en{JSON}:
+
+\selectlanguage{english}
+\begin{lstlisting}
+{
+  "delegationEvidence": {
+    "policyIssuer": "EU.EORI.NLPLEGMA",
+    "target": { "accessSubject": "<consumer_UUID>" },
+    "policySets": [{
+      "policies": [{
+        "target": {
+          "resource": {
+            "type": "...HouseholdElectricMeasurement",
+            "actions": ["GET"]
+          }
+        },
+        "rules": [{ "effect": "Permit" }]
+      }]
+    }]
+  }
+}
+\end{lstlisting}
+\selectlanguage{greek}
+
+Η πολιτική επιτρέπει στον καταναλωτή να εκτελεί \texttt{GET} στις
+ηλεκτρολογικές μετρήσεις, και τίποτε άλλο.
