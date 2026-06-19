@@ -1,28 +1,32 @@
-\frametitle{Πολιτική Εκχώρησης Εξουσιοδότησης}
-Η πολιτική που εκδίδει ο πάροχος για τον καταναλωτή ακολουθεί τη
-δομή \en{XACML}, μεταφρασμένη σε \en{JSON}:
+\frametitle{Κύκλος Εκχώρησης Πρόσβασης Καταναλωτή}
 
+Δημιουργία \en{iSHARE JWT} καταναλωτή:
 \selectlanguage{english}
 \begin{lstlisting}
-{
-  "delegationEvidence": {
-    "policyIssuer": "EU.EORI.NLPLEGMA",
-    "target": { "accessSubject": "<consumer_UUID>" },
-    "policySets": [{
-      "policies": [{
-        "target": {
-          "resource": {
-            "type": "...HouseholdElectricMeasurement",
-            "actions": ["GET"]
-          }
-        },
-        "rules": [{ "effect": "Permit" }]
-      }]
-    }]
-  }
-}
+$CONSUMER_JWT = docker run --rm -v "${ISHARE_DIR}:/iShare" python:3.9-slim
+    sh -c "pip install PyJWT cryptography -q &&
+           python3 /iShare/gen_consumer_token.py"
 \end{lstlisting}
 \selectlanguage{greek}
 
-Η πολιτική επιτρέπει στον καταναλωτή να εκτελεί \texttt{GET} στις
-ηλεκτρολογικές μετρήσεις, και τίποτε άλλο.
+Ανταλλαγή \en{JWT} με \en{access token} από τον \en{Keyrock}:
+\selectlanguage{english}
+\begin{lstlisting}
+curl -X POST http://localhost:3007/oauth2/token
+    -d "grant_type=client_credentials
+        &scope=iSHARE
+        &client_assertion_type=...jwt-bearer
+        &client_assertion=$CONSUMER_JWT
+        &client_id=EU.EORI.NLPLEGMACONSUMER"
+\end{lstlisting}
+\selectlanguage{greek}
+
+Πρόσβαση στα δεδομένα μέσω \en{Kong}:
+\selectlanguage{english}
+\begin{lstlisting}
+curl -H "Authorization: Bearer $ACCESS_TOKEN"
+    "http://localhost:8000/ngsi-ld/v1/entities
+     ?type=...HouseholdElectricMeasurement&limit=1"
+\end{lstlisting}
+\selectlanguage{greek}
+Το \en{Kong} αξιολογεί το \en{delegationEvidence} και επιτρέπει την πρόσβαση.

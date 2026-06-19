@@ -1,22 +1,36 @@
 \babel@toc {greek}{}\relax 
 \beamer@sectionintoc {1}{Εισαγωγή}{3}{0}{1}
-\beamer@sectionintoc {2}{Θεωρητικό Υπόβαθρο}{6}{0}{2}
-\beamer@sectionintoc {3}{Τεχνολογίες}{8}{0}{3}
+\beamer@sectionintoc {2}{Τεχνολογίες}{8}{0}{2}
 \babel@toc {english}{}\relax 
 \babel@toc {greek}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {greek}{}\relax 
-\beamer@sectionintoc {4}{Αρχιτεκτονική}{12}{0}{4}
-\beamer@sectionintoc {5}{Μοντέλο Δεδομένων}{16}{0}{5}
+\beamer@sectionintoc {3}{Αρχιτεκτονική}{12}{0}{3}
+\beamer@sectionintoc {4}{Μοντέλο Δεδομένων}{17}{0}{4}
 \babel@toc {english}{}\relax 
 \babel@toc {greek}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {greek}{}\relax 
-\beamer@sectionintoc {6}{Υλοποίηση}{18}{0}{6}
-\beamer@sectionintoc {7}{Ροές End-to-End}{20}{0}{7}
 \babel@toc {english}{}\relax 
 \babel@toc {greek}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {greek}{}\relax 
-\beamer@sectionintoc {8}{Επίδειξη}{24}{0}{8}
-\beamer@sectionintoc {9}{Συμπεράσματα}{26}{0}{9}
+\beamer@sectionintoc {5}{Ροές από άκρο σε άκρο}{21}{0}{5}
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\beamer@sectionintoc {6}{Επίδειξη}{27}{0}{6}
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {greek}{}\relax 
+\beamer@sectionintoc {7}{Συμπεράσματα}{31}{0}{7}

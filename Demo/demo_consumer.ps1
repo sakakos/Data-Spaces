@@ -1,18 +1,3 @@
-# demo_consumer.ps1
-# =========================================================
-# Επίδειξη κύκλου εκχώρησης πρόσβασης (iSHARE delegation)
-#
-# Σενάριο 1: Χωρίς token              → 401 Unauthorized
-# Σενάριο 2: Provider token (M2M)      → 200 OK
-# Σενάριο 3: Consumer token (M2M)      → 200 OK (μέσω delegation)
-#
-# Consumer Flow:
-#   1. Consumer δημιουργεί iSHARE JWT με consumer.key
-#   2. Consumer στέλνει JWT στο Keyrock → παίρνει access token
-#      (Keyrock επαληθεύει consumer μέσω Satellite + βρίσκει delegation policy)
-#   3. Consumer στέλνει access token στο Kong → παίρνει δεδομένα
-# =========================================================
-
 $ISHARE_DIR    = "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Kong\iShare"
 $KONG_BASE     = "http://localhost:8000/ngsi-ld/v1/entities"
 $KEYROCK_URL   = "http://localhost:3007/oauth2/token"
