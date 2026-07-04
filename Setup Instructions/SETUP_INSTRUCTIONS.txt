@@ -1,0 +1,486 @@
+================================================================================
+  PLEGMA DATA SPACE - ΟΔΗΓΙΕΣ ΣΤΗΣΙΜΑΤΟΣ ΣΕ ΝΕΟ ΜΗΧΑΝΗΜΑ
+================================================================================
+  Βασισμένο στην πραγματική εμπειρία στησίματος σε νέο μηχάνημα (Ιούνιος 2026)
+================================================================================
+
+ΠΡΟΫΠΟΘΕΣΕΙΣ
+============
+- Docker Desktop εγκατεστημένο και σε λειτουργία
+- Git (για clone του repo)
+- Python 3 εγκατεστημένο τοπικά (χρειάζεται για το 02_setup_keyrock.py)
+- PowerShell (Windows)
+
+ΣΗΜΑΝΤΙΚΗ ΣΗΜΕΙΩΣΗ
+==================
+Τα certificates και τα configuration files (satellite.yml, kong.yml) που
+υπάρχουν ήδη στο repo είναι συνδεδεμένα μεταξύ τους: τα fingerprints στο
+satellite.yml και το x5c στο kong.yml αντιστοιχούν στα certificates που
+βρίσκονται στο Kong/iShare/. ΜΗΝ τρέξεις το 01_generate_certs.py εκτός
+αν θέλεις να αναδημιουργήσεις τα πάντα από την αρχή — αν το κάνεις, θα
+πρέπει να ενημερώσεις χειροκίνητα όλα τα config files.
+
+
+================================================================================
+ΒΗΜΑ 0: Clone του repo
+================================================================================
+
+git clone <repo-url>
+cd Data-Spaces
+
+
+================================================================================
+ΒΗΜΑ 1: Δημιουργία Docker Networks
+================================================================================
+
+Τα Docker networks πρέπει να δημιουργηθούν πριν ξεκινήσουν τα containers,
+γιατί το Kong docker-compose τα δηλώνει ως external.
+
+docker network create fiware_default
+docker network create fiware-keyrock_default
+
+Αν πάρεις "already exists", αγνόησέ το.
+
+
+================================================================================
+ΒΗΜΑ 2: Εκκίνηση Orion-LD (MongoDB + Orion-LD)
+================================================================================
+
+Το Orion-LD χρησιμοποιεί δύο compose αρχεία μαζί (common.yml + orion-ld.yml)
+και χρειάζεται το .env για τις μεταβλητές.
+
+cd Orion-LD
+
+docker-compose -f docker-compose/common.yml -f docker-compose/orion-ld.yml --env-file .env up -d mongo-db orion
+
+Περίμενε 10 δευτερόλεπτα.
+
+Αν πάρεις warning "network fiware_default was found but has incorrect label",
+αγνόησέ το — είναι αβλαβές.
+
+Έλεγξε:
+docker ps | findstr "orion mongo"
+
+Πρέπει να δεις: fiware-orion-ld και db-mongo
+
+
+================================================================================
+ΒΗΜΑ 3: Εκκίνηση Keyrock (Keyrock + MySQL)
+================================================================================
+
+cd ..\Keyrock
+docker-compose up -d
+
+Περίμενε 30 δευτερόλεπτα για να ξεκινήσει η MySQL.
+
+Έλεγξε:
+docker ps | findstr "keyrock mysql"
+
+Πρέπει να δεις: fiware-keyrock και db-mysql
+
+
+================================================================================
+ΒΗΜΑ 4: Εκκίνηση Kong (Kong + Satellite + DSBA-PDP)
+================================================================================
+
+cd ..\Kong
+docker-compose up -d
+
+Αν πάρεις "network not found", σημαίνει ότι υπάρχουν παλιά containers:
+docker rm -f kong-standalone dsba-pdp ishare-satellite
+docker-compose up -d
+
+Έλεγξε:
+docker ps
+
+Πρέπει να δεις 7 containers:
+  - fiware-orion-ld
+  - db-mongo
+  - fiware-keyrock
+  - db-mysql
+  - kong-standalone
+  - dsba-pdp
+  - ishare-satellite
+
+
+================================================================================
+ΒΗΜΑ 5: Αντιμετώπιση Windows Line Endings στα PEM αρχεία
+================================================================================
+
+ΚΡΙΣΙΜΟ: Τα PEM αρχεία στο Keyrock/iShare/ μπορεί να έχουν Windows line
+endings (CRLF) ή BOM (Byte Order Mark) που προκαλούν σφάλμα
+"Invalid PEM formatted message" στον Keyrock.
+
+Εκτέλεσε στο PowerShell:
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+
+$keyPath = "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Keyrock\iShare\client.key"
+$content = [System.IO.File]::ReadAllText($keyPath) -replace "`r`n", "`n" -replace "`r", "`n"
+[System.IO.File]::WriteAllText($keyPath, $content, $utf8NoBom)
+
+$certPath = "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Keyrock\iShare\fullchain.pem"
+$content = [System.IO.File]::ReadAllText($certPath) -replace "`r`n", "`n" -replace "`r", "`n"
+[System.IO.File]::WriteAllText($certPath, $content, $utf8NoBom)
+
+
+================================================================================
+ΒΗΜΑ 6: Αντικατάσταση client.key με PKCS#1 μορφή
+================================================================================
+
+ΚΡΙΣΙΜΟ: Ο Keyrock χρησιμοποιεί τη βιβλιοθήκη node-forge που απαιτεί
+PKCS#1 μορφή (BEGIN RSA PRIVATE KEY) αντί PKCS#8 (BEGIN PRIVATE KEY).
+
+Το αρχείο Kong/iShare/client_rsa.key είναι ήδη σε PKCS#1. Αντίγραψέ το:
+
+$content = [System.IO.File]::ReadAllText("C:\Users\SAKak\Documents\GitHub\Data-Spaces\Kong\iShare\client_rsa.key")
+$content = $content -replace "`r`n", "`n" -replace "`r", "`n"
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText("C:\Users\SAKak\Documents\GitHub\Data-Spaces\Keyrock\iShare\client.key", $content, $utf8NoBom)
+
+Μετά ΠΡΕΠΕΙ να κάνεις recreate τον Keyrock container (απλό restart δεν
+αρκεί γιατί το Docker volume δεν ανανεώνεται):
+
+docker stop fiware-keyrock
+docker rm fiware-keyrock
+cd C:\Users\SAKak\Documents\GitHub\Data-Spaces\Keyrock
+docker-compose up -d
+
+Περίμενε 25 δευτερόλεπτα.
+
+Επαλήθευσε ότι φόρτωσε σωστά:
+docker exec fiware-keyrock node -e "const fs = require('fs'); const key = fs.readFileSync('/iShare/key.pem', 'utf8'); console.log('First 30:', JSON.stringify(key.substring(0, 30)));"
+
+Πρέπει να δεις: "-----BEGIN RSA PRIVATE KEY----"
+
+
+================================================================================
+ΒΗΜΑ 7: Δημιουργία OAuth Application στον Keyrock
+================================================================================
+
+Ο Keyrock χρειάζεται μια OAuth application για να εκδίδει tokens.
+Σε νέα εγκατάσταση δεν υπάρχει.
+
+1. Άνοιξε browser: http://localhost:3007
+2. Login: admin@test.com / 1234
+3. Applications → Register
+4. Συμπλήρωσε:
+   - Name: PlegmaApp (ή οτιδήποτε)
+   - URL: http://localhost
+   - Callback URL: http://localhost/callback
+   - Grant types: τσεκάρισε Client Credentials
+5. Σημείωσε τα:
+   - Client ID (π.χ. e22f3cdc-9906-4ae2-b41e-55f1687d845a)
+   - Client Secret (π.χ. 79d04baa-6ee4-48d7-b302-7034da09f05e)
+
+6. Ενημέρωσε το αρχείο Setup Instructions/02_setup_keyrock.py:
+   CLIENT_ID      = '<νέο client id>'
+   CLIENT_SECRET  = '<νέο client secret>'
+
+
+================================================================================
+ΒΗΜΑ 8: Εφαρμογή Patches στον Keyrock
+================================================================================
+
+Ο Keyrock χρειάζεται δύο patches για να λειτουργήσει σωστά με iSHARE.
+
+--- Patch 1: model_oauth_server.js ---
+Προσθέτει το πεδίο 'admin' στα attributes που ανακτώνται κατά την
+ταυτοποίηση. Χωρίς αυτό, το POST /ar/policy επιστρέφει 403.
+
+Δημιούργησε αρχείο Keyrock/patch1.js με περιεχόμενο:
+
+const fs = require('fs');
+const f = '/opt/fiware-idm/models/model_oauth_server.js';
+let c = fs.readFileSync(f, 'utf8');
+const old = "attributes: ['id', 'username', 'email', 'description', 'website', 'gravatar', 'image', 'extra', 'eidas_id']";
+const neu = "attributes: ['id', 'username', 'email', 'description', 'website', 'gravatar', 'image', 'extra', 'eidas_id', 'admin']";
+if (c.includes(old)) {
+  c = c.replace(old, neu);
+  fs.writeFileSync(f, c);
+  console.log('patch1: OK');
+} else if (c.includes("'admin'")) {
+  console.log('patch1: already applied');
+} else {
+  console.log('patch1: pattern not found');
+}
+
+Εκτέλεσε:
+docker cp "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Keyrock\patch1.js" fiware-keyrock:/tmp/patch1.js
+docker exec fiware-keyrock node /tmp/patch1.js
+
+Πρέπει να δεις: patch1: OK
+
+
+--- Patch 2: configService.js ---
+Επιτρέπει στον Keyrock να διαβάζει key/cert από file path αντί για
+inline string στις μεταβλητές περιβάλλοντος.
+
+Δημιούργησε αρχείο Keyrock/patch_config.js με περιεχόμενο:
+
+const fs = require('fs');
+const f = '/opt/fiware-idm/lib/configService.js';
+let c = fs.readFileSync(f, 'utf8');
+c = c.replace(
+  'config.pr.client_key = process.env.IDM_PR_CLIENT_KEY;',
+  'config.pr.client_key = process.env.IDM_PR_CLIENT_KEY.startsWith("/") ? fs.readFileSync(process.env.IDM_PR_CLIENT_KEY, "utf8") : process.env.IDM_PR_CLIENT_KEY;'
+);
+c = c.replace(
+  'config.pr.client_crt = process.env.IDM_PR_CLIENT_CRT;',
+  'config.pr.client_crt = process.env.IDM_PR_CLIENT_CRT.startsWith("/") ? fs.readFileSync(process.env.IDM_PR_CLIENT_CRT, "utf8") : process.env.IDM_PR_CLIENT_CRT;'
+);
+fs.writeFileSync(f, c);
+console.log('Done');
+
+Εκτέλεσε:
+docker cp "C:\Users\SAKak\Documents\GitHub\Data-Spaces\Keyrock\patch_config.js" fiware-keyrock:/tmp/patch_config.js
+docker exec fiware-keyrock node /tmp/patch_config.js
+
+Πρέπει να δεις: Done
+
+
+--- Restart Keyrock μετά τα patches ---
+docker restart fiware-keyrock
+Περίμενε 20 δευτερόλεπτα.
+
+Επαλήθευσε patch 2:
+docker exec fiware-keyrock node -e "const fs = require('fs'); const c = fs.readFileSync('/opt/fiware-idm/lib/configService.js', 'utf8'); const idx = c.indexOf('client_key'); console.log(c.substring(idx-10, idx+150));"
+
+Πρέπει να δεις: startsWith("/") ? fs.readFileSync...
+
+
+================================================================================
+ΒΗΜΑ 9: Διόρθωση gen_token.py και gen_consumer_token.py (Windows line endings)
+================================================================================
+
+Τα PEM αρχεία στα Windows έχουν CRLF line endings. Τα scripts που
+παράγουν JWT χρησιμοποιούν regex που ψάχνει \n, οπότε δεν βρίσκουν
+τα certificates και το x5c array μένει άδειο.
+
+Αντικατέστησε το Kong/iShare/gen_token.py με:
+
+import jwt, time, uuid, re
+from cryptography.hazmat.primitives.serialization import load_pem_private_key
+
+PROVIDER_EORI = 'EU.EORI.NLPLEGMA'
+
+key = open('/iShare/client.key', 'rb').read()
+private_key = load_pem_private_key(key, password=None)
+
+cert_data = open('/iShare/fullchain.pem', 'rb').read().decode().replace('\r\n', '\n').replace('\r', '\n')
+certs = re.findall(r'-----BEGIN CERTIFICATE-----\n(.*?)\n-----END CERTIFICATE-----', cert_data, re.DOTALL)
+x5c = [''.join(c.split()) for c in certs]
+
+now = int(time.time())
+payload = {
+    'iss': PROVIDER_EORI,
+    'sub': PROVIDER_EORI,
+    'aud': PROVIDER_EORI,
+    'jti': str(uuid.uuid4()),
+    'iat': now,
+    'exp': now + 30
+}
+token = jwt.encode(payload, private_key, algorithm='RS256', headers={'x5c': x5c})
+print(token)
+
+
+Αντικατέστησε το Kong/iShare/gen_consumer_token.py με:
+
+import jwt, time, uuid, re
+from cryptography.hazmat.primitives.serialization import load_pem_private_key
+
+CONSUMER_EORI = 'EU.EORI.NLPLEGMACONSUMER'
+PROVIDER_EORI = 'EU.EORI.NLPLEGMA'
+
+key = open('/iShare/consumer.key', 'rb').read()
+private_key = load_pem_private_key(key, password=None)
+
+cert_data = open('/iShare/consumer_fullchain.pem', 'rb').read().decode().replace('\r\n', '\n').replace('\r', '\n')
+certs = re.findall(r'-----BEGIN CERTIFICATE-----\n(.*?)\n-----END CERTIFICATE-----', cert_data, re.DOTALL)
+x5c = [''.join(c.split()) for c in certs]
+
+now = int(time.time())
+payload = {
+    'iss': CONSUMER_EORI,
+    'sub': CONSUMER_EORI,
+    'aud': PROVIDER_EORI,
+    'jti': str(uuid.uuid4()),
+    'iat': now,
+    'exp': now + 30
+}
+token = jwt.encode(payload, private_key, algorithm='RS256', headers={'x5c': x5c})
+print(token)
+
+ΣΗΜΑΝΤΙΚΟ: Αν χρησιμοποιήσεις PowerShell Out-File για να γράψεις αυτά
+τα αρχεία, χρησιμοποίησε -Encoding utf8 -NoNewline ή γράψε τα σε
+editor χωρίς BOM (π.χ. VS Code).
+
+
+================================================================================
+ΒΗΜΑ 10: Αρχική Εγγραφή Καταναλωτή
+================================================================================
+
+ΚΡΙΣΙΜΟ: Ο Keyrock δεν δημιουργεί εγγραφή για εξωτερικούς iSHARE
+συμμετέχοντες μέχρι να συνδεθούν τουλάχιστον μία φορά. Χωρίς αυτό
+το βήμα, δεν θα υπάρχει UUID για τον consumer και η delegation policy
+δεν μπορεί να δημιουργηθεί.
+
+cd C:\Users\SAKak\Documents\GitHub\Data-Spaces\Kong
+
+$CONSUMER_JWT = docker run --rm `
+  -v "${PWD}/iShare:/iShare" `
+  python:3.9-slim sh -c `
+  "pip install PyJWT cryptography -q 2>/dev/null && python3 /iShare/gen_consumer_token.py"
+
+curl.exe -s --max-time 15 -X POST "http://localhost:3007/oauth2/token" `
+  -H "Content-Type: application/x-www-form-urlencoded" `
+  -d "grant_type=client_credentials&scope=iSHARE&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&client_assertion=$CONSUMER_JWT&client_id=EU.EORI.NLPLEGMACONSUMER"
+
+Πρέπει να πάρεις JSON με access_token. Αν πάρεις HTML error page ή
+timeout, κάτι πήγε στραβά στα βήματα 5-8.
+
+
+================================================================================
+ΒΗΜΑ 11: Δημιουργία Delegation Policy
+================================================================================
+
+Πρώτα βρες το UUID του consumer:
+
+docker exec db-mysql mysql -u root -psecret idm -e "SELECT id FROM user WHERE username='EU.EORI.NLPLEGMACONSUMER';"
+
+Σημείωσε το UUID (π.χ. 44d5c69f-0e2e-4565-a661-9c2e74f4ac1f).
+
+Πάρε admin token:
+
+$ADMIN_TOKEN = curl.exe -s -X POST "http://localhost:3007/oauth2/token" `
+  -H "Content-Type: application/x-www-form-urlencoded" `
+  -d "grant_type=password&username=admin@test.com&password=1234&client_id=<ΤΟ_CLIENT_ID_ΑΠΟ_ΒΗΜΑ_7>&client_secret=<ΤΟ_CLIENT_SECRET_ΑΠΟ_ΒΗΜΑ_7>" | ConvertFrom-Json | Select-Object -ExpandProperty access_token
+
+Δημιούργησε policy JSON (αντικατέστησε το UUID):
+
+$json = '{"delegationEvidence":{"notBefore":1735689600,"notOnOrAfter":1798761600,"policyIssuer":"EU.EORI.NLPLEGMA","target":{"accessSubject":"<ΤΟ_UUID_ΤΟΥ_CONSUMER>"},"policySets":[{"maxDelegationDepth":0,"target":{"environment":{"licenses":["ISHARE.0001"]}},"policies":[{"target":{"resource":{"type":"https://plegma.example.org/vocab#HouseholdElectricMeasurement","identifiers":["*"],"attributes":["*"]},"actions":["GET"]},"rules":[{"effect":"Permit"}]}]}]}}'
+
+ΣΗΜΑΝΤΙΚΟ: Το JSON πρέπει να σταλεί μέσω αρχείου χωρίς BOM, γιατί
+το PowerShell μπορεί να προσθέσει BOM που προκαλεί "Bad Request":
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText("C:\Users\SAKak\Documents\GitHub\Data-Spaces\Keyrock\policy_new.json", $json, $utf8NoBom)
+
+curl.exe -s -X POST "http://localhost:3007/ar/policy" `
+  -H "Content-Type: application/json" `
+  -H "Authorization: Bearer $ADMIN_TOKEN" `
+  --data-binary "@C:\Users\SAKak\Documents\GitHub\Data-Spaces\Keyrock\policy_new.json"
+
+Πρέπει να πάρεις: {} (κενό JSON = επιτυχία)
+
+
+================================================================================
+ΒΗΜΑ 12: Φόρτωση Δεδομένων
+================================================================================
+
+cd C:\Users\SAKak\Documents\GitHub\Data-Spaces\Orion-LD
+python orion_ld_loading_script.py
+
+
+================================================================================
+ΒΗΜΑ 13: Επαλήθευση
+================================================================================
+
+cd C:\Users\SAKak\Documents\GitHub\Data-Spaces\Demo
+.\demo_consumer.ps1
+
+Αναμενόμενα αποτελέσματα:
+  1. Χωρίς token       → 401 Unauthorized ✓
+  2. Provider token    → 200 OK + δεδομένα ✓
+  3. Consumer token    → 200 OK + δεδομένα ✓ (μέσω delegation)
+
+
+================================================================================
+ΣΥΝΟΨΗ ΠΡΟΒΛΗΜΑΤΩΝ ΠΟΥ ΑΝΤΙΜΕΤΩΠΙΣΤΗΚΑΝ
+================================================================================
+
+1. DOCKER NETWORKS
+   Πρόβλημα: "network fiware_default declared as external, but could not be found"
+   Λύση: Δημιουργία χειροκίνητα πριν ξεκινήσει το Kong:
+   docker network create fiware_default
+
+2. ORION-LD COMPOSE
+   Πρόβλημα: Δεν υπάρχει docker-compose.yml στον φάκελο Orion-LD
+   Λύση: Χρειάζεται δύο αρχεία μαζί:
+   docker-compose -f docker-compose/common.yml -f docker-compose/orion-ld.yml --env-file .env up -d mongo-db orion
+
+3. WINDOWS LINE ENDINGS (CRLF) ΣΤΑ PEM
+   Πρόβλημα: "Invalid PEM formatted message" στον Keyrock
+   Λύση: Αντικατάσταση CRLF με LF και αφαίρεση BOM
+
+4. BOM (BYTE ORDER MARK) ΣΤΑ PEM
+   Πρόβλημα: "Invalid PEM formatted message" παρά τη διόρθωση CRLF
+   Λύση: Εγγραφή αρχείων με UTF8Encoding($false) χωρίς BOM
+
+5. ΜΟΡΦΗ ΚΛΕΙΔΙΟΥ PKCS#8 vs PKCS#1
+   Πρόβλημα: Ο Keyrock (node-forge) δεν διαβάζει PKCS#8
+   Λύση: Αντιγραφή client_rsa.key (PKCS#1) αντί client.key (PKCS#8)
+
+6. DOCKER VOLUME ΔΕΝ ΑΝΑΝΕΩΝΕΤΑΙ ΜΕ RESTART
+   Πρόβλημα: Μετά αλλαγή αρχείου, docker restart δεν φορτώνει το νέο
+   Λύση: docker stop + docker rm + docker-compose up -d (recreate)
+
+7. PATCHES ΔΕΝ ΕΦΑΡΜΟΖΟΝΤΑΙ ΜΕΣΩ DOCKER CONTAINER
+   Πρόβλημα: Το 02_setup_keyrock.py τρέχει docker cp/exec αλλά
+   εντός container δεν υπάρχει docker CLI
+   Λύση: Τρέξε το script τοπικά (python 02_setup_keyrock.py) ΟΧΙ
+   μέσω Docker container. Εναλλακτικά, εφάρμοσε τα patches χειροκίνητα
+   με docker cp + docker exec.
+
+8. CONFIGSERVICE.JS PATCH ΔΕΝ ΕΦΑΡΜΟΖΕΤΑΙ ΑΠΟ ΤΟ SCRIPT
+   Πρόβλημα: Το 02_setup_keyrock.py βρίσκει ότι εφαρμόστηκε αλλά
+   στην πραγματικότητα δεν εφαρμόστηκε
+   Λύση: Εφαρμογή χειροκίνητα μέσω patch_config.js με docker cp + exec
+
+9. MODEL_OAUTH_SERVER.JS PATCH
+   Πρόβλημα: POST /ar/policy επιστρέφει 403 "not authorized to update policies"
+   Λύση: Εφαρμογή patch1.js που προσθέτει 'admin' στα attributes
+
+10. OAUTH APPLICATION ΔΕΝ ΥΠΑΡΧΕΙ ΣΕ ΝΕΑ ΕΓΚΑΤΑΣΤΑΣΗ
+    Πρόβλημα: "Invalid client: client is invalid" κατά τη λήψη admin token
+    Λύση: Δημιουργία application μέσω Keyrock UI + ενημέρωση CLIENT_ID/SECRET
+
+11. CONSUMER UUID ΑΛΛΑΖΕΙ ΣΕ ΝΕΑ ΕΓΚΑΤΑΣΤΑΣΗ
+    Πρόβλημα: Το policy.json έχει το UUID από το παλιό μηχάνημα
+    Λύση: Ανάκτηση νέου UUID μέσω MySQL query + ενημέρωση policy
+
+12. ΑΔΕΙΟ x5c ARRAY ΣΤΟ JWT
+    Πρόβλημα: Τα gen_token.py / gen_consumer_token.py παράγουν JWT με
+    άδειο x5c γιατί το regex δεν βρίσκει certificates λόγω CRLF
+    Λύση: Προσθήκη .replace('\r\n', '\n').replace('\r', '\n') πριν
+    το regex στα scripts
+
+13. BAD REQUEST ΚΑΤΑ ΤΗΝ ΑΠΟΣΤΟΛΗ POLICY
+    Πρόβλημα: curl.exe -d στέλνει JSON που ο Keyrock δεν μπορεί
+    να αναγνώσει (BOM ή encoding issue)
+    Λύση: Αποθήκευση JSON σε αρχείο χωρίς BOM και αποστολή με
+    --data-binary "@αρχείο"
+
+14. ΣΕΙΡΑ ΕΚΚΙΝΗΣΗΣ CONTAINERS
+    Σωστή σειρά: Orion-LD → Keyrock → Kong
+    Λόγος: Το Kong χρειάζεται και τα δύο networks που δημιουργούνται
+    από τα άλλα compose αρχεία
+
+
+================================================================================
+ΓΡΗΓΟΡΗ ΑΝΑΦΟΡΑ ΕΝΤΟΛΩΝ (μετά το αρχικό setup)
+================================================================================
+
+Εκκίνηση:
+  cd Orion-LD && docker-compose -f docker-compose/common.yml -f docker-compose/orion-ld.yml --env-file .env up -d mongo-db orion
+  cd ..\Keyrock && docker-compose up -d
+  cd ..\Kong && docker-compose up -d
+
+Επαλήθευση:
+  docker ps    (πρέπει να δεις 7 containers)
+  cd Demo && .\demo_consumer.ps1
+
+Σταμάτημα:
+  cd Kong && docker-compose down
+  cd ..\Keyrock && docker-compose down
+  cd ..\Orion-LD && docker-compose -f docker-compose/common.yml -f docker-compose/orion-ld.yml --env-file .env down

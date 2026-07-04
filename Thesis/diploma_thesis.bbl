@@ -1,98 +1,109 @@
 \begin{thebibliography}{10}
 
 \bibitem{otto2022}
-B.~Otto, S.~Steinbuß, A.~Teuscher, and S.~Lohmann, ``Reference architecture
-  model gaia-x: Technical specification,'' {\em Gaia-X AISBL}, 2022.
-\newblock Accessed: 2026.
+B.~Otto, S.~Steinbu{\ss}, A.~Teuscher, and S.~Lohmann, ``Reference architecture
+  model {Gaia-X}: Technical specification,'' tech. rep., Gaia-X AISBL, 2022.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{dsba2023}
 {Data Spaces Business Alliance}, ``Technical convergence: Recommendations for
   interoperable data spaces,'' tech. rep., Data Spaces Business Alliance
   (DSBA), 2023.
-\newblock Accessed: 2026.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{idsa2023}
 {International Data Spaces Association}, ``{IDS} reference architecture model
   4.2,'' tech. rep., International Data Spaces Association (IDSA), 2023.
-\newblock Accessed: 2026.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{gaiax2023}
-{Gaia-X AISBL}, ``Gaia-x architecture document,'' tech. rep., Gaia-X European
+{Gaia-X AISBL}, ``Gaia-{X} architecture document,'' tech. rep., Gaia-X European
   Association for Data and Cloud AISBL, 2023.
-\newblock Accessed: 2026.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{fiware2023}
 {FIWARE Foundation}, ``{FIWARE} catalogue: Open source components for smart
-  solutions,'' 2023.
-\newblock Accessed: 2026.
+  solutions.'' \url{https://www.fiware.org/catalogue/}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{x509rfc}
 D.~Cooper, S.~Santesson, S.~Farrell, S.~Boeyen, R.~Housley, and T.~Polk,
   ``Internet {X.509} public key infrastructure certificate and certificate
-  revocation list ({CRL}) profile,'' 2008.
-\newblock Accessed: 2026.
+  revocation list ({CRL}) profile,'' {RFC} 5280, Internet Engineering Task
+  Force (IETF), 2008.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{rfc7519}
-M.~B. Jones, J.~Bradley, and N.~Sakimura, ``{JSON} web token ({JWT}),'' Tech.
-  Rep. RFC 7519, Internet Engineering Task Force (IETF), 2015.
-\newblock Accessed: 2026.
+M.~B. Jones, J.~Bradley, and N.~Sakimura, ``{JSON} web token ({JWT}),'' {RFC}
+  7519, Internet Engineering Task Force (IETF), 2015.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{ishare2023}
-{iSHARE Foundation}, ``ishare scheme: Trust framework for data sharing,'' tech.
-  rep., iSHARE Foundation, 2023.
-\newblock Accessed: 2026.
+{iSHARE Foundation}, ``i{SHARE} scheme: Trust framework for data sharing,''
+  tech. rep., iSHARE Foundation, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{i4trust2023}
-{FIWARE Foundation}, ``i4trust building blocks,'' 2023.
-\newblock Accessed: 2026.
+{FIWARE Foundation}, ``i4{T}rust building blocks.''
+  \url{https://github.com/i4Trust}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{ngsi-ld2023}
-{ETSI}, ``{ETSI GS CIM 009 V1.6.1}: Context information management ({CIM});
-  {NGSI-LD} {API},'' 2023.
-\newblock Accessed: 2026.
+{ETSI}, ``{ETSI GS CIM 009} v1.6.1: Context information management ({CIM});
+  {NGSI-LD} {API},'' tech. rep., European Telecommunications Standards
+  Institute, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{jsonld2020}
 G.~Kellogg, P.-A. Champin, and D.~Longley, ``{JSON-LD} 1.1: A {JSON}-based
-  serialization for linked data,'' 2020.
-\newblock Accessed: 2026.
+  serialization for linked data,'' tech. rep., World Wide Web Consortium (W3C),
+  2020.
+\newblock W3C Recommendation. [Online]. Accessed: Jun. 2026.
 
 \bibitem{smart-data-models2023}
-{FIWARE Foundation}, {IUDX}, {TM Forum}, and {OASC}, ``Smart data models,''
-  2023.
-\newblock Accessed: 2026.
+{FIWARE Foundation}, {IUDX}, {TM Forum}, and {OASC}, ``Smart data models.''
+  \url{https://smartdatamodels.org/}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{xacml3}
 {OASIS}, ``e{X}tensible access control markup language ({XACML}) version 3.0,''
-  tech. rep., OASIS Standard, 2013.
-\newblock Accessed: 2026.
+  tech. rep., Organization for the Advancement of Structured Information
+  Standards, 2013.
+\newblock OASIS Standard. [Online]. Accessed: Jun. 2026.
 
 \bibitem{orion-ld2023}
-{FIWARE Foundation}, ``Orion-{LD} context broker,'' 2023.
-\newblock Accessed: 2026.
+{FIWARE Foundation}, ``Orion-{LD} context broker.''
+  \url{https://github.com/FIWARE/context.Orion-LD}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{keyrock2023}
-{FIWARE Foundation}, ``Keyrock identity manager,'' 2023.
-\newblock Accessed: 2026.
+{FIWARE Foundation}, ``Keyrock identity manager.''
+  \url{https://github.com/ging/fiware-idm}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{ishare-satellite2023}
-{iSHARE Foundation}, ``ishare satellite reference implementation,'' 2023.
-\newblock Accessed: 2026.
+{iSHARE Foundation}, ``i{SHARE} satellite reference implementation.''
+  \url{https://github.com/iSHAREScheme/iSHARE-Satellite}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{kong2023}
-{Kong Inc.}, ``Kong gateway,'' 2023.
-\newblock Accessed: 2026.
+{Kong Inc.}, ``Kong gateway.'' \url{https://konghq.com/}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{kong-ngsi-plugin2023}
-{FIWARE Foundation}, ``Kong plugin: ngsi-ishare-policies,'' 2023.
-\newblock Accessed: 2026.
+{FIWARE Foundation}, ``Kong plugin: ngsi-ishare-policies.''
+  \url{https://github.com/FIWARE/kong-plugins-fiware}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{dsba-pdp2023}
-{FIWARE Foundation}, ``{DSBA} policy decision point,'' 2023.
-\newblock Accessed: 2026.
+{FIWARE Foundation}, ``{DSBA} policy decision point.''
+  \url{https://github.com/FIWARE/dsba-pdp}, 2023.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \bibitem{plegma2024}
 C.~Doukas and I.~Chatzigiannakis, ``Plegma dataset: A smart home energy and
-  environmental dataset,'' 2024.
-\newblock Accessed: 2026.
+  environmental dataset.'' University of Strathclyde.
+  \url{https://pureportal.strath.ac.uk/en/datasets/plegma-dataset/}, 2024.
+\newblock [Online]. Accessed: Jun. 2026.
 
 \end{thebibliography}

@@ -1,107 +1,125 @@
 \chapter{Υλοποίηση και Στήσιμο}
 \label{ch:implementation}
 
+
 Το παρόν κεφάλαιο περιγράφει αναλυτικά τη διαδικασία στησίματος του
-\textlatin{Data Space}, από τη δημιουργία των κρυπτογραφικών πιστοποιητικών
-έως την παραμετροποίηση κάθε συστατικού και τη δημιουργία πολιτικών εξουσιοδότησης.
-Τα βήματα που παρουσιάζονται πρέπει να εκτελεστούν με αυτή την σειρά.
+\textlatin{Data Space} σε νέο μηχάνημα, από τη δημιουργία των
+κρυπτογραφικών πιστοποιητικών έως τη φόρτωση δεδομένων και τη δημιουργία
+πολιτικών εξουσιοδότησης. Τα βήματα που παρουσιάζονται πρέπει να
+εκτελεστούν με την ακριβή σειρά που αναφέρεται, καθώς κάθε βήμα αποτελεί
+προϋπόθεση για το επόμενο.
+
+Όλο το υλικό και ο κώδικας της υλοποιήσης είναι διαθέσιμος στο αποθετήριο
+\textlatin{GitHub} \href{https://github.com/sakakos/Data-Spaces}{\textbf{\textlatin{Data-Spaces}}}.
+
+Για την εκτέλεση της υλοποίησης απαιτούνται τα ακόλουθα εργαλεία στο
+μηχάνημα ανάπτυξης:
+
+\begin{itemize}
+    \item \textlatin{Docker Desktop} εγκατεστημένο και σε λειτουργία.
+    \item \textlatin{Python 3} εγκατεστημένο τοπικά.
+    \item \textlatin{Git} για κλωνοποίηση του αποθετηρίου.
+\end{itemize}
 
 % ------------------------------------------------------------------
 \section{Βήμα 1: Δημιουργία Κρυπτογραφικών Πιστοποιητικών}
 \label{sec:step1-certs}
 % ------------------------------------------------------------------
 
-Το πρώτο βήμα της υλοποίησης είναι η δημιουργία της κρυπτογραφικής υποδομής
-(\textlatin{PKI}) που θα χρησιμοποιηθεί για την ταυτοποίηση των συμμετεχόντων.
-Απαιτούνται τρία ζεύγη κλειδιών και πιστοποιητικών: ένα για την \textlatin{CA},
-ένα για τον πάροχο και ένα για τον καταναλωτή.
+Το πρώτο βήμα είναι η δημιουργία της κρυπτογραφικής υποδομής
+(\textlatin{PKI}) που θα χρησιμοποιηθεί για την ταυτοποίηση των
+συμμετεχόντων. Απαιτούνται τρία ζεύγη κλειδιών και πιστοποιητικών:
+ένα για την τοπική Αρχή Πιστοποίησης (\textlatin{CA}), ένα για τον
+πάροχο και ένα για τον καταναλωτή.
 
-
-Το \textlatin{script} \textlatin{01\_generate\_certs.py} αυτοματοποιεί την παραγωγή
-όλων των απαραίτητων πιστοποιητικών χρησιμοποιώντας τη βιβλιοθήκη
-\textlatin{Python} \textlatin{cryptography}. Εκτελείται μέσω \textlatin{Docker}
-ώστε να εξασφαλίζεται η αναπαραγωγιμότητα ανεξαρτήτως του τοπικού περιβάλλοντος:
+Το \textlatin{script} \textlatin{01\_generate\_certs.py} αυτοματοποιεί
+την παραγωγή όλων των πιστοποιητικών χρησιμοποιώντας τη βιβλιοθήκη
+\textlatin{Python} \textlatin{cryptography}:
+\vspace{0.2cm}
 
 \selectlanguage{english}
 \begin{lstlisting}[language=bash, caption={Certificate generation script execution.}, stringstyle=\color{black}, keywordstyle=\color{black}]
-docker run --rm \
-  -v ".\iShare:/iShare" \
-  python:3.9-slim sh -c \
-  "pip install cryptography -q && python3 /iShare/01_generate_certs.py"
+cd "Setup Instructions"
+python 01_generate_certs.py
 \end{lstlisting}
-
 \selectlanguage{greek}
-\noindent Τα ορίσματα της εντολής ερμηνεύονται ως εξής:
-\begin{itemize}
-    \item \textlatin{-{}-rm}: Αφαιρεί αυτόματα το \textlatin{container} μετά την
-    εκτέλεση.
-    \item \textlatin{-v ".\textbackslash iShare:/iShare"}: Προσαρτά τον τοπικό
-    φάκελο \textlatin{iShare} στο \textlatin{container}, ώστε τα παραγόμενα αρχεία
-    να αποθηκευτούν τοπικά.
-    \item \textlatin{python:3.9-slim}: Χρησιμοποιεί μια ελαφριά εικόνα
-    \textlatin{Python 3.9}.
-    \item \textlatin{pip install cryptography}: Εγκαθιστά τη βιβλιοθήκη
-    κρυπτογραφίας.
-    \item \textlatin{python3 /iShare/01\_generate\_certs.py}: Εκτελεί το
-    \textlatin{script}.
-\end{itemize}
 
-Το \textlatin{script} παράγει τα ακόλουθα αρχεία στον φάκελο \textlatin{iShare/}:
+Το \textlatin{script} παράγει τα ακόλουθα αρχεία:
 
 \begin{itemize}
     \item \textlatin{ca.key}, \textlatin{ca.pem}: Το ιδιωτικό κλειδί και
-    το πιστοποιητικό της \textlatin{CA} (\textlatin{PlegmaCA}). Η \textlatin{CA}
-    υπογράφει όλα τα υπόλοιπα πιστοποιητικά.
+    το αυτο-υπογεγραμμένο πιστοποιητικό της \textlatin{PlegmaCA}.
     \item \textlatin{client.key}: Το ιδιωτικό κλειδί του παρόχου σε
-    μορφή \textlatin{PKCS\#8} (\textlatin{BEGIN PRIVATE KEY}), κατάλληλο για
-    \textlatin{Python} και \textlatin{DSBA-PDP}.
+    μορφή \textlatin{PKCS\#8} (\textlatin{BEGIN PRIVATE KEY}).
     \item \textlatin{client\_rsa.key}: Το ίδιο κλειδί σε μορφή
-    \textlatin{PKCS\#1} (\textlatin{BEGIN RSA PRIVATE KEY}), απαραίτητο για το
-    \textlatin{Kong}, καθώς η βιβλιοθήκη \textlatin{Lua} \textlatin{lua-resty-jwt}
-    που χρησιμοποιεί απαιτεί αυτή τη μορφή.
+    \textlatin{PKCS\#1} (\textlatin{BEGIN RSA PRIVATE KEY}). Η ύπαρξη
+    δύο μορφών είναι αναγκαία γιατί το \textlatin{Kong} χρησιμοποιεί
+    τη βιβλιοθήκη \textlatin{lua-resty-jwt} που απαιτεί
+    \textlatin{PKCS\#1}, ενώ ο \textlatin{Keyrock} χρησιμοποιεί
+    τη \textlatin{node-forge} που επίσης απαιτεί \textlatin{PKCS\#1}.
     \item \textlatin{client.pem}: Το πιστοποιητικό του παρόχου.
     \item \textlatin{fullchain.pem}: Η πλήρης αλυσίδα πιστοποιητικών
-    παρόχου (πιστοποιητικό παρόχου + πιστοποιητικό \textlatin{CA}).
+    (πιστοποιητικό παρόχου + πιστοποιητικό \textlatin{CA}).
     \item \textlatin{consumer.key}, \textlatin{consumer.pem},
-    \textlatin{consumer\_fullchain.pem}: Τα αντίστοιχα αρχεία για τον καταναλωτή.
+    \textlatin{consumer\_fullchain.pem}: Τα αντίστοιχα αρχεία για
+    τον καταναλωτή.
 \end{itemize}
 
-Δύο παράμετροι είναι κρίσιμες για τη σωστή λειτουργία του συστήματος:
+Δύο παράμετροι είναι κρίσιμες για τη σωστή λειτουργία:
 
 \begin{enumerate}
-    \item Επέκταση \textlatin{keyUsage: digitalSignature}: Τα
-    πιστοποιητικά παρόχου και καταναλωτή φέρουν υποχρεωτικά την επέκταση
-    \textlatin{X.509v3} \textlatin{keyUsage} με τιμή \textlatin{digitalSignature}.
-    Ο \textlatin{Keyrock} ελέγχει ρητά αυτή την επέκταση κατά την επαλήθευση
-    πιστοποιητικών μέσω του \textlatin{endpoint} \textlatin{/extparticipant}.
-    Απουσία αυτής της επέκτασης οδηγεί σε σφάλμα κατά την αρχική επαλήθευση
-    του καταναλωτή.
+    \item Η επέκταση \textlatin{keyUsage: digitalSignature} ορίζεται
+    ρητά στα πιστοποιητικά παρόχου και καταναλωτή. Ο \textlatin{Keyrock}
+    ελέγχει αυτή την επέκταση κατά την επαλήθευση πιστοποιητικών
+    μέσω του μηχανισμού \textlatin{extparticipant}. Χωρίς αυτήν,
+    η ταυτοποίηση αποτυγχάνει.
 
-    \item Αριθμός \textlatin{EORI} στο πεδίο \textlatin{Serial Number}:
-    Το αναγνωριστικό \textlatin{EORI} κάθε συμμετέχοντος τοποθετείται στο
-    πεδίο \textlatin{SerialNumber} του \textlatin{Distinguished Name} του
-    πιστοποιητικού. Ο \textlatin{iSHARE Satellite} χρησιμοποιεί αυτό το πεδίο
-    για να αντιστοιχίσει ένα πιστοποιητικό στον αντίστοιχο συμμετέχοντα.
+    \item Το αναγνωριστικό \textlatin{EORI} τοποθετείται στο πεδίο
+    \textlatin{Serial Number} του \textlatin{Distinguished Name}
+    κάθε πιστοποιητικού, ώστε ο \textlatin{Satellite} να μπορεί
+    να αντιστοιχίσει ένα πιστοποιητικό στον αντίστοιχο συμμετέχοντα
+    του μητρώου.
 \end{enumerate}
 
-Μετά την εκτέλεση, το \textlatin{script} εκτυπώνει τις πληροφορίες που
-απαιτούνται για την παραμετροποίηση των υπόλοιπων συστατικών:
+Μετά την εκτέλεση, το \textlatin{script} εκτυπώνει τα αποτυπώματα
+(\textlatin{fingerprints}) και τη συμβολοσειρά \textlatin{x5c} που
+πρέπει να αντιγραφούν στα αρχεία παραμετροποίησης.
+
+Τα παραγόμενα αρχεία πρέπει να αντιγραφούν στους κατάλληλους φακέλους:
 
 \selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Sample output of the certificate generation script.}, stringstyle=\color{black}, keywordstyle=\color{black}]
-Provider fingerprint: 19A0DD7A2074F4B02E5CB34E63BD88C1...
-Consumer fingerprint: B26DB03FC20A09C89070FDCE99E5E18F...
-CA fingerprint:       F2CDD6D6BB356D684F9D42DC5502DFA7...
+\begin{lstlisting}[language=bash, caption={Copying certificates to component directories.}]
+# Copy to Kong/iShare/
+copy *.key Kong\iShare\
+copy *.pem Kong\iShare\
 
---- satellite.yml: fingerprints section ---
-  Provider certificate_fingerprint: "19A0DD7A..."
-  Consumer certificate_fingerprint: "B26DB03F..."
-
---- kong.yml: jws section ---
-  x5c: "<base64_cert_provider>,<base64_CA>"
+# Copy PKCS#1 key to Keyrock (node-forge requires this format)
+copy client_rsa.key Keyrock\iShare\client.key
+copy fullchain.pem  Keyrock\iShare\fullchain.pem
 \end{lstlisting}
 \selectlanguage{greek}
 
+Η τελευταία εντολή είναι κρίσιμη: στον φάκελο \textlatin{Keyrock/iShare/}
+αντιγράφεται το \textlatin{client\_rsa.key} (μορφή \textlatin{PKCS\#1})
+ως \textlatin{client.key}, γιατί η βιβλιοθήκη \textlatin{node-forge}
+του \textlatin{Keyrock} δεν αναγνωρίζει τη μορφή \textlatin{PKCS\#8}.
+
+\subsection{Αντιμετώπιση \textlatin{Windows Line Endings}}
+\label{subsec:line-endings}
+
+Σε περιβάλλον \textlatin{Windows}, τα αρχεία \textlatin{PEM} μπορεί
+να αποθηκευτούν με \textlatin{CRLF} (\textlatin{\textbackslash r\textbackslash n})
+αντί \textlatin{LF} (\textlatin{\textbackslash n}) και να περιέχουν
+\textlatin{BOM} (\textlatin{Byte Order Mark}) στην αρχή. Και τα
+δύο προκαλούν σφάλμα \textlatin{«Invalid PEM formatted message»}
+στον \textlatin{Keyrock}. Η λύση είναι η μετατροπή των αρχείων σε
+\textlatin{UTF-8} χωρίς \textlatin{BOM} και με \textlatin{Unix line
+endings}. Τα \textlatin{scripts} παραγωγής \textlatin{JWT}
+(\textlatin{gen\_token.py} και \textlatin{gen\_consumer\_token.py})
+χρησιμοποιούν ρητά
+\textlatin{.replace('\textbackslash r\textbackslash n',
+'\textbackslash n')} πριν την ανάγνωση πιστοποιητικών, ώστε
+να αντιμετωπίζεται αυτόματα το πρόβλημα αυτό.
 
 % ------------------------------------------------------------------
 \section{Βήμα 2: Παραμετροποίηση \textlatin{iSHARE Satellite}}
@@ -109,20 +127,21 @@ CA fingerprint:       F2CDD6D6BB356D684F9D42DC5502DFA7...
 % ------------------------------------------------------------------
 
 Ο \textlatin{iSHARE Satellite} παραμετροποιείται μέσω του αρχείου
-\textlatin{satellite.yml}. Το αρχείο αυτό ορίζει:
+\textlatin{satellite.yml}. Στο αρχείο αυτό ορίζονται τρία κρίσιμα
+στοιχεία: τα κρυπτογραφικά κλειδιά του \textlatin{Satellite} (τα
+οποία ταυτίζονται με αυτά του παρόχου, καθώς λειτουργεί υπό την
+ταυτότητα \textlatin{EU.EORI.NLPLEGMA}), η λίστα εμπιστευμένων
+\textlatin{CA} (\textlatin{trusted\_list}) με το αποτύπωμα
+\textlatin{SHA-256} της \textlatin{PlegmaCA}, και το μητρώο
+εγκεκριμένων συμμετεχόντων (\textlatin{parties}) με εγγραφές για
+τον πάροχο και τον καταναλωτή.
 
-\begin{itemize}
-    \item Το αναγνωριστικό και τα κρυπτογραφικά κλειδιά του \textlatin{Satellite}
-    (ίδια με τον πάροχο, καθώς ο \textlatin{Satellite} λειτουργεί υπό την
-    ταυτότητα \textlatin{EU.EORI.NLPLEGMA}).
-    \item Τη λίστα εμπιστευμένων \textlatin{CA} (\textlatin{trusted\_list}),
-    που περιλαμβάνει το αποτύπωμα της \textlatin{PlegmaCA}.
-    \item Το μητρώο εγκεκριμένων συμμετεχόντων (\textlatin{parties}), με εγγραφές
-    για τον πάροχο και τον καταναλωτή:
-\end{itemize}
+Κάθε εγγραφή στο μητρώο περιέχει το αναγνωριστικό \textlatin{EORI},
+την κατάσταση (\textlatin{Active}), τους ρόλους και το αποτύπωμα
+\textlatin{SHA-256} του πιστοποιητικού:
 
 \selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Excerpt of satellite.yml for participant registration.}, stringstyle=\color{black}, keywordstyle=\color{black}]
+\begin{lstlisting}[language={}, caption={Excerpt of satellite.yml for participant registration.}]
 parties:
   - id: EU.EORI.NLPLEGMA
     name: Plegma Data Provider
@@ -132,7 +151,6 @@ parties:
       - role: AuthorisationRegistry
     certificates:
       - certificate_fingerprint: "19A0DD7A..."
-        enabled_from: "2026-01-01T00:00:00Z"
 
   - id: EU.EORI.NLPLEGMACONSUMER
     name: Plegma Data Consumer
@@ -141,31 +159,35 @@ parties:
       - role: ServiceConsumer
     certificates:
       - certificate_fingerprint: "B26DB03F..."
-        enabled_from: "2026-01-01T00:00:00Z"
 \end{lstlisting}
 \selectlanguage{greek}
+
+Τα αποτυπώματα πρέπει να αντιστοιχούν ακριβώς στα πιστοποιητικά που
+παρήχθησαν στο Βήμα 1. Αν αναγεννηθούν τα πιστοποιητικά, πρέπει
+υποχρεωτικά να ενημερωθούν και τα αποτυπώματα στο
+\textlatin{satellite.yml}.
 
 % ------------------------------------------------------------------
 \section{Βήμα 3: Παραμετροποίηση \textlatin{Kong API Gateway}}
 \label{sec:step3-kong}
 % ------------------------------------------------------------------
 
-Το \textlatin{Kong} παραμετροποιείται μέσω του αρχείου \textlatin{kong.yml} σε
-δηλωτική μορφή (\textlatin{declarative configuration}). Ορίζεται μια υπηρεσία
-(\textlatin{energy-data-service}) που δρομολογεί τις αιτήσεις προς τον
+Το \textlatin{Kong} παραμετροποιείται μέσω του αρχείου
+\textlatin{kong.yml} σε δηλωτική μορφή (\textlatin{DB-less mode}).
+Ορίζεται μια υπηρεσία που δρομολογεί τις αιτήσεις προς τον
 \textlatin{Orion-LD}, και προσαρτάται το \textlatin{plugin}
-\textlatin{ngsi-ishare-policies} με τις ακόλουθες παραμέτρους:
+\textlatin{ngsi-ishare-policies} με τρεις ενότητες παραμέτρων:
 
 \selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Excerpt of kong.yml -- plugin configuration.}, stringstyle=\color{black}, keywordstyle=\color{black}]
+\begin{lstlisting}[language={}, caption={Excerpt of kong.yml -- plugin configuration.}]
 plugins:
   - name: ngsi-ishare-policies
     config:
       jws:
         identifier: EU.EORI.NLPLEGMA
         root_ca_file: /iShare/certificate.pem
-        private_key: /iShare/key.pem     # Mounted: client_rsa.key
-        x5c: "<cert_base64>,<CA_base64>" # From 01_generate_certs.py
+        private_key: /iShare/key.pem
+        x5c: "<cert_base64>,<CA_base64>"
       satellite:
         identifier: EU.EORI.NLPLEGMA
         host: http://ishare-satellite:8080
@@ -179,146 +201,167 @@ plugins:
 \end{lstlisting}
 \selectlanguage{greek}
 
-Κρίσιμη λεπτομέρεια είναι ότι το ιδιωτικό κλειδί που προσαρτάται στο
-\textlatin{Kong} είναι το \textlatin{client\_rsa.key} (μορφή \textlatin{PKCS\#1})
-και όχι το \textlatin{client.key} (μορφή \textlatin{PKCS\#8}). Η βιβλιοθήκη
-\textlatin{Lua} \textlatin{lua-resty-jwt} που χρησιμοποιεί εσωτερικά το
-\textlatin{Kong} για τη δημιουργία \textlatin{JWT} κατά την επικοινωνία με τον
-\textlatin{Satellite} απαιτεί πλαίσιο \textlatin{BEGIN RSA PRIVATE KEY} και όχι
-\textlatin{BEGIN PRIVATE KEY}.
+Η ενότητα \textlatin{jws} περιέχει τα κρυπτογραφικά στοιχεία του
+παρόχου που χρειάζεται το \textlatin{Kong} για να υπογράφει τα
+δικά του \textlatin{JWT} κατά την επικοινωνία με τον
+\textlatin{Satellite}. Η ενότητα \textlatin{satellite} ορίζει πού
+βρίσκεται ο \textlatin{Satellite} ώστε το \textlatin{Kong} να
+μπορεί να επαληθεύσει αλυσίδες εμπιστοσύνης. Η ενότητα \textlatin{ar}
+ορίζει πού βρίσκεται το Μητρώο Εξουσιοδότησης (\textlatin{Keyrock})
+ώστε το \textlatin{Kong} να μπορεί να αναζητά πολιτικές εκχώρησης.
+
+Η τιμή \textlatin{x5c} πρέπει να αντιστοιχεί στα πιστοποιητικά
+παρόχου και \textlatin{CA} σε μορφή \textlatin{Base64}, χωρίς
+τις γραμμές \textlatin{BEGIN/END CERTIFICATE}.
 
 % ------------------------------------------------------------------
-\section{Βήμα 4: Παραμετροποίηση \textlatin{Keyrock}}
-\label{sec:step4-keyrock}
+\section{Βήμα 4: Εκκίνηση \textlatin{Containers}}
+\label{sec:step4-startup}
 % ------------------------------------------------------------------
 
-Ο \textlatin{Keyrock} παραμετροποιείται μέσω μεταβλητών περιβάλλοντος στο
-αρχείο \textlatin{docker-compose.yml}:
+Η σειρά εκκίνησης είναι κρίσιμη. Το \textlatin{Kong}
+\textlatin{docker-compose.yml} δηλώνει τα δίκτυα \textlatin{fiware\_default}
+και \textlatin{fiware-keyrock\_default} ως \textlatin{external}, δηλαδή
+απαιτεί να υπάρχουν ήδη πριν την εκκίνηση.
+
+Η σωστή σειρά εκκίνησης είναι:
 
 \selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Keyrock environment variables for iSHARE.}, stringstyle=\color{black}, keywordstyle=\color{black}]
-environment:
-  - IDM_PR_CLIENT_ID=EU.EORI.NLPLEGMA
-  - IDM_PR_ID=EU.EORI.NLPLEGMA
-  - IDM_PR_URL=http://ishare-satellite:8080
-  - IDM_PR_TOKEN_ENDPOINT=http://ishare-satellite:8080/token
-  - IDM_PR_PARTIES_ENDPOINT=http://ishare-satellite:8080/parties
-  - IDM_PR_CLIENT_KEY=/iShare/key.pem
-  - IDM_PR_CLIENT_CRT=/iShare/certificate.pem
-  - IDM_AR_ID=EU.EORI.NLPLEGMA
-  - IDM_AR_URL=internal
-  - IDM_AR_TOKEN_ENDPOINT=http://fiware-keyrock:3007/oauth2/token
-  - IDM_AR_DELEGATION_ENDPOINT=http://fiware-keyrock:3007/ar/delegation
-  - IDM_PDP_LEVEL=advanced
+\begin{lstlisting}[language=bash, caption={Docker network creation and container startup order.}, stringstyle=\color{black}, keywordstyle=\color{black}]
+# 1. Create Docker networks
+docker network create fiware_default
+docker network create fiware-keyrock_default
+
+# 2. Start Orion-LD (uses two compose files)
+cd Orion-LD
+docker-compose \
+  -f docker-compose/common.yml \
+  -f docker-compose/orion-ld.yml \
+  --env-file .env \
+  up -d mongo-db orion
+
+# 3. Start Keyrock (wait 30s for MySQL to initialize)
+cd ../Keyrock
+docker-compose up -d
+
+# 4. Start Kong (both networks must exist)
+cd ../Kong
+docker-compose up -d
 \end{lstlisting}
 \selectlanguage{greek}
-\noindent Οι παράμετροι αυτές ορίζουν:
-\begin{itemize}
-    \item \textlatin{IDM\_PR\_*}: Παράμετροι για τη σύνδεση του \textlatin{Keyrock}
-    με τον \textlatin{iSHARE Satellite} (\textlatin{PR} = \textlatin{Participant
-    Registry}).
-    \item \textlatin{IDM\_AR\_*}: Παράμετροι που ορίζουν τον \textlatin{Keyrock}
-    ως εσωτερικό \textlatin{Authorization Registry} (\textlatin{IDM\_AR\_URL=internal}).
-    \item \textlatin{IDM\_PDP\_LEVEL=advanced}: Ενεργοποιεί τον έλεγχο πρόσβασης
-    βάσει πολιτικών \textlatin{iSHARE}.
-\end{itemize}
 
-Η έκδοση του \textlatin{Keyrock} που χρησιμοποιείται απαιτεί δύο διορθώσεις
-στον πηγαίο κώδικα, οι οποίες εφαρμόζονται αυτόματα μέσω του \textlatin{script}
-\textlatin{02\_setup\_keyrock.py}:
+Μετά την εκκίνηση, η εντολή \textlatin{docker ps} πρέπει να
+εμφανίζει 7 \textlatin{containers}: \textlatin{fiware-orion-ld},
+\textlatin{db-mongo}, \textlatin{fiware-keyrock}, \textlatin{db-mysql},
+\textlatin{kong-standalone}, \textlatin{dsba-pdp} και
+\textlatin{ishare-satellite}.
+
+% ------------------------------------------------------------------
+\section{Βήμα 5: Δημιουργία Εφαρμογής \textlatin{OAuth} στον \textlatin{Keyrock}}
+\label{sec:step5-app}
+% ------------------------------------------------------------------
+
+Ο \textlatin{Keyrock} χρειάζεται μια εφαρμογή \textlatin{OAuth 2.0}
+για να εκδίδει \textlatin{access tokens}. Σε νέα εγκατάσταση η
+εφαρμογή δεν υπάρχει και πρέπει να δημιουργηθεί μέσω του γραφικού
+περιβάλλοντος:
 
 \begin{enumerate}
-    \item \textbf{Patch \textlatin{model\_oauth\_server.js}}: Προσθέτει το πεδίο
-    \textlatin{admin} στη λίστα \textlatin{attributes} που ανακτώνται κατά τον
-    έλεγχο ταυτότητας. Χωρίς αυτή τη διόρθωση, τα \textlatin{tokens} που
-    εκδίδει ο \textlatin{Keyrock} δεν περιέχουν τα απαραίτητα δεδομένα
-    \textlatin{delegation evidence}.
-
-    \item \textbf{Patch \textlatin{configService.js}}: Τροποποιεί τον τρόπο με τον
-    οποίο ο \textlatin{Keyrock} φορτώνει τα κρυπτογραφικά κλειδιά, επιτρέποντας
-    τη χρήση διαδρομής αρχείου αντί για απευθείας τιμή \textlatin{string}. Αυτό
-    επιτρέπει τη φόρτωση των κλειδιών μέσω \textlatin{Docker volumes} χρησιμοποιώντας
-    τις μεταβλητές περιβάλλοντος \textlatin{IDM\_PR\_CLIENT\_KEY} και
-    \textlatin{IDM\_PR\_CLIENT\_CRT}.
+    \item Άνοιγμα \textlatin{browser} στο \textlatin{http://localhost:3007}.
+    \item Σύνδεση με τα διαπιστευτήρια \textlatin{admin@test.com} /
+    \textlatin{1234}.
+    \item Δημιουργία νέας εφαρμογής (\textlatin{Applications} $\rightarrow$
+    \textlatin{Register}) με τη ροή \textlatin{Client Credentials}
+    ενεργοποιημένη.
+    \item Σημείωση του \textlatin{Client ID} και \textlatin{Client
+    Secret} που εκδίδονται.
+    \item Ενημέρωση του αρχείου \textlatin{02\_setup\_keyrock.py} με
+    τις νέες τιμές \textlatin{CLIENT\_ID} και \textlatin{CLIENT\_SECRET}.
 \end{enumerate}
 
 % ------------------------------------------------------------------
-\section{Βήμα 5: Εκκίνηση \textlatin{Containers}}
-\label{sec:step5-startup}
+\section{Βήμα 6: Εφαρμογή \textlatin{Patches} στον \textlatin{Keyrock}}
+\label{sec:step6-patches}
 % ------------------------------------------------------------------
 
-Τα \textlatin{containers} εκκινούνται σε δύο ομάδες, αντανακλώντας τη δομή
-σε δύο ξεχωριστά \textlatin{Docker Compose} αρχεία:
+Ο \textlatin{Keyrock} απαιτεί δύο τροποποιήσεις στον πηγαίο κώδικά
+του (\textlatin{patches}) για να λειτουργήσει σωστά ως Μητρώο
+Εξουσιοδότησης \textlatin{iSHARE}.
+
+\subsection{\textlatin{Patch 1}: \textlatin{model\_oauth\_server.js}}
+\label{subsec:patch1}
+
+Το πρώτο \textlatin{patch} προσθέτει το πεδίο \textlatin{admin} στη
+λίστα \textlatin{attributes} που ανακτώνται από τη βάση δεδομένων
+κατά την ταυτοποίηση χρήστη. Χωρίς αυτό, ο \textlatin{Keyrock} δεν
+αναγνωρίζει τον διαχειριστή ως τέτοιον, και η δημιουργία πολιτικών
+εκχώρησης μέσω \textlatin{POST /ar/policy} αποτυγχάνει με σφάλμα
+\textlatin{403 Forbidden}.
+
+Η εφαρμογή γίνεται μέσω \textlatin{docker cp} και
+\textlatin{docker exec}:
 
 \selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Kong stack startup (Satellite, DSBA-PDP, Kong).}]
-cd Kong
-docker-compose up -d
+\begin{lstlisting}[language=bash, caption={Applying patch1 to Keyrock.}, stringstyle=\color{black}, keywordstyle=\color{black}]
+docker cp Keyrock/patch1.js fiware-keyrock:/tmp/patch1.js
+docker exec fiware-keyrock node /tmp/patch1.js
 \end{lstlisting}
 \selectlanguage{greek}
+
+\subsection{\textlatin{Patch 2}: \textlatin{configService.js}}
+\label{subsec:patch2}
+
+Το δεύτερο \textlatin{patch} τροποποιεί τον τρόπο φόρτωσης
+κρυπτογραφικών κλειδιών. Στην αρχική έκδοση, οι μεταβλητές
+περιβάλλοντος \textlatin{IDM\_PR\_CLIENT\_KEY} και
+\textlatin{IDM\_PR\_CLIENT\_CRT} αντιμετωπίζονται ως το ίδιο
+το περιεχόμενο του κλειδιού. Το \textlatin{patch} τροποποιεί
+αυτή τη λογική ώστε, αν η τιμή ξεκινά με \textlatin{/} (δηλαδή
+είναι διαδρομή αρχείου), ο \textlatin{Keyrock} να διαβάζει
+το αρχείο αντί να χρησιμοποιεί απευθείας την τιμή:
+
 \selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Keyrock stack startup (Keyrock, MySQL).}]
-cd Keyrock
-docker-compose up -d
+\begin{lstlisting}[language=bash, caption={Applying patch2 to Keyrock.}]
+docker cp Keyrock/patch_config.js fiware-keyrock:/tmp/patch_config.js
+docker exec fiware-keyrock node /tmp/patch_config.js
+docker restart fiware-keyrock
 \end{lstlisting}
 \selectlanguage{greek}
-\selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Orion-LD stack startup (Orion-LD, MongoDB).}]
-cd Orion
-docker-compose up -d
-\end{lstlisting}
-\selectlanguage{greek}
-\noindent Τα ορίσματα της εντολής \textlatin{docker-compose up} ερμηνεύονται ως εξής:
-\begin{itemize}
-    \item \textlatin{up}: Δημιουργεί και εκκινεί τα \textlatin{containers}.
-    \item \textlatin{-d}: Εκτελεί τα \textlatin{containers} στο παρασκήνιο
-    (\textlatin{detached mode}).
-\end{itemize}
+
+Μετά την εφαρμογή και των δύο \textlatin{patches}, ο
+\textlatin{Keyrock} πρέπει να επανεκκινηθεί ώστε να ισχύσουν
+οι αλλαγές.
+
+Αξίζει να σημειωθεί ότι τα \textlatin{patches} αυτά πρέπει να
+εφαρμόζονται κάθε φορά που ο \textlatin{Keyrock container}
+δημιουργείται εκ νέου, καθώς οι αλλαγές γίνονται εντός του
+\textlatin{container} και δεν αποθηκεύονται στο \textlatin{Docker
+volume}. Σε περιβάλλον παραγωγής, οι τροποποιήσεις θα ενσωματώνονταν
+σε μια προσαρμοσμένη εικόνα \textlatin{Docker} μέσω
+\textlatin{Dockerfile}.
 
 % ------------------------------------------------------------------
-\section{Βήμα 6: Δημιουργία Πολιτικής Εξουσιοδότησης}
-\label{sec:step6-policy}
+\section{Βήμα 7: Αρχική Εγγραφή Καταναλωτή}
+\label{sec:step7-consumer}
 % ------------------------------------------------------------------
 
-Αφού εκκινηθούν όλα τα \textlatin{containers}, εκτελείται το \textlatin{script}
-\textlatin{02\_setup\_keyrock.py}, το οποίο:
+Πριν από τη δημιουργία πολιτικής εκχώρησης, ο καταναλωτής πρέπει
+να έχει πραγματοποιήσει τουλάχιστον ένα αίτημα προς τον
+\textlatin{Keyrock}. Αυτό είναι απαραίτητο λόγω του μηχανισμού
+\textlatin{extparticipant}: ο \textlatin{Keyrock} δεν δημιουργεί
+εγγραφή χρήστη για εξωτερικούς \textlatin{iSHARE} συμμετέχοντες
+μέχρι την πρώτη τους επικοινωνία. Χωρίς εγγραφή δεν υπάρχει
+εσωτερικό \textlatin{UUID}, και χωρίς \textlatin{UUID} η πολιτική
+εκχώρησης δεν μπορεί να αποθηκευτεί.
 
-\begin{enumerate}
-    \item Εφαρμόζει τα δύο \textlatin{patches} στον \textlatin{Keyrock}.
-    \item Επανεκκινεί τον \textlatin{Keyrock} για να ισχύσουν οι αλλαγές.
-    \item Αποκτά \textlatin{token} διαχειριστή.
-    \item Ανακτά το εσωτερικό \textlatin{UUID} του καταναλωτή από τη βάση
-    δεδομένων \textlatin{MySQL}.
-    \item Δημιουργεί την πολιτική εκχώρησης εξουσιοδότησης στο \textlatin{Keyrock AR}.
-\end{enumerate}
-
-\selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Keyrock setup script execution.}, stringstyle=\color{black}, keywordstyle=\color{black}]
-docker run --rm \
-  -v ".\iShare:/iShare" \
-  python:3.9-slim sh -c \
-  "pip install requests cryptography -q && \
-   python3 /iShare/02_setup_keyrock.py"
-\end{lstlisting}
-\selectlanguage{greek}
-
-\subsection{Αρχική Καταχώρηση Καταναλωτή}
-\label{subsec:consumer-registration}
-
-Πριν από την εκτέλεση του \textlatin{script} παραμετροποίησης, ο καταναλωτής
-πρέπει να έχει πραγματοποιήσει τουλάχιστον ένα αίτημα \textlatin{token} προς
-τον \textlatin{Keyrock}. Αυτό είναι απαραίτητο διότι ο \textlatin{Keyrock} δεν
-δημιουργεί χρήστες για εξωτερικούς συμμετέχοντες \textlatin{iSHARE} μέχρι την
-πρώτη τους επικοινωνία. Χωρίς την εγγραφή αυτή, το \textlatin{UUID} του
-καταναλωτή δεν υπάρχει στη βάση δεδομένων και η πολιτική εκχώρησης δεν μπορεί
-να αποθηκευτεί.
-
-Η αρχική καταχώρηση γίνεται με την ακόλουθη ακολουθία εντολών:
+Η αρχική εγγραφή γίνεται στέλνοντας ένα \textlatin{iSHARE JWT} του
+καταναλωτή στο \textlatin{endpoint} \textlatin{POST /oauth2/token}
+του \textlatin{Keyrock}:
 
 \selectlanguage{english}
 \begin{lstlisting}[language=bash, caption={Initial consumer registration in Keyrock.}, stringstyle=\color{black}, keywordstyle=\color{black}]
 CONSUMER_JWT=$(docker run --rm \
-  -v ".\iShare:/iShare" python:3.9-slim sh -c \
+  -v "./Kong/iShare:/iShare" python:3.9-slim sh -c \
   "pip install PyJWT cryptography -q && \
    python3 /iShare/gen_consumer_token.py")
 
@@ -326,91 +369,135 @@ curl -s -X POST "http://localhost:3007/oauth2/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials \
       &scope=iSHARE \
-      &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer \
+      &client_assertion_type=...jwt-bearer \
       &client_assertion=${CONSUMER_JWT} \
       &client_id=EU.EORI.NLPLEGMACONSUMER"
 \end{lstlisting}
 \selectlanguage{greek}
 
-\noindent Τα ορίσματα του αιτήματος \textlatin{OAuth 2.0} ερμηνεύονται ως εξής:
-\begin{itemize}
-    \item \textlatin{grant\_type=client\_credentials}: Ροή \textlatin{M2M} χωρίς
-    εμπλοκή χρήστη.
-    \item \textlatin{scope=iSHARE}: Υποδηλώνει ότι το αίτημα ακολουθεί το
-    πρωτόκολλο \textlatin{iSHARE}.
-    \item \textlatin{client\_assertion\_type=...jwt-bearer}: Ο τύπος \textlatin{assertion}
-    που χρησιμοποιείται, \textlatin{JWT} αντί για παραδοσιακό \textlatin{secret}.
-    \item \textlatin{client\_assertion}: Το ίδιο το \textlatin{iSHARE JWT} του
-    καταναλωτή.
-    \item \textlatin{client\_id}: Το \textlatin{EORI} του καταναλωτή.
-\end{itemize}
+Κατά την εκτέλεση, ο \textlatin{Keyrock} αποκωδικοποιεί το
+\textlatin{JWT}, επικοινωνεί με τον \textlatin{Satellite} για να
+επαληθεύσει τον καταναλωτή, δημιουργεί αυτόματα εγγραφή χρήστη στη
+\textlatin{MySQL} με ένα νέο εσωτερικό \textlatin{UUID} και
+επιστρέφει \textlatin{access token}.
 
-Η πολιτική που δημιουργείται επιτρέπει στον καταναλωτή να εκτελεί λειτουργίες
-\textlatin{GET} σε οποιοδήποτε \textlatin{entity} τύπου
-\textlatin{HouseholdElectricMeasurement}, ισχύει από το 2026 έως το 2027 και έχει
-εκδοθεί από τον πάροχο \textlatin{EU.EORI.NLPLEGMA}.
-
-Κρίσιμη λεπτομέρεια της υλοποίησης είναι ότι η πολιτική αποθηκεύεται με
-αναφορά στο εσωτερικό \textlatin{UUID} του καταναλωτή στη βάση δεδομένων του
-\textlatin{Keyrock} (π.χ. \textlatin{f9b23a01-a381-458b-9ae4-ff9d7a86ba0f}) και
-όχι στο \textlatin{EORI} του. Αυτό συμβαίνει διότι η εσωτερική λογική του
-\textlatin{Keyrock} αναζητά τις πολιτικές βάσει \textlatin{UUID}, όχι βάσει
-\textlatin{EORI}. Το \textlatin{script} \textlatin{02\_setup\_keyrock.py} αναλαμβάνει
-αυτόματα την ανάκτηση του σωστού \textlatin{UUID} από τη βάση δεδομένων
-\textlatin{MySQL}.
+Αν η απόκριση είναι σελίδα \textlatin{HTML} με σφάλμα αντί για
+\textlatin{JSON}, οι πιο συνηθισμένες αιτίες είναι: τα
+\textlatin{patches} δεν εφαρμόστηκαν, τα πιστοποιητικά έχουν
+\textlatin{BOM} ή \textlatin{CRLF}, ή ο \textlatin{Keyrock}
+δεν μπορεί να επικοινωνήσει με τον \textlatin{Satellite}.
 
 % ------------------------------------------------------------------
-\section{Βήμα 7: Φόρτωση Δεδομένων \textlatin{Plegma Dataset}}
-\label{sec:step7-data}
+\section{Βήμα 8: Δημιουργία Πολιτικής Εξουσιοδότησης}
+\label{sec:step8-policy}
+% ------------------------------------------------------------------
+
+Μετά την αρχική εγγραφή, ανακτάται το εσωτερικό \textlatin{UUID}
+του καταναλωτή από τη βάση δεδομένων \textlatin{MySQL}:
+
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Retrieving consumer UUID from MySQL.}, stringstyle=\color{black}, keywordstyle=\color{black}]
+docker exec db-mysql mysql -u root -psecret idm \
+  -e "SELECT id FROM user \
+      WHERE username='EU.EORI.NLPLEGMACONSUMER';"
+\end{lstlisting}
+\selectlanguage{greek}
+
+Κρίσιμη λεπτομέρεια: η πολιτική αποθηκεύεται με αναφορά στο
+εσωτερικό \textlatin{UUID} του καταναλωτή (π.χ.
+\textlatin{44d5c69f-0e2e-4565-a661-9c2e74f4ac1f}) και όχι στο
+\textlatin{EORI} του. Αυτό το \textlatin{UUID} αλλάζει σε κάθε
+νέα εγκατάσταση, οπότε η πολιτική πρέπει να ενημερωθεί αντίστοιχα.
+
+Η δημιουργία της πολιτικής γίνεται μέσω \textlatin{POST /ar/policy}
+με \textlatin{token} διαχειριστή:
+
+\selectlanguage{english}
+\begin{lstlisting}[language=bash, caption={Creating the delegation policy.}, stringstyle=\color{black}, keywordstyle=\color{black}]
+# Get admin token
+ADMIN_TOKEN=$(curl -s -X POST \
+  "http://localhost:3007/oauth2/token" \
+  -d "grant_type=password \
+      &username=admin@test.com&password=1234 \
+      &client_id=<CLIENT_ID> \
+      &client_secret=<CLIENT_SECRET>" \
+  | jq -r .access_token)
+
+# Send policy from file
+curl -s -X POST "http://localhost:3007/ar/policy" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+  --data-binary "@Keyrock/policy.json"
+\end{lstlisting}
+\selectlanguage{greek}
+
+Η πολιτική που δημιουργείται επιτρέπει στον καταναλωτή να εκτελεί
+λειτουργίες \textlatin{GET} σε οντότητες τύπου
+\textlatin{HouseholdElectricMeasurement}. Η δομή της ακολουθεί
+το μοντέλο \textlatin{delegationEvidence} του \textlatin{iSHARE}
+και περιλαμβάνει τον εκδότη (\textlatin{policyIssuer}), τον αποδέκτη
+(\textlatin{accessSubject}), τους επιτρεπόμενους πόρους και ενέργειες,
+και το χρονικό παράθυρο ισχύος.
+
+Σε περιβάλλον \textlatin{Windows}, το σώμα \textlatin{JSON} πρέπει
+να σταλεί μέσω αρχείου (\textlatin{--data-binary "@αρχείο"}) και όχι
+ως παράμετρος γραμμής εντολών, για αποφυγή προβλημάτων
+κωδικοποίησης \textlatin{BOM}.
+
+% ------------------------------------------------------------------
+\section{Βήμα 9: Φόρτωση Δεδομένων}
+\label{sec:step9-data}
 % ------------------------------------------------------------------
 
 Μετά την ολοκλήρωση του στησίματος, φορτώνονται τα δεδομένα του
-\textlatin{Plegma Dataset}~\cite{plegma2024} στον \textlatin{Orion-LD} μέσω
-του \textlatin{script} \textlatin{orion\_ld\_loading\_script\_kong.py}. Το \textlatin{script}
-διαβάζει τα δεδομένα από \textlatin{CSV} αρχεία και τα αποστέλλει στον
-\textlatin{Orion-LD} μέσω του \textlatin{Kong}, εξασφαλίζοντας ότι και η εγγραφή
-δεδομένων ακολουθεί τους μηχανισμούς ελέγχου πρόσβασης:
+\textlatin{Plegma Dataset}~\cite{plegma2024} στον \textlatin{Orion-LD}
+μέσω του \textlatin{script} \textlatin{orion\_ld\_loading\_script.py}:
 
 \selectlanguage{english}
-\begin{lstlisting}[language=bash, caption={Data loading via Kong.}]
-python3 orion_ld_loading_script_kong.py
+\begin{lstlisting}[language=bash, caption={Data loading.}, stringstyle=\color{black}, keywordstyle=\color{black}]
+cd Orion-LD
+python orion_ld_loading_script.py
 \end{lstlisting}
 \selectlanguage{greek}
-Το \textlatin{script} αυτό δημιουργεί για κάθε γραμμή του \textlatin{CSV}:
-\begin{enumerate}
-    \item Ένα \textlatin{iSHARE JWT} με 30 δευτερόλεπτα διάρκεια ισχύος,
-    υπογεγραμμένο με το ιδιωτικό κλειδί του παρόχου.
-    \item Ένα αίτημα \textlatin{HTTP POST} προς το
-    \textlatin{http://localhost:8000/ngsi-ld/v1/entities} με το \textlatin{entity}
-    σε μορφή \textlatin{JSON-LD} και το \textlatin{JWT} ως \textlatin{Bearer token}.
-\end{enumerate}
 
-Η αιτιολογία για τη δημιουργία νέου \textlatin{JWT} ανά \textlatin{entity} έγκειται
-στη σύντομη διάρκεια ισχύος των \textlatin{iSHARE JWT} (30 δευτερόλεπτα): η
-φόρτωση πολλών εγγραφών μπορεί να υπερβαίνει αυτό το χρονικό παράθυρο, οπότε
-κάθε αίτημα πρέπει να φέρει φρέσκο \textlatin{token}.
+Το \textlatin{script} διαβάζει τα αρχεία \textlatin{CSV} του
+\textlatin{dataset}, μετατρέπει κάθε γραμμή σε οντότητα
+\textlatin{NGSI-LD} και τη δημοσιεύει στον \textlatin{Orion-LD}.
+Δημιουργεί πρώτα τις στατικές οντότητες (\textlatin{Building},
+\textlatin{Person}, \textlatin{Device}) και στη συνέχεια τις
+χρονοσειρές (\textlatin{HouseholdElectricMeasurement},
+\textlatin{EnvironmentalMeasurement}).
 
 % ------------------------------------------------------------------
 \section{Σύνοψη Διαδικασίας Στησίματος}
 \label{sec:setup-summary}
 % ------------------------------------------------------------------
 
-Η διαδικασία στησίματος του \textlatin{Plegma Data Space} συνοψίζεται στα
-ακόλουθα επτά βήματα:
+Η διαδικασία στησίματος του \textlatin{Plegma Data Space} συνοψίζεται
+στα ακόλουθα εννέα βήματα:
 
 \begin{enumerate}
-    \item Δημιουργία κρυπτογραφικών πιστοποιητικών
-    (\textlatin{01\_generate\_certs.py}).
-    \item Παραμετροποίηση \textlatin{iSHARE Satellite} (\textlatin{satellite.yml}).
-    \item Παραμετροποίηση \textlatin{Kong} (\textlatin{kong.yml}).
-    \item Παραμετροποίηση \textlatin{Keyrock} (\textlatin{docker-compose.yml}).
-    \item Εκκίνηση \textlatin{containers} (\textlatin{docker-compose up -d}).
-    \item Δημιουργία πολιτικής εξουσιοδότησης
-    (\textlatin{02\_setup\_keyrock.py}).
+    \item Δημιουργία κρυπτογραφικών πιστοποιητικών και αντιγραφή
+    στους κατάλληλους φακέλους.
+    \item Παραμετροποίηση \textlatin{iSHARE Satellite} με τα
+    αποτυπώματα πιστοποιητικών.
+    \item Παραμετροποίηση \textlatin{Kong} με τα κρυπτογραφικά
+    στοιχεία και τα \textlatin{endpoints}.
+    \item Εκκίνηση \textlatin{containers} με τη σειρά
+    \textlatin{Orion-LD} $\rightarrow$ \textlatin{Keyrock}
+    $\rightarrow$ \textlatin{Kong}.
+    \item Δημιουργία εφαρμογής \textlatin{OAuth} στον
+    \textlatin{Keyrock}.
+    \item Εφαρμογή \textlatin{patches} στον \textlatin{Keyrock}
+    και επανεκκίνηση.
+    \item Αρχική εγγραφή καταναλωτή για δημιουργία εσωτερικού
+    \textlatin{UUID}.
+    \item Δημιουργία πολιτικής εκχώρησης εξουσιοδότησης.
     \item Φόρτωση δεδομένων \textlatin{Plegma Dataset}.
 \end{enumerate}
 
-Στο επόμενο κεφάλαιο παρουσιάζονται αναλυτικά οι \textlatin{end-to-end} ροές
-πρόσβασης στα δεδομένα, τόσο για τον πάροχο όσο και για τον καταναλωτή,με
-βάση τα \textlatin{sequence diagrams} που αντικατοπτρίζουν την πραγματική
+Στο επόμενο κεφάλαιο παρουσιάζονται αναλυτικά οι
+\textlatin{end-to-end} ροές πρόσβασης στα δεδομένα, τόσο για
+τον πάροχο όσο και για τον καταναλωτή, με βάση τα
+\textlatin{sequence diagrams} που αντικατοπτρίζουν την πραγματική
 συμπεριφορά του συστήματος.

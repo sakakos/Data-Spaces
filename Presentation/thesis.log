@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.16)  19 JUN 2026 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.16)  25 JUN 2026 07:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2033,7 +2033,7 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 Here is how much of TeX's memory you used:
  29878 strings out of 467690
  584225 string characters out of 5414966
- 1102303 words of memory out of 5000000
+ 1102180 words of memory out of 5000000
  58273 multiletter control sequences out of 15000+600000
  644859 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2054,7 +2054,7 @@ sers/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/cbgreek/gsmn2488.pf
 b><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/cbgreek/gsxn
 1000.pfb><C:/Users/SAKak/AppData/Local/Programs/MiKTeX/fonts/type1/public/cbgre
 ek/gsxn1095.pfb>
-Output written on thesis.pdf (34 pages, 531093 bytes).
+Output written on thesis.pdf (34 pages, 530704 bytes).
 PDF statistics:
  1058 PDF objects out of 1200 (max. 8388607)
  76 named destinations out of 1000 (max. 500000)

@@ -46,7 +46,8 @@ Write-Host "`n=== 2. Provider token (expected: 200) ==="
 $PROVIDER_TOKEN = docker run --rm `
     -v "${ISHARE_DIR}:/iShare" `
     python:3.9-slim sh -c `
-    "pip install PyJWT cryptography -q 2>/dev/null && python3 /iShare/gen_token.py"
+    "pip install PyJWT cryptography -q 2>/dev/null 
+                    && python3 /iShare/gen_token.py"
 
 Write-Host "HouseholdElectricMeasurement:"
 curl.exe -s -H "Authorization: Bearer $PROVIDER_TOKEN" `
@@ -124,13 +125,16 @@ Write-Host "  Step 1/3: Creating iSHARE JWT for Consumer..."
 $CONSUMER_JWT = docker run --rm `
     -v "${ISHARE_DIR}:/iShare" `
     python:3.9-slim sh -c `
-    "pip install PyJWT cryptography -q 2>/dev/null && python3 /iShare/gen_consumer_token.py"
+    "pip install PyJWT cryptography -q 2>/dev/null 
+                    && python3 /iShare/gen_consumer_token.py"
 
 # Step 2: Exchange JWT for access token from Keyrock
 Write-Host "  Step 2/3: Getting access token from Keyrock..."
 $tokenResponse = curl.exe -s -X POST $KEYROCK_URL `
     -H "Content-Type: application/x-www-form-urlencoded" `
-    -d "grant_type=client_credentials&scope=iSHARE&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&client_assertion=$CONSUMER_JWT&client_id=$CONSUMER_EORI"
+    -d "grant_type=client_credentials&scope=iSHARE
+        &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+        &client_assertion=$CONSUMER_JWT&client_id=$CONSUMER_EORI"
 
 $ACCESS_TOKEN = ($tokenResponse | ConvertFrom-Json).access_token
 
